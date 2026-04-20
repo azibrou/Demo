@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+
+/* Explicit content paths: project HTML + all TS/TSX under src */
+@source '../../index.html';
+@source '../**/*.{js,ts,jsx,tsx}';

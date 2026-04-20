@@ -1,5 +1,0 @@
-@import 'tailwindcss';
-
-/* Explicit content paths (components + screens) and HTML entry for production class detection */
-@source '../index.html';
-@source './**/*.{js,ts,jsx,tsx}';
