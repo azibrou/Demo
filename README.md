@@ -1,0 +1,41 @@
+# Demo — responsive React (Vite + Tailwind)
+
+Single-page app with **components** in `src/components` and **screens** in `src/screens`, styled with **Tailwind CSS**, ready for **GitHub Pages** as a project site.
+
+## Prerequisites
+
+- Node.js 20+ (CI uses 22)
+- npm
+
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+Open the URL shown in the terminal (usually `http://localhost:5173/`). During dev, Vite uses `base: '/'` so routing matches the dev server.
+
+## Production build and preview
+
+```bash
+npm run build
+npm run preview
+```
+
+The production build uses `base: '/Demo/'` so assets resolve under `https://<username>.github.io/Demo/`. If your GitHub repository name is not `Demo`, change `base` in `vite.config.ts` to `/<your-repo-name>/` (leading and trailing slashes).
+
+## Publish to GitHub Pages
+
+1. Create a **public** repository on GitHub (e.g. `Demo`).
+2. Push this project to the `main` branch.
+3. In the repo: **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions**.
+4. After the **Deploy to GitHub Pages** workflow succeeds, open `https://<username>.github.io/Demo/` (replace `username` and path if the repo name differs).
+
+Ensure `vite.config.ts` `base` matches the repository name exactly.
+
+## Stack
+
+- [Vite](https://vite.dev/) + [React](https://react.dev/) + TypeScript
+- [Tailwind CSS](https://tailwindcss.com/) (`@tailwindcss/vite`)
+- [React Router](https://reactrouter.com/) with `basename={import.meta.env.BASE_URL}` for subpath hosting
