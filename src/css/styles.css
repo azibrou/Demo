@@ -1,5 +1,251 @@
 @import 'tailwindcss';
 
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --animate-floating-tab-bar-enter: floating-tab-bar-enter 150ms ease-out forwards;
+  /** Shared spring — basket FAB (150ms) + counter badge (180ms) use the same curve. */
+  --ease-basket-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --animate-basket-fab-pop: basket-fab-badge-pop 150ms var(--ease-basket-spring) both;
+  --animate-basket-fab-pop-reverse: basket-fab-badge-pop 150ms var(--ease-basket-spring) reverse both;
+  --animate-basket-fab-badge-pop: basket-fab-badge-pop 180ms var(--ease-basket-spring) both;
+}
+
+@keyframes floating-tab-bar-enter {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes basket-fab-badge-pop {
+  from {
+    transform: scale(0.35);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/**
+ * Home horizontal carousels (Figma 74916:234866 shortcuts + 29832 Order again): `--shortcut-scale` from
+ * device width (`dvw` / `vw` ÷ 375). Used by `HomeCarouselRow` / full-bleed strips only — not inside `max-w` columns.
+ * Tailwind cannot express the min/max commas safely, so this lives in plain CSS.
+ */
+@layer components {
+  .home-viewport-scale {
+    --shortcut-scale: min(2.5, max(1, calc(100vw / 375px)));
+  }
+
+  @supports (width: 1dvw) {
+    .home-viewport-scale {
+      --shortcut-scale: min(2.5, max(1, calc(100dvw / 375px)));
+    }
+  }
+
+  /* No horizontal padding here — gutters live on `.shortcuts-carousel-track` so they scroll with content
+     and tiles are not clipped at a fixed inset inside the overflow scroller. */
+  .shortcuts-carousel-outer {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .shortcuts-carousel-cq {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .shortcuts-carousel-scale-row {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .shortcuts-carousel-track {
+    display: flex;
+    min-width: max-content;
+    align-items: flex-start;
+    gap: calc(12px * var(--shortcut-scale));
+    padding: calc(12px * var(--shortcut-scale)) 24px;
+  }
+
+  .shortcut-item-scaled {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: calc(86px * var(--shortcut-scale));
+    gap: calc(6px * var(--shortcut-scale));
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .shortcut-item-scaled__ring {
+    position: relative;
+    aspect-ratio: 1;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 9999px;
+    background-color: rgba(0, 45, 30, 0.07);
+    width: calc(72px * var(--shortcut-scale));
+  }
+
+  .shortcut-item-scaled__inner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    aspect-ratio: 1;
+    width: calc(48px * var(--shortcut-scale));
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+  }
+
+  .shortcut-item-scaled__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    pointer-events: none;
+    object-fit: contain;
+  }
+
+  .shortcut-item-scaled__label {
+    min-height: calc(36px * var(--shortcut-scale));
+    width: calc(86px * var(--shortcut-scale));
+    text-align: center;
+    font-size: calc(14px * var(--shortcut-scale));
+    font-weight: 400;
+    line-height: calc(18px * var(--shortcut-scale));
+    letter-spacing: calc(-0.084px * var(--shortcut-scale));
+    color: #191f1c;
+    font-feature-settings: 'cv03' 1, 'cv04' 1, 'lnum' 1, 'pnum' 1;
+  }
+
+  /* Figma 74916:29832 — XS thumb in Order again; column width matches .shortcut-item-scaled. */
+  .thumbnail-xs-scaled {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: calc(86px * var(--shortcut-scale));
+    gap: calc(6px * var(--shortcut-scale));
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .thumbnail-xs-scaled__frame {
+    position: relative;
+    flex-shrink: 0;
+    width: calc(86px * var(--shortcut-scale));
+    height: calc(86px * var(--shortcut-scale));
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .thumbnail-xs-scaled__frame-inner {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .thumbnail-xs-scaled__img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    pointer-events: none;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .thumbnail-xs-scaled__caption {
+    width: calc(86px * var(--shortcut-scale));
+    text-align: center;
+    font-size: calc(14px * var(--shortcut-scale));
+    font-weight: 400;
+    line-height: calc(18px * var(--shortcut-scale));
+    letter-spacing: calc(-0.084px * var(--shortcut-scale));
+    color: #191f1c;
+    font-feature-settings: 'cv03' 1, 'cv04' 1, 'lnum' 1, 'pnum' 1;
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+  }
+
+  /**
+   * ThumbnailM carousels (Most popular, Save me).
+   * Outer = CQ only (`100cqw` = full row width; never combine with `overflow-x` on the same node).
+   * `.thumbnail-m-carousel` = **100% width** scrollport, **inner** `padding-inline` 24px + safe-area
+   * (`box-sizing: border-box`) so gutters are inside the carousel, not a separate clip rect.
+   * Tile width = `(100cqw − gap − left − right) × ⅔` for ~1.5 cards in the **padded** viewport.
+   * Only `overflow-x: auto` (never `hidden` / `clip`).
+   */
+  .thumbnail-m-carousel-outer {
+    --thumb-m-gap: 16px;
+    --thumb-m-gutter-left: max(1.5rem, env(safe-area-inset-left, 0px));
+    --thumb-m-gutter-right: max(1.5rem, env(safe-area-inset-right, 0px));
+    container-type: inline-size;
+    container-name: thumb-m;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    overflow-x: visible;
+    overflow-y: visible;
+  }
+
+  .thumbnail-m-carousel {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    padding-left: var(--thumb-m-gutter-left);
+    padding-right: var(--thumb-m-gutter-right);
+    overflow-x: auto;
+    overflow-y: visible;
+    overscroll-behavior-x: contain;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .thumbnail-m-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .thumbnail-m-carousel__track {
+    display: flex;
+    width: max-content;
+    box-sizing: border-box;
+    align-items: flex-start;
+    gap: var(--thumb-m-gap);
+    padding: 0 0 4px;
+  }
+
+  .thumbnail-m-carousel__track > .thumbnail-m-carousel__tile {
+    box-sizing: border-box;
+    flex: 0 0
+      calc(
+        (100cqw - var(--thumb-m-gap) - var(--thumb-m-gutter-left) - var(--thumb-m-gutter-right)) * 2 /
+          3
+      );
+    width: calc(
+      (100cqw - var(--thumb-m-gap) - var(--thumb-m-gutter-left) - var(--thumb-m-gutter-right)) * 2 / 3
+    );
+    min-width: 0;
+    max-width: none;
+  }
+}
+
 /* Explicit content paths: project HTML + all TS/TSX under src */
 @source '../../index.html';
 @source '../**/*.{js,ts,jsx,tsx}';
