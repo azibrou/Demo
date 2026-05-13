@@ -23,6 +23,9 @@ export function AppNav() {
           <NavLink to="/" end className={linkClass}>
             Home
           </NavLink>
+          <NavLink to="/search" className={linkClass}>
+            Search
+          </NavLink>
           <NavLink to="/about" className={linkClass}>
             About
           </NavLink>
