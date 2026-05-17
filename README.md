@@ -27,12 +27,12 @@ The production build uses `base: '/Demo/'` so assets resolve under `https://<use
 
 ## Publish to GitHub Pages
 
-1. Create a **public** repository on GitHub (e.g. `Demo`).
+1. Create a **public** repository on GitHub named **`Demo`** (project site path `/Demo/`).
 2. Push this project to the `main` branch.
-3. In the repo: **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions**.
-4. After the **Deploy to GitHub Pages** workflow succeeds, open `https://<username>.github.io/Demo/` (replace `username` and path if the repo name differs).
+3. In the repo: **Settings → Pages → Build and deployment** — set **Source** to **GitHub Actions** (not “Deploy from a branch”). If branch deploy is selected, the site serves raw `index.html` with `/src/main.tsx` and the page stays blank.
+4. After the **Deploy to GitHub Pages** workflow succeeds, open `https://<username>.github.io/Demo/` (trailing slash). Example: `https://azibrou.github.io/Demo/`.
 
-Ensure `vite.config.ts` `base` matches the repository name exactly.
+Ensure `vite.config.ts` `base` matches the repository name exactly. `npm run build` must produce `dist/index.html` with `/Demo/assets/...` scripts (verified by `scripts/pages-postbuild.mjs`).
 
 ## Stack
 

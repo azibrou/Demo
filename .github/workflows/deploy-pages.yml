@@ -25,7 +25,14 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - name: Verify Pages artifact (not dev index.html)
+        run: |
+          grep -q '/Demo/assets/' dist/index.html
+          ! grep -q '/src/main.tsx' dist/index.html
+          test -f dist/404.html
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
