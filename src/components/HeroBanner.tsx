@@ -44,7 +44,7 @@ export function HeroBanner({
           />
         </div>
 
-        <div className="hero-banner__promo grid w-full grid-cols-2 items-end" data-name="Promo">
+        <div className="hero-banner__promo w-full" data-name="Promo">
           <div className="hero-banner__promo-text min-w-0" data-name="Text">
             <p className="hero-banner__promo-title bolt-font-heading-s-accent text-[var(--color-content-primary)]">
               {promoTitle}

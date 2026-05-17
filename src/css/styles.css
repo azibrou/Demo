@@ -62,11 +62,11 @@ body {
   }
 
   /**
-   * Figma 76281:33163 — full width, locked 288px tall; nothing inside may scroll.
+   * Figma 76281:33163 — full width, locked 232px tall; nothing inside may scroll.
    */
   .hero-banner {
     --hero-banner-gutter: 24px;
-    --hero-banner-height: 288px;
+    --hero-banner-height: 232px;
     position: relative;
     width: 100%;
     max-width: 100%;
@@ -110,10 +110,11 @@ body {
     padding-inline: var(--hero-banner-gutter);
     box-sizing: border-box;
     overscroll-behavior: none;
+    vertical-align: bottom;
   }
 
   .hero-banner .address-selector {
-    margin-top: 56px;
+    margin-top: 0;
   }
 
   .home-search-section {
@@ -124,7 +125,9 @@ body {
 
   .hero-banner__promo {
     flex-shrink: 0;
-    padding-bottom: 48px;
+    height: 112px;
+    margin: 0;
+    margin-bottom: 56px;
   }
 
   .hero-banner__promo-text {
@@ -132,6 +135,7 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+    width: 180px;
     padding-block: 12px;
   }
 
