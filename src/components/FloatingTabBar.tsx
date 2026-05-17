@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from 'react'
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from 'react'
 import { TAB_COMPACT_MS, useBasketFabOptional } from '../context/BasketFabContext'
 import { FLOATING_CHROME_SHADOW_CLASS } from '../lib/floatingChromeShadow'
 import { design } from '../lib/figmaDesignAssets'
@@ -44,16 +44,42 @@ export function FloatingTabBar({
   const basketEnabled = showBasketFabProp && basket != null
 
   const compactTabs = basketEnabled && basket.compactTabs
-  const prevCompactTabsRef = useRef(compactTabs)
   const [tabCompactAnim, setTabCompactAnim] = useState<'collapse' | 'expand' | null>(null)
+  const syncedCompactRef = useRef(compactTabs)
+  const pillRef = useRef<HTMLDivElement>(null)
 
-  useLayoutEffect(() => {
-    if (prevCompactTabsRef.current === compactTabs) return
-    setTabCompactAnim(compactTabs ? 'collapse' : 'expand')
-    const id = window.setTimeout(() => setTabCompactAnim(null), TAB_COMPACT_MS)
-    prevCompactTabsRef.current = compactTabs
-    return () => clearTimeout(id)
-  }, [compactTabs])
+  // Set anim phase in the same render as data-compact so resting compact styles never flash one frame early.
+  if (syncedCompactRef.current !== compactTabs) {
+    syncedCompactRef.current = compactTabs
+    const nextAnim = compactTabs ? 'collapse' : 'expand'
+    if (tabCompactAnim !== nextAnim) setTabCompactAnim(nextAnim)
+  }
+
+  useEffect(() => {
+    if (!tabCompactAnim) return
+    const pill = pillRef.current
+    if (!pill) return
+
+    let cleared = false
+    const clear = () => {
+      if (cleared) return
+      cleared = true
+      setTabCompactAnim(null)
+    }
+
+    const onEnd = (e: AnimationEvent) => {
+      const name = e.animationName
+      if (name !== 'floating-tab-bar-compact-icon' && name !== 'floating-tab-bar-compact-label') return
+      clear()
+    }
+
+    pill.addEventListener('animationend', onEnd)
+    const fallback = window.setTimeout(clear, TAB_COMPACT_MS + 50)
+    return () => {
+      pill.removeEventListener('animationend', onEnd)
+      clearTimeout(fallback)
+    }
+  }, [tabCompactAnim])
 
   const fabReserveWidthPx = basketEnabled ? basket.fabReserveWidthPx : 0
   const basketLayoutActive =
@@ -95,8 +121,8 @@ export function FloatingTabBar({
   const indicatorStyle = useMemo((): CSSProperties => {
     return {
       width: `calc((100% - 8px) / ${n})`,
-      transform: `translateX(calc(${activeIndex} * 100%))`,
-      transition: `transform ${INDICATOR_TRANSITION_MS}ms ease-out`,
+      transform: `translate3d(calc(${activeIndex} * 100%), 0, 0)`,
+      transition: `transform ${INDICATOR_TRANSITION_MS}ms cubic-bezier(0.4, 0, 0.2, 1)`,
     }
   }, [activeIndex, n])
 
@@ -134,6 +160,7 @@ export function FloatingTabBar({
         style={{ '--ftb-compact-ms': `${TAB_COMPACT_MS}ms` } as CSSProperties}
       >
         <div
+          ref={pillRef}
           role="tablist"
           aria-label={ariaLabel}
           onKeyDown={onKeyDown}
@@ -174,13 +201,7 @@ export function FloatingTabBar({
                     <span className="floating-tab-bar__icon relative flex size-6 shrink-0 items-center justify-center" aria-hidden>
                       <img alt="" src={iconSrc} className="floating-tab-bar__icon-img pointer-events-none block size-6" />
                     </span>
-                    <span
-                      className="floating-tab-bar__label-row min-h-0 overflow-hidden motion-reduce:transition-none"
-                      style={{
-                        opacity: compactTabs ? 0 : 1,
-                        transition: `opacity ${TAB_COMPACT_MS}ms ease-out`,
-                      }}
-                    >
+                    <span className="floating-tab-bar__label-row min-h-0 overflow-hidden">
                       <span
                         className={[
                           'floating-tab-bar__label bolt-font-body-xs-regular block w-full min-w-0 overflow-hidden text-center text-ellipsis whitespace-nowrap',

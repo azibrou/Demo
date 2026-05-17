@@ -723,7 +723,7 @@ body {
   }
 
   .floating-tab-bar__basket-slot {
-    transition: width var(--ftb-compact-ms, 150ms) ease-out;
+    transition: width var(--ftb-compact-ms, 150ms) cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /**
@@ -735,13 +735,15 @@ body {
   }
 
   /**
-   * FloatingTabBar — one keyframed collapse; expand = `animation-direction: reverse` (same 150ms ease-out).
-   * Compact shrink applies to the pill only; tab actions + basket stay fixed width.
+   * FloatingTabBar — icon translateY + label scale/opacity (compositor-friendly).
+   * Expand = `animation-direction: reverse` on the same keyframes (150ms ease-out).
    */
   .floating-tab-bar__pill {
     --ftb-label-h: calc(0.125rem + 1.125rem);
-    --ftb-ease: ease-out;
+    --ftb-icon-shift: 10px;
+    --ftb-ease: cubic-bezier(0.4, 0, 0.2, 1);
     --ftb-ms: var(--ftb-compact-ms, 150ms);
+    contain: layout style;
   }
 
   .floating-tab-bar__tab {
@@ -755,17 +757,20 @@ body {
   }
 
   .floating-tab-bar__motion {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
+    height: 100%;
     box-sizing: border-box;
-    grid-template-rows: 24px var(--ftb-label-h);
-    justify-items: center;
     padding-top: 2px;
     padding-bottom: 2px;
   }
 
   .floating-tab-bar__icon {
-    justify-self: center;
+    flex-shrink: 0;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
   }
 
   /** Figma 76290 — 24×24 tab icons. */
@@ -778,8 +783,13 @@ body {
 
   .floating-tab-bar__label-row {
     width: 100%;
-    min-height: 0;
+    flex-shrink: 0;
+    max-height: var(--ftb-label-h);
     overflow: hidden;
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: top center;
+    backface-visibility: hidden;
   }
 
   .floating-tab-bar__label {
@@ -787,16 +797,23 @@ body {
     line-height: 1.125rem;
   }
 
-  @keyframes floating-tab-bar-compact {
+  @keyframes floating-tab-bar-compact-icon {
     from {
-      padding-top: 2px;
-      padding-bottom: 2px;
-      grid-template-rows: 24px var(--ftb-label-h);
+      transform: translate3d(0, 0, 0);
     }
     to {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      grid-template-rows: 1fr 0px;
+      transform: translate3d(0, var(--ftb-icon-shift), 0);
+    }
+  }
+
+  @keyframes floating-tab-bar-compact-label {
+    from {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+    to {
+      opacity: 0;
+      transform: scaleY(0);
     }
   }
 
@@ -804,29 +821,47 @@ body {
     pointer-events: none;
   }
 
-  .floating-tab-bar__motion[data-animating='collapse'] {
-    animation: floating-tab-bar-compact var(--ftb-ms) var(--ftb-ease) forwards;
+  .floating-tab-bar__motion[data-animating='collapse'] .floating-tab-bar__icon {
+    animation: floating-tab-bar-compact-icon var(--ftb-ms) var(--ftb-ease) forwards;
   }
 
-  .floating-tab-bar__motion[data-animating='expand'] {
-    animation: floating-tab-bar-compact var(--ftb-ms) var(--ftb-ease) reverse forwards;
+  .floating-tab-bar__motion[data-animating='collapse'] .floating-tab-bar__label-row {
+    animation: floating-tab-bar-compact-label var(--ftb-ms) var(--ftb-ease) forwards;
   }
 
-  .floating-tab-bar__pill[data-compact='true'] .floating-tab-bar__motion:not([data-animating]) {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    grid-template-rows: 1fr 0px;
-    align-content: center;
+  .floating-tab-bar__motion[data-animating='expand'] .floating-tab-bar__icon {
+    animation: floating-tab-bar-compact-icon var(--ftb-ms) var(--ftb-ease) reverse forwards;
   }
 
-  .floating-tab-bar__pill[data-compact='true'] .floating-tab-bar__icon {
-    align-self: center;
+  .floating-tab-bar__motion[data-animating='expand'] .floating-tab-bar__label-row {
+    animation: floating-tab-bar-compact-label var(--ftb-ms) var(--ftb-ease) reverse forwards;
   }
 
-  .floating-tab-bar__pill[data-compact='false'] .floating-tab-bar__motion:not([data-animating]) {
-    padding-top: 2px;
-    padding-bottom: 2px;
-    grid-template-rows: 24px var(--ftb-label-h);
+  .floating-tab-bar__pill[data-compact='true'] .floating-tab-bar__motion:not([data-animating]) .floating-tab-bar__icon {
+    transform: translate3d(0, var(--ftb-icon-shift), 0);
+  }
+
+  .floating-tab-bar__pill[data-compact='true'] .floating-tab-bar__motion:not([data-animating]) .floating-tab-bar__label-row {
+    opacity: 0;
+    max-height: 0;
+    transform: scaleY(0);
+  }
+
+  .floating-tab-bar__pill[data-compact='false'] .floating-tab-bar__motion:not([data-animating]) .floating-tab-bar__icon {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .floating-tab-bar__pill[data-compact='false'] .floating-tab-bar__motion:not([data-animating]) .floating-tab-bar__label-row {
+    opacity: 1;
+    max-height: var(--ftb-label-h);
+    transform: scaleY(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .floating-tab-bar__motion[data-animating] .floating-tab-bar__icon,
+    .floating-tab-bar__motion[data-animating] .floating-tab-bar__label-row {
+      animation: none;
+    }
   }
 
   /**
