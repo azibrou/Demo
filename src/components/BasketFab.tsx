@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { design } from '../lib/figmaDesignAssets'
-import { FLOATING_PILL_BOX_SHADOW_CLASS } from '../lib/floatingPillShadow'
+import { FLOATING_CHROME_SHADOW_CLASS } from '../lib/floatingChromeShadow'
 
 const basketSrc = design.basketFab.basket
 
@@ -8,26 +8,37 @@ export type BasketFabProps = {
   count: number
   fabReveal: boolean
   showBadge: boolean
-  /** Reverse pop: basket + badge leave together (same keyframes as IN, `reverse`). */
+  badgeExiting: boolean
+  fabExiting: boolean
+  fabPopIn: boolean
+  /** True for the full staged exit (keeps slot mounted). */
   exiting: boolean
-  /** Bumps when the badge should play its entrance pop (after FAB scale-in). */
+  /** Bumps when the badge should play its entrance pop. */
   badgePopNonce: number
 }
 
 /**
- * Basket FAB — Figma node 74934:235482 (green circle, white basket, count badge).
- * `fabReveal`: same keyframes + spring as the counter (`basket-fab-badge-pop` / `--ease-basket-spring`), 150ms via `animate-basket-fab-pop`.
- * Counter runs after (`animate-basket-fab-badge-pop`, 180ms).
+ * Basket FAB — Figma 76330:68863 (icon), 74934:235482 (FAB).
+ * Enter: tab compact → FAB pop → badge pop. Exit runs the same steps in reverse.
  */
-export function BasketFab({ count, fabReveal, showBadge, exiting, badgePopNonce }: BasketFabProps) {
+export function BasketFab({
+  count,
+  fabReveal,
+  showBadge,
+  badgeExiting,
+  fabExiting,
+  fabPopIn,
+  exiting,
+  badgePopNonce,
+}: BasketFabProps) {
   const navigate = useNavigate()
   const label = count > 0 ? `Basket, ${count} items` : 'Basket'
 
   return (
     <div
       className={[
-        'relative size-[60px] shrink-0 origin-center overflow-visible',
-        exiting ? 'motion-reduce:animate-none animate-basket-fab-pop-reverse' : '',
+        'basket-fab relative size-[60px] shrink-0 origin-center overflow-visible',
+        exiting ? 'motion-reduce:animate-none basket-fab--exiting' : '',
       ].join(' ')}
       data-name="basket-fab"
     >
@@ -38,30 +49,31 @@ export function BasketFab({ count, fabReveal, showBadge, exiting, badgePopNonce 
         onClick={() => navigate('/shopping-list')}
         className={[
           'relative flex size-[60px] shrink-0 items-center justify-center rounded-[60px] bg-[#2b8659] p-2.5 outline-none',
-          FLOATING_PILL_BOX_SHADOW_CLASS,
+          FLOATING_CHROME_SHADOW_CLASS,
           'ring-[#002d1e]/20 focus-visible:ring-2',
           'origin-center motion-reduce:transition-none',
-          exiting
-            ? 'scale-100 opacity-100'
-            : fabReveal
-              ? 'motion-reduce:animate-none animate-basket-fab-pop'
-              : [
-                  'scale-[0.35] opacity-0',
-                  'transition-[transform,opacity] duration-[150ms] [transition-timing-function:var(--ease-basket-spring)]',
-                ].join(' '),
+          fabExiting
+            ? 'motion-reduce:animate-none basket-fab__button--out'
+            : fabPopIn
+              ? 'motion-reduce:animate-none basket-fab__button--in'
+              : fabReveal
+                ? 'basket-fab__button--shown'
+                : 'basket-fab__button--hidden',
         ].join(' ')}
       >
         <span className="relative size-6 shrink-0" aria-hidden>
           <img alt="" src={basketSrc} className="pointer-events-none absolute inset-0 block size-full max-w-none" />
         </span>
-        {showBadge && count > 0 ? (
+        {(showBadge || badgeExiting) && count > 0 ? (
           <span
-            key={exiting ? 'exit' : badgePopNonce}
+            key={badgeExiting ? 'exit' : badgePopNonce}
             className={[
               'absolute left-10 top-px flex h-5 min-w-5 items-center justify-center rounded-[20px] bg-[#0c2c1c] px-1',
               'text-center text-xs font-semibold leading-[15px] text-white',
               '[font-feature-settings:"cv03"_1,"cv04"_1]',
-              exiting ? '' : 'motion-reduce:animate-none animate-basket-fab-badge-pop',
+              badgeExiting
+                ? 'motion-reduce:animate-none basket-fab__badge--out'
+                : 'motion-reduce:animate-none basket-fab__badge--in',
             ].join(' ')}
             aria-hidden
           >

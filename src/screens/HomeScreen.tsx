@@ -1,33 +1,44 @@
-export function HomeScreen() {
-  return (
-    <div className="space-y-8">
-      <section className="space-y-4">
-        <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
-          Responsive React starter
-        </h1>
-        <p className="max-w-2xl text-lg text-slate-400">
-          Screens live in <code className="text-sky-300">src/screens</code>, reusable UI in{' '}
-          <code className="text-sky-300">src/components</code>. Resize the window to see the
-          layout adapt.
-        </p>
-      </section>
+import { useMemo } from 'react'
+import { FloatingTabBar } from '../components/FloatingTabBar'
+import { TabAction } from '../components/TabAction'
+import { design } from '../lib/figmaDesignAssets'
+import { HeroBanner } from '../components/HeroBanner'
+import { HomeSearchSection } from '../components/HomeSearchSection'
+import { OrderAgain } from '../components/OrderAgain'
+import { RetailSnippet } from '../components/RetailSnippet'
+import { ShortcutsCarousel } from '../components/ShortcutsCarousel'
+import { ThumbnailLSection } from '../components/ThumbnailLSection'
+import { ThumbnailMRow } from '../components/ThumbnailMRow'
+import { resolveFloatingTabBarModel } from '../config/floatingTabBarConfig'
+import { allRestaurants, mostPopular, saveMe } from '../lib/boltFoodTallinnHomeContent'
+import { HOME_FLOATING_TAB_BAR_ITEMS } from './homeFloatingTabBarItems'
 
-      <section className="grid gap-4 sm:grid-cols-2">
-        <article className="rounded-xl border border-slate-800 bg-slate-900/50 p-5">
-          <h2 className="text-lg font-medium text-white">Mobile-first</h2>
-          <p className="mt-2 text-sm text-slate-400">
-            This grid stacks on small viewports and becomes two columns from the{' '}
-            <code className="text-sky-300">sm</code> breakpoint up.
-          </p>
-        </article>
-        <article className="rounded-xl border border-slate-800 bg-slate-900/50 p-5">
-          <h2 className="text-lg font-medium text-white">GitHub Pages</h2>
-          <p className="mt-2 text-sm text-slate-400">
-            Production builds use <code className="text-sky-300">base: &apos;/Demo/&apos;</code>.
-            Rename the repo? Update <code className="text-sky-300">vite.config.ts</code> to match.
-          </p>
-        </article>
-      </section>
+export function HomeScreen() {
+  const resolved = useMemo(() => resolveFloatingTabBarModel(HOME_FLOATING_TAB_BAR_ITEMS), [])
+
+  return (
+    <div className="home-page bolt-font-base relative min-h-svh w-full bg-[var(--color-layer-floor-0)] pb-[calc(110px+env(safe-area-inset-bottom,0px))] text-[var(--color-content-primary)]">
+      <header className="w-full min-w-0">
+        <HeroBanner />
+      </header>
+      <HomeSearchSection />
+      <ShortcutsCarousel />
+      <OrderAgain />
+      <RetailSnippet />
+      <ThumbnailMRow title="Most popular" ariaLabel="Most popular" items={mostPopular} />
+      <ThumbnailMRow title="Save me" ariaLabel="Save me" items={saveMe} />
+      <ThumbnailLSection title="All restaurants" items={allRestaurants} />
+
+      {resolved.barItems.length > 0 && (
+        <div className="fixed inset-x-0 bottom-0 z-40 w-full max-w-full overflow-x-clip">
+          <FloatingTabBar
+            items={resolved.barItems}
+            defaultActiveId="home"
+            ariaLabel="Eater home"
+            tabActions={<TabAction iconSrc={design.tabAction.search} ariaLabel="Search" />}
+          />
+        </div>
+      )}
     </div>
   )
 }

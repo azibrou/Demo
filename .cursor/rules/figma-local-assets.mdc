@@ -1,0 +1,42 @@
+---
+description: When implementing from Figma, always download assets to public/figma and never use remote Figma URLs in code.
+alwaysApply: true
+---
+
+# Figma → local assets (always)
+
+When the user pastes a `figma.com/design/...` link or asks to implement UI from Figma:
+
+## Required workflow
+
+1. Use Figma MCP `get_design_context` (and screenshot if needed) **only for layout, spacing, and copy** — not as final `src` values.
+2. Collect **every** image/SVG URL from the response (`https://www.figma.com/api/mcp/asset/...` or localhost MCP hashes).
+3. **Download all assets** into `public/figma/` before marking the task done.
+4. Register each file in `src/lib/figmaDesignAssets.ts` via the existing `figma('filename.ext')` helper. Components import `design.*` only — **never** inline remote URLs.
+5. Append new filenames to:
+   - `scripts/download-figma-assets.mjs` (`files` array)
+   - `scripts/seed-figma-placeholders.mjs` (`files` array)
+   - `scripts/figma-mcp-assets.json` (`filename` → MCP asset URL)
+6. Run `npm run figma:sync` (or `npm run figma:assets` when Figma desktop is open) and confirm files exist under `public/figma/`.
+7. Do **not** tell the user to manually export from Figma unless automated sync fails after retry.
+
+## Naming
+
+- MCP asset URL `.../asset/3a9897a3-1c15-4058-be5f-31a69eee81c3` → local file `3a9897a31c154058be5f31a69eee81c3.svg` (UUID without dashes + extension from `Content-Type` or URL).
+- Match existing hashes in `public/figma/` when the desktop MCP server already provides a hash filename.
+
+## Forbidden in app code
+
+- `https://www.figma.com/api/mcp/asset/...`
+- `http://localhost:3845/assets/...`
+- Any other remote Figma-hosted URL in TSX/TS used at runtime
+
+Figma node IDs in **comments** for traceability are fine.
+
+## Out of scope
+
+- Bolt Food and other non-Figma sources: use `public/bolt/` and `npm run bolt:assets`, not this rule.
+
+## Global rule
+
+To enforce this in every repository, duplicate this file into Cursor **User Rules** (Settings → Rules).

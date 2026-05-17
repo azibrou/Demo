@@ -1,25 +1,24 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { HomeShoppingStackLayout } from './components/HomeShoppingStackLayout'
 import { Layout } from './components/Layout'
 import { AboutScreen } from './screens/AboutScreen'
 import { HomeScreen } from './screens/HomeScreen'
-import { SearchScreen } from './screens/SearchScreen'
-import { ProfileScreen } from './screens/ProfileScreen'
-import { RestaurantMerchantScreen } from './screens/RestaurantMerchantScreen'
-import { StoreMerchantScreen } from './screens/StoreMerchantScreen'
+import { ShoppingListScreen } from './screens/ShoppingListScreen'
+import { StoresScreen } from './screens/StoresScreen'
 
 export default function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route element={<HomeShoppingStackLayout />}>
           <Route index element={<HomeScreen />} />
-          <Route path="about" element={<AboutScreen />} />
-          <Route path="search" element={<SearchScreen />} />
-          <Route path="store-merchant" element={<StoreMerchantScreen />} />
-          <Route path="restaurant-merchant" element={<RestaurantMerchantScreen />} />
-          <Route path="profile" element={<ProfileScreen />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="stores" element={<StoresScreen />} />
+          <Route path="shopping-list" element={<ShoppingListScreen />} />
         </Route>
+        <Route element={<Layout />}>
+          <Route path="about" element={<AboutScreen />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   )

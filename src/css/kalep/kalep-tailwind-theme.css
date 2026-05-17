@@ -1,0 +1,50 @@
+/**
+ * Kalep Tailwind v4 entry — import after colors-and-type.css + kalep-extensions.css.
+ * Do not @import 'tailwindcss' from styles.css; use this file only.
+ */
+
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'InterVariable', Inter, ui-sans-serif, system-ui, sans-serif;
+
+  --color-layer-floor-0: var(--color-layer-floor-0);
+  --color-layer-surface: var(--color-layer-surface);
+
+  --color-content-primary: var(--color-content-primary);
+  --color-content-secondary: var(--color-content-secondary);
+  --color-content-tertiary: var(--color-content-tertiary);
+  --color-content-action-primary: var(--color-content-action-primary);
+  --color-content-link-primary: var(--color-content-link-primary);
+
+  --color-bg-neutral-secondary: var(--color-bg-neutral-secondary);
+  --color-bg-action-primary: var(--color-bg-action-primary);
+  --color-bg-action-secondary: var(--color-bg-action-secondary);
+
+  --color-border-separator: var(--color-border-separator);
+
+  --color-special-brand: var(--color-special-brand);
+  --color-special-brand-alt: var(--color-special-brand-alt);
+
+  --radius-xs: var(--corner-radius-xs);
+  --radius-s: var(--corner-radius-s);
+  --radius-m: var(--corner-radius-m);
+  --radius-l: var(--corner-radius-l);
+  --radius-xl: var(--corner-radius-xl);
+  --radius-full: var(--corner-radius-full);
+
+  --spacing-50: var(--dimension-50);
+  --spacing-100: var(--dimension-100);
+  --spacing-150: var(--dimension-150);
+  --spacing-200: var(--dimension-200);
+  --spacing-300: var(--dimension-300);
+  --spacing-400: var(--dimension-400);
+  --spacing-500: var(--dimension-500);
+  --spacing-600: var(--dimension-600);
+  --spacing-800: var(--dimension-800);
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-floating: var(--shadow-floating);
+}

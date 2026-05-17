@@ -1,0 +1,41 @@
+---
+description: Kalep colors & typography — canonical file is read-only; extend outside it
+alwaysApply: true
+---
+
+# Kalep design tokens (`colors-and-type`)
+
+## Canonical source (never edit)
+
+- **File:** `src/css/kalep/colors-and-type.css`
+- **Origin:** Kalep / Bolt design system export (`colors_and_type.css` from Downloads)
+- **Rule:** Do **not** modify this file in the repo. To refresh tokens, replace the whole file from the upstream export, then re-apply any project extensions.
+
+## Where to put project-specific work
+
+| Need | Location |
+|------|----------|
+| Missing type utilities, font bridges, mode defaults | `src/css/kalep/kalep-extensions.css` |
+| Tailwind utility mapping (`text-content-primary`, etc.) | `src/css/kalep/kalep-tailwind-theme.css` |
+| Component layout, Figma one-offs, carousel math | `src/css/styles.css` or component CSS |
+
+## How to use in UI
+
+1. **Colors:** prefer semantic CSS variables, e.g. `var(--color-content-primary)`, `var(--color-bg-neutral-secondary)`, `var(--color-layer-floor-0)`.
+2. **Typography:** use Kalep utility classes, e.g. `bolt-font-body-s-accent`, `bolt-font-heading-s-accent`, `bolt-font-body-xs-regular`, or project extensions like `bolt-font-body-s-compact-regular`.
+3. **Tailwind:** prefer theme utilities when mapped in `kalep-tailwind-theme.css` (e.g. `text-content-primary`, `bg-layer-surface`).
+4. **Do not** hardcode hex/rgba for tokens that exist in Kalep unless matching a one-off Figma export that has no token yet — then add the token to `kalep-extensions.css` and document why.
+
+## Import order (in `src/css/styles.css`)
+
+```css
+@import './kalep/colors-and-type.css';
+@import './kalep/kalep-extensions.css';
+@import './kalep/kalep-tailwind-theme.css'; /* Kalep Tailwind entry — includes @import 'tailwindcss' */
+```
+
+Do **not** add `@import 'tailwindcss'` in `styles.css`; Tailwind is loaded only via `kalep-tailwind-theme.css`.
+
+## Dark mode
+
+Set `data-mode="dark"` on `<html>` (or a root wrapper). Light is default via `kalep-extensions.css`.

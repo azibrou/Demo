@@ -1,0 +1,37 @@
+/**
+ * Project-only additions — never edit `colors-and-type.css` (see `.cursor/rules/kalep-design-tokens.mdc`).
+ */
+
+/* Canonical @font-face uses ./fonts/ — bridge to Inter from index.html */
+@supports (font-variation-settings: normal) {
+  @font-face {
+    font-family: 'InterVariable';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: local('Inter Variable'), local('Inter');
+  }
+}
+
+.bolt-font-body-s-compact-regular {
+  font: 450 0.875rem/1.125rem 'InterVariable', sans-serif;
+  letter-spacing: -0.006em;
+  font-variation-settings: 'opsz' 14;
+  font-feature-settings: 'cv03', 'cv04';
+}
+
+.bolt-font-body-s-compact-accent {
+  font: 650 0.875rem/1.125rem 'InterVariable', sans-serif;
+  letter-spacing: -0.006em;
+  font-variation-settings: 'opsz' 14;
+  font-feature-settings: 'cv03', 'cv04';
+}
+
+html,
+html[data-mode='light'] {
+  color-scheme: light;
+}
+
+html[data-mode='dark'] {
+  color-scheme: dark;
+}
