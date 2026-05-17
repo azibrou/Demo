@@ -40,6 +40,45 @@ body {
     --scaled-design-width: 375px;
     --shortcut-scale: 1;
     --shortcuts-gutter: 24px;
+    --carousel-visible-count: 2.5;
+    --carousel-gap: var(--scaled-gap-baseline);
+  }
+
+  /**
+   * Carousel grid tile — width from scrollport shell (`--carousel-tile-width`).
+   * 2.5 visible: leading gutter + 2× gap + 2.5× tile = scrollport (third tile half at edge).
+   */
+  .carousel-grid-item {
+    width: var(--carousel-tile-width);
+    flex-shrink: 0;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .carousel-grid-scrollport {
+    container-type: inline-size;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    --carousel-gap: 0.75rem;
+    --carousel-tile-width: calc(
+      (100cqw - var(--home-gutter) - 2 * var(--carousel-gap)) / var(--carousel-visible-count)
+    );
+  }
+
+  .carousel-grid-row--padded {
+    container-type: inline-size;
+    --carousel-gap: 0.75rem;
+    --carousel-tile-width: calc(
+      (100cqw - var(--home-gutter) - 2 * var(--carousel-gap)) / var(--carousel-visible-count)
+    );
+  }
+
+  .carousel-grid-row--padded > article {
+    width: var(--carousel-tile-width);
+    flex-shrink: 0;
+    min-width: 0;
+    box-sizing: border-box;
   }
 
   .home-page {
@@ -182,9 +221,14 @@ body {
     --scaled-tile-count: 4;
   }
 
-  /** Retail / wide product strips: scale gutters from column width, tiles keep their own width. */
+  /** Retail / wide product strips: gap scales; tile width fills 2.5 slots in the scrollport. */
   .home-product-carousel {
+    container-type: inline-size;
     --shortcut-scale: clamp(0.65, calc(100cqw / var(--scaled-design-width)), 2.5);
+    --carousel-gap: calc(var(--scaled-gap-baseline) * var(--shortcut-scale));
+    --carousel-tile-width: calc(
+      (100cqw - var(--home-gutter) - 2 * var(--carousel-gap)) / var(--carousel-visible-count)
+    );
     width: 100%;
     max-width: 100%;
     min-width: 0;
@@ -209,6 +253,16 @@ body {
 
     .home-product-carousel {
       --shortcut-scale: clamp(0.65, calc(100vw / var(--scaled-design-width)), 2.5);
+      --carousel-tile-width: calc(
+        (100vw - var(--home-gutter) - 2 * var(--carousel-gap)) / var(--carousel-visible-count)
+      );
+    }
+
+    .carousel-grid-scrollport,
+    .carousel-grid-row--padded {
+      --carousel-tile-width: calc(
+        (100vw - var(--home-gutter) - 2 * var(--carousel-gap)) / var(--carousel-visible-count)
+      );
     }
   }
 

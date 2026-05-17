@@ -1,4 +1,3 @@
-import { CAROUSEL_TILE_WIDTH } from '../lib/carouselTileWidth'
 import { design } from '../lib/figmaDesignAssets'
 
 const tiles = [
@@ -28,11 +27,10 @@ export function MoreToExplore() {
           </h2>
         </div>
       </div>
-      <div className="flex w-full shrink-0 items-stretch gap-3 overflow-x-auto overscroll-x-contain px-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="carousel-grid-row--padded flex w-full shrink-0 items-stretch gap-3 overflow-x-auto overscroll-x-contain px-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {tiles.map((tile) => (
           <article
             key={tile.id}
-            style={{ width: CAROUSEL_TILE_WIDTH }}
             className="relative isolate grid aspect-[124/176] shrink-0 grid-rows-[minmax(0,52fr)_minmax(0,124fr)] overflow-hidden rounded-[8px] bg-white"
           >
             <div className="pointer-events-none absolute inset-0 z-[3] bg-[rgba(154,110,51,0.08)]" aria-hidden />

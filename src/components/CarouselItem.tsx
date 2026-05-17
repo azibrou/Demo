@@ -40,7 +40,7 @@ export function CarouselItem({ title, titleId, topSlot, children, scaledTrack }:
             {children}
           </HomeScaledCarousel>
         ) : (
-          <div className="w-full min-w-0 overflow-x-auto overscroll-x-contain pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="carousel-grid-scrollport w-full min-w-0 overflow-x-auto overscroll-x-contain pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <div className="home-horizontal-scroll-track gap-3">{children}</div>
           </div>
         )}
@@ -82,7 +82,7 @@ export function CarouselItem({ title, titleId, topSlot, children, scaledTrack }:
           </div>
         </div>
       </div>
-      <div className="w-full min-w-0 overflow-x-auto overscroll-x-contain pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="carousel-grid-scrollport w-full min-w-0 overflow-x-auto overscroll-x-contain pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <div className="home-horizontal-scroll-track gap-3">
           {tiles.map((tile) => (
             <CarouselGridItem key={`${headingId}-${tile.id}`} variant={tile.variant} />

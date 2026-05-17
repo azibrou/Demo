@@ -1,6 +1,5 @@
 import { useId } from 'react'
 import { retailSnippetProducts, retailSnippetStore } from '../lib/boltFoodTallinnHomeContent'
-import { RETAIL_TILE_WIDTH } from '../lib/carouselTileWidth'
 import { design } from '../lib/figmaDesignAssets'
 import { CarouselGridItem } from './CarouselGridItem'
 import { CarouselItem } from './CarouselItem'
@@ -53,9 +52,9 @@ function RetailSnippetProviderHeader({ titleId }: { titleId: string }) {
   )
 }
 
-function RetailSnippetViewMore({ tileWidth }: { tileWidth: string }) {
+function RetailSnippetViewMore() {
   return (
-    <div style={{ width: tileWidth }} className="bolt-font-base flex min-w-0 shrink-0 flex-col items-stretch">
+    <div className="carousel-grid-item bolt-font-base flex min-w-0 shrink-0 flex-col items-stretch">
       <div className="flex aspect-square w-full shrink-0 flex-col items-center justify-center overflow-hidden rounded-[8px]">
         <button
           type="button"
@@ -99,7 +98,6 @@ export function RetailSnippet() {
           <CarouselGridItem
             key={p.id}
             variant="discount"
-            tileWidth={RETAIL_TILE_WIDTH}
             imageSrc={p.imageSrc}
             title={p.title}
             unitLabel={p.unitLabel}
@@ -111,7 +109,6 @@ export function RetailSnippet() {
           <CarouselGridItem
             key={p.id}
             variant="default"
-            tileWidth={RETAIL_TILE_WIDTH}
             imageSrc={p.imageSrc}
             title={p.title}
             unitLabel={p.unitLabel}
@@ -119,7 +116,7 @@ export function RetailSnippet() {
           />
         ),
       )}
-      <RetailSnippetViewMore tileWidth={RETAIL_TILE_WIDTH} />
+      <RetailSnippetViewMore />
     </CarouselItem>
   )
 }

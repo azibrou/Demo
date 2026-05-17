@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useBasketFabOptional } from '../context/BasketFabContext'
-import { CAROUSEL_TILE_WIDTH } from '../lib/carouselTileWidth'
 import { design } from '../lib/figmaDesignAssets'
 import { QuickAddExpandPill } from './QuickAddExpandPill'
 
@@ -19,7 +18,7 @@ export type CarouselGridItemVariant = 'default' | 'discount'
 
 export type CarouselGridItemProps = {
   variant?: CarouselGridItemVariant
-  /** Slot width (default: same calc as MoreToExplore — ~2.5 tiles visible) */
+  /** Override `--carousel-tile-width` from the parent carousel shell (default: CSS). */
   tileWidth?: string
   imageSrc?: string
   title?: string
@@ -36,7 +35,7 @@ export type CarouselGridItemProps = {
  */
 export function CarouselGridItem({
   variant = 'default',
-  tileWidth = CAROUSEL_TILE_WIDTH,
+  tileWidth,
   imageSrc,
   title = defaultCopy.title,
   unitLabel = defaultCopy.unit,
@@ -101,8 +100,8 @@ export function CarouselGridItem({
 
   return (
     <article
-      style={{ width: tileWidth }}
-      className="bolt-font-base flex min-w-0 shrink-0 flex-col gap-0 text-[var(--color-content-primary)]"
+      style={tileWidth !== undefined ? { width: tileWidth } : undefined}
+      className="carousel-grid-item bolt-font-base flex min-w-0 shrink-0 flex-col gap-0 text-[var(--color-content-primary)]"
     >
       <div className="relative isolate w-full shrink-0 overflow-hidden rounded-[8px] bg-white">
         {variant === 'discount' && (
