@@ -5,63 +5,53 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# contents: write matches repo "Read and write" workflow permissions (required for reliable checkout).
+# Push built `dist/` to the gh-pages branch (no deploy-pages / upload-pages-artifact).
 permissions:
   contents: write
-  pages: write
-  id-token: write
   actions: read
 
-# Do not cancel in-progress deploys — cancelling checkout often surfaces as git exit 128.
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
+
       - run: npm ci
       - run: npm run build
-      - name: Verify Pages artifact (not dev index.html)
+
+      - name: Verify production build
         run: |
           grep -q '/Demo/assets/' dist/index.html
           ! grep -q '/src/main.tsx' dist/index.html
           test -f dist/404.html
-      # Same layout as actions/upload-pages-artifact (tar → artifact "github-pages") without
-      # downloading that composite action from codeload.github.com.
-      - name: Package Pages artifact
-        run: |
-          tar --dereference --hard-dereference \
-            --directory dist \
-            -cvf "$RUNNER_TEMP/artifact.tar" \
-            --exclude=.git \
-            --exclude=.github \
-            --exclude='.[^/]*' \
-            .
-      - name: Upload Pages artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: github-pages
-          path: ${{ runner.temp }}/artifact.tar
-          retention-days: 1
-          if-no-files-found: error
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publish dist to gh-pages branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          workdir=$(mktemp -d)
+          cp -r dist/. "$workdir/"
+          touch "$workdir/.nojekyll"
+
+          cd "$workdir"
+          git init -b gh-pages
+          git add -A
+          git commit -m "Deploy ${GITHUB_SHA::7} from ${GITHUB_REF_NAME}"
+
+          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push --force origin gh-pages
