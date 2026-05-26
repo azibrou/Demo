@@ -1095,8 +1095,8 @@ html.eater-hub-active #root {
 
   /**
    * Merchant basket row — flex; FAB last (right edge fixed, grows left). Smooth flex-grow tween.
-   * loading/collapsed: [pill flex-1 · search 60px · fab 56px]
-   * default:           [solo 56px · search 60px · fab flex-1]
+   * loading/collapsed: [pill flex-1 · search 56px · fab 56px]
+   * default:           [solo 56px · search 56px · fab flex-1]
    */
   .merchant-ftb__row--basket {
     --merchant-motion-ms: 150ms;

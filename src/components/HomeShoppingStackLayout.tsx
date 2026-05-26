@@ -9,7 +9,6 @@ import {
   useState,
   type ReactNode,
   type RefObject,
-  type TransitionEvent,
 } from 'react'
 import { Outlet, useLocation, useNavigate, useOutlet, type NavigateFunction } from 'react-router-dom'
 import { resolveFloatingTabBarModel } from '../config/floatingTabBarConfig'
@@ -20,13 +19,13 @@ import { DineOutScreen } from '../screens/DineOutScreen'
 import { HomeScreen } from '../screens/HomeScreen'
 import { HOME_FLOATING_TAB_BAR_ITEMS } from '../screens/homeFloatingTabBarItems'
 import { StoresScreen } from '../screens/StoresScreen'
+import { CrossFadeStack } from './CrossFadeStack'
 import { FloatingTabBar } from './FloatingTabBar'
 import { TabAction } from './TabAction'
 
 /** iOS UINavigationController default interactive transition duration. */
 const STACK_DURATION_MS = 350
 const STACK_EASE = 'cubic-bezier(0.32, 0.72, 0, 1)'
-const HUB_FADE_MS = 300
 const MOBILE_STACK_MQ = '(max-width: 640px)'
 
 const INNER_PATH_SEGMENTS = new Set(['shopping-list', 'store-merchant', 'restaurant'])
@@ -54,23 +53,6 @@ function hubTabIdFromPathname(pathname: string): string {
   return 'home'
 }
 
-function useHubFadeLeavingCleanup(layers: HubFadeLayer[], removeLeaving: (key: string) => void) {
-  useEffect(() => {
-    const leaving = layers.filter((l) => l.state === 'leaving')
-    if (leaving.length === 0) return
-    const timeout = window.setTimeout(() => {
-      for (const layer of leaving) removeLeaving(layer.key)
-    }, HUB_FADE_MS + 50)
-    return () => clearTimeout(timeout)
-  }, [layers, removeLeaving])
-}
-
-type HubFadeLayer = {
-  key: string
-  node: ReactNode
-  state: 'entering' | 'visible' | 'leaving'
-}
-
 const HubScrollRefContext = createContext<RefObject<HTMLDivElement | null> | null>(null)
 
 /**
@@ -81,90 +63,18 @@ function EaterHubFadeOutlet() {
   const location = useLocation()
   const outlet = useOutlet()
 
-  const prevPathRef = useRef(location.pathname)
-  const prevKeyRef = useRef(location.key)
-  const prevOutletRef = useRef(outlet)
-
-  const [layers, setLayers] = useState<HubFadeLayer[]>([
-    { key: location.key, node: outlet, state: 'visible' },
-  ])
-
-  const removeLeaving = useCallback((key: string) => {
-    setLayers((prev) => {
-      const next = prev.filter((l) => l.key !== key)
-      return next.length > 0 ? next : prev
-    })
-  }, [])
-
-  useHubFadeLeavingCleanup(layers, removeLeaving)
-
-  useLayoutEffect(() => {
-    const prevPath = prevPathRef.current
-    const prevKey = prevKeyRef.current
-    const prevOutlet = prevOutletRef.current
-    const nextPath = location.pathname
-    const nextKey = location.key
-
-    const hubSwitch =
-      isHubPath(prevPath) &&
-      isHubPath(nextPath) &&
-      prevPath !== nextPath &&
-      nextKey !== prevKey
-
-    if (hubSwitch) {
-      hubScrollRef?.current?.scrollTo(0, 0)
-      setLayers([
-        { key: prevKey, node: prevOutlet, state: 'leaving' },
-        { key: nextKey, node: outlet, state: 'entering' },
-      ])
-      let inner = 0
-      const outer = requestAnimationFrame(() => {
-        inner = requestAnimationFrame(() => {
-          setLayers([
-            { key: prevKey, node: prevOutlet, state: 'leaving' },
-            { key: nextKey, node: outlet, state: 'visible' },
-          ])
-        })
-      })
-      prevPathRef.current = nextPath
-      prevKeyRef.current = nextKey
-      prevOutletRef.current = outlet
-      return () => {
-        cancelAnimationFrame(outer)
-        cancelAnimationFrame(inner)
-      }
-    }
-
-    setLayers([{ key: nextKey, node: outlet, state: 'visible' }])
-    prevPathRef.current = nextPath
-    prevKeyRef.current = nextKey
-    prevOutletRef.current = outlet
-  }, [location.pathname, location.key, outlet, hubScrollRef])
+  const onHubSwitch = useCallback(() => {
+    hubScrollRef?.current?.scrollTo(0, 0)
+  }, [hubScrollRef])
 
   if (!isHubPath(location.pathname)) {
     return <>{outlet}</>
   }
 
-  const isCrossfading = layers.length > 1
-
   return (
-    <div className={['eater-hub-fade', isCrossfading ? 'eater-hub-fade--active' : ''].filter(Boolean).join(' ')}>
-      {layers.map((layer) => (
-        <div
-          key={layer.key}
-          className="eater-hub-fade__layer motion-reduce:transition-none"
-          data-state={layer.state}
-          onTransitionEnd={(e: TransitionEvent<HTMLDivElement>) => {
-            if (e.propertyName !== 'opacity') return
-            if (e.target !== e.currentTarget) return
-            if (layer.state !== 'leaving') return
-            removeLeaving(layer.key)
-          }}
-        >
-          {layer.node}
-        </div>
-      ))}
-    </div>
+    <CrossFadeStack activeKey={location.pathname} onSwitch={onHubSwitch}>
+      {outlet}
+    </CrossFadeStack>
   )
 }
 

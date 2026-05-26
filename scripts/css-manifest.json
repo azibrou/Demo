@@ -35,7 +35,7 @@
       "keyframes": ["basket-fab-pop", "basket-fab-badge-pop"],
       "dependsOn": ["BasketFabContext"],
       "figma": ["77550:93513", "77550:93474"],
-      "summary": "Basket FAB — 60px circle, loading + default."
+      "summary": "Basket FAB — 56px circle, loading + default."
     },
     {
       "name": "ButtonPrimary",

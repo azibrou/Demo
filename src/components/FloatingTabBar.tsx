@@ -180,7 +180,7 @@ function FloatingTabBarInner({
         >
           <div
             aria-hidden
-            className="floating-tab-bar__indicator pointer-events-none absolute top-1 bottom-1 left-1 z-0 rounded-[60px] bg-[var(--color-bg-neutral-secondary)] motion-reduce:transition-none"
+            className="floating-tab-bar__indicator pointer-events-none absolute top-1 bottom-1 left-1 z-0 rounded-[56px] bg-[var(--color-bg-neutral-secondary)] motion-reduce:transition-none"
           />
           {items.map((item, itemIndex) => {
             const isActive = itemIndex === activeIndex
@@ -200,7 +200,7 @@ function FloatingTabBarInner({
                   tabIndex={isActive ? 0 : -1}
                   onClick={() => selectTab(item.id)}
                   data-name="Navigation"
-                  className="floating-tab-bar__tab flex w-full min-w-0 items-center justify-center overflow-hidden rounded-[60px] bg-transparent outline-none ring-[var(--color-special-brand-alt)]/20 focus-visible:ring-2"
+                  className="floating-tab-bar__tab flex w-full min-w-0 items-center justify-center overflow-hidden rounded-[56px] bg-transparent outline-none ring-[var(--color-special-brand-alt)]/20 focus-visible:ring-2"
                 >
                   <span className="floating-tab-bar__motion w-full min-w-0">
                     <span className="floating-tab-bar__icon relative flex size-6 shrink-0 items-center justify-center" aria-hidden>

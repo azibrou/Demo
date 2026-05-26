@@ -132,7 +132,7 @@ export function ListItem({
     <div className="font-sans flex w-full flex-col gap-[15px] px-6 text-[#191f1c]">
       <div className="flex w-full flex-col gap-1 pt-4">
         <div className="flex w-full items-start gap-3">
-          <div className="relative isolate shrink-0 overflow-hidden rounded-xl bg-white">
+          <div className="relative isolate shrink-0 overflow-hidden rounded-lg bg-white">
             <div className="absolute inset-0 z-[2] bg-[rgba(0,45,30,0.06)]" aria-hidden />
             <div className="relative z-[1] size-14 shrink-0 overflow-hidden">
               <img alt="" src={imageSrc} className="thumbnail-fill-img" />

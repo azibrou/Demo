@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useMemo, useState, type ReactNode } from 'r
 import { createPortal } from 'react-dom'
 import { useLocation } from 'react-router-dom'
 import { resolveMerchantFloatingTabBarModel } from '../config/merchantFloatingTabBarConfig'
+import { MerchantTabProvider, useMerchantTab } from '../context/MerchantTabContext'
 import { MERCHANT_FLOATING_TAB_BAR_ITEMS } from '../screens/merchantFloatingTabBarItems'
 import { MerchantFTabBar } from './MerchantFTabBar'
 
@@ -13,13 +14,13 @@ type MerchantScreenShellProps = {
  * Merchant page wrapper — {@link MerchantFTabBar} portaled to `document.body` so it stays
  * viewport-fixed on iOS stack inner routes (transform on the slide panel breaks `position: fixed`).
  */
-export function MerchantScreenShell({ children }: MerchantScreenShellProps) {
+function MerchantScreenShellInner({ children }: MerchantScreenShellProps) {
   const location = useLocation()
   const { barItems } = useMemo(
     () => resolveMerchantFloatingTabBarModel(MERCHANT_FLOATING_TAB_BAR_ITEMS),
     [],
   )
-  const [activeTabId, setActiveTabId] = useState(() => barItems[0]?.id ?? 'venue')
+  const { activeTabId, setActiveTabId } = useMerchantTab()
   const [portalReady, setPortalReady] = useState(false)
   const [chromeEnter, setChromeEnter] = useState(false)
 
@@ -49,6 +50,10 @@ export function MerchantScreenShell({ children }: MerchantScreenShellProps) {
     }
   }, [portalReady, location.key])
 
+  useLayoutEffect(() => {
+    document.querySelector('.merchant-screen')?.scrollTo(0, 0)
+  }, [activeTabId])
+
   const tabBarChrome = (
     <div
       key={location.key}
@@ -74,5 +79,19 @@ export function MerchantScreenShell({ children }: MerchantScreenShellProps) {
       {children}
       {portalReady ? createPortal(tabBarChrome, document.body) : null}
     </>
+  )
+}
+
+export function MerchantScreenShell({ children }: MerchantScreenShellProps) {
+  const { barItems } = useMemo(
+    () => resolveMerchantFloatingTabBarModel(MERCHANT_FLOATING_TAB_BAR_ITEMS),
+    [],
+  )
+  const initialTabId = barItems[0]?.id ?? 'venue'
+
+  return (
+    <MerchantTabProvider initialTabId={initialTabId}>
+      <MerchantScreenShellInner>{children}</MerchantScreenShellInner>
+    </MerchantTabProvider>
   )
 }

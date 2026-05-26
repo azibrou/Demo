@@ -294,6 +294,67 @@ export const design = {
     /** Node 70394:111157 — ItemCarousel header “All” chevron */
     allChevron: figma('746fcef064fcab5c57266f85a1d3ea4e216e6355.svg'),
   },
+  /**
+   * Merchant List tab — Figma 77943:161673.
+   */
+  merchantList: {
+    /** 77943:161947 — add item */
+    navAdd: figma('e48f54df6d1b44f79a467aea0fbcab68.svg'),
+    /** 77943:161945 — edit list */
+    navEdit: figma('73544b0e2da44129ab0b33a7c1f6446.svg'),
+    rowThumb: [
+      figma('c551a8c4905e4a17b9d3b1d021716142.png'),
+      figma('e9d74a98e7404d6cb797c8fcd1c7a106.png'),
+      figma('87d450bbdb4742eeb1d173deadc22d00.png'),
+      figma('3763a269b5e1476aa928898181561e08.png'),
+      figma('25f57dc5a30a444aa1844c18a1b91e9d.png'),
+      figma('35bb4d44a4834b0bb8f525ead16b6b53.png'),
+      figma('46aad957c93d47e6b2dd925aeab607b5.png'),
+    ],
+  },
+  /**
+   * Merchant Aisles tab — Figma 77940:95171.
+   * `moreToExplore` + `categoryTiles` order matches the design grid.
+   */
+  aisles: {
+    moreToExplore: [
+      figma('831e285a66b34e0f922b2b9bdc89aee9.png'),
+      figma('9029c974016947c2ae179e8231d7683a.png'),
+      figma('cd480ab363f54618b271c6fb989fc627.png'),
+    ],
+    categoryTiles: [
+      figma('bf4d0c25ba9147efb15fa337c12fce40.png'),
+      figma('19307420930947689ffa58b8e8a30c02.png'),
+      figma('dfd7405853664fdd818eb7ea36872571.png'),
+      figma('6bc75f3e4b1744548d22ac25e5ac9458.png'),
+      figma('9e2228d9ac45485890c339248b3a864f.png'),
+      figma('bd372cc546754f19964472a0c2bb188a.png'),
+      figma('ff80efc0b067495f8acf736678dd80e4.png'),
+      figma('6128a8a7f548493fafbc77d203b46499.png'),
+      figma('8d229dbbdd8e4869890eed08088ef11a.png'),
+      figma('9eb52bf136a54ba3b4d47ce4f8cc5ca4.png'),
+      figma('f3cf9ffe42944a33915d37f807e6bf4a.png'),
+      figma('23884ef5223c4cf38aff1254313248a4.png'),
+      figma('e5033ffb1be74b8e97488263f35ec055.png'),
+      figma('2896b62341e3403c9b39f8e4d42cd227.png'),
+      figma('154e86ab2e3b4a68a86184bdc9b6291c.png'),
+      figma('66c14b75d7564c8ab786212812784fe1.png'),
+      figma('1ac2e3d0a90b4b1890f288a2ece383e6.png'),
+      figma('6141133ec2d44d02b059e39f79d20834.png'),
+      figma('2250661e689a4ae4beafafb11410825f.png'),
+      figma('e5134c4a86064652aa3be99461c640b8.png'),
+      figma('a415796a14884514bba97c055bb63e56.png'),
+      figma('647811d2d46d4f02a09a540cc32837a.png'),
+      figma('2df25441a9344673bafdb909968d17bb.png'),
+      figma('b0702d0a6c9f4d33a54a83cd6a5df593.png'),
+      figma('2f18e7d7f0af42c4837aae3d1a39c544.png'),
+      figma('1267ab22494345f3b8aa8c006c80c05d.png'),
+      figma('c7d221dbd82e414cab4f04f7ee5b4da3.png'),
+      figma('de2aed5db63e4b589c4d017c26b59a32.png'),
+      figma('aa6a9b8edec54b649c9313f2cded13ba.png'),
+      figma('f06160bd67d146568a9f31d3f15755f1.png'),
+    ],
+  },
   /** Node 70394:111443 — MoreToExplore (tile art) */
   moreToExplore: [
     figma('959c48ec516c3588a4a60f24a651dd29b62b99b5.png'),
