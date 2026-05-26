@@ -9,6 +9,7 @@ import {
   useState,
   type ReactNode,
   type RefObject,
+  type TransitionEvent,
 } from 'react'
 import { Outlet, useLocation, useNavigate, useOutlet, type NavigateFunction } from 'react-router-dom'
 import { resolveFloatingTabBarModel } from '../config/floatingTabBarConfig'

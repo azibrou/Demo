@@ -31,7 +31,7 @@ export function AddressSelector({
           <img
             alt=""
             src={as.locationPin}
-            className="pointer-events-none absolute top-0 left-0.5 block h-full w-[18px] max-w-none"
+            className="pointer-events-none absolute top-0 left-[3px] block h-full w-[16px] max-w-none"
           />
         </div>
       </div>
