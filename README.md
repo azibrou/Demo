@@ -32,7 +32,7 @@ The production build uses `base: '/Demo/'` so assets resolve under `https://<use
 1. Create a **public** repository on GitHub named **`Demo`** (project site path `/Demo/`).
 2. Push this project to the `main` branch.
 3. **Settings → Pages → Build and deployment** — set **Source** to **GitHub Actions** (not “Deploy from a branch” on `main`, which would serve unbuilt source).
-4. **Settings → Actions → General → Workflow permissions** — choose **Read and write permissions** (or at least allow workflows to use the default `GITHUB_TOKEN` with the scopes in `.github/workflows/deploy-pages.yml`).
+4. **Settings → Actions → General → Workflow permissions** — select **Read and write permissions** and save. If checkout fails with `403` on `https://github.com/<user>/Demo/`, this setting is missing or your organization caps tokens at read-only.
 5. After the **Deploy to GitHub Pages** workflow succeeds, open `https://<username>.github.io/Demo/` (trailing slash). Example: `https://azibrou.github.io/Demo/`.
 
 Ensure `vite.config.ts` `base` matches the repository name exactly. `npm run build` must produce `dist/index.html` with `/Demo/assets/...` scripts (verified by `scripts/pages-postbuild.mjs`).

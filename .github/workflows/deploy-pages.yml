@@ -5,8 +5,12 @@ on:
     branches: [main]
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+# contents: write — required when repo workflow permissions are read-only by default (checkout 403).
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
   actions: read
@@ -20,9 +24,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 1
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:
@@ -60,6 +65,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
