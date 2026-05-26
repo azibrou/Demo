@@ -1039,25 +1039,6 @@ html.eater-hub-active #root {
     inset-inline: 0;
     bottom: 0;
     z-index: 50;
-    will-change: transform;
-  }
-
-  .merchant-ftb-chrome--pre-enter {
-    transform: translateY(100%);
-  }
-
-  .merchant-ftb-chrome--enter {
-    animation: floating-tab-bar-enter var(--merchant-ftb-enter-ms, 150ms) ease-out forwards;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .merchant-ftb-chrome--pre-enter {
-      transform: none;
-    }
-
-    .merchant-ftb-chrome--enter {
-      animation: none;
-    }
   }
 
   /**
@@ -1094,6 +1075,17 @@ html.eater-hub-active #root {
   }
 
   /**
+   * Merchant loading FAB — snap row/slot instantly; only the button pops (basket-fab-button-pop).
+   */
+  .merchant-ftb__row--basket[data-basket-phase='loading'] .floating-tab-bar__basket-slot--wide {
+    transition: none !important;
+  }
+
+  .floating-tab-bar__pill--width-tween {
+    box-sizing: border-box;
+  }
+
+  /**
    * Merchant basket row — flex; FAB last (right edge fixed, grows left). Smooth flex-grow tween.
    * loading/collapsed: [pill flex-1 · search 56px · fab 56px]
    * default:           [solo 56px · search 56px · fab flex-1]
@@ -1108,7 +1100,7 @@ html.eater-hub-active #root {
     align-items: center;
     min-height: 56px;
     height: 56px;
-    transition: --ftb-trailing-chrome var(--ftb-layout-ms, var(--merchant-motion-ms, 150ms))
+    transition: --ftb-trailing-chrome var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms))
       var(--ftb-layout-ease, ease-out);
   }
 
@@ -1116,32 +1108,28 @@ html.eater-hub-active #root {
     margin-inline-start: 0;
   }
 
-  .merchant-ftb__row--basket .floating-tab-bar__pill:not([data-merchant-solo='true']) {
+  /**
+   * Pill width — same as home {@link FloatingTabBar}: tween `--ftb-trailing-chrome` on the row.
+   */
+  .merchant-ftb__row--basket .floating-tab-bar__pill--layout-chrome {
     flex: 0 0 auto;
     width: calc(100% - var(--ftb-trailing-chrome, 0px));
     min-width: 0;
     max-width: calc(100% - var(--ftb-trailing-chrome, 0px));
     transition:
-      width var(--ftb-layout-ms, var(--merchant-motion-ms, 150ms)) var(--ftb-layout-ease, ease-out),
-      flex-basis var(--ftb-layout-ms, var(--merchant-motion-ms, 150ms)) var(--ftb-layout-ease, ease-out),
-      max-width var(--ftb-layout-ms, var(--merchant-motion-ms, 150ms)) var(--ftb-layout-ease, ease-out),
-      flex-grow var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease),
-      flex-shrink var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease),
-      min-width var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease);
+      width var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) var(--ftb-layout-ease, ease-out),
+      flex-basis var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) var(--ftb-layout-ease, ease-out),
+      max-width var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) var(--ftb-layout-ease, ease-out);
+  }
+
+  .merchant-ftb__row--basket .floating-tab-bar__pill--layout-chrome[data-merchant-solo='true'] {
+    overflow: hidden;
   }
 
   .merchant-ftb__row--basket .floating-tab-bar__pill {
     height: 56px;
     min-height: 56px;
     max-height: 56px;
-  }
-
-  .merchant-ftb__row--basket .floating-tab-bar__pill[data-merchant-solo='true'] {
-    flex: 0 0 56px;
-    width: 56px;
-    min-width: 56px;
-    max-width: 56px;
-    overflow: hidden;
   }
 
   .merchant-ftb__row--basket .floating-tab-bar__actions {
@@ -1165,7 +1153,8 @@ html.eater-hub-active #root {
       flex-basis var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease),
       width var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease),
       min-width var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease),
-      max-width var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease);
+      max-width var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease),
+      margin-inline-start var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease);
   }
 
   .merchant-ftb__row--basket[data-basket-phase='loading'] .floating-tab-bar__basket-slot--wide,
@@ -1174,23 +1163,6 @@ html.eater-hub-active #root {
     width: 56px;
     min-width: 56px;
     max-width: 56px;
-  }
-
-  /**
-   * Loading: snap layout instantly (same beat as home FloatingTabBar). Only the FAB
-   * button uses basket-fab-button-pop — no row / pill / slot width tween (that reads as slide).
-   */
-  .merchant-ftb__row--basket[data-basket-phase='loading'] {
-    transition: none;
-  }
-
-  .merchant-ftb__row--basket[data-basket-phase='loading'] .floating-tab-bar__pill:not([data-merchant-solo='true']) {
-    transition: none;
-  }
-
-  .merchant-ftb__row--basket[data-basket-phase='loading'] .floating-tab-bar__basket-slot--wide,
-  .merchant-ftb__row--basket[data-basket-phase='loading'] .floating-tab-bar__basket-slot--merchant-loading {
-    transition: none !important;
   }
 
   .merchant-ftb__row--basket[data-basket-phase='default'] .floating-tab-bar__basket-slot--wide {
@@ -1293,6 +1265,23 @@ html.eater-hub-active #root {
       height var(--merchant-motion-ms, 150ms) ease-out,
       margin var(--merchant-motion-ms, 150ms) ease-out,
       opacity var(--merchant-motion-ms, 150ms) ease-out;
+  }
+
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='collapsed'] .wide-basket-fab__label {
+    opacity: 0;
+    transition: opacity var(--merchant-motion-ms, 150ms) ease-out;
+  }
+
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='collapsed'] .wide-basket-fab__counter {
+    right: 2px;
+    top: 2px;
+    transform: none;
+    opacity: 1;
+    transition:
+      opacity var(--merchant-motion-ms, 150ms) ease-out,
+      right var(--merchant-motion-ms, 150ms) ease-out,
+      top var(--merchant-motion-ms, 150ms) ease-out,
+      transform var(--merchant-motion-ms, 150ms) ease-out;
   }
 
   .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='default'] .wide-basket-fab__icon {
@@ -1893,8 +1882,12 @@ html.eater-hub-active #root {
   }
 
   .wide-basket-fab--in-tab-bar.wide-basket-fab--pop-in {
-    animation: wide-basket-fab-pop-rtl var(--merchant-motion-ms, var(--ftb-layout-ms, 150ms))
-      var(--merchant-motion-ease, ease-out) forwards;
+    animation: basket-fab-button-pop var(--basket-fab-button-pop-ms, 220ms) ease-out forwards;
+    transform-origin: 100% 50%;
+  }
+
+  .wide-basket-fab--in-tab-bar.wide-basket-fab--pop-out {
+    animation: basket-fab-button-pop var(--basket-fab-button-pop-ms, 220ms) ease-out reverse forwards;
     transform-origin: 100% 50%;
   }
 
@@ -1965,6 +1958,7 @@ html.eater-hub-active #root {
     }
 
     .wide-basket-fab--pop-in,
+    .wide-basket-fab--pop-out,
     .wide-basket-fab--in-tab-bar[data-state='default'] .wide-basket-fab__icon,
     .wide-basket-fab--in-tab-bar[data-state='default'] .wide-basket-fab__label,
     .wide-basket-fab--in-tab-bar[data-state='default'] .wide-basket-fab__counter {

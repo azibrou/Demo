@@ -15,6 +15,8 @@ export type WideBasketFabProps = {
   state: WideBasketFabState
   count?: number
   popIn?: boolean
+  /** Scale-out after collapse (merchant basket empty). */
+  popOut?: boolean
   /** Visible without pop animation (e.g. after reveal, before pop-in frame). */
   revealed?: boolean
   className?: string
@@ -37,10 +39,18 @@ function wideBasketFabAriaLabel(state: WideBasketFabState, count: number) {
  * In tab bar the basket slot width tweens; standalone uses `.wide-basket-fab-anchor`.
  * Contract: `src/lib/wideBasketFabExpand.ts`
  */
+function wideBasketFabMotionClass(popIn: boolean, popOut: boolean, revealed: boolean) {
+  if (popOut) return 'motion-reduce:animate-none wide-basket-fab--pop-out'
+  if (popIn) return 'motion-reduce:animate-none wide-basket-fab--pop-in'
+  if (revealed) return 'wide-basket-fab--shown'
+  return 'wide-basket-fab--hidden'
+}
+
 export function WideBasketFab({
   state,
   count = 0,
   popIn = false,
+  popOut = false,
   revealed = false,
   className = '',
   onClick,
@@ -67,7 +77,7 @@ export function WideBasketFab({
         'bg-[var(--color-bg-action-primary,#2b8659)] outline-none',
         'ring-[var(--color-special-brand-alt,#0c2c1c)]/20 focus-visible:ring-2',
         'motion-reduce:transition-none',
-        popIn ? 'wide-basket-fab--pop-in' : revealed ? 'wide-basket-fab--shown' : 'wide-basket-fab--hidden',
+        wideBasketFabMotionClass(popIn, popOut, revealed),
         className,
       ]
         .filter(Boolean)

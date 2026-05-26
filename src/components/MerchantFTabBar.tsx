@@ -1,35 +1,51 @@
+import { memo, useCallback, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import {
-  memo,
-  useCallback,
-  useMemo,
-  useState,
-  type CSSProperties,
-  type KeyboardEvent,
-} from 'react'
-import {
-  TAB_COMPACT_MS,
-  TAB_BAR_LAYOUT_MS,
-  TAB_BAR_LAYOUT_EASE,
+  MERCHANT_TAB_SOLO_PX,
   TAB_ACTION_TOTAL_RESERVE_PX,
   TAB_BAR_ITEM_GAP_PX,
-  BASKET_FAB_RESERVE_PX,
   WIDE_BASKET_FAB_SLOT_PX,
+  BASKET_FAB_BUTTON_POP_MS,
   MERCHANT_FAB_POP_MS,
   MERCHANT_FAB_EXPAND_MS,
+  TAB_BAR_LAYOUT_EASE,
   useBasketFabOptional,
 } from '../context/BasketFabContext'
 import { MERCHANT_TAB_SEARCH_ICON } from '../config/merchantFloatingTabBarConfig'
+import { useAnimatedPillWidth } from '../hooks/useAnimatedPillWidth'
+import { useFloatingTabBarTabs } from '../hooks/useFloatingTabBarTabs'
+import {
+  floatingTabBarMotionVars,
+  floatingTabBarPillGridStyle,
+  floatingTabBarSoloPillGridStyle,
+} from '../lib/floatingTabBarLayout'
 import { WIDE_BASKET_FAB_IN_TAB_BAR_CLASS } from '../lib/wideBasketFabExpand'
-import { FLOATING_CHROME_SHADOW_CLASS } from '../lib/floatingChromeShadow'
 import { design } from '../lib/figmaDesignAssets'
-import { BasketFabHome } from './BasketFabHome'
 import { WideBasketFab, type WideBasketFabState } from './WideBasketFab'
 import { TabAction } from './TabAction'
+import { FloatingTabBarPill } from './FloatingTabBarPill'
 import type { FloatingTabBarItem } from './FloatingTabBar'
 
 function merchantWideFabUiState(phase: string): WideBasketFabState {
+  if (phase === 'loading') return 'loading'
   if (phase === 'collapsed') return 'collapsed'
   return 'default'
+}
+
+/** Defer one frame so pop-in runs after layout snap (loading appear). */
+function useDeferredFrame(active: boolean) {
+  const [ready, setReady] = useState(false)
+
+  useLayoutEffect(() => {
+    if (!active) {
+      setReady(false)
+      return
+    }
+    setReady(false)
+    const raf = window.requestAnimationFrame(() => setReady(true))
+    return () => window.cancelAnimationFrame(raf)
+  }, [active])
+
+  return ready
 }
 
 export type MerchantFTabBarItem = FloatingTabBarItem
@@ -48,8 +64,8 @@ export type MerchantFTabBarProps = {
 /**
  * Merchant tab bar sequence:
  * A) icons-only compact (row unchanged)
- * B–C) loading FAB 56px on the right
- * D) solo tab + FAB expands left
+ * B–C) wide FAB `loading` at 56px (pop-in once)
+ * D) pill → solo + slot RTL expand to `default` (150ms ease-out, parallel)
  */
 function MerchantFTabBarInner({
   items,
@@ -67,7 +83,6 @@ function MerchantFTabBarInner({
   const compactTabs = basketEnabled && basket.compactTabs
   const merchantTabSolo = basketEnabled && basket.merchantTabSolo
   const wideFabPhase = basketEnabled ? basket.merchantWideFabPhase : 'hidden'
-  const showWideFab = wideFabPhase !== 'hidden'
   const basketRowPhase =
     wideFabPhase === 'default'
       ? 'default'
@@ -76,35 +91,70 @@ function MerchantFTabBarInner({
         : wideFabPhase === 'loading'
           ? 'loading'
           : undefined
-  const merchantBasketRow =
-    basketEnabled &&
-    basket.basketUnitTotal > 0 &&
-    (basket.compactTabs || showWideFab || basket.basketFabExiting)
+  const useMerchantBasketRow =
+    basketEnabled && (wideFabPhase !== 'hidden' || basket.basketFabExiting)
 
-  const n = items.length
+  const rowRef = useRef<HTMLDivElement>(null)
+  const pillRef = useRef<HTMLDivElement>(null)
+  const [rowWidthPx, setRowWidthPx] = useState(0)
 
-  const [uncontrolledActiveId, setUncontrolledActiveId] = useState(() => {
-    if (defaultActiveId && items.some((it) => it.id === defaultActiveId)) return defaultActiveId
-    return items[0]?.id ?? ''
+  const layoutReservePx =
+    basketEnabled && !useMerchantBasketRow ? basket.merchantLayoutReservePx : 0
+
+  useLayoutEffect(() => {
+    const row = rowRef.current
+    if (!row || !basketEnabled) {
+      setRowWidthPx(0)
+      return
+    }
+    const measure = () => setRowWidthPx(row.offsetWidth)
+    measure()
+    const ro = new ResizeObserver(measure)
+    ro.observe(row)
+    return () => ro.disconnect()
+  }, [basketEnabled, useMerchantBasketRow, basketRowPhase, merchantTabSolo, layoutReservePx])
+
+  const wideRowTrailingChromePx =
+    TAB_ACTION_TOTAL_RESERVE_PX + TAB_BAR_ITEM_GAP_PX + WIDE_BASKET_FAB_SLOT_PX
+
+  const widePillWidthPx =
+    rowWidthPx > 0 ? Math.max(MERCHANT_TAB_SOLO_PX, rowWidthPx - wideRowTrailingChromePx) : null
+
+  /** Merchant basket row — explicit px width tween (150ms ease-out). */
+  const pillLayoutTargetPx = useMemo(() => {
+    if (!useMerchantBasketRow || widePillWidthPx == null) return null
+    if (merchantTabSolo && basketRowPhase === 'default') return MERCHANT_TAB_SOLO_PX
+    return widePillWidthPx
+  }, [useMerchantBasketRow, widePillWidthPx, merchantTabSolo, basketRowPhase])
+
+  const pillLayoutStyle = useAnimatedPillWidth(pillRef, pillLayoutTargetPx)
+
+  /** Plain row: trailing chrome tween (home FTB); basket row: trailing for slot flex only. */
+  const pillTrailingChromePx = useMemo(() => {
+    if (useMerchantBasketRow) {
+      if (merchantTabSolo && basketRowPhase === 'default' && rowWidthPx > 0) {
+        return Math.max(TAB_ACTION_TOTAL_RESERVE_PX, rowWidthPx - MERCHANT_TAB_SOLO_PX)
+      }
+      return wideRowTrailingChromePx
+    }
+    return TAB_ACTION_TOTAL_RESERVE_PX + layoutReservePx
+  }, [
+    useMerchantBasketRow,
+    merchantTabSolo,
+    basketRowPhase,
+    rowWidthPx,
+    wideRowTrailingChromePx,
+    layoutReservePx,
+  ])
+
+  const { activeId, activeIndex, selectTab, onKeyDown, n } = useFloatingTabBarTabs({
+    items,
+    activeId: activeIdProp,
+    defaultActiveId,
+    onTabChange,
   })
 
-  const isControlled = activeIdProp !== undefined
-  const activeId =
-    isControlled && activeIdProp && items.some((it) => it.id === activeIdProp)
-      ? activeIdProp
-      : isControlled
-        ? items[0]?.id ?? ''
-        : uncontrolledActiveId
-
-  const selectTab = useCallback(
-    (id: string) => {
-      onTabChange?.(id)
-      if (!isControlled) setUncontrolledActiveId(id)
-    },
-    [isControlled, onTabChange],
-  )
-
-  const onTabClick = useCallback(
+  const onTabActivate = useCallback(
     (id: string, isActive: boolean) => {
       if (merchantTabSolo && isActive && basketEnabled) {
         basket.expandMerchantTabs()
@@ -115,59 +165,58 @@ function MerchantFTabBarInner({
     [basket, basketEnabled, merchantTabSolo, selectTab],
   )
 
-  const activeIndex = useMemo(() => {
-    if (n === 0) return 0
-    const i = items.findIndex((it) => it.id === activeId)
-    return i < 0 ? 0 : i
-  }, [activeId, items, n])
-
   const pillGridStyle = useMemo(
-    (): CSSProperties =>
-      ({
-        gridTemplateColumns: merchantTabSolo ? 'minmax(0, 1fr)' : `repeat(${n}, minmax(0, 1fr))`,
-        '--ftb-tab-count': merchantTabSolo ? '1' : String(n),
-        '--ftb-active-index': merchantTabSolo ? '0' : String(activeIndex),
-      }) as CSSProperties,
+    () => (merchantTabSolo ? floatingTabBarSoloPillGridStyle() : floatingTabBarPillGridStyle(n, activeIndex)),
     [n, activeIndex, merchantTabSolo],
   )
 
-  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return
-    const from = activeIndex
-    const next =
-      e.key === 'ArrowLeft' ? (from + items.length - 1) % items.length : (from + 1) % items.length
-    selectTab(items[next]!.id)
-  }
+  const snapLoadingLayout = basketRowPhase === 'loading'
 
-  const layoutStyle = useMemo((): CSSProperties => {
-    const slotWidth =
-      merchantBasketRow &&
-      !merchantTabSolo &&
-      (basketRowPhase === 'loading' || basketRowPhase === 'collapsed')
-        ? WIDE_BASKET_FAB_SLOT_PX
-        : 0
-    const trailingChromePx =
-      merchantBasketRow && !merchantTabSolo
-        ? TAB_ACTION_TOTAL_RESERVE_PX + TAB_BAR_ITEM_GAP_PX + slotWidth
-        : 0
+  const rowMotionVars = useMemo(
+    () =>
+      ({
+        ...floatingTabBarMotionVars(pillTrailingChromePx),
+        ...(snapLoadingLayout
+          ? { '--ftb-trailing-chrome': `${wideRowTrailingChromePx}px`, '--ftb-layout-ms': '0ms' }
+          : null),
+        '--merchant-pop-ms': `${MERCHANT_FAB_POP_MS}ms`,
+        '--merchant-motion-ms': `${MERCHANT_FAB_EXPAND_MS}ms`,
+        '--merchant-motion-ease': TAB_BAR_LAYOUT_EASE,
+        '--basket-fab-button-pop-ms': `${BASKET_FAB_BUTTON_POP_MS}ms`,
+      }) as CSSProperties,
+    [pillTrailingChromePx, snapLoadingLayout, wideRowTrailingChromePx],
+  )
 
+  /** Pill always uses row trailing; never inherit loading snap (0ms) so shrink can tween after loading. */
+  const pillMotionVars = useMemo(
+    () => floatingTabBarMotionVars(pillTrailingChromePx),
+    [pillTrailingChromePx],
+  )
+
+  const wideSlotSnapStyle = useMemo((): CSSProperties | undefined => {
+    if (!snapLoadingLayout) return undefined
     return {
-      '--ftb-compact-ms': `${TAB_COMPACT_MS}ms`,
-      '--ftb-layout-ms': `${TAB_BAR_LAYOUT_MS}ms`,
-      '--ftb-layout-ease': TAB_BAR_LAYOUT_EASE,
-      '--ftb-trailing-chrome': `${trailingChromePx}px`,
-      '--merchant-pop-ms': `${MERCHANT_FAB_POP_MS}ms`,
-      '--merchant-motion-ms': `${MERCHANT_FAB_EXPAND_MS}ms`,
-      '--merchant-motion-ease': TAB_BAR_LAYOUT_EASE,
-    } as CSSProperties
-  }, [merchantBasketRow, merchantTabSolo, basketRowPhase])
+      width: WIDE_BASKET_FAB_SLOT_PX,
+      flexBasis: WIDE_BASKET_FAB_SLOT_PX,
+      transition: 'none',
+    }
+  }, [snapLoadingLayout])
 
   if (n === 0) return null
 
-  const showWideBasketFab =
-    showWideFab && (wideFabPhase === 'default' || wideFabPhase === 'collapsed')
+  const showWideBasketFab = useMerchantBasketRow && wideFabPhase !== 'hidden'
+
+  const loadingPopFrameReady = useDeferredFrame(snapLoadingLayout)
 
   const wideFabState = basketEnabled ? merchantWideFabUiState(wideFabPhase) : 'default'
+  const wideFabPopIn =
+    basketEnabled && basket.fabPopIn && wideFabPhase === 'loading' && loadingPopFrameReady
+  const wideFabPopOut = basketEnabled && basket.fabExiting
+  const wideFabRevealed =
+    !wideFabPopOut &&
+    (wideFabPhase === 'default' ||
+      wideFabPhase === 'collapsed' ||
+      (wideFabPhase === 'loading' && loadingPopFrameReady && !wideFabPopIn))
 
   return (
     <div
@@ -181,133 +230,48 @@ function MerchantFTabBarInner({
       data-name="merchant-ftb"
     >
       <div
+        ref={rowRef}
         className={[
           'floating-tab-bar__row flex w-full min-w-0',
-          merchantBasketRow ? 'merchant-ftb__row--basket' : '',
+          useMerchantBasketRow ? 'merchant-ftb__row--basket' : '',
         ]
           .filter(Boolean)
           .join(' ')}
-        style={layoutStyle}
-        data-basket-phase={basketRowPhase}
+        style={rowMotionVars}
+        data-basket-phase={useMerchantBasketRow ? basketRowPhase : undefined}
       >
-        <div
-          role="tablist"
-          aria-label={ariaLabel}
+        <FloatingTabBarPill
+          pillRef={pillRef}
+          items={items}
+          activeId={activeId}
+          activeIndex={activeIndex}
+          compact={compactTabs}
+          soloMode={merchantTabSolo}
+          ariaLabel={ariaLabel}
           onKeyDown={onKeyDown}
-          data-compact={compactTabs ? 'true' : 'false'}
-          data-merchant-solo={merchantTabSolo ? 'true' : 'false'}
-          className={[
-            FLOATING_CHROME_SHADOW_CLASS,
-            'floating-tab-bar__pill relative grid min-w-0 rounded-[50px] bg-white p-1',
-            merchantBasketRow ? '' : 'flex-[1_0_0]',
-          ]
-            .filter(Boolean)
-            .join(' ')}
-          style={{ ...pillGridStyle, ...layoutStyle } as CSSProperties}
-        >
-          <div
-            aria-hidden
-            className="floating-tab-bar__indicator pointer-events-none absolute top-1 bottom-1 left-1 z-0 rounded-[56px] bg-[var(--color-bg-neutral-secondary)] motion-reduce:transition-none"
-          />
-          {items.map((item, itemIndex) => {
-            const isActive = item.id === activeId
-            const iconSrc = isActive ? item.iconSrcSelected : item.iconSrcDefault
-            const soloHidden = merchantTabSolo && !isActive
-
-            return (
-              <div
-                key={item.id}
-                className={[
-                  'floating-tab-bar__cell relative z-[1] min-w-0',
-                  soloHidden ? 'merchant-ftb__tab-cell--solo-hidden' : '',
-                ]
-                  .filter(Boolean)
-                  .join(' ')}
-                style={{
-                  gridColumn: merchantTabSolo ? 1 : itemIndex + 1,
-                  gridRow: 1,
-                }}
-              >
-                <button
-                  type="button"
-                  role="tab"
-                  id={`merchant-tab-${item.id}`}
-                  aria-selected={isActive}
-                  tabIndex={isActive ? 0 : -1}
-                  onClick={() => onTabClick(item.id, isActive)}
-                  data-name="Navigation"
-                  className="floating-tab-bar__tab flex w-full min-w-0 items-center justify-center overflow-hidden rounded-[56px] bg-transparent outline-none ring-[var(--color-special-brand-alt)]/20 focus-visible:ring-2"
-                >
-                  <span className="floating-tab-bar__motion w-full min-w-0">
-                    <span className="floating-tab-bar__icon relative flex size-6 shrink-0 items-center justify-center" aria-hidden>
-                      <img alt="" src={iconSrc} className="floating-tab-bar__icon-img pointer-events-none block size-6" />
-                    </span>
-                    <span className="floating-tab-bar__label-row min-h-0 overflow-hidden">
-                      <span
-                        className={[
-                          'floating-tab-bar__label bolt-font-body-xs-regular block w-full min-w-0 overflow-hidden text-center text-ellipsis whitespace-nowrap',
-                          isActive ? 'text-[var(--color-content-primary)]' : 'text-[var(--color-content-secondary)]',
-                        ].join(' ')}
-                      >
-                        {item.label}
-                      </span>
-                    </span>
-                  </span>
-                </button>
-              </div>
-            )
-          })}
-        </div>
+          onTabActivate={onTabActivate}
+          gridStyle={pillGridStyle}
+          motionVars={pillMotionVars}
+          pillLayoutStyle={pillLayoutStyle}
+          tabIdPrefix="merchant-tab"
+        />
 
         <div className="floating-tab-bar__actions flex shrink-0 items-center">
           <TabAction iconSrc={MERCHANT_TAB_SEARCH_ICON} ariaLabel="Search" onClick={onSearchClick} />
         </div>
 
-        {merchantBasketRow && basket ? (
+        {useMerchantBasketRow && basket ? (
           <div
-            className={[
-              'floating-tab-bar__basket-slot floating-tab-bar__basket-slot--wide relative shrink-0 overflow-visible',
-              basketRowPhase === 'loading' ? 'floating-tab-bar__basket-slot--merchant-loading' : '',
-            ]
-              .filter(Boolean)
-              .join(' ')}
-            style={
-              basketRowPhase === 'loading'
-                ? ({
-                    width: BASKET_FAB_RESERVE_PX,
-                    flex: `0 0 ${BASKET_FAB_RESERVE_PX}px`,
-                    minWidth: BASKET_FAB_RESERVE_PX,
-                    maxWidth: BASKET_FAB_RESERVE_PX,
-                  } as CSSProperties)
-                : undefined
-            }
+            className="floating-tab-bar__basket-slot floating-tab-bar__basket-slot--wide relative shrink-0 overflow-visible"
+            style={wideSlotSnapStyle}
           >
-            {basketRowPhase === 'loading' ? (
-              <div
-                className="absolute right-0 top-1/2 -translate-y-1/2"
-                style={{ width: BASKET_FAB_RESERVE_PX }}
-              >
-                <BasketFabHome
-                  size="merchant"
-                  count={basket.basketDisplayCount}
-                  fabReveal={basket.fabReveal}
-                  fabLoading={basket.fabLoading}
-                  loaderExiting={basket.loaderExiting}
-                  fabIconPopIn={basket.fabIconPopIn}
-                  showBadge={basket.showBasketBadge}
-                  badgeExiting={basket.badgeExiting}
-                  fabExiting={basket.fabExiting}
-                  fabPopIn={basket.fabPopIn}
-                  exiting={basket.basketFabExiting}
-                  badgePopNonce={basket.badgePopNonce}
-                />
-              </div>
-            ) : showWideBasketFab ? (
+            {showWideBasketFab ? (
               <WideBasketFab
                 state={wideFabState}
                 count={basket.basketDisplayCount}
-                popIn={basket.fabPopIn}
-                revealed
+                popIn={wideFabPopIn}
+                popOut={wideFabPopOut}
+                revealed={wideFabRevealed}
                 className={WIDE_BASKET_FAB_IN_TAB_BAR_CLASS}
               />
             ) : null}

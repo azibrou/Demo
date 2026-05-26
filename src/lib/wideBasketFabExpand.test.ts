@@ -68,7 +68,7 @@ describe('WideBasketFab RTL expand contract', () => {
     )
     expect(slotRule).toContain('flex: 0 0 0px;')
     expect(stylesCss).toContain(
-      ".merchant-ftb__row--basket[data-basket-phase='loading'] .floating-tab-bar__basket-slot--wide",
+      ".merchant-ftb__row--basket[data-basket-phase='collapsed'] .floating-tab-bar__basket-slot--wide",
     )
     expect(stylesCss).toContain('flex: 0 0 56px;')
     for (const snippet of wideBasketFabSlotExpandCssMustInclude) {

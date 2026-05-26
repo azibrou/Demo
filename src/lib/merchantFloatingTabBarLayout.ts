@@ -19,21 +19,16 @@ export const merchantTabBarHeightCssMustInclude = [
   'max-height: 56px;',
 ] as const
 
-/** Loading: layout snap + FAB pop-in only (matches home FloatingTabBar). */
-export const merchantBasketSlotLoadingCssMustInclude = [
-  ".merchant-ftb__row--basket[data-basket-phase='loading']",
-  'transition: none;',
+/** Merchant loading — wide in-tab-bar FAB at 56px (spinner), then RTL expand to default. */
+export const merchantBasketFabLoadingCssMustInclude = [
   ".merchant-ftb__row--basket[data-basket-phase='loading'] .floating-tab-bar__basket-slot--wide",
-  'transition: none !important;',
-  'basket-fab-button-pop',
+  "[data-state='loading'] .wide-basket-fab__loader",
+  'animation: basket-fab-loader-spin',
 ] as const
 
-/** Merchant loading uses BasketFabHome spinner (same as home FloatingTabBar). */
-export const merchantBasketFabLoadingCssMustInclude = [
-  '.basket-fab--merchant-slot',
-  '--basket-fab-size: 56px;',
-  '.basket-fab__loader--spin',
-  'animation: basket-fab-loader-spin',
+export const merchantBasketSlotLoadingCssMustInclude = [
+  ".merchant-ftb__row--basket[data-basket-phase='loading'] .floating-tab-bar__basket-slot--wide",
+  'flex: 0 0 56px;',
 ] as const
 
 export const merchantBasketSlotDefaultCssMustInclude = [

@@ -1,6 +1,5 @@
 import { useEffect, useLayoutEffect, useMemo, useState, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
-import { useLocation } from 'react-router-dom'
 import { resolveMerchantFloatingTabBarModel } from '../config/merchantFloatingTabBarConfig'
 import { MerchantTabProvider, useMerchantTab } from '../context/MerchantTabContext'
 import { MERCHANT_FLOATING_TAB_BAR_ITEMS } from '../screens/merchantFloatingTabBarItems'
@@ -15,14 +14,12 @@ type MerchantScreenShellProps = {
  * viewport-fixed on iOS stack inner routes (transform on the slide panel breaks `position: fixed`).
  */
 function MerchantScreenShellInner({ children }: MerchantScreenShellProps) {
-  const location = useLocation()
   const { barItems } = useMemo(
     () => resolveMerchantFloatingTabBarModel(MERCHANT_FLOATING_TAB_BAR_ITEMS),
     [],
   )
   const { activeTabId, setActiveTabId } = useMerchantTab()
   const [portalReady, setPortalReady] = useState(false)
-  const [chromeEnter, setChromeEnter] = useState(false)
 
   useEffect(() => {
     setPortalReady(true)
@@ -38,31 +35,11 @@ function MerchantScreenShellInner({ children }: MerchantScreenShellProps) {
   }, [])
 
   useLayoutEffect(() => {
-    if (!portalReady) return
-    setChromeEnter(false)
-    let inner = 0
-    const outer = requestAnimationFrame(() => {
-      inner = requestAnimationFrame(() => setChromeEnter(true))
-    })
-    return () => {
-      cancelAnimationFrame(outer)
-      cancelAnimationFrame(inner)
-    }
-  }, [portalReady, location.key])
-
-  useLayoutEffect(() => {
     document.querySelector('.merchant-screen')?.scrollTo(0, 0)
   }, [activeTabId])
 
   const tabBarChrome = (
-    <div
-      key={location.key}
-      className={[
-        'merchant-ftb-chrome pointer-events-none fixed inset-x-0 bottom-0 z-50 w-full max-w-full overflow-visible',
-        chromeEnter ? 'merchant-ftb-chrome--enter' : 'merchant-ftb-chrome--pre-enter',
-        'motion-reduce:animate-none',
-      ].join(' ')}
-    >
+    <div className="merchant-ftb-chrome pointer-events-none fixed inset-x-0 bottom-0 z-50 w-full max-w-full overflow-visible">
       <div className="pointer-events-auto">
         <MerchantFTabBar
           items={barItems}

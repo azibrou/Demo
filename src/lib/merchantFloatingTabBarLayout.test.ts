@@ -37,13 +37,13 @@ describe('merchant floating tab bar CSS contract', () => {
     }
   })
 
-  it('uses 56px basket slot during loading without width slide (pill fills row)', () => {
+  it('uses wide basket slot at 56px during merchant loading phase', () => {
     for (const snippet of merchantBasketSlotLoadingCssMustInclude) {
       expect(stylesCss).toContain(snippet)
     }
   })
 
-  it('uses BasketFabHome 56px loader pop-in during merchant loading', () => {
+  it('uses in-tab-bar WideBasketFab spinner during merchant loading', () => {
     for (const snippet of merchantBasketFabLoadingCssMustInclude) {
       expect(stylesCss).toContain(snippet)
     }

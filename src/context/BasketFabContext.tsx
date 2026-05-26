@@ -130,8 +130,15 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
 
   const prevTotalRef = useRef(0)
   const pendingInitialRef = useRef(false)
+  const merchantTabSoloRef = useRef(merchantTabSolo)
+  const merchantWideFabPhaseRef = useRef(merchantWideFabPhase)
   const timerIdsRef = useRef<ReturnType<typeof setTimeout>[]>([])
   const rafIdsRef = useRef<number[]>([])
+
+  useLayoutEffect(() => {
+    merchantTabSoloRef.current = merchantTabSolo
+    merchantWideFabPhaseRef.current = merchantWideFabPhase
+  }, [merchantTabSolo, merchantWideFabPhase])
 
   const clearAnimationTimers = useCallback(() => {
     timerIdsRef.current.forEach((id) => clearTimeout(id))
@@ -265,28 +272,78 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
     scheduleLoaderToBasket()
   }, [scheduleLoaderToBasket])
 
-  const startMerchantBasketExit = useCallback(() => {
-    setBasketFabExiting(false)
-    setBadgeExiting(false)
+  const finishMerchantBasketExit = useCallback(() => {
     setFabExiting(false)
-    setFabPopIn(false)
-    setFabLoading(false)
-    setLoaderExiting(false)
-    setFabIconPopIn(false)
-    setExitDisplayCount(0)
+    setFabReveal(false)
+    setMerchantWideFabPhase('hidden')
     setMerchantTabSolo(false)
     setMerchantLayoutReservePx(0)
-    setMerchantWideFabPhase('hidden')
     setCompactTabs(false)
-    setFabReveal(false)
     setFabReservePx(0)
+    setBasketFabExiting(false)
+    setExitDisplayCount(0)
   }, [])
+
+  /**
+   * Merchant basket empty:
+   * 1) RTL collapse to `collapsed` + pill solo → full (150ms) when expanded
+   * 2) FAB scale-out (220ms)
+   * 3) remove basket chrome
+   */
+  const startMerchantBasketExit = useCallback(
+    (prev: number) => {
+      setExitDisplayCount(prev)
+      setBasketFabExiting(true)
+      setBadgeExiting(false)
+      setFabExiting(false)
+      setFabPopIn(false)
+      setFabLoading(false)
+      setLoaderExiting(false)
+      setFabIconPopIn(false)
+      setMerchantLayoutReservePx(0)
+
+      const needsRtlCollapse =
+        merchantTabSoloRef.current && merchantWideFabPhaseRef.current === 'default'
+
+      const startPopOut = () => {
+        setFabExiting(true)
+        const tHide = window.setTimeout(
+          finishMerchantBasketExit,
+          BASKET_FAB_BUTTON_POP_MS,
+        )
+        timerIdsRef.current.push(tHide)
+      }
+
+      if (!needsRtlCollapse) {
+        setMerchantWideFabPhase('collapsed')
+        setMerchantTabSolo(false)
+        const rafPop = window.requestAnimationFrame(startPopOut)
+        rafIdsRef.current.push(rafPop)
+        return
+      }
+
+      // Commit expanded layout, then RTL collapse (150ms ease-out) before pop-out.
+      setMerchantWideFabPhase('default')
+      setMerchantTabSolo(true)
+
+      const rafCollapse = window.requestAnimationFrame(() => {
+        setMerchantWideFabPhase('collapsed')
+        setMerchantTabSolo(false)
+      })
+      rafIdsRef.current.push(rafCollapse)
+
+      const tPop = window.setTimeout(startPopOut, MERCHANT_FAB_EXPAND_MS)
+      timerIdsRef.current.push(tPop)
+    },
+    [finishMerchantBasketExit],
+  )
 
   /**
    * Merchant quick-add sequence (ms from t=0):
    * A+B) 0–150  — compact tabs + loading FAB pop-in (parallel, ease-out)
    * C) 150–1500 — loading spinner
    * D) 1500–1650 — solo tab 56px + FAB expands left (150ms ease-out)
+   * Exit — collapse (150ms) → FAB pop-out (220ms) → basket hidden.
    */
   const startMerchantBasketEnter = useCallback(() => {
     setBasketFabExiting(false)
@@ -299,24 +356,37 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
     setExitDisplayCount(0)
     setMerchantTabSolo(false)
     setMerchantWideFabPhase('hidden')
-    setMerchantLayoutReservePx(0)
     setCompactTabs(true)
     setFabReveal(false)
     setShowBasketBadge(false)
     setFabReservePx(0)
+    // Plain row: tween pill width like home FTB before basket row mounts (150ms ease-out).
+    setMerchantLayoutReservePx(WIDE_BASKET_FAB_SLOT_PX + TAB_BAR_ITEM_GAP_PX)
 
-    setMerchantWideFabPhase('loading')
-    setFabLoading(true)
-    setFabReveal(true)
-    setFabPopIn(true)
-    const tPopDone = window.setTimeout(() => setFabPopIn(false), BASKET_FAB_BUTTON_POP_MS)
-    timerIdsRef.current.push(tPopDone)
-    scheduleLoaderToBasket({ showBadgeAfter: false })
+    const rafLayout = window.requestAnimationFrame(() => {
+      setMerchantLayoutReservePx(0)
+      setMerchantWideFabPhase('loading')
+      setFabLoading(true)
+      setFabReveal(true)
+      setFabPopIn(true)
+      const tPopDone = window.setTimeout(() => setFabPopIn(false), BASKET_FAB_BUTTON_POP_MS)
+      timerIdsRef.current.push(tPopDone)
+      scheduleLoaderToBasket({ showBadgeAfter: false })
+    })
+    rafIdsRef.current.push(rafLayout)
 
     const tDefault = window.setTimeout(() => {
       triggerHaptic('success')
-      setMerchantWideFabPhase('default')
-      setMerchantTabSolo(true)
+      setFabPopIn(false)
+      setFabReservePx(0)
+      // Two frames: (1) default + wide pill @ 136px trailing, transitions on; (2) solo + shrink — matches home FTB.
+      const rafExpand = window.requestAnimationFrame(() => {
+        setMerchantWideFabPhase('default')
+        setMerchantTabSolo(false)
+        const rafSolo = window.requestAnimationFrame(() => setMerchantTabSolo(true))
+        rafIdsRef.current.push(rafSolo)
+      })
+      rafIdsRef.current.push(rafExpand)
     }, MERCHANT_BASKET_EXPAND_AT_MS)
 
     timerIdsRef.current.push(tDefault)
@@ -406,7 +476,7 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
       clearAnimationTimers()
       prevTotalRef.current = 0
       if (merchantMode) {
-        startMerchantBasketExit()
+        startMerchantBasketExit(prev)
       } else {
         startBasketExit(prev)
       }

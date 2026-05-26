@@ -36,7 +36,7 @@ export const wideBasketFabInTabBarAnchorCssMustInclude = [
 export const wideBasketFabSlotExpandCssMustInclude = [
   '.merchant-ftb__row--basket .floating-tab-bar__basket-slot--wide {',
   'flex: 0 0 0px;',
-  ".merchant-ftb__row--basket[data-basket-phase='loading'] .floating-tab-bar__basket-slot--wide {",
+  ".merchant-ftb__row--basket[data-basket-phase='collapsed'] .floating-tab-bar__basket-slot--wide {",
   'flex: 0 0 56px;',
   ".merchant-ftb__row--basket[data-basket-phase='default'] .floating-tab-bar__basket-slot--wide {",
   'flex: 1 1 0;',
@@ -55,5 +55,5 @@ export const wideBasketFabExpandRuleSummary = [
   'Basket SLOT: margin-inline-start:auto + width/flex tween — right edge pinned, grows left.',
   'In-tab-bar FAB: position:absolute; inset-inline-end:0; width:100% (fills slot).',
   'Never tween FAB width in tab bar — only slot + padding-inline.',
-  'Loading/collapsed slot: flex 0 0 56px. Default slot: flex 1 1 0.',
+  'Loading: home round slot (FloatingTabBarRoundBasketSlot). Collapsed wide slot: flex 0 0 56px. Default: flex 1 1 0.',
 ] as const
