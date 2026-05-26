@@ -36,9 +36,24 @@ jobs:
           grep -q '/Demo/assets/' dist/index.html
           ! grep -q '/src/main.tsx' dist/index.html
           test -f dist/404.html
-      - uses: actions/upload-pages-artifact@v3
+      # Same layout as actions/upload-pages-artifact (tar → artifact "github-pages") without
+      # downloading that composite action from codeload.github.com.
+      - name: Package Pages artifact
+        run: |
+          tar --dereference --hard-dereference \
+            --directory dist \
+            -cvf "$RUNNER_TEMP/artifact.tar" \
+            --exclude=.git \
+            --exclude=.github \
+            --exclude='.[^/]*' \
+            .
+      - name: Upload Pages artifact
+        uses: actions/upload-artifact@v4
         with:
-          path: dist
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
 
   deploy:
     needs: build
