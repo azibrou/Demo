@@ -5,9 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# Push built `dist/` to the gh-pages branch (no deploy-pages / upload-pages-artifact).
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
   actions: read
 
 concurrency:
@@ -15,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -37,21 +38,32 @@ jobs:
           ! grep -q '/src/main.tsx' dist/index.html
           test -f dist/404.html
 
-      - name: Publish dist to gh-pages branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Same artifact layout as upload-pages-artifact, without that composite action.
+      - name: Package Pages artifact
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          tar --dereference --hard-dereference \
+            --directory dist \
+            -cvf "$RUNNER_TEMP/artifact.tar" \
+            --exclude=.git \
+            --exclude=.github \
+            --exclude='.[^/]*' \
+            .
 
-          workdir=$(mktemp -d)
-          cp -r dist/. "$workdir/"
-          touch "$workdir/.nojekyll"
+      - name: Upload Pages artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
 
-          cd "$workdir"
-          git init -b gh-pages
-          git add -A
-          git commit -m "Deploy ${GITHUB_SHA::7} from ${GITHUB_REF_NAME}"
-
-          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push --force origin gh-pages
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
