@@ -28,22 +28,68 @@ export type CarouselItemProps = {
 export function CarouselItem({ title, titleId, topSlot, children, scaledTrack }: CarouselItemProps) {
   const headingId = titleId ?? useId()
 
-  if (topSlot != null && children != null) {
+  const productTrack = scaledTrack ? (
+    <HomeScaledCarousel variant="product-scroll" aria-label={title}>
+      {children}
+    </HomeScaledCarousel>
+  ) : (
+    <div className="carousel-grid-scrollport w-full min-w-0 overflow-x-auto overscroll-x-contain pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="home-horizontal-scroll-track gap-3">{children}</div>
+    </div>
+  )
+
+  if (children != null) {
+    const header = (
+      <div className="flex w-full shrink-0 items-center px-6">
+        <div className="flex min-w-0 flex-[1_0_0] flex-col items-start justify-center">
+          <div className="flex w-full shrink-0 items-center gap-3">
+            <div className="flex min-w-0 flex-[1_0_0] items-center gap-1">
+              <h2
+                id={headingId}
+                className="bolt-font-heading-xs-accent min-w-0 shrink-0 truncate whitespace-nowrap text-[var(--color-content-primary)]"
+              >
+                {title}
+              </h2>
+            </div>
+            <div className="flex h-[25px] w-10 shrink-0 flex-col items-start pt-[5px]">
+              <button
+                type="button"
+                className="flex w-full shrink-0 cursor-pointer items-center justify-end gap-1 rounded text-[var(--color-content-primary)]"
+              >
+                <span className="bolt-font-body-s-accent shrink-0 whitespace-nowrap">All</span>
+                <span className="relative size-[18px] shrink-0" aria-hidden>
+                  <img
+                    alt=""
+                    src={a.allChevron}
+                    className="pointer-events-none absolute inset-0 block size-full max-w-none"
+                  />
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+
+    if (topSlot != null) {
+      return (
+        <section
+          className="bolt-font-base my-0 flex w-full flex-col items-start gap-3 py-4 text-[var(--color-content-primary)]"
+          aria-label={title}
+        >
+          {topSlot}
+          {productTrack}
+        </section>
+      )
+    }
+
     return (
       <section
-        className="bolt-font-base my-0 flex w-full flex-col items-start gap-3 py-4 text-[var(--color-content-primary)]"
-        aria-label={title}
+        className="bolt-font-base flex w-full flex-col items-start gap-4 py-3 text-[var(--color-content-primary)]"
+        aria-labelledby={headingId}
       >
-        {topSlot}
-        {scaledTrack ? (
-          <HomeScaledCarousel variant="product-scroll" aria-label={title}>
-            {children}
-          </HomeScaledCarousel>
-        ) : (
-          <div className="carousel-grid-scrollport w-full min-w-0 overflow-x-auto overscroll-x-contain pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <div className="home-horizontal-scroll-track gap-3">{children}</div>
-          </div>
-        )}
+        {header}
+        {productTrack}
       </section>
     )
   }

@@ -1,8 +1,17 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from 'react'
-import { TAB_COMPACT_MS, useBasketFabOptional } from '../context/BasketFabContext'
+import {
+  memo,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type KeyboardEvent,
+  type ReactNode,
+} from 'react'
+import { TAB_COMPACT_MS, TAB_BAR_LAYOUT_MS, TAB_BAR_LAYOUT_EASE, TAB_ACTION_TOTAL_RESERVE_PX, TAB_BAR_ITEM_GAP_PX, BASKET_FAB_RESERVE_PX, useBasketFabOptional } from '../context/BasketFabContext'
 import { FLOATING_CHROME_SHADOW_CLASS } from '../lib/floatingChromeShadow'
 import { design } from '../lib/figmaDesignAssets'
-import { BasketFab } from './BasketFab'
+import { BasketFabHome } from './BasketFabHome'
 
 export type FloatingTabBarItem = {
   id: string
@@ -13,7 +22,11 @@ export type FloatingTabBarItem = {
 
 export type FloatingTabBarProps = {
   items: readonly FloatingTabBarItem[]
-  /** Initial tab; defaults to the first item. Selection is managed inside the component. */
+  /** Controlled selection (e.g. synced to the route). */
+  activeId?: string
+  /** Called when the user selects a tab. */
+  onTabChange?: (id: string) => void
+  /** Initial tab when uncontrolled; defaults to the first item. */
   defaultActiveId?: string
   className?: string
   ariaLabel?: string
@@ -25,14 +38,14 @@ export type FloatingTabBarProps = {
   tabActions?: ReactNode
 }
 
-const INDICATOR_TRANSITION_MS = 100
-
 /**
  * Floating bottom navigation — Figma [76281:68555](https://www.figma.com/design/hTmBFTYdlynOcGtxFnHIbM/Consumer---in-progress?node-id=76281-68555).
  * Optional tab actions + basket FAB on the same row; compact animation applies to the pill only.
  */
-export function FloatingTabBar({
+function FloatingTabBarInner({
   items,
+  activeId: activeIdProp,
+  onTabChange,
   defaultActiveId,
   className = '',
   ariaLabel = 'Main navigation',
@@ -44,42 +57,7 @@ export function FloatingTabBar({
   const basketEnabled = showBasketFabProp && basket != null
 
   const compactTabs = basketEnabled && basket.compactTabs
-  const [tabCompactAnim, setTabCompactAnim] = useState<'collapse' | 'expand' | null>(null)
-  const syncedCompactRef = useRef(compactTabs)
   const pillRef = useRef<HTMLDivElement>(null)
-
-  // Set anim phase in the same render as data-compact so resting compact styles never flash one frame early.
-  if (syncedCompactRef.current !== compactTabs) {
-    syncedCompactRef.current = compactTabs
-    const nextAnim = compactTabs ? 'collapse' : 'expand'
-    if (tabCompactAnim !== nextAnim) setTabCompactAnim(nextAnim)
-  }
-
-  useEffect(() => {
-    if (!tabCompactAnim) return
-    const pill = pillRef.current
-    if (!pill) return
-
-    let cleared = false
-    const clear = () => {
-      if (cleared) return
-      cleared = true
-      setTabCompactAnim(null)
-    }
-
-    const onEnd = (e: AnimationEvent) => {
-      const name = e.animationName
-      if (name !== 'floating-tab-bar-compact-icon' && name !== 'floating-tab-bar-compact-label') return
-      clear()
-    }
-
-    pill.addEventListener('animationend', onEnd)
-    const fallback = window.setTimeout(clear, TAB_COMPACT_MS + 50)
-    return () => {
-      pill.removeEventListener('animationend', onEnd)
-      clearTimeout(fallback)
-    }
-  }, [tabCompactAnim])
 
   const fabReserveWidthPx = basketEnabled ? basket.fabReserveWidthPx : 0
   const basketLayoutActive =
@@ -91,19 +69,33 @@ export function FloatingTabBar({
     (basketLayoutActive ||
       fabReserveWidthPx > 0 ||
       basket.fabReveal ||
+      basket.fabLoading ||
+      basket.loaderExiting ||
       basket.fabExiting ||
       basket.badgeExiting)
 
-  const basketSlotHasGap =
-    fabReserveWidthPx > 0 ||
-    (basketLayoutActive && basket.compactTabs && !basket.basketFabExiting)
-
   const n = items.length
 
-  const [activeId, setActiveId] = useState(() => {
+  const [uncontrolledActiveId, setUncontrolledActiveId] = useState(() => {
     if (defaultActiveId && items.some((it) => it.id === defaultActiveId)) return defaultActiveId
     return items[0]?.id ?? ''
   })
+
+  const isControlled = activeIdProp !== undefined
+  const activeId =
+    isControlled && activeIdProp && items.some((it) => it.id === activeIdProp)
+      ? activeIdProp
+      : isControlled
+        ? items[0]?.id ?? ''
+        : uncontrolledActiveId
+
+  const selectTab = useCallback(
+    (id: string) => {
+      onTabChange?.(id)
+      if (!isControlled) setUncontrolledActiveId(id)
+    },
+    [isControlled, onTabChange],
+  )
 
   const activeIndex = useMemo(() => {
     if (n === 0) return 0
@@ -112,30 +104,44 @@ export function FloatingTabBar({
   }, [activeId, items, n])
 
   const pillGridStyle = useMemo(
-    (): CSSProperties => ({
-      gridTemplateColumns: `repeat(${n}, minmax(0, 1fr))`,
-    }),
-    [n],
+    (): CSSProperties =>
+      ({
+        gridTemplateColumns: `repeat(${n}, minmax(0, 1fr))`,
+        '--ftb-tab-count': String(n),
+        '--ftb-active-index': String(activeIndex),
+      }) as CSSProperties,
+    [n, activeIndex],
   )
 
-  const indicatorStyle = useMemo((): CSSProperties => {
-    return {
-      width: `calc((100% - 8px) / ${n})`,
-      transform: `translate3d(calc(${activeIndex} * 100%), 0, 0)`,
-      transition: `transform ${INDICATOR_TRANSITION_MS}ms cubic-bezier(0.4, 0, 0.2, 1)`,
-    }
-  }, [activeIndex, n])
-
   const basketSlotStyle = useMemo((): CSSProperties => {
-    return { width: fabReserveWidthPx }
+    const open = fabReserveWidthPx > 0
+    return {
+      width: open ? BASKET_FAB_RESERVE_PX : 0,
+      flexBasis: open ? BASKET_FAB_RESERVE_PX : 0,
+    }
   }, [fabReserveWidthPx])
+
+  const layoutStyle = useMemo((): CSSProperties => {
+    const actionsReservePx = tabActions != null ? TAB_ACTION_TOTAL_RESERVE_PX : 0
+    const basketReservePx = mountBasketSlot
+      ? TAB_BAR_ITEM_GAP_PX + (fabReserveWidthPx > 0 ? fabReserveWidthPx : 0)
+      : 0
+    return {
+      '--ftb-compact-ms': `${TAB_COMPACT_MS}ms`,
+      '--ftb-layout-ms': `${TAB_BAR_LAYOUT_MS}ms`,
+      '--ftb-layout-ease': TAB_BAR_LAYOUT_EASE,
+      '--ftb-trailing-chrome': `${actionsReservePx + basketReservePx}px`,
+    } as CSSProperties
+  }, [fabReserveWidthPx, tabActions, mountBasketSlot])
+
+  const rowStyle = layoutStyle
 
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return
     const from = activeIndex
     const next =
       e.key === 'ArrowLeft' ? (from + items.length - 1) % items.length : (from + 1) % items.length
-    setActiveId(items[next]!.id)
+    selectTab(items[next]!.id)
   }
 
   if (n === 0) return null
@@ -148,7 +154,7 @@ export function FloatingTabBar({
         'floating-tab-bar pt-3',
         showHomeIndicator
           ? 'pb-[calc(34px+env(safe-area-inset-bottom,0px))]'
-          : 'pb-[calc(37px+env(safe-area-inset-bottom,0px))]',
+          : 'pb-[calc(34px+env(safe-area-inset-bottom,0px))]',
         'animate-floating-tab-bar-enter motion-reduce:animate-none',
         className,
       ].join(' ')}
@@ -156,8 +162,8 @@ export function FloatingTabBar({
       data-node-id="76281:68555"
     >
       <div
-        className="floating-tab-bar__row flex w-full min-w-0 items-center"
-        style={{ '--ftb-compact-ms': `${TAB_COMPACT_MS}ms` } as CSSProperties}
+        className="floating-tab-bar__row flex w-full min-w-0"
+        style={rowStyle}
       >
         <div
           ref={pillRef}
@@ -167,15 +173,14 @@ export function FloatingTabBar({
           data-compact={compactTabs ? 'true' : 'false'}
           className={[
             FLOATING_CHROME_SHADOW_CLASS,
-            'floating-tab-bar__pill relative grid min-w-0 flex-[1_0_0] rounded-[50px] bg-white p-1',
+            'floating-tab-bar__pill relative grid min-w-0 rounded-[50px] bg-white p-1',
           ].join(' ')}
-          style={{ ...pillGridStyle, '--ftb-compact-ms': `${TAB_COMPACT_MS}ms` } as CSSProperties}
+          style={{ ...pillGridStyle, ...layoutStyle } as CSSProperties}
           data-node-id="76281:68556"
         >
           <div
             aria-hidden
             className="floating-tab-bar__indicator pointer-events-none absolute top-1 bottom-1 left-1 z-0 rounded-[60px] bg-[var(--color-bg-neutral-secondary)] motion-reduce:transition-none"
-            style={indicatorStyle}
           />
           {items.map((item, itemIndex) => {
             const isActive = itemIndex === activeIndex
@@ -193,11 +198,11 @@ export function FloatingTabBar({
                   id={`floating-tab-${item.id}`}
                   aria-selected={isActive}
                   tabIndex={isActive ? 0 : -1}
-                  onClick={() => setActiveId(item.id)}
+                  onClick={() => selectTab(item.id)}
                   data-name="Navigation"
-                  className="floating-tab-bar__tab flex h-12 w-full min-w-0 items-center justify-center overflow-hidden rounded-[60px] bg-transparent outline-none ring-[var(--color-special-brand-alt)]/20 focus-visible:ring-2"
+                  className="floating-tab-bar__tab flex w-full min-w-0 items-center justify-center overflow-hidden rounded-[60px] bg-transparent outline-none ring-[var(--color-special-brand-alt)]/20 focus-visible:ring-2"
                 >
-                  <span className="floating-tab-bar__motion w-full min-w-0" data-animating={tabCompactAnim ?? undefined}>
+                  <span className="floating-tab-bar__motion w-full min-w-0">
                     <span className="floating-tab-bar__icon relative flex size-6 shrink-0 items-center justify-center" aria-hidden>
                       <img alt="" src={iconSrc} className="floating-tab-bar__icon-img pointer-events-none block size-6" />
                     </span>
@@ -226,12 +231,14 @@ export function FloatingTabBar({
           <div
             className="floating-tab-bar__basket-slot relative shrink-0 overflow-visible"
             style={basketSlotStyle}
-            data-reserve={basketSlotHasGap ? 'true' : 'false'}
           >
             <div className="absolute right-0 top-1/2 w-[60px] -translate-y-1/2">
-              <BasketFab
+              <BasketFabHome
                 count={basket.basketDisplayCount}
                 fabReveal={basket.fabReveal}
+                fabLoading={basket.fabLoading}
+                loaderExiting={basket.loaderExiting}
+                fabIconPopIn={basket.fabIconPopIn}
                 showBadge={basket.showBasketBadge}
                 badgeExiting={basket.badgeExiting}
                 fabExiting={basket.fabExiting}
@@ -263,3 +270,5 @@ export function FloatingTabBar({
     </div>
   )
 }
+
+export const FloatingTabBar = memo(FloatingTabBarInner)

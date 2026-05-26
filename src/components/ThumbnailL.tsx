@@ -13,7 +13,7 @@ export type ThumbnailLProps = {
   discountPct?: string | null
   rating?: string
   reviews?: string
-  /** Scaled list card — media uses `--thumbnail-l-scale` from {@link ThumbnailLSection}. */
+  /** Scaled list card — media uses `--thumbnail-l-scale` from {@link ThumbnailLListBlock}. */
   variant?: 'default' | 'scaled'
 }
 

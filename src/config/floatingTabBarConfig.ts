@@ -1,6 +1,6 @@
 /**
  * Floating tab bar **logic** only (limits, More slot, icon map, resolution).
- * Item lists live with each screen — e.g. `storesFloatingTabBarItems.ts` — not here.
+ * Item lists live with each screen — e.g. `homeFloatingTabBarItems.ts` — not here.
  */
 import type { FloatingTabBarItem } from '../components/FloatingTabBar'
 import { design } from '../lib/figmaDesignAssets'
@@ -93,15 +93,4 @@ export function resolveFloatingTabBarModel(items: readonly FloatingTabBarItemCon
     overflowItems: overflowDefs,
     moreItemId,
   }
-}
-
-/** Highlight on the “More” tab when an overflow item is the current selection. */
-export function getFloatingTabBarDisplayActiveId(
-  logicalActiveId: string,
-  resolved: FloatingTabBarResolved,
-): string {
-  if (resolved.overflowItems.some((o) => o.id === logicalActiveId)) {
-    return resolved.moreItemId
-  }
-  return logicalActiveId
 }

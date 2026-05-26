@@ -111,7 +111,7 @@ function DefaultShortcutIcon({
 
 /**
  * Compact shortcut (circle + label).
- * Figma 76281:68504+ — home shortcuts row; `variant="scaled"` inside {@link ShortcutsCarousel}.
+ * Figma 76281:68504+ — home shortcuts row; `variant="scaled"` inside {@link HomeShortcutsBlock}.
  */
 export function ShortcutItem({
   iconSrc,

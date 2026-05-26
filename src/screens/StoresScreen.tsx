@@ -1,39 +1,51 @@
-import { useMemo } from 'react'
-import { Banner } from '../components/Banner'
-import { CardDivider } from '../components/CardDivider'
-import { CarouselItem } from '../components/CarouselItem'
-import { Categories } from '../components/Categories'
-import { FloatingTabBar } from '../components/FloatingTabBar'
-import { MiniBannerCarousel } from '../components/MiniBannerCarousel'
-import { MoreToExplore } from '../components/MoreToExplore'
-import { ProviderHeader } from '../components/ProviderHeader'
-import { QuickNav } from '../components/QuickNav'
-import { resolveFloatingTabBarModel } from '../config/floatingTabBarConfig'
-import { STORES_FLOATING_TAB_BAR_ITEMS } from './storesFloatingTabBarItems'
+import {
+  allGroceryStores,
+  bakerySweets,
+  boltPlusDiscounts,
+} from '../lib/boltFoodTallinnStoresContent'
+import { HomeShortcutsBlock } from '../sections/home'
+import {
+  StorePromoBannerBlock,
+  StoresAllStoresBlock,
+  StoresFeaturedStoreBlock,
+  StoresPopularGroceriesBlock,
+  StoresProviderSectionBlock,
+  StoresTopBlock,
+} from '../sections/stores'
 
+/**
+ * Stores hub — Figma [77303:218309](https://www.figma.com/design/hTmBFTYdlynOcGtxFnHIbM/Consumer---in-progress?node-id=77303-218309).
+ */
 export function StoresScreen() {
-  const resolved = useMemo(() => resolveFloatingTabBarModel(STORES_FLOATING_TAB_BAR_ITEMS), [])
-
   return (
-    <div className="relative min-h-svh w-full pb-[calc(110px+env(safe-area-inset-bottom,0px))]">
-      <div className="flex flex-col gap-0">
-        <ProviderHeader />
-        <MiniBannerCarousel />
-        <CardDivider />
-        <QuickNav />
-        <Banner />
-        <CarouselItem title="Order again" />
-        <CarouselItem title="Most popular" />
-        <CarouselItem title="Save me" />
-        <MoreToExplore />
-        <Categories />
-      </div>
-
-      {resolved.barItems.length > 0 && (
-        <div className="fixed inset-x-0 bottom-0 z-40 w-full">
-          <FloatingTabBar items={resolved.barItems} defaultActiveId="store" />
-        </div>
-      )}
+    <div
+      className="home-page bolt-font-base relative min-h-svh w-full bg-[var(--color-layer-floor-0)] pb-[calc(110px+env(safe-area-inset-bottom,0px))] text-[var(--color-content-primary)]"
+      data-node-id="77303:218309"
+    >
+      <StoresTopBlock />
+      <HomeShortcutsBlock />
+      <StorePromoBannerBlock />
+      <StoresPopularGroceriesBlock />
+      <StoresFeaturedStoreBlock />
+      <StoresProviderSectionBlock
+        nodeId="77303:218319"
+        title="All Grocery Stores"
+        ariaLabel="All Grocery Stores"
+        items={allGroceryStores}
+      />
+      <StoresProviderSectionBlock
+        nodeId="77303:218322"
+        title="Bolt Plus discounts"
+        ariaLabel="Bolt Plus discounts"
+        items={boltPlusDiscounts}
+      />
+      <StoresProviderSectionBlock
+        nodeId="77303:218325"
+        title="Bakery & sweets"
+        ariaLabel="Bakery and sweets"
+        items={bakerySweets}
+      />
+      <StoresAllStoresBlock />
     </div>
   )
 }

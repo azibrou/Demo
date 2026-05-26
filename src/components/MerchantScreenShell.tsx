@@ -1,0 +1,71 @@
+import { useEffect, useLayoutEffect, useMemo, useState, type ReactNode } from 'react'
+import { createPortal } from 'react-dom'
+import { useLocation } from 'react-router-dom'
+import { resolveMerchantFloatingTabBarModel } from '../config/merchantFloatingTabBarConfig'
+import { MERCHANT_FLOATING_TAB_BAR_ITEMS } from '../screens/merchantFloatingTabBarItems'
+import { MerchantFTabBar } from './MerchantFTabBar'
+
+type MerchantScreenShellProps = {
+  children: ReactNode
+}
+
+/**
+ * Merchant page wrapper — {@link MerchantFTabBar} portaled to `document.body` so it stays
+ * viewport-fixed on iOS stack inner routes (transform on the slide panel breaks `position: fixed`).
+ */
+export function MerchantScreenShell({ children }: MerchantScreenShellProps) {
+  const location = useLocation()
+  const { barItems } = useMemo(
+    () => resolveMerchantFloatingTabBarModel(MERCHANT_FLOATING_TAB_BAR_ITEMS),
+    [],
+  )
+  const [activeTabId, setActiveTabId] = useState(() => barItems[0]?.id ?? 'venue')
+  const [portalReady, setPortalReady] = useState(false)
+  const [chromeEnter, setChromeEnter] = useState(false)
+
+  useEffect(() => {
+    setPortalReady(true)
+    document.documentElement.classList.add('merchant-ftb-active')
+    return () => document.documentElement.classList.remove('merchant-ftb-active')
+  }, [])
+
+  useLayoutEffect(() => {
+    if (!portalReady) return
+    setChromeEnter(false)
+    let inner = 0
+    const outer = requestAnimationFrame(() => {
+      inner = requestAnimationFrame(() => setChromeEnter(true))
+    })
+    return () => {
+      cancelAnimationFrame(outer)
+      cancelAnimationFrame(inner)
+    }
+  }, [portalReady, location.key])
+
+  const tabBarChrome = (
+    <div
+      key={location.key}
+      className={[
+        'merchant-ftb-chrome pointer-events-none fixed inset-x-0 bottom-0 z-50 w-full max-w-full overflow-visible',
+        chromeEnter ? 'merchant-ftb-chrome--enter' : 'merchant-ftb-chrome--pre-enter',
+        'motion-reduce:animate-none',
+      ].join(' ')}
+    >
+      <div className="pointer-events-auto">
+        <MerchantFTabBar
+          items={barItems}
+          activeId={activeTabId}
+          onTabChange={setActiveTabId}
+          ariaLabel="Merchant navigation"
+        />
+      </div>
+    </div>
+  )
+
+  return (
+    <>
+      {children}
+      {portalReady ? createPortal(tabBarChrome, document.body) : null}
+    </>
+  )
+}

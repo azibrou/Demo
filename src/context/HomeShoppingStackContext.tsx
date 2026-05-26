@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react'
 
 export type HomeShoppingStackContextValue = {
-  /** Mobile stack only: animate list off-screen then navigate back. */
+  /** Mobile stack only: slide the inner screen off, then navigate back. */
   requestSlideOutClose: () => void
 }
 

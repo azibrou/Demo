@@ -1,56 +1,17 @@
 import { useId } from 'react'
-import { retailSnippetProducts, retailSnippetStore } from '../lib/boltFoodTallinnHomeContent'
+import { useNavigate } from 'react-router-dom'
+import {
+  retailSnippetProducts,
+  retailSnippetStore,
+  type RetailSnippetProduct,
+} from '../lib/boltFoodTallinnHomeContent'
+import type { RetailSnippetHeaderStore } from './RetailSnippetHeader'
 import { design } from '../lib/figmaDesignAssets'
 import { CarouselGridItem } from './CarouselGridItem'
 import { CarouselItem } from './CarouselItem'
+import { RetailSnippetHeader } from './RetailSnippetHeader'
 
-const rsp = design.retailSnippetProvider
 const c = design.carousel
-
-function RetailSnippetProviderHeader({ titleId }: { titleId: string }) {
-  const s = retailSnippetStore
-  return (
-    <div className="home-gutter-inline w-full shrink-0">
-      <div className="flex min-w-0 items-center gap-3">
-        <div className="relative size-12 shrink-0 overflow-hidden rounded-lg bg-white">
-          <img alt="" src={s.imageSrc} className="pointer-events-none size-full object-cover" />
-          <div className="pointer-events-none absolute inset-0 bg-[rgba(0,45,30,0.06)]" aria-hidden />
-        </div>
-        <div className="flex min-w-0 flex-1 flex-col gap-1 overflow-hidden">
-          <p
-            id={titleId}
-            className="bolt-font-heading-xs-accent truncate text-[var(--color-content-primary)]"
-          >
-            {s.name}
-          </p>
-          <div className="flex min-w-0 flex-wrap items-center gap-2 text-[var(--color-content-primary)]">
-            <span className="inline-flex shrink-0 items-center gap-1">
-              <img alt="" src={rsp.bikeDelivery} className="size-3 shrink-0" />
-              <span className="bolt-font-body-s-regular whitespace-nowrap">{s.deliveryPrice}</span>
-            </span>
-            <span className="inline-flex shrink-0 items-center gap-1">
-              <img alt="" src={rsp.timer} className="size-3 shrink-0" />
-              <span className="bolt-font-body-xs-regular whitespace-nowrap">{s.eta}</span>
-            </span>
-            <span className="inline-flex min-w-0 max-w-full items-baseline gap-1">
-              <span className="relative size-3 shrink-0 self-center" aria-hidden>
-                <img
-                  alt=""
-                  src={rsp.ratingStar}
-                  className="pointer-events-none absolute inset-0 size-full max-w-none object-contain"
-                />
-              </span>
-              <span className="bolt-font-body-xs-regular flex min-w-0 items-baseline gap-0.5">
-                <span className="shrink-0 whitespace-nowrap">{s.rating}</span>
-                <span className="shrink-0 text-[var(--color-content-secondary)]">{s.reviews}</span>
-              </span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 function RetailSnippetViewMore() {
   return (
@@ -76,24 +37,37 @@ function RetailSnippetViewMore() {
   )
 }
 
+export type RetailSnippetProps = {
+  store?: RetailSnippetHeaderStore
+  products?: readonly RetailSnippetProduct[]
+}
+
 /**
- * Figma [74923:235051](https://www.figma.com/design/hTmBFTYdlynOcGtxFnHIbM/Consumer---in-progress?node-id=74923-235051) — retail-snippet:
- * compact provider row + horizontally scrolling product tiles using {@link CarouselItem} and {@link CarouselGridItem}.
- * Provider header: [74930:235390](https://www.figma.com/design/hTmBFTYdlynOcGtxFnHIbM/Consumer---in-progress?node-id=74930-235390).
- * Live store line and product copy come from {@link retailSnippetStore} / {@link retailSnippetProducts} in
- * `boltFoodTallinnHomeContent.ts` (Bolt Market Toompuiestee, `provider_id` 28032).
+ * Figma retail-snippet — provider Snippet header [77237:148102](https://www.figma.com/design/hTmBFTYdlynOcGtxFnHIbM/Consumer---in-progress?node-id=77237-148102)
+ * + horizontally scrolling product tiles ({@link CarouselGridItem}).
+ * Live copy from {@link retailSnippetStore} / {@link retailSnippetProducts} (Bolt Market Toompuiestee).
  */
-export function RetailSnippet() {
+export function RetailSnippet({
+  store = retailSnippetStore,
+  products = retailSnippetProducts,
+}: RetailSnippetProps) {
+  const navigate = useNavigate()
   const titleId = `retail-snippet-title-${useId().replace(/:/g, '')}`
 
   return (
     <CarouselItem
-      title={retailSnippetStore.name}
+      title={store.name}
       titleId={titleId}
       scaledTrack
-      topSlot={<RetailSnippetProviderHeader titleId={titleId} />}
+      topSlot={
+        <RetailSnippetHeader
+          store={store}
+          titleId={titleId}
+          onHeaderClick={() => navigate('/store-merchant')}
+        />
+      }
     >
-      {retailSnippetProducts.map((p) =>
+      {products.map((p) =>
         p.variant === 'discount' ? (
           <CarouselGridItem
             key={p.id}

@@ -1,21 +1,172 @@
 import {
+  createContext,
   useCallback,
+  useContext,
   useEffect,
   useLayoutEffect,
   useMemo,
   useRef,
   useState,
   type ReactNode,
+  type RefObject,
   type TransitionEvent,
 } from 'react'
-import { Outlet, useLocation, useNavigate, type NavigateFunction } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate, useOutlet, type NavigateFunction } from 'react-router-dom'
+import { resolveFloatingTabBarModel } from '../config/floatingTabBarConfig'
 import { BasketFabProvider } from '../context/BasketFabContext'
 import { HomeShoppingStackContext } from '../context/HomeShoppingStackContext'
+import { design } from '../lib/figmaDesignAssets'
+import { DineOutScreen } from '../screens/DineOutScreen'
+import { HomeScreen } from '../screens/HomeScreen'
+import { HOME_FLOATING_TAB_BAR_ITEMS } from '../screens/homeFloatingTabBarItems'
 import { StoresScreen } from '../screens/StoresScreen'
+import { FloatingTabBar } from './FloatingTabBar'
+import { TabAction } from './TabAction'
 
-const DURATION_MS = 150
-const EASE = 'ease-out'
+/** iOS UINavigationController default interactive transition duration. */
+const STACK_DURATION_MS = 350
+const STACK_EASE = 'cubic-bezier(0.32, 0.72, 0, 1)'
+const HUB_FADE_MS = 300
 const MOBILE_STACK_MQ = '(max-width: 640px)'
+
+const INNER_PATH_SEGMENTS = new Set(['shopping-list', 'store-merchant', 'restaurant'])
+
+const HUB_TAB_PATHS: Record<string, string | undefined> = {
+  home: '/',
+  store: '/stores',
+  dineout: '/dineout',
+}
+
+function isHubPath(pathname: string): boolean {
+  const last = pathname.split('/').filter(Boolean).pop()
+  return last === undefined || last === 'stores' || last === 'dineout'
+}
+
+function isInnerPath(pathname: string): boolean {
+  const last = pathname.split('/').filter(Boolean).pop()
+  return last != null && INNER_PATH_SEGMENTS.has(last)
+}
+
+function hubTabIdFromPathname(pathname: string): string {
+  const last = pathname.split('/').filter(Boolean).pop()
+  if (last === 'stores') return 'store'
+  if (last === 'dineout') return 'dineout'
+  return 'home'
+}
+
+function useHubFadeLeavingCleanup(layers: HubFadeLayer[], removeLeaving: (key: string) => void) {
+  useEffect(() => {
+    const leaving = layers.filter((l) => l.state === 'leaving')
+    if (leaving.length === 0) return
+    const timeout = window.setTimeout(() => {
+      for (const layer of leaving) removeLeaving(layer.key)
+    }, HUB_FADE_MS + 50)
+    return () => clearTimeout(timeout)
+  }, [layers, removeLeaving])
+}
+
+type HubFadeLayer = {
+  key: string
+  node: ReactNode
+  state: 'entering' | 'visible' | 'leaving'
+}
+
+const HubScrollRefContext = createContext<RefObject<HTMLDivElement | null> | null>(null)
+
+/**
+ * Cross-fades eater hub tabs on switch (300ms ease-out). Other routes render without fade.
+ */
+function EaterHubFadeOutlet() {
+  const hubScrollRef = useContext(HubScrollRefContext)
+  const location = useLocation()
+  const outlet = useOutlet()
+
+  const prevPathRef = useRef(location.pathname)
+  const prevKeyRef = useRef(location.key)
+  const prevOutletRef = useRef(outlet)
+
+  const [layers, setLayers] = useState<HubFadeLayer[]>([
+    { key: location.key, node: outlet, state: 'visible' },
+  ])
+
+  const removeLeaving = useCallback((key: string) => {
+    setLayers((prev) => {
+      const next = prev.filter((l) => l.key !== key)
+      return next.length > 0 ? next : prev
+    })
+  }, [])
+
+  useHubFadeLeavingCleanup(layers, removeLeaving)
+
+  useLayoutEffect(() => {
+    const prevPath = prevPathRef.current
+    const prevKey = prevKeyRef.current
+    const prevOutlet = prevOutletRef.current
+    const nextPath = location.pathname
+    const nextKey = location.key
+
+    const hubSwitch =
+      isHubPath(prevPath) &&
+      isHubPath(nextPath) &&
+      prevPath !== nextPath &&
+      nextKey !== prevKey
+
+    if (hubSwitch) {
+      hubScrollRef?.current?.scrollTo(0, 0)
+      setLayers([
+        { key: prevKey, node: prevOutlet, state: 'leaving' },
+        { key: nextKey, node: outlet, state: 'entering' },
+      ])
+      let inner = 0
+      const outer = requestAnimationFrame(() => {
+        inner = requestAnimationFrame(() => {
+          setLayers([
+            { key: prevKey, node: prevOutlet, state: 'leaving' },
+            { key: nextKey, node: outlet, state: 'visible' },
+          ])
+        })
+      })
+      prevPathRef.current = nextPath
+      prevKeyRef.current = nextKey
+      prevOutletRef.current = outlet
+      return () => {
+        cancelAnimationFrame(outer)
+        cancelAnimationFrame(inner)
+      }
+    }
+
+    setLayers([{ key: nextKey, node: outlet, state: 'visible' }])
+    prevPathRef.current = nextPath
+    prevKeyRef.current = nextKey
+    prevOutletRef.current = outlet
+  }, [location.pathname, location.key, outlet, hubScrollRef])
+
+  if (!isHubPath(location.pathname)) {
+    return <>{outlet}</>
+  }
+
+  const isCrossfading = layers.length > 1
+
+  return (
+    <div className={['eater-hub-fade', isCrossfading ? 'eater-hub-fade--active' : ''].filter(Boolean).join(' ')}>
+      {layers.map((layer) => (
+        <div
+          key={layer.key}
+          className="eater-hub-fade__layer motion-reduce:transition-none"
+          data-state={layer.state}
+          onTransitionEnd={(e: TransitionEvent<HTMLDivElement>) => {
+            if (e.propertyName !== 'opacity') return
+            if (e.target !== e.currentTarget) return
+            if (layer.state !== 'leaving') return
+            removeLeaving(layer.key)
+          }}
+        >
+          {layer.node}
+        </div>
+      ))}
+    </div>
+  )
+}
 
 function useMobileStackEnabled() {
   const get = useCallback(() => {
@@ -33,43 +184,108 @@ function useMobileStackEnabled() {
   return narrow
 }
 
-function isShoppingListPath(pathname: string) {
-  const last = pathname.split('/').filter(Boolean).pop()
-  return last === 'shopping-list'
+/** Frozen hub screen shown under the pushed inner route during iOS stack transitions. */
+function HubStackUnderlay({ pathname }: { pathname: string }) {
+  const tabId = hubTabIdFromPathname(pathname)
+  if (tabId === 'store') return <StoresScreen />
+  if (tabId === 'dineout') return <DineOutScreen />
+  return <HomeScreen />
+}
+
+/** Persists home tab bar across hub routes so enter animation runs only on layout mount. */
+const hubSearchTabAction = <TabAction iconSrc={design.tabAction.search} ariaLabel="Search" />
+
+function HubLayoutShell({ children }: { children: ReactNode }) {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const resolved = useMemo(() => resolveFloatingTabBarModel(HOME_FLOATING_TAB_BAR_ITEMS), [])
+  const showTabBar = isHubPath(location.pathname)
+  const tabId = hubTabIdFromPathname(location.pathname)
+  const ariaLabel = tabId === 'store' ? 'Stores' : tabId === 'dineout' ? 'DineOut' : 'Home'
+
+  const onHubTabChange = useCallback(
+    (id: string) => {
+      const path = HUB_TAB_PATHS[id]
+      if (path != null) navigate(path)
+    },
+    [navigate],
+  )
+
+  useEffect(() => {
+    document.documentElement.classList.add('eater-hub-active')
+    return () => document.documentElement.classList.remove('eater-hub-active')
+  }, [])
+
+  useLayoutEffect(() => {
+    if (!isHubPath(location.pathname)) return
+    scrollRef.current?.scrollTo(0, 0)
+  }, [location.pathname, location.key])
+
+  return (
+    <BasketFabProvider>
+      <HomeShoppingStackContext.Provider value={null}>
+        <HubScrollRefContext.Provider value={scrollRef}>
+          <div className="eater-hub-shell">
+            <div ref={scrollRef} className="eater-hub-scroll">
+              {children}
+            </div>
+            {showTabBar && resolved.barItems.length > 0 ? (
+              <div className="eater-hub-shell__tabbar fixed inset-x-0 bottom-0 z-40 w-full max-w-full overflow-visible">
+                <FloatingTabBar
+                  items={resolved.barItems}
+                  activeId={tabId}
+                  onTabChange={onHubTabChange}
+                  ariaLabel={ariaLabel}
+                  tabActions={hubSearchTabAction}
+                />
+              </div>
+            ) : null}
+          </div>
+        </HubScrollRefContext.Provider>
+      </HomeShoppingStackContext.Provider>
+    </BasketFabProvider>
+  )
 }
 
 type SlidePhase = 'entering' | 'open' | 'exiting'
 
+type StackSlideSurfaceProps = {
+  children: ReactNode
+  navigate: NavigateFunction
+  slidePhase: SlidePhase
+  onSlidePhaseChange: (phase: SlidePhase) => void
+}
+
 /**
- * Slide-in (from right) / slide-out (to right) for shopping list on narrow viewports.
- * Remounted via `key` from parent so enter animation state always starts at `entering`.
+ * Slide-in (from right) / slide-out (to right) for inner routes on narrow viewports.
+ * Remounted via `key` from parent so enter animation always starts at `entering`.
  */
-function ShoppingListSlideSurface({ children, navigate }: { children: ReactNode; navigate: NavigateFunction }) {
-  const [slide, setSlide] = useState<SlidePhase>('entering')
-  const slideRef = useRef(slide)
+function StackSlideSurface({ children, navigate, slidePhase, onSlidePhaseChange }: StackSlideSurfaceProps) {
+  const slideRef = useRef(slidePhase)
 
   useEffect(() => {
-    slideRef.current = slide
-  }, [slide])
+    slideRef.current = slidePhase
+  }, [slidePhase])
 
   useLayoutEffect(() => {
     let inner = 0
     const outer = requestAnimationFrame(() => {
-      inner = requestAnimationFrame(() => setSlide('open'))
+      inner = requestAnimationFrame(() => onSlidePhaseChange('open'))
     })
     return () => {
       cancelAnimationFrame(outer)
       cancelAnimationFrame(inner)
     }
-  }, [])
+  }, [onSlidePhaseChange])
 
   const requestSlideOutClose = useCallback(() => {
     if (slideRef.current === 'open') {
-      setSlide('exiting')
+      onSlidePhaseChange('exiting')
       return
     }
     navigate(-1)
-  }, [navigate])
+  }, [navigate, onSlidePhaseChange])
 
   const ctxValue = useMemo(() => ({ requestSlideOutClose }), [requestSlideOutClose])
 
@@ -83,15 +299,15 @@ function ShoppingListSlideSurface({ children, navigate }: { children: ReactNode;
     [navigate],
   )
 
-  const panelTransform = slide === 'open' ? 'translateX(0)' : 'translateX(100%)'
+  const panelTransform = slidePhase === 'open' ? 'translateX(0)' : 'translateX(100%)'
 
   return (
     <HomeShoppingStackContext.Provider value={ctxValue}>
       <div
-        className="relative z-10 min-h-svh w-full max-w-full bg-white will-change-transform"
+        className="eater-ios-stack__panel motion-reduce:transition-none"
         style={{
           transform: panelTransform,
-          transition: `transform ${DURATION_MS}ms ${EASE}`,
+          transition: `transform ${STACK_DURATION_MS}ms ${STACK_EASE}`,
         }}
         onTransitionEnd={onPanelTransitionEnd}
       >
@@ -101,45 +317,61 @@ function ShoppingListSlideSurface({ children, navigate }: { children: ReactNode;
   )
 }
 
+type EaterIosStackProps = {
+  underlayPath: string
+  navigate: NavigateFunction
+  children: ReactNode
+}
+
+function EaterIosStack({ underlayPath, navigate, children }: EaterIosStackProps) {
+  const [slidePhase, setSlidePhase] = useState<SlidePhase>('entering')
+
+  return (
+    <div className="eater-ios-stack" data-slide={slidePhase}>
+      <div className="eater-ios-stack__underlay motion-reduce:transition-none" aria-hidden>
+        <HubStackUnderlay pathname={underlayPath} />
+      </div>
+      <StackSlideSurface navigate={navigate} slidePhase={slidePhase} onSlidePhaseChange={setSlidePhase}>
+        {children}
+      </StackSlideSurface>
+    </div>
+  )
+}
+
 export function HomeShoppingStackLayout() {
   const location = useLocation()
   const navigate = useNavigate()
   const narrow = useMobileStackEnabled()
-  const isList = isShoppingListPath(location.pathname)
+  const inner = isInnerPath(location.pathname)
 
-  if (!narrow) {
-    return (
-      <BasketFabProvider>
-        <HomeShoppingStackContext.Provider value={null}>
-          <Outlet />
-        </HomeShoppingStackContext.Provider>
-      </BasketFabProvider>
-    )
-  }
+  const lastHubPathRef = useRef(location.pathname)
+  const [stackUnderlayPath, setStackUnderlayPath] = useState(() =>
+    isHubPath(location.pathname) ? location.pathname : '/',
+  )
 
-  if (!isList) {
+  useLayoutEffect(() => {
+    if (isHubPath(location.pathname)) {
+      lastHubPathRef.current = location.pathname
+      return
+    }
+    if (isInnerPath(location.pathname)) {
+      setStackUnderlayPath(lastHubPathRef.current)
+    }
+  }, [location.pathname])
+
+  if (!narrow || !inner) {
     return (
-      <BasketFabProvider>
-        <HomeShoppingStackContext.Provider value={null}>
-          <Outlet />
-        </HomeShoppingStackContext.Provider>
-      </BasketFabProvider>
+      <HubLayoutShell>
+        <EaterHubFadeOutlet />
+      </HubLayoutShell>
     )
   }
 
   return (
-    <BasketFabProvider>
-    <div className="relative min-h-svh w-full overflow-x-hidden bg-white">
-      <div
-        className="pointer-events-none absolute inset-0 z-0 min-h-svh select-none overflow-hidden bg-white"
-        aria-hidden
-      >
-        <StoresScreen />
-      </div>
-      <ShoppingListSlideSurface key={location.key} navigate={navigate}>
+    <HubLayoutShell>
+      <EaterIosStack key={location.key} underlayPath={stackUnderlayPath} navigate={navigate}>
         <Outlet />
-      </ShoppingListSlideSurface>
-    </div>
-    </BasketFabProvider>
+      </EaterIosStack>
+    </HubLayoutShell>
   )
 }

@@ -1,0 +1,48 @@
+---
+description: WideBasketFab must ALWAYS expand right→left (RTL). Pin right edge; slot width drives tween.
+globs: src/components/WideBasketFab.tsx,src/components/MerchantFTabBar.tsx,src/css/styles.css,src/lib/wideBasketFabExpand.ts
+alwaysApply: false
+---
+
+# WideBasketFab — RTL expand (mandatory)
+
+## Rule
+
+**WideBasketFab ALWAYS expands from right to left.** The right edge stays fixed; only the left edge moves.
+
+## In merchant tab bar
+
+Layout (last flex child = right edge pinned):
+
+| Phase | Row layout |
+|-------|------------|
+| loading / collapsed | `[pill flex-1 · search 56px · slot 56px]` |
+| default (expanded) | `[solo pill 56px · search 56px · slot flex-1]` |
+
+Implementation:
+
+1. **Basket slot** — `margin-inline-start: auto` + tween `flex`/`width` (150ms ease-out). This pins the right edge; width grows **left**.
+2. **FAB** (`.wide-basket-fab--in-tab-bar`) — `position: absolute !important; inset-inline-end: 0; width: 100% !important`.
+3. **Do NOT** tween FAB `width` in the tab bar — only `padding-inline`.
+4. **Do NOT** use `margin-inline-start: auto` on the FAB button (slot only).
+
+## Why flex-grow alone fails
+
+A flex item without `margin-inline-start: auto` grows to the **right** (main axis). RTL expand requires `margin-inline-start: auto` on the **slot** so extra width extends leftward.
+
+Canonical constants: `src/lib/wideBasketFabExpand.ts`.
+
+## Component
+
+`WideBasketFab` root button must expose:
+
+- `data-expand-direction="rtl"`
+- `data-expand-anchor="right"`
+
+## Tests
+
+Run `npm test` — `wideBasketFabExpand` + `merchantFloatingTabBarLayout` contracts must pass before marking done.
+
+## Common mistake
+
+Animating FAB `width` from `56px` → `100%` without `right: 0` anchoring grows from the **left** — wrong.

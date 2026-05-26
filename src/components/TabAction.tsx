@@ -1,6 +1,6 @@
 import { FLOATING_CHROME_SHADOW_CLASS } from '../lib/floatingChromeShadow'
 
-export const TAB_ACTION_SIZE_PX = 60
+export const TAB_ACTION_SIZE_PX = 56
 
 export type TabActionProps = {
   iconSrc: string
@@ -20,7 +20,7 @@ export function TabAction({ iconSrc, ariaLabel, onClick, className = '' }: TabAc
       onClick={onClick}
       className={[
         FLOATING_CHROME_SHADOW_CLASS,
-        'flex size-[60px] shrink-0 items-center justify-center rounded-full bg-white outline-none',
+        'flex size-[56px] shrink-0 items-center justify-center rounded-full bg-white outline-none',
         'ring-[var(--color-special-brand-alt)]/20 focus-visible:ring-2',
         className,
       ].join(' ')}

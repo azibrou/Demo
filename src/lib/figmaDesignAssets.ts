@@ -22,6 +22,13 @@ export const design = {
   /** Figma 76330:68863 — basket FAB icon (white on green FAB). */
   basketFab: {
     basket: figma('502b0b9ec7774b82bf32d3091cdb907c.svg'),
+    /** Figma 77550:93488 — loading spinner (24×24 in collapsed FAB). */
+    loader: figma('0a3cfa588c704454ab19e242b992b7f9.svg'),
+  },
+  /** Wide merchant basket FAB — Figma 77550:93514 (basket), 77718:108978 (spinner). */
+  wideBasketFab: {
+    basket: figma('8790d5fa52c14adc82982dba36f50a19.svg'),
+    loader: figma('674b5047b79043a78585ff8d8106fe75.svg'),
   },
   /** Node 70408:1768062 — Consumer ProviderHeader (Figma) */
   providerHeader: {
@@ -38,10 +45,10 @@ export const design = {
     bikeDelivery: figma('fdd557a01ca2b4ce6995a5fac02a2dd3137e6baa.svg'),
     timer: figma('4152dd9e851645f0022ebf46f55ce17bb7936198.svg'),
   },
-  /** Node 70416:856494 — Card divider (caps + stretch bar) */
+  /** CardDivider — Figma 77857:92979. Refresh via `npm run figma:assets`. */
   cardDivider: {
-    leftCap: figma('2668217b522abe9c4d0a63078ceab5dd62e5b348.svg'),
-    rightCap: figma('12b36c288c8bfa8a53cc7cfed806ac28bf6b20b8.svg'),
+    leftCap: figma('7141b9d1a8f340223fc6796ab0319a0127f687c2.svg'),
+    rightCap: figma('3611b87fe23b8a63aa1ee11492fac91d197e5b4e.svg'),
   },
   /** Node 70416:856462 — QuickNav */
   quickNav: {
@@ -102,6 +109,106 @@ export const design = {
     search: figma('baa3b78a6cc04bd49e06df4dcaf11263.svg'),
   },
   /**
+   * Merchant floating tab bar — Figma 77237:148679 / 148754 / 148713.
+   * Refresh via `npm run figma:sync`.
+   */
+  merchantFloatingTabBar: {
+    venue: {
+      default: figma('77ac5126f0174e76be05f139bbc45051.svg'),
+      selected: figma('77ac5126f0174e76be05f139bbc45051.svg'),
+    },
+    isles: {
+      default: figma('f986f75e0f8d4936b32ad3da4485f464.svg'),
+      selected: figma('f986f75e0f8d4936b32ad3da4485f464.svg'),
+    },
+    list: {
+      default: figma('049e8d19903d4a689d6e62c8d797ba48.svg'),
+      selected: figma('049e8d19903d4a689d6e62c8d797ba48.svg'),
+    },
+    search: figma('91d28e75e71f4238b5e231b7c4718380.svg'),
+    basketExpanded: figma('8e90a2751b5944bd92fe997b0417743e.svg'),
+    homeIndicator: figma('f32a6ab0be790c7e3a3e2581374d651130d2bced.svg'),
+  },
+  /**
+   * BannerCarousel slides — Figma 77842:552848 / 77842:552851.
+   * Refresh via `npm run figma:sync`.
+   */
+  bannerCarousel: {
+    slideA: figma('c330424f7c1c84c9765587f0221b9093abbeaade.png'),
+    slideB: figma('c7a3f4fdcce2c176e2aa7d0b620d3276fdf97edc.png'),
+  },
+  /**
+   * Stores hub promo banners — Figma 77303:218315 (BM Banner + Bolt Plus).
+   * Refresh via `npm run figma:sync`.
+   */
+  storesHubPromo: {
+    mosaicTiles: [
+      figma('f9401e58b97393ae42a30a5294455157f100c58b.png'),
+      figma('5e200193354b9c659bff15d23c8f20d1e0ecdfb7.png'),
+      figma('a331565945546fc80feb80c4d2fd8fbfe8ae4243.png'),
+      figma('d30c6716246bb5b62e19aeb7be6529bbba84f8e7.png'),
+    ],
+    boltPlusHero: figma('ea87fefc8f922b846e9d1649eca44e53619848d3.png'),
+    boltPlusLogoUnion: figma('d49fea7082ffd654a29c5c50d34c976b0b669275.svg'),
+    boltPlusLogoGroup: figma('47448f3332c6d609c94175700b1f44997f27ea46.svg'),
+  },
+  /**
+   * Store merchant GroceryHome — Figma 77237:150610 / 151500.
+   * Refresh via `npm run figma:sync`.
+   */
+  storeMerchant: {
+    hero: figma('5823075e34d24ce5bfcd39e48e93f08f.png'),
+    logo: figma('09efda5741964126a57455f135e5f3aa.png'),
+    arrowLeft: figma('511560e2cd954e7cbc56b7d47b6363d19.svg'),
+    shareIos: figma('8814ba82c78345bcb7335442adc42a07.svg'),
+    heartOutline: figma('86823908271643a8933486085d217db1.svg'),
+    divider: figma('4db12b061c83433bb94ddec4796955cf.svg'),
+    dividerAlt: figma('aa99708eaaad4cef6e1b842bb1b0102d.svg'),
+    ratingStar: figma('5e7060d2d31249a7a5e3f8fd85612057e.svg'),
+    bikeDelivery: figma('226fcf7c7aac456589bda2670331dbeb.svg'),
+    timer: figma('e77e98931cb8472581e48dc2fdf066ff.svg'),
+    bannerDiscount: figma('f658dba0f8344ad4abd6bb4ecf4e6ba0.png'),
+    bannerDelivery: figma('29b9a9e8dcf04652baeafddcde11d582.png'),
+    promoBanner: figma('1feba0c5a85a41bdb722255935d99d3b.png'),
+  },
+  /**
+   * Store TopSection — Figma 77303:218308. Refresh via `npm run figma:sync`.
+   */
+  topSectionStore: {
+    hero: figma('d11d9b710dce44df98d9b50def822d8e.png'),
+    logo: figma('bb5d2762434a49fcb1e1d82442f2af84.png'),
+    arrowLeft: figma('7937d90c2c3644338c1a5ec88aa1d66f.svg'),
+    shareIos: figma('cd3e0e21c0234614b0758d430408afcb.svg'),
+    heartOutline: figma('df5e7ae0cc8c4cd1bc1d15341264a87c.svg'),
+    chevronRight: figma('9db1af267adb43b1839804ca532fddc5.svg'),
+    divider: figma('adb5c008ed134052aec2c6f7c6a81e8e.svg'),
+    dividerAlt: figma('9f42788368dd45ae887eba79a6282cbb.svg'),
+    ratingStar: figma('e95da0397a1e4208bf4ba7c616c7deda.svg'),
+    bikeDelivery: figma('9ddee1d7627c4c49bf78d5110af08194.svg'),
+    timer: figma('6472e44360444f998a84e91c3e979d0f.svg'),
+  },
+  /**
+   * Restaurant TopSection — Figma 77303:218235. Refresh via `npm run figma:sync`.
+   */
+  topSectionRestaurant: {
+    hero: figma('0badf44655b34842bbd189000200e987.png'),
+    arrowLeft: figma('f3af9a0d77ae49d3bc880499ec3aacda.svg'),
+    shareIos: figma('8cc8dc4ecdaa465898608dd2ac2d753f.svg'),
+    heartOutline: figma('38192fa0ac9a465a841ddfa5ad6ca2b4.svg'),
+    chevronRight: figma('9db1af267adb43b1839804ca532fddc5.svg'),
+    divider: figma('faaa8d12959b45fb8a2b2d523d68b677.svg'),
+    dividerAlt: figma('3b0667e530e24a00b29c451d54b6213a.svg'),
+    ratingStar: figma('952e7608b96d4e2ba8c2c0886e9a0ebe.svg'),
+    bikeDelivery: figma('bc216cb19e904077b8ee23bff7a4a982.svg'),
+    timer: figma('27e42070e94a49c6bcb7033096f39ae9.svg'),
+  },
+  /** Restaurant menu row assets — Figma 77237:157049 et al. */
+  restaurantMerchant: {
+    menuItemImage: figma('979e666ffe0a4719aa7c059d207bb994.png'),
+    menuItemImageAlt: figma('18fac8e4a92140b2a288214b79599ecd.png'),
+    tagSpicy: figma('147386f6ac174a6ca592c023dfb6b1de.svg'),
+  },
+  /**
    * [Eater] Home — Figma 74916:23389 (hero, search, thumbnails M/XS/L, shortcuts).
    * Assets from Figma MCP; refresh with `npm run figma:assets` when hashes change.
    */
@@ -127,19 +234,23 @@ export const design = {
     searchIcon: figma('16d1cc0e672140a0bb44d24db377d068.svg'),
     filtersIcon: figma('7a881368c0cc4d979f9a0564865ba57b.svg'),
   },
+  /** Figma 77857:525189 — [Eater] save-btn heart (ThumbnailM/L favorite). */
+  eaterSaveBtn: {
+    heart: figma('2c2fe8c2adab3abdcf334211f793273699a9b669.svg'),
+  },
   /** Figma 76330:71602 — ThumbnailM meta + overlay icons. */
   thumbnailM: {
     bikeDelivery: figma('1bc903fbf59945b791fa1aef041a4d4c.svg'),
     timer: figma('59d5ed0197514d2d86b5c58844d79dcb.svg'),
     ratingStar: figma('b88da32a312648e19465442b8187cf60.svg'),
-    heart: figma('05b798f7b7b54b0ba7c381acd6b9a505.svg'),
+    heart: figma('2c2fe8c2adab3abdcf334211f793273699a9b669.svg'),
   },
   /** Figma 74916:29102 — ThumbnailL (same icon set, 16px meta row). */
   thumbnailL: {
     bikeDelivery: figma('1bc903fbf59945b791fa1aef041a4d4c.svg'),
     timer: figma('59d5ed0197514d2d86b5c58844d79dcb.svg'),
     ratingStar: figma('b88da32a312648e19465442b8187cf60.svg'),
-    heart: figma('05b798f7b7b54b0ba7c381acd6b9a505.svg'),
+    heart: figma('2c2fe8c2adab3abdcf334211f793273699a9b669.svg'),
   },
   eaterHome: {
     heroIllustration: figma('113b2838bc37438abe35e08b2e29fe7f.png'),
@@ -152,19 +263,21 @@ export const design = {
     thumbHeartOutline: figma('2ba6fd546e8449e3986d3c2f6b626f35.svg'),
     thumbRatingStar: figma('1a87a96bc27f41cda303e33949e5cc3a.svg'),
   },
-  /** Node 70394:111124 — MiniBannerCarousel */
+  /** MiniBannerCarousel — Figma 77303:218074. Refresh via `npm run figma:sync`. */
   miniBanner: [
-    figma('bd08000c9d7ea2f0562ef1f96cda595327cd6ed8.png'),
-    figma('92bce29ddf3efc3d9f5897dc318ea24c069cacbb.png'),
-    figma('b4718510e855c9b9e19d0c341898cadcc962a821.png'),
+    figma('be403afb1aa34ada8e139905bdea1a2f.png'),
+    figma('5d56149d5e32450cabed45a1c4e8449e.png'),
+    figma('d443fe450db24624b0d48b0714adc7e3.png'),
+    figma('e802454da68a415a8eedfad189f9bf98.png'),
   ],
   /** Node 70394:111155 — Banner */
   banner: figma('e536f47bf8b1c8722e8a364d6d18f0c5848d8ba0.png'),
-  /** Retail snippet provider row icons (store photo comes from `boltFoodAssets`). */
+  /** Snippet header [77237:148102] — calendar + metadata icons (store photo from `boltFoodAssets`). */
   retailSnippetProvider: {
-    bikeDelivery: figma('fdd557a01ca2b4ce6995a5fac02a2dd3137e6baa.svg'),
-    timer: figma('4152dd9e851645f0022ebf46f55ce17bb7936198.svg'),
-    ratingStar: figma('1a87a96bc27f41cda303e33949e5cc3a.svg'),
+    calendarFilled: figma('15e901c7f3b94cf99f9000503d88f21b.svg'),
+    bikeDelivery: figma('6b8a0517101648f38473528f4179856c.svg'),
+    timer: figma('9b1149b5209d430b813b1f9d75ef1446.svg'),
+    ratingStar: figma('4dc319bcec20447a8a7325522122037a.svg'),
   },
   carousel: {
     product: figma('10f7ad72d225a1d40999e27d0c871bd53b393f69.png'),

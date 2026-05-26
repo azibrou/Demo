@@ -1,10 +1,11 @@
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { ButtonPrimary } from '../components/ButtonPrimary'
+import { CardDivider } from '../components/CardDivider'
 import { ListItem } from '../components/ListItem'
 import { NavBar, NavBarEditButton } from '../components/NavBar'
 import { useBasketFabOptional } from '../context/BasketFabContext'
-import { useHomeShoppingStack } from '../context/HomeShoppingStackContext'
+import { useStackBack } from '../hooks/useStackBack'
 import { design } from '../lib/figmaDesignAssets'
 
 /** `?demo=filled` seeds the list for layout QA; default is empty. */
@@ -37,16 +38,6 @@ const FILLED_SEED: ShoppingRow[] = [
   { id: '6', title: 'Tere, Emma \u200b\u200bBanana Curd Paste, 150g', price: '9,00 €', image: thumbs[5]!, inBasket: false, basketQty: 1 },
   { id: '7', title: 'Apple-Banana-Strawberry Fruit Mix, 4x100g', price: '9,00 €', image: thumbs[6]!, inBasket: false, basketQty: 1 },
 ]
-
-function ShoppingListCardDivider() {
-  return (
-    <div className="relative h-2 w-full shrink-0 overflow-visible">
-      <div className="absolute left-0 right-0 top-[-16px] h-10">
-        <img alt="" src={s.cardDivider} className="block size-full max-w-none" />
-      </div>
-    </div>
-  )
-}
 
 function EmptyListIllustration() {
   return (
@@ -84,8 +75,7 @@ function EmptyListIllustration() {
 }
 
 export function ShoppingListScreen() {
-  const navigate = useNavigate()
-  const homeShoppingStack = useHomeShoppingStack()
+  const onBack = useStackBack()
   const [searchParams] = useSearchParams()
   const demo = searchParams.get('demo')
 
@@ -111,14 +101,6 @@ export function ShoppingListScreen() {
   useLayoutEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-
-  const onBack = useCallback(() => {
-    if (homeShoppingStack?.requestSlideOutClose) {
-      homeShoppingStack.requestSlideOutClose()
-      return
-    }
-    navigate(-1)
-  }, [homeShoppingStack, navigate])
 
   const updateRow = useCallback((id: string, fn: (r: ShoppingRow) => ShoppingRow) => {
     setItems((prev) => prev.map((r) => (r.id === id ? fn(r) : r)))
@@ -168,7 +150,7 @@ export function ShoppingListScreen() {
                   Add items
                 </ButtonPrimary>
               </div>
-              <ShoppingListCardDivider />
+              <CardDivider />
               <section className="flex flex-col pt-6" aria-labelledby="inspiration-heading">
                 <div className="px-6 pb-1">
                   <h2 id="inspiration-heading" className="text-xl font-semibold leading-[25px] tracking-[-0.34px]">
@@ -224,7 +206,7 @@ export function ShoppingListScreen() {
                   )
                 })}
               </div>
-              <ShoppingListCardDivider />
+              <CardDivider />
               <section className="flex flex-col pt-6 pb-10" aria-labelledby="inspiration-heading-filled">
                 <div className="px-6 pb-1">
                   <h2 id="inspiration-heading-filled" className="text-xl font-semibold leading-[25px] tracking-[-0.34px]">

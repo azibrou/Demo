@@ -2,6 +2,13 @@
 @import './kalep/kalep-extensions.css';
 @import './kalep/kalep-tailwind-theme.css';
 
+/** Animatable layout vars — FloatingTabBar pill width tween when basket opens. */
+@property --ftb-trailing-chrome {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
 html,
 body,
 #root {
@@ -10,13 +17,31 @@ body,
   overflow-x: clip;
 }
 
+#root {
+  border-radius: 12px;
+}
+
 html,
 body {
   overflow-y: auto;
 }
 
+/** Hub routes scroll inside `.eater-hub-scroll` — keep `body` from growing a second scrollbar. */
+html.eater-hub-active,
+html.eater-hub-active body {
+  height: 100%;
+  overflow: hidden;
+}
+
+html.eater-hub-active #root {
+  height: 100%;
+  overflow: hidden;
+}
+
 @theme {
   --animate-floating-tab-bar-enter: floating-tab-bar-enter 150ms ease-out forwards;
+  --eater-hub-fade-duration: 300ms;
+  --eater-hub-fade-ease: ease-out;
 }
 
 @keyframes floating-tab-bar-enter {
@@ -33,6 +58,162 @@ body {
  * (Figma 76281:68503 baseline: 86px tile, 12px gap @ 375px). Product carousels scroll inside the row.
  */
 @layer components {
+  /**
+   * DineOut — Figma 77303:219498; map fills viewport under floating chrome.
+   */
+  .dine-out-screen {
+    touch-action: manipulation;
+  }
+
+  .google-map-background {
+    display: block;
+    min-height: 100svh;
+    z-index: 0;
+  }
+
+  .dine-out-filter-chip {
+    cursor: pointer;
+    border: none;
+    outline: none;
+  }
+
+  .dine-out-filter-chip:focus-visible {
+    outline: 2px solid var(--color-special-brand-alt);
+    outline-offset: 2px;
+  }
+
+  /**
+   * Eater hub shell — scroll lives here, not on `body`, so tab cross-fades do not flash the
+   * document scrollbar when scroll height changes between Home / Stores / DineOut.
+   */
+  .eater-hub-shell {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: 100svh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .eater-hub-scroll {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    overflow-y: auto;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-gutter: stable;
+  }
+
+  /**
+   * Eater hub (Home ↔ Stores ↔ DineOut) — cross-fade on tab switch; 300ms ease-out.
+   */
+  .eater-hub-fade {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  .eater-hub-fade--active {
+    isolation: isolate;
+    /* Cross-fade: do not let outgoing + incoming layers change scrollport height mid-transition. */
+    min-height: 100%;
+    overflow: clip;
+  }
+
+  .eater-hub-fade__layer {
+    width: 100%;
+    min-height: 100%;
+  }
+
+  .eater-hub-fade--active .eater-hub-fade__layer[data-state='leaving'] {
+    position: absolute;
+    inset: 0;
+    transition: opacity var(--eater-hub-fade-duration) var(--eater-hub-fade-ease);
+    will-change: opacity;
+  }
+
+  .eater-hub-fade--active .eater-hub-fade__layer[data-state='entering'],
+  .eater-hub-fade--active .eater-hub-fade__layer[data-state='visible'] {
+    position: relative;
+    transition: opacity var(--eater-hub-fade-duration) var(--eater-hub-fade-ease);
+    will-change: opacity;
+  }
+
+  .eater-hub-fade__layer[data-state='visible'] {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .eater-hub-fade__layer[data-state='entering'] {
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .eater-hub-fade__layer[data-state='leaving'] {
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .eater-hub-fade--active .eater-hub-fade__layer[data-state='leaving'],
+    .eater-hub-fade--active .eater-hub-fade__layer[data-state='entering'],
+    .eater-hub-fade--active .eater-hub-fade__layer[data-state='visible'] {
+      transition: none;
+    }
+  }
+
+  /**
+   * Hub → inner screens (mobile) — iOS push/pop: panel from right, hub parallax underneath.
+   */
+  .eater-ios-stack {
+    --eater-ios-stack-duration: 350ms;
+    --eater-ios-stack-ease: cubic-bezier(0.32, 0.72, 0, 1);
+    position: relative;
+    min-height: 100svh;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    background: var(--color-layer-floor-0, #fff);
+  }
+
+  .eater-ios-stack__underlay {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    min-height: 100svh;
+    overflow: hidden;
+    transform: translateX(0);
+    transition: transform var(--eater-ios-stack-duration) var(--eater-ios-stack-ease);
+    will-change: transform;
+  }
+
+  .eater-ios-stack[data-slide='open'] .eater-ios-stack__underlay {
+    transform: translateX(-28%);
+  }
+
+  .eater-ios-stack__panel {
+    position: relative;
+    z-index: 10;
+    min-height: 100svh;
+    width: 100%;
+    max-width: 100%;
+    background: var(--color-layer-floor-0, #fff);
+    box-shadow: -4px 0 24px rgb(0 0 0 / 0.08);
+    will-change: transform;
+    transition: transform var(--eater-ios-stack-duration) var(--eater-ios-stack-ease);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .eater-ios-stack__underlay,
+    .eater-ios-stack__panel {
+      transition: none;
+    }
+  }
+
   :root {
     --home-gutter: var(--layout-hr-screen-margin);
     --scaled-tile-baseline: 86px;
@@ -301,7 +482,7 @@ body {
   }
 
   /**
-   * Figma home scaled rows (shortcuts, order again) — 375px baseline via ShortcutsCarousel / OrderAgain.
+   * Figma home scaled rows (shortcuts, order again) — 375px baseline via HomeShortcutsBlock / HomeOrderAgainBlock.
    */
   .home-scaled-row {
     width: 100%;
@@ -456,7 +637,7 @@ body {
     border-radius: 8px;
   }
 
-  /** Figma 76330:71568 — thumbnail favorite (elevation 1). */
+  /** Figma 77857:525189 — [Eater] save-btn / thumbnail favorite (elevation 1). */
   .thumbnail-favorite {
     position: absolute;
     top: 0;
@@ -764,20 +945,301 @@ body {
   }
 
   /**
+   * MerchantFTabBar — portaled to body so it stays viewport-fixed over iOS stack slides.
+   */
+  .merchant-ftb-chrome {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 50;
+    will-change: transform;
+  }
+
+  .merchant-ftb-chrome--pre-enter {
+    transform: translateY(100%);
+  }
+
+  .merchant-ftb-chrome--enter {
+    animation: floating-tab-bar-enter var(--merchant-ftb-enter-ms, 150ms) ease-out forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .merchant-ftb-chrome--pre-enter {
+      transform: none;
+    }
+
+    .merchant-ftb-chrome--enter {
+      animation: none;
+    }
+  }
+
+  /**
    * Floating tab bar chrome row — 24px horizontal inset; 12px only between rendered siblings.
    */
   .floating-tab-bar {
     padding-inline: 24px;
   }
 
-  .floating-tab-bar__pill + .floating-tab-bar__actions,
-  .floating-tab-bar__pill + .floating-tab-bar__basket-slot[data-reserve='true'],
-  .floating-tab-bar__actions + .floating-tab-bar__basket-slot[data-reserve='true'] {
-    margin-left: 12px;
+  .floating-tab-bar__row {
+    --ftb-trailing-chrome: 0px;
+    --ftb-layout-ease: ease-out;
+    gap: 12px;
+    min-height: 56px;
+    height: 56px;
+    align-items: center;
+    transition: --ftb-trailing-chrome var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms))
+      var(--ftb-layout-ease, ease-out);
+  }
+
+  .floating-tab-bar__actions {
+    flex: 0 0 56px;
   }
 
   .floating-tab-bar__basket-slot {
-    transition: width var(--ftb-compact-ms, 150ms) cubic-bezier(0.4, 0, 0.2, 1);
+    flex: 0 0 auto;
+    min-width: 0;
+    overflow: visible;
+    transition:
+      flex-basis var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) var(--ftb-layout-ease, ease-out),
+      width var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) var(--ftb-layout-ease, ease-out),
+      min-width var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) var(--ftb-layout-ease, ease-out),
+      max-width var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) var(--ftb-layout-ease, ease-out);
+  }
+
+  /**
+   * Merchant basket row — flex; FAB last (right edge fixed, grows left). Smooth flex-grow tween.
+   * loading/collapsed: [pill flex-1 · search 60px · fab 56px]
+   * default:           [solo 56px · search 60px · fab flex-1]
+   */
+  .merchant-ftb__row--basket {
+    --merchant-motion-ms: 150ms;
+    --merchant-pop-ms: 180ms;
+    --merchant-motion-ease: ease-out;
+    --merchant-pop-ease: cubic-bezier(0.34, 1.28, 0.64, 1);
+    display: flex !important;
+    gap: 12px;
+    align-items: center;
+    min-height: 56px;
+    height: 56px;
+    transition: --ftb-trailing-chrome var(--ftb-layout-ms, var(--merchant-motion-ms, 150ms))
+      var(--ftb-layout-ease, ease-out);
+  }
+
+  .merchant-ftb__row--basket .floating-tab-bar__actions {
+    margin-inline-start: 0;
+  }
+
+  .merchant-ftb__row--basket .floating-tab-bar__pill:not([data-merchant-solo='true']) {
+    flex: 0 0 auto;
+    width: calc(100% - var(--ftb-trailing-chrome, 0px));
+    min-width: 0;
+    max-width: calc(100% - var(--ftb-trailing-chrome, 0px));
+    transition:
+      width var(--ftb-layout-ms, var(--merchant-motion-ms, 150ms)) var(--ftb-layout-ease, ease-out),
+      flex-basis var(--ftb-layout-ms, var(--merchant-motion-ms, 150ms)) var(--ftb-layout-ease, ease-out),
+      max-width var(--ftb-layout-ms, var(--merchant-motion-ms, 150ms)) var(--ftb-layout-ease, ease-out),
+      flex-grow var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease),
+      flex-shrink var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease),
+      min-width var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease);
+  }
+
+  .merchant-ftb__row--basket .floating-tab-bar__pill {
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+  }
+
+  .merchant-ftb__row--basket .floating-tab-bar__pill[data-merchant-solo='true'] {
+    flex: 0 0 56px;
+    width: 56px;
+    min-width: 56px;
+    max-width: 56px;
+    overflow: hidden;
+  }
+
+  .merchant-ftb__row--basket .floating-tab-bar__actions {
+    flex: 0 0 56px;
+  }
+
+  .merchant-ftb__row--basket .floating-tab-bar__basket-slot--wide {
+    position: relative;
+    flex: 0 0 0px;
+    width: 0;
+    min-width: 0;
+    max-width: 0;
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+    margin-inline-start: 0;
+    overflow: visible;
+    transition:
+      flex-grow var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease),
+      flex-shrink var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease),
+      flex-basis var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease),
+      width var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease),
+      min-width var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease),
+      max-width var(--merchant-motion-ms, 150ms) var(--merchant-motion-ease);
+  }
+
+  .merchant-ftb__row--basket[data-basket-phase='loading'] .floating-tab-bar__basket-slot--wide,
+  .merchant-ftb__row--basket[data-basket-phase='collapsed'] .floating-tab-bar__basket-slot--wide {
+    flex: 0 0 56px;
+    width: 56px;
+    min-width: 56px;
+    max-width: 56px;
+  }
+
+  .merchant-ftb__row--basket[data-basket-phase='default'] .floating-tab-bar__basket-slot--wide {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 56px;
+    max-width: none;
+    margin-inline-start: auto;
+  }
+
+  .merchant-ftb__tab-cell--solo-hidden {
+    display: none !important;
+  }
+
+  /**
+   * Merchant wide basket slot — RTL expand: slot width tweens; FAB pinned to inline-end.
+   * See src/lib/wideBasketFabExpand.ts and .cursor/rules/wide-basket-fab-rtl-expand.mdc
+   */
+  .floating-tab-bar__basket-slot--wide {
+    display: block;
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+    overflow: visible;
+  }
+
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar {
+    position: absolute !important;
+    top: 0;
+    inset-inline-end: 0;
+    inset-inline-start: auto !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    flex: none;
+    transform-origin: 100% 50%;
+    transition-property: padding-inline !important;
+    transition-duration: var(--merchant-motion-ms, 150ms) !important;
+    transition-timing-function: ease-out !important;
+  }
+
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='default'] {
+    padding-inline: 16px;
+  }
+
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar.wide-basket-fab--hidden {
+    transform: scale(0.55);
+    opacity: 0;
+    transform-origin: 100% 50%;
+  }
+
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='loading'],
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='collapsed'] {
+    padding-inline: 0;
+    justify-content: center;
+  }
+
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar .wide-basket-fab__loader {
+    left: 50%;
+    right: auto;
+    margin-left: -12px;
+    transition: opacity 150ms ease-out;
+  }
+
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='default'] .wide-basket-fab__loader {
+    opacity: 0;
+  }
+
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='loading'] .wide-basket-fab__loader {
+    opacity: 1;
+  }
+
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='loading'] .wide-basket-fab__icon,
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='loading'] .wide-basket-fab__label,
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='loading'] .wide-basket-fab__counter {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='collapsed'] .wide-basket-fab__icon {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    opacity: 1;
+    transition:
+      top var(--merchant-motion-ms, 150ms) ease-out,
+      left var(--merchant-motion-ms, 150ms) ease-out,
+      width var(--merchant-motion-ms, 150ms) ease-out,
+      height var(--merchant-motion-ms, 150ms) ease-out,
+      margin var(--merchant-motion-ms, 150ms) ease-out,
+      opacity var(--merchant-motion-ms, 150ms) ease-out;
+  }
+
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='default'] .wide-basket-fab__icon {
+    top: 18px;
+    left: 18px;
+    width: 20px;
+    height: 20px;
+    margin-top: 0;
+    margin-left: 0;
+    opacity: 1;
+    transition:
+      top var(--merchant-motion-ms, 150ms) ease-out,
+      left var(--merchant-motion-ms, 150ms) ease-out,
+      width var(--merchant-motion-ms, 150ms) ease-out,
+      height var(--merchant-motion-ms, 150ms) ease-out,
+      margin-left var(--merchant-motion-ms, 150ms) ease-out,
+      margin-top var(--merchant-motion-ms, 150ms) ease-out,
+      opacity var(--merchant-motion-ms, 150ms) ease-out;
+  }
+
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='default'] .wide-basket-fab__label {
+    opacity: 1;
+    transition: opacity var(--merchant-motion-ms, 150ms) ease-out;
+  }
+
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='default'] .wide-basket-fab__counter {
+    opacity: 1;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition:
+      opacity var(--merchant-motion-ms, 150ms) ease-out,
+      right var(--merchant-motion-ms, 150ms) ease-out,
+      transform var(--merchant-motion-ms, 150ms) ease-out;
+  }
+
+  .floating-tab-bar__pill--merchant-solo {
+    width: 56px;
+    min-width: 56px;
+    max-width: 56px;
+    flex: 0 0 56px;
+    transition:
+      width var(--ftb-compact-ms, 150ms) ease-out,
+      min-width var(--ftb-compact-ms, 150ms) ease-out,
+      max-width var(--ftb-compact-ms, 150ms) ease-out,
+      flex-basis var(--ftb-compact-ms, 150ms) ease-out;
+  }
+
+  .floating-tab-bar__pill[data-merchant-solo='true'] .floating-tab-bar__indicator {
+    width: calc(100% - 8px);
+    transform: translate3d(0, 0, 0);
   }
 
   /**
@@ -785,7 +1247,7 @@ body {
    * Matches legacy tab bar `drop-shadow(0px 4px 6px rgba(0,0,0,0.2))`.
    */
   .floating-chrome-shadow {
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.13);
   }
 
   /**
@@ -795,13 +1257,46 @@ body {
   .floating-tab-bar__pill {
     --ftb-label-h: calc(0.125rem + 1.125rem);
     --ftb-icon-shift: 10px;
-    --ftb-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --ftb-ease: ease-out;
     --ftb-ms: var(--ftb-compact-ms, 150ms);
-    contain: layout style;
+    --ftb-tab-count: 3;
+    --ftb-active-index: 0;
+    --ftb-tab-h: 48px;
+    box-sizing: border-box;
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+  }
+
+  .floating-tab-bar__row:not(.merchant-ftb__row--basket) .floating-tab-bar__pill {
+    flex: 0 0 auto;
+    width: calc(100% - var(--ftb-trailing-chrome, 0px));
+    min-width: 0;
+    max-width: calc(100% - var(--ftb-trailing-chrome, 0px));
+    transition:
+      width var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) var(--ftb-layout-ease, ease-out),
+      flex-basis var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) var(--ftb-layout-ease, ease-out),
+      max-width var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) var(--ftb-layout-ease, ease-out);
+  }
+
+  .floating-tab-bar__row:not(.merchant-ftb__row--basket):not(:has(.floating-tab-bar__actions)):not(:has(.floating-tab-bar__basket-slot))
+    .floating-tab-bar__pill {
+    flex: 1 1 0%;
+    max-width: none;
+  }
+
+  .floating-tab-bar__indicator {
+    width: calc((100% - 8px) / var(--ftb-tab-count));
+    transform: translate3d(calc(var(--ftb-active-index) * 100%), 0, 0);
+    transition: transform 100ms ease-out;
+    will-change: transform;
   }
 
   .floating-tab-bar__tab {
     --ftb-label-h: calc(0.125rem + 1.125rem);
+    height: var(--ftb-tab-h);
+    min-height: var(--ftb-tab-h);
+    max-height: var(--ftb-tab-h);
   }
 
   .floating-tab-bar__cell {
@@ -819,12 +1314,25 @@ body {
     box-sizing: border-box;
     padding-top: 2px;
     padding-bottom: 2px;
+    transition:
+      padding-top var(--ftb-ms, 150ms) var(--ftb-ease),
+      padding-bottom var(--ftb-ms, 150ms) var(--ftb-ease);
+  }
+
+  .floating-tab-bar__pill[data-compact='true'] .floating-tab-bar__motion {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .floating-tab-bar__icon {
     flex-shrink: 0;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
+    transition: transform var(--ftb-ms, 150ms) var(--ftb-ease);
+  }
+
+  .floating-tab-bar__pill[data-compact='true'] .floating-tab-bar__icon {
+    transform: translate3d(0, calc(var(--ftb-label-h) / 2), 0);
   }
 
   /** Figma 76290 — 24×24 tab icons. */
@@ -844,6 +1352,10 @@ body {
     transform: scaleY(1);
     transform-origin: top center;
     backface-visibility: hidden;
+    transition:
+      opacity var(--ftb-ms, 150ms) var(--ftb-ease),
+      max-height var(--ftb-ms, 150ms) var(--ftb-ease),
+      transform var(--ftb-ms, 150ms) var(--ftb-ease);
   }
 
   .floating-tab-bar__label {
@@ -851,70 +1363,34 @@ body {
     line-height: 1.125rem;
   }
 
-  @keyframes floating-tab-bar-compact-icon {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(0, var(--ftb-icon-shift), 0);
-    }
-  }
-
-  @keyframes floating-tab-bar-compact-label {
-    from {
-      opacity: 1;
-      transform: scaleY(1);
-    }
-    to {
-      opacity: 0;
-      transform: scaleY(0);
-    }
-  }
-
   .floating-tab-bar__pill[data-compact='true'] .floating-tab-bar__label-row {
     pointer-events: none;
-  }
-
-  .floating-tab-bar__motion[data-animating='collapse'] .floating-tab-bar__icon {
-    animation: floating-tab-bar-compact-icon var(--ftb-ms) var(--ftb-ease) forwards;
-  }
-
-  .floating-tab-bar__motion[data-animating='collapse'] .floating-tab-bar__label-row {
-    animation: floating-tab-bar-compact-label var(--ftb-ms) var(--ftb-ease) forwards;
-  }
-
-  .floating-tab-bar__motion[data-animating='expand'] .floating-tab-bar__icon {
-    animation: floating-tab-bar-compact-icon var(--ftb-ms) var(--ftb-ease) reverse forwards;
-  }
-
-  .floating-tab-bar__motion[data-animating='expand'] .floating-tab-bar__label-row {
-    animation: floating-tab-bar-compact-label var(--ftb-ms) var(--ftb-ease) reverse forwards;
-  }
-
-  .floating-tab-bar__pill[data-compact='true'] .floating-tab-bar__motion:not([data-animating]) .floating-tab-bar__icon {
-    transform: translate3d(0, var(--ftb-icon-shift), 0);
-  }
-
-  .floating-tab-bar__pill[data-compact='true'] .floating-tab-bar__motion:not([data-animating]) .floating-tab-bar__label-row {
     opacity: 0;
     max-height: 0;
     transform: scaleY(0);
   }
 
-  .floating-tab-bar__pill[data-compact='false'] .floating-tab-bar__motion:not([data-animating]) .floating-tab-bar__icon {
-    transform: translate3d(0, 0, 0);
-  }
-
-  .floating-tab-bar__pill[data-compact='false'] .floating-tab-bar__motion:not([data-animating]) .floating-tab-bar__label-row {
+  .floating-tab-bar__pill[data-compact='false'] .floating-tab-bar__label-row {
     opacity: 1;
     max-height: var(--ftb-label-h);
     transform: scaleY(1);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .floating-tab-bar__motion[data-animating] .floating-tab-bar__icon,
-    .floating-tab-bar__motion[data-animating] .floating-tab-bar__label-row {
-      animation: none;
+    .floating-tab-bar__row {
+      transition: none;
+    }
+
+    .floating-tab-bar__row:not(.merchant-ftb__row--basket) .floating-tab-bar__pill,
+    .floating-tab-bar__basket-slot,
+    .merchant-ftb__row--basket .floating-tab-bar__basket-slot--wide,
+    .merchant-ftb__row--basket .floating-tab-bar__pill {
+      transition: none !important;
+    }
+
+    .floating-tab-bar__pill[data-compact='true'] .floating-tab-bar__label-row,
+    .floating-tab-bar__pill[data-compact='false'] .floating-tab-bar__label-row {
+      transition: none;
     }
   }
 
@@ -942,11 +1418,11 @@ body {
   }
 
   .basket-fab__button--in {
-    animation: basket-fab-pop 100ms ease-out forwards;
+    animation: basket-fab-pop var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) ease-out forwards;
   }
 
   .basket-fab__button--out {
-    animation: basket-fab-pop 100ms ease-out reverse forwards;
+    animation: basket-fab-pop var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) ease-out reverse forwards;
   }
 
   .basket-fab__badge--in {
@@ -986,6 +1462,1347 @@ body {
       transform: scale(1);
       opacity: 1;
     }
+  }
+
+  /** Figma 77550:93474 — loading spinner (1500ms spin, 150ms fade). */
+  @keyframes basket-fab-loader-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes basket-fab-loader-fade {
+    from {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: rotate(90deg) scale(0.85);
+    }
+  }
+
+  .basket-fab__loader {
+    transform-origin: center;
+  }
+
+  .basket-fab__loader--spin {
+    animation: basket-fab-loader-spin 750ms linear infinite;
+  }
+
+  .basket-fab__loader--out {
+    animation: basket-fab-loader-fade var(--basket-fab-loader-fade-ms, 150ms) ease-out forwards;
+  }
+
+  .basket-fab__icon--in {
+    animation: basket-fab-pop var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) ease-out forwards;
+  }
+
+  .basket-fab--loading .basket-fab__button {
+    pointer-events: none;
+  }
+
+  /**
+   * BasketFab — Figma 77550:93513 (default), 77550:93474 (loading).
+   */
+  .basket-fab--home {
+    --basket-fab-size: 60px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .basket-fab__button,
+    .basket-fab__badge,
+    .basket-fab__loader {
+      animation: none !important;
+    }
+
+    .basket-fab__loader--out {
+      opacity: 0;
+    }
+
+    .basket-fab__icon--in {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /**
+   * WideBasketFab — Figma 77550:93514 (basket), 77718:108978 (spinner).
+   * Standalone: use .wide-basket-fab-anchor wrapper (RTL expand).
+   * In tab bar: .wide-basket-fab--in-tab-bar overrides below — slot drives width tween.
+   */
+  .wide-basket-fab-anchor {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 56px;
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+    overflow: hidden;
+  }
+
+  .wide-basket-fab-anchor .wide-basket-fab {
+    position: absolute;
+    top: 0;
+    inset-inline-end: 0;
+    inset-inline-start: auto;
+    margin: 0;
+  }
+
+  .wide-basket-fab {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+    width: 56px;
+    min-width: 56px;
+    max-width: 56px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 9999px;
+    color: #fff;
+    overflow: visible;
+    transform-origin: right center;
+    transition-property: width, min-width, max-width, padding-inline;
+    transition-duration: 150ms;
+    transition-timing-function: ease-out;
+  }
+
+  .wide-basket-fab[data-state='loading'],
+  .wide-basket-fab[data-state='collapsed'] {
+    width: 56px;
+    min-width: 56px;
+    max-width: 56px;
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+    padding-inline: 0;
+  }
+
+  .wide-basket-fab[data-state='default'] {
+    width: 100%;
+    min-width: 56px;
+    max-width: 100%;
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+    padding-inline: 16px;
+  }
+
+  /**
+   * In-tab-bar: never tween FAB width (LTR grow). Slot flex/width only — see wideBasketFabExpand.ts
+   */
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='loading'],
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='collapsed'],
+  .floating-tab-bar__basket-slot--wide .wide-basket-fab--in-tab-bar[data-state='default'] {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .wide-basket-fab__loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease-out;
+  }
+
+  .wide-basket-fab[data-state='loading'] .wide-basket-fab__loader {
+    opacity: 1;
+  }
+
+  .wide-basket-fab__loader-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: basket-fab-loader-spin 750ms linear infinite;
+  }
+
+  .wide-basket-fab__icon {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      width 150ms ease-out,
+      height 150ms ease-out,
+      margin-top 150ms ease-out,
+      opacity 150ms ease-out;
+  }
+
+  .wide-basket-fab[data-state='loading'] .wide-basket-fab__icon,
+  .wide-basket-fab[data-state='loading'] .wide-basket-fab__label,
+  .wide-basket-fab[data-state='loading'] .wide-basket-fab__counter {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .wide-basket-fab[data-state='default'] .wide-basket-fab__icon,
+  .wide-basket-fab[data-state='collapsed'] .wide-basket-fab__icon {
+    opacity: 1;
+  }
+
+  .wide-basket-fab[data-state='collapsed'] .wide-basket-fab__icon {
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+  }
+
+  .wide-basket-fab__icon-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .wide-basket-fab__label {
+    position: absolute;
+    inset-inline: 0;
+    top: 50%;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    transform: translateY(-50%);
+    text-align: center;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease-out;
+  }
+
+  .wide-basket-fab[data-state='default'] .wide-basket-fab__label {
+    opacity: 1;
+  }
+
+  .wide-basket-fab__counter {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding-inline: 4px;
+    border-radius: 20px;
+    background: var(--color-special-brand-alt, #0c2c1c);
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      top 150ms ease-out,
+      right 150ms ease-out,
+      transform 150ms ease-out,
+      opacity 150ms ease-out;
+  }
+
+  .wide-basket-fab[data-state='default'] .wide-basket-fab__counter,
+  .wide-basket-fab[data-state='collapsed'] .wide-basket-fab__counter {
+    opacity: 1;
+  }
+
+  .wide-basket-fab[data-state='default'] .wide-basket-fab__counter {
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .wide-basket-fab[data-state='collapsed'] .wide-basket-fab__counter--badge {
+    right: 2px;
+    top: 2px;
+    transform: none;
+  }
+
+  .wide-basket-fab--hidden {
+    transform: scale(0.35);
+    opacity: 0;
+    transform-origin: right center;
+  }
+
+  .wide-basket-fab--shown {
+    transform: scale(1);
+    opacity: 1;
+    transform-origin: right center;
+  }
+
+  .wide-basket-fab--in-tab-bar.wide-basket-fab--shown,
+  .wide-basket-fab--in-tab-bar.wide-basket-fab--pop-in {
+    transform: scale(1);
+    opacity: 1;
+    transform-origin: 100% 50%;
+  }
+
+  .wide-basket-fab--in-tab-bar.wide-basket-fab--pop-in {
+    animation: wide-basket-fab-pop-rtl var(--merchant-motion-ms, var(--ftb-layout-ms, 150ms))
+      var(--merchant-motion-ease, ease-out) forwards;
+    transform-origin: 100% 50%;
+  }
+
+  @keyframes wide-basket-fab-pop-rtl {
+    from {
+      transform: scale(0.55);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes wide-basket-fab-icon-slide-in {
+    0% {
+      left: 50%;
+      margin-left: -12px;
+      opacity: 0;
+    }
+    100% {
+      left: 16px;
+      margin-left: 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes wide-basket-fab-label-in {
+    0% {
+      opacity: 0;
+      transform: translateY(-50%) translateX(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+
+  @keyframes wide-basket-fab-counter-in {
+    0% {
+      opacity: 0;
+      transform: translateY(-50%) scale(0.35);
+    }
+    70% {
+      transform: translateY(-50%) scale(1.08);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-50%) scale(1);
+    }
+  }
+
+  .wide-basket-fab[data-state='loading'] {
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wide-basket-fab,
+    .wide-basket-fab__icon,
+    .wide-basket-fab__label,
+    .wide-basket-fab__counter,
+    .wide-basket-fab__loader {
+      transition: none !important;
+    }
+
+    .wide-basket-fab__loader-img {
+      animation: none !important;
+    }
+
+    .wide-basket-fab--pop-in,
+    .wide-basket-fab--in-tab-bar[data-state='default'] .wide-basket-fab__icon,
+    .wide-basket-fab--in-tab-bar[data-state='default'] .wide-basket-fab__label,
+    .wide-basket-fab--in-tab-bar[data-state='default'] .wide-basket-fab__counter {
+      transform: scale(1);
+      opacity: 1;
+      animation: none !important;
+    }
+  }
+
+  /**
+   * [Eater] Provider Item — Figma 77237:157049 (restaurant menu list row).
+   */
+  .simple-item__content {
+    display: flex;
+    gap: 12px;
+    padding: 24px 24px 0;
+  }
+
+  .simple-item__body {
+    min-width: 0;
+    flex: 1 1 0%;
+  }
+
+  .simple-item__status {
+    margin-bottom: 4px;
+    color: var(--color-content-secondary);
+  }
+
+  .simple-item__badge {
+    display: inline-flex;
+    height: 20px;
+    align-items: center;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    padding: 0 4px;
+    background: #ffd759;
+    color: var(--color-content-primary);
+  }
+
+  .simple-item__title {
+    color: var(--color-content-primary);
+  }
+
+  .simple-item__description {
+    margin-top: 4px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    color: var(--color-content-secondary);
+  }
+
+  .simple-item__tags {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .simple-item__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .simple-item__tag-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .simple-item__price-row {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .simple-item__media {
+    position: relative;
+    height: 90px;
+    width: 120px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: var(--corner-radius-s);
+  }
+
+  .simple-item__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--corner-radius-s);
+  }
+
+  .simple-item__quick-add {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    left: 4px;
+    display: flex;
+    min-width: 0;
+    justify-content: flex-end;
+  }
+
+  .simple-item__divider {
+    margin: 24px 24px 0;
+    height: 1px;
+    background: var(--color-border-separator);
+  }
+
+  /**
+   * TopSectionStore — Figma 77303:218308.
+   */
+  .top-section-store {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .top-section-store__hero {
+    position: relative;
+    display: flex;
+    height: 179px;
+    width: 100%;
+    margin-bottom: -64px;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .top-section-store__hero-image {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+  }
+
+  .top-section-store__hero-gradient {
+    pointer-events: none;
+    position: absolute;
+    inset: 0 0 39.02% 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  .top-section-store__nav {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 44px;
+    flex-shrink: 0;
+  }
+
+  .top-section-store__nav-bar {
+    display: flex;
+    height: 56px;
+    width: 100%;
+    align-items: center;
+    gap: 8px;
+    padding-inline: 14px;
+    flex-shrink: 0;
+  }
+
+  .top-section-store__nav-spacer {
+    min-width: 0;
+    flex: 1 1 0%;
+  }
+
+  .top-section-store__nav-btn {
+    position: relative;
+    display: grid;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    place-items: center;
+    border: none;
+    background: transparent;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
+    border-radius: var(--corner-radius-full);
+    outline: none;
+    cursor: pointer;
+  }
+
+  .top-section-store__nav-btn:focus-visible {
+    outline: 2px solid var(--color-special-brand-alt);
+    outline-offset: 2px;
+  }
+
+  .top-section-store__nav-btn-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--corner-radius-full);
+    background: var(--color-layer-floor-1);
+  }
+
+  .top-section-store__nav-icon {
+    position: relative;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+  }
+
+  .top-section-store__body {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    flex-shrink: 0;
+  }
+
+  .top-section-store__title-stack {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    isolation: isolate;
+  }
+
+  .top-section-store__logo {
+    position: relative;
+    z-index: 2;
+    width: 72px;
+    height: 72px;
+    margin-bottom: -24px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: var(--corner-radius-m);
+    background: var(--color-layer-floor-1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .top-section-store__logo-image {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+  }
+
+  .top-section-store__card {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-top-left-radius: var(--corner-radius-l);
+    border-top-right-radius: var(--corner-radius-l);
+    background: var(--color-layer-floor-1);
+    padding: 36px 8px 20px;
+    flex-shrink: 0;
+  }
+
+  .top-section-store__title-block {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px 16px;
+    flex-shrink: 0;
+  }
+
+  .top-section-store__title-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .top-section-store__title {
+    min-width: 0;
+    flex: 1 1 0%;
+    text-align: center;
+    color: var(--color-content-primary);
+  }
+
+  .top-section-store__more-info-row {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .top-section-store__more-info {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 199px;
+    border: none;
+    background: transparent;
+    color: var(--color-content-primary);
+    cursor: pointer;
+    padding: 0;
+    gap: 0;
+  }
+
+  .top-section-store__more-info-chevron {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .top-section-store__metrics-row {
+    display: flex;
+    height: 40px;
+    width: 100%;
+    max-width: 359px;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .top-section-store__metric-col {
+    display: flex;
+    min-width: 0;
+    flex: 1 1 0%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .top-section-store__metric-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    gap: 0;
+  }
+
+  .top-section-store__metric-row-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .top-section-store__metric-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .top-section-store__metric-divider {
+    display: flex;
+    height: 32px;
+    width: 0;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .top-section-store__metric-divider-img {
+    display: block;
+    width: 32px;
+    height: 0;
+    max-width: none;
+    transform: rotate(90deg);
+  }
+
+  .top-section-store__metric-divider--inner .top-section-store__metric-divider-img {
+    transform: rotate(90deg) translateY(-1px);
+  }
+
+  /**
+   * TopSectionRestaurant — Figma 77303:218235.
+   */
+  .top-section-restaurant {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .top-section-restaurant__hero {
+    position: relative;
+    display: flex;
+    height: 244px;
+    width: 100%;
+    margin-bottom: -16px;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+  }
+
+  .top-section-restaurant__hero-image {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+  }
+
+  .top-section-restaurant__hero-gradient {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.25) 0%,
+      rgba(0, 0, 0, 0.1) 25.5%,
+      rgba(0, 0, 0, 0.75) 100%
+    );
+  }
+
+  .top-section-restaurant__nav {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 44px;
+    flex-shrink: 0;
+  }
+
+  .top-section-restaurant__nav-bar {
+    display: flex;
+    height: 56px;
+    width: 100%;
+    align-items: center;
+    gap: 8px;
+    padding-inline: 14px;
+    flex-shrink: 0;
+  }
+
+  .top-section-restaurant__nav-spacer {
+    min-width: 0;
+    flex: 1 1 0%;
+  }
+
+  .top-section-restaurant__nav-btn {
+    position: relative;
+    display: grid;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    place-items: center;
+    border: none;
+    background: transparent;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
+    border-radius: 100px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .top-section-restaurant__nav-btn:focus-visible {
+    outline: 2px solid var(--color-special-brand-alt);
+    outline-offset: 2px;
+  }
+
+  .top-section-restaurant__nav-btn-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 100px;
+    background: var(--color-layer-floor-1);
+  }
+
+  .top-section-restaurant__nav-icon {
+    position: relative;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+  }
+
+  .top-section-restaurant__title-block {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    height: 128px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 16px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.24));
+  }
+
+  .top-section-restaurant__title-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .top-section-restaurant__title {
+    min-width: 0;
+    flex: 1 1 0%;
+    text-align: center;
+    color: #fff;
+  }
+
+  .top-section-restaurant__more-info-row {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .top-section-restaurant__more-info {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 199px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .top-section-restaurant__more-info-chevron {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .top-section-restaurant__metrics {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    background: var(--color-layer-floor-1);
+    padding: 20px 8px;
+    flex-shrink: 0;
+  }
+
+  .top-section-restaurant__metrics-row {
+    display: flex;
+    height: 40px;
+    width: 100%;
+    max-width: 359px;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .top-section-restaurant__metric-col {
+    display: flex;
+    min-width: 0;
+    flex: 1 1 0%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .top-section-restaurant__metric-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    gap: 0;
+  }
+
+  .top-section-restaurant__metric-row-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .top-section-restaurant__metric-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .top-section-restaurant__metric-divider {
+    display: flex;
+    height: 32px;
+    width: 0;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .top-section-restaurant__metric-divider-img {
+    display: block;
+    width: 32px;
+    height: 0;
+    max-width: none;
+    transform: rotate(90deg);
+  }
+
+  .top-section-restaurant__metric-divider--inner .top-section-restaurant__metric-divider-img {
+    transform: rotate(90deg) translateY(-1px);
+  }
+
+  /**
+   * CardDivider — Figma 77857:92979; 24px fixed caps, stretchable 8px center bar.
+   */
+  .card-divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    height: 40px;
+  }
+
+  .card-divider__cap {
+    position: relative;
+    flex-shrink: 0;
+    width: 24px;
+    height: 40px;
+    overflow: hidden;
+  }
+
+  .card-divider__cap-art {
+    position: absolute;
+    top: 0;
+    width: 375px;
+    height: 40px;
+    max-width: none;
+    pointer-events: none;
+    display: block;
+  }
+
+  .card-divider__cap--left .card-divider__cap-art {
+    left: 0;
+  }
+
+  .card-divider__cap--right .card-divider__cap-art {
+    right: 0;
+  }
+
+  .card-divider__bar {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 8px;
+    background: var(--color-layer-floor-0-grouped);
+  }
+
+  /**
+   * BannerCarousel — Figma 77842:552848 / 552851; 24px padding, 12px gap, 327:156 slides.
+   */
+  .banner-carousel {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    container-type: inline-size;
+    --banner-carousel-gutter: 24px;
+    --banner-carousel-gap: 12px;
+    --banner-carousel-peek: 12px;
+    --banner-carousel-aspect: 327 / 156;
+    --banner-carousel-slide-width: calc(
+      100cqw - 2 * var(--banner-carousel-gutter) - var(--banner-carousel-peek)
+    );
+  }
+
+  .banner-carousel__scroll {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    contain: inline-size;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .banner-carousel__scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .banner-carousel__track {
+    display: inline-flex;
+    vertical-align: top;
+    width: max-content;
+    align-items: flex-start;
+    gap: var(--banner-carousel-gap);
+    padding: 8px var(--banner-carousel-gutter) var(--banner-carousel-gutter);
+    box-sizing: border-box;
+  }
+
+  .banner-carousel__slide {
+    flex-shrink: 0;
+    width: var(--banner-carousel-slide-width);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .banner-carousel__image {
+    pointer-events: none;
+    display: block;
+    width: 100%;
+    aspect-ratio: var(--banner-carousel-aspect);
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  @supports not (container-type: inline-size) {
+    .banner-carousel {
+      --banner-carousel-slide-width: calc(
+        100vw - 2 * var(--banner-carousel-gutter) - var(--banner-carousel-peek)
+      );
+    }
+  }
+
+  /**
+   * Stores hub composed promo banners — Figma 77303:218315 (BM Banner + Bolt Plus).
+   */
+  .banner-carousel__slide--composed {
+    height: 156px;
+  }
+
+  .banner-carousel__slide--composed .stores-promo-banner {
+    height: 100%;
+    width: 100%;
+  }
+
+  .stores-promo-banner {
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .stores-promo-banner__inner {
+    display: flex;
+    height: 156px;
+    width: 100%;
+    align-items: stretch;
+    gap: 12px;
+    overflow: hidden;
+  }
+
+  .stores-promo-banner--discount {
+    background: #eeeebd;
+  }
+
+  .stores-promo-banner--bolt-plus {
+    background: var(--color-special-brand, #2a9c64);
+  }
+
+  .stores-promo-banner__copy {
+    display: flex;
+    min-width: 0;
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    padding: 16px 0 8px 16px;
+  }
+
+  .stores-promo-banner__copy--bolt-plus {
+    gap: 4px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .stores-promo-banner__title {
+    margin: 0;
+    letter-spacing: -0.252px;
+  }
+
+  .stores-promo-banner__subtitle {
+    margin: 0;
+  }
+
+  .stores-promo-banner__validity {
+    margin: 6px 0 0;
+    max-width: 143px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 8px;
+    line-height: 12px;
+    color: var(--color-content-secondary);
+    font-feature-settings: 'lnum' 1, 'tnum' 1;
+  }
+
+  .stores-promo-banner__bolt-logo {
+    position: relative;
+    width: 62px;
+    height: 25px;
+    flex-shrink: 0;
+  }
+
+  .stores-promo-banner__bolt-logo-union {
+    position: absolute;
+    inset: 7.82% 39.38% 3.95% 0;
+    display: block;
+    height: auto;
+    width: auto;
+    max-width: none;
+  }
+
+  .stores-promo-banner__bolt-logo-plus {
+    position: absolute;
+    inset: 0.03% 0.06% 18.04% 66.91%;
+    display: block;
+    height: auto;
+    width: auto;
+    max-width: none;
+  }
+
+  .stores-promo-banner__bolt-hero {
+    position: relative;
+    width: 156px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .stores-promo-banner__bolt-hero-img {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .stores-promo-mosaic {
+    position: relative;
+    width: 156px;
+    height: 156px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .stores-promo-mosaic__tile {
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid rgb(0 0 0 / 0.04);
+    background: #fff;
+    box-shadow: 0 3px 4px rgb(80 66 44 / 0.06);
+  }
+
+  .stores-promo-mosaic__img {
+    pointer-events: none;
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .stores-promo-mosaic__tile--primary {
+    top: 4.67px;
+    left: 12.67px;
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    box-shadow: 1px 5px 11px rgb(80 66 44 / 0.08);
+    transform: rotate(5deg);
+  }
+
+  .stores-promo-mosaic__tile--top-right {
+    top: 4.37px;
+    left: 90.37px;
+    width: 66px;
+    height: 66px;
+    border-radius: 10px;
+    transform: rotate(21deg);
+  }
+
+  .stores-promo-mosaic__tile--bottom-left {
+    top: 77px;
+    left: 6px;
+    width: 64px;
+    height: 64px;
+    border-radius: 9px;
+    box-shadow: 0 1px 3px rgb(80 66 44 / 0.06);
+    transform: rotate(-10deg);
+  }
+
+  .stores-promo-mosaic__tile--bottom-right {
+    top: 67px;
+    left: 72px;
+    width: 72px;
+    height: 72px;
+    border-radius: 11px;
+    box-shadow: 0 2px 8px rgb(80 66 44 / 0.06);
+    transform: rotate(9deg);
+  }
+
+  /**
+   * MiniBannerCarousel — Figma 77303:218074; 24px scroll gutters, tiles scale to scrollport.
+   */
+  .mini-banner-carousel {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    container-type: inline-size;
+    --mini-banner-gap: 12px;
+    --mini-banner-tile-width: calc(100cqw - 2 * var(--home-gutter));
+  }
+
+  .mini-banner-carousel .home-horizontal-scroll-track {
+    padding-bottom: 8px;
+  }
+
+  .mini-banner-carousel__tile {
+    display: flex;
+    height: 68px;
+    width: var(--mini-banner-tile-width);
+    min-width: 0;
+    max-width: 327px;
+    flex-shrink: 0;
+    align-items: center;
+    gap: var(--mini-banner-gap);
+    overflow: hidden;
+    border-radius: 12px;
+    padding: 14px 24px 14px 0;
+    background: var(--color-bg-neutral-secondary);
+    color: var(--color-content-primary);
+    box-sizing: border-box;
+  }
+
+  .mini-banner-carousel__tile--action {
+    background: var(--color-bg-action-secondary);
+  }
+
+  @supports not (container-type: inline-size) {
+    .mini-banner-carousel {
+      --mini-banner-tile-width: calc(100vw - 2 * var(--home-gutter));
+    }
+  }
+
+  .mini-banner-carousel__media {
+    position: relative;
+    height: 68px;
+    width: 52px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .mini-banner-carousel__image {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+  }
+
+  .mini-banner-carousel__message {
+    display: flex;
+    min-width: 0;
+    flex: 1 1 0%;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 

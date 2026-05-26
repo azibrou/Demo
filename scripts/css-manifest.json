@@ -1,0 +1,380 @@
+{
+  "foundation": {
+    "kind": "foundation",
+    "prefixes": [
+      "home-page",
+      "home-gutter",
+      "home-content",
+      "home-search-section",
+      "search-field",
+      "thumbnail-fill-img",
+      "floating-chrome-shadow",
+      "floating-tab-bar-enter",
+      "carousel-visible",
+      "carousel-gap",
+      "carousel-tile",
+      "carousel-grid-scrollport",
+      "carousel-grid-row"
+    ],
+    "keyframes": ["floating-tab-bar-enter"]
+  },
+  "entries": [
+    {
+      "name": "AddressSelector",
+      "kind": "component",
+      "export": "AddressSelector",
+      "prefixes": ["address-selector"],
+      "figma": ["76281:33224"],
+      "summary": "Address row with location pin and avatar ring."
+    },
+    {
+      "name": "BasketFabHome",
+      "kind": "component",
+      "export": "BasketFabHome",
+      "prefixes": ["basket-fab"],
+      "keyframes": ["basket-fab-pop", "basket-fab-badge-pop"],
+      "dependsOn": ["BasketFabContext"],
+      "figma": ["77550:93513", "77550:93474"],
+      "summary": "Basket FAB — 60px circle, loading + default."
+    },
+    {
+      "name": "ButtonPrimary",
+      "kind": "component",
+      "export": "ButtonPrimary",
+      "prefixes": [],
+      "summary": "Primary CTA button (Tailwind-only)."
+    },
+    {
+      "name": "CarouselGridItem",
+      "kind": "component",
+      "export": "CarouselGridItem",
+      "prefixes": ["carousel-grid-item", "carousel-grid-scrollport", "carousel-grid-row", "home-product-carousel"],
+      "dependsOn": ["QuickAddExpandPill", "BasketFabContext"],
+      "figma": ["70394:111364"],
+      "summary": "Product grid tile with quick-add pill."
+    },
+    {
+      "name": "CarouselItem",
+      "kind": "component",
+      "export": "CarouselItem",
+      "prefixes": ["home-horizontal-scroll"],
+      "dependsOn": ["CarouselGridItem", "HomeScaledCarousel"],
+      "figma": ["70394:111156"],
+      "summary": "Item carousel section with header and horizontal track."
+    },
+    {
+      "name": "EaterHomeHero",
+      "kind": "component",
+      "export": "EaterHomeHero",
+      "prefixes": [],
+      "dependsOn": ["AddressSelector"],
+      "figma": ["74916:28087"],
+      "summary": "Alternate eater home hero layout."
+    },
+    {
+      "name": "Favorite",
+      "kind": "component",
+      "export": "Favorite",
+      "prefixes": ["thumbnail-favorite"],
+      "figma": ["77857:525189"],
+      "summary": "Thumbnail favorite heart overlay."
+    },
+    {
+      "name": "FloatingTabBar",
+      "kind": "component",
+      "export": "FloatingTabBar",
+      "prefixes": ["floating-tab-bar", "floating-chrome-shadow"],
+      "keyframes": ["floating-tab-bar-compact-icon", "floating-tab-bar-compact-label"],
+      "dependsOn": ["BasketFabHome", "TabAction", "BasketFabContext"],
+      "figma": ["76281:68555"],
+      "summary": "Floating bottom tab bar with compact animation."
+    },
+    {
+      "name": "MerchantFTabBar",
+      "kind": "component",
+      "export": "MerchantFTabBar",
+      "prefixes": ["floating-tab-bar", "floating-chrome-shadow", "basket-fab"],
+      "keyframes": ["floating-tab-bar-compact-icon", "floating-tab-bar-compact-label", "basket-fab-pop", "basket-fab-badge-pop"],
+      "dependsOn": ["BasketFabHome", "TabAction", "BasketFabContext"],
+      "figma": ["76281:68555"],
+      "summary": "Merchant floating tab bar — same chrome as consumer; merchant tab + search icons."
+    },
+    {
+      "name": "HomeHorizontalScroll",
+      "kind": "component",
+      "export": "HomeHorizontalScroll",
+      "prefixes": ["home-horizontal-scroll"],
+      "summary": "Horizontal scroll shell with gutter padding."
+    },
+    {
+      "name": "HomeScaledCarousel",
+      "kind": "component",
+      "export": "HomeScaledCarousel",
+      "prefixes": ["home-scaled-carousel", "home-product-carousel", "shortcuts-carousel"],
+      "dependsOn": ["useShortcutScale"],
+      "figma": ["76281:68503"],
+      "summary": "Scaled carousel shell for shortcuts or product strips."
+    },
+    {
+      "name": "HomeScaledRow",
+      "kind": "component",
+      "export": "HomeScaledRow",
+      "prefixes": ["home-scaled-row"],
+      "dependsOn": ["useShortcutScale"],
+      "summary": "Scaled horizontal row (shortcuts, order again)."
+    },
+    {
+      "name": "ListItem",
+      "kind": "component",
+      "export": "ListItem",
+      "prefixes": [],
+      "dependsOn": ["QuickAddExpandPill"],
+      "summary": "Shopping list row with quick-add."
+    },
+    {
+      "name": "NavBar",
+      "kind": "component",
+      "export": "NavBar",
+      "prefixes": [],
+      "summary": "Shopping list navigation bar."
+    },
+    {
+      "name": "QuickAddExpandPill",
+      "kind": "component",
+      "export": "QuickAddExpandPill",
+      "prefixes": ["quick-add-expand-pill"],
+      "figma": ["76328:68848"],
+      "summary": "Expandable plus/minus quantity pill."
+    },
+    {
+      "name": "Rating",
+      "kind": "component",
+      "export": "Rating",
+      "prefixes": ["thumbnail-rating"],
+      "figma": ["76330:71573"],
+      "summary": "Thumbnail rating badge."
+    },
+    {
+      "name": "SearchField",
+      "kind": "component",
+      "export": "SearchField",
+      "prefixes": ["search-field"],
+      "figma": ["76330:70427"],
+      "summary": "Home search input with filter chip."
+    },
+    {
+      "name": "ShortcutItem",
+      "kind": "component",
+      "export": "ShortcutItem",
+      "prefixes": ["shortcut-item-scaled"],
+      "figma": ["76281:68504"],
+      "summary": "Home shortcut tile (scaled ring + icon)."
+    },
+    {
+      "name": "TabAction",
+      "kind": "component",
+      "export": "TabAction",
+      "prefixes": ["floating-tab-bar__icon", "floating-chrome-shadow"],
+      "figma": ["76315:68795"],
+      "summary": "Circular floating tab action (search)."
+    },
+    {
+      "name": "ThumbnailL",
+      "kind": "component",
+      "export": "ThumbnailL",
+      "prefixes": ["thumbnail-l", "thumbnail-l-scaled", "thumbnail-l-section"],
+      "dependsOn": ["Favorite", "Rating"],
+      "summary": "Large restaurant list card."
+    },
+    {
+      "name": "ThumbnailM",
+      "kind": "component",
+      "export": "ThumbnailM",
+      "prefixes": ["thumbnail-m", "thumbnail-m-scaled", "thumbnail-m-row", "thumbnail-m-carousel"],
+      "dependsOn": ["Favorite", "Rating", "ThumbnailMCarousel"],
+      "summary": "Medium restaurant carousel card."
+    },
+    {
+      "name": "ThumbnailMCarousel",
+      "kind": "component",
+      "export": "ThumbnailMCarousel",
+      "prefixes": ["thumbnail-m-carousel"],
+      "dependsOn": ["useThumbnailMScale"],
+      "summary": "Thumbnail M horizontal carousel track."
+    },
+    {
+      "name": "ThumbnailXs",
+      "kind": "component",
+      "export": "ThumbnailXs",
+      "prefixes": ["thumbnail-xs-scaled"],
+      "summary": "Extra-small order-again thumbnail."
+    },
+    {
+      "name": "ThumbnailMRowBlock",
+      "kind": "block",
+      "export": "ThumbnailMRowBlock",
+      "prefixes": ["thumbnail-m-row"],
+      "dependsOn": ["ThumbnailMRowBlock", "ThumbnailM", "ThumbnailMCarousel"],
+      "summary": "Section block: headline + Thumbnail M carousel."
+    },
+    {
+      "name": "ThumbnailLListBlock",
+      "kind": "block",
+      "export": "ThumbnailLListBlock",
+      "prefixes": ["thumbnail-l-section"],
+      "dependsOn": ["ThumbnailL", "useThumbnailLScale"],
+      "summary": "Section block: vertical Thumbnail L list."
+    },
+    {
+      "name": "HomeHeroBlock",
+      "kind": "block",
+      "export": "HomeHeroBlock",
+      "prefixes": ["hero-banner"],
+      "dependsOn": ["AddressSelector"],
+      "figma": ["76281:33163"],
+      "summary": "Home hero with address and Bolt Plus promo."
+    },
+    {
+      "name": "HomeSearchBlock",
+      "kind": "block",
+      "export": "HomeSearchBlock",
+      "prefixes": ["home-search-section"],
+      "dependsOn": ["SearchField"],
+      "summary": "Home search section wrapper."
+    },
+    {
+      "name": "HomeShortcutsBlock",
+      "kind": "block",
+      "export": "HomeShortcutsBlock",
+      "prefixes": ["home-scaled-row", "shortcut-item-scaled", "shortcuts-carousel"],
+      "dependsOn": ["HomeScaledRow", "ShortcutItem"],
+      "figma": ["76281:68503"],
+      "summary": "Home shortcuts row."
+    },
+    {
+      "name": "HomeOrderAgainBlock",
+      "kind": "block",
+      "export": "HomeOrderAgainBlock",
+      "prefixes": ["order-again", "thumbnail-xs-scaled"],
+      "dependsOn": ["HomeScaledRow", "ThumbnailXs"],
+      "summary": "Home order-again row."
+    },
+    {
+      "name": "HomeRetailBlock",
+      "kind": "block",
+      "export": "HomeRetailBlock",
+      "prefixes": ["home-product-carousel", "carousel-grid"],
+      "dependsOn": ["CarouselItem", "CarouselGridItem"],
+      "figma": ["74923:235051"],
+      "contentAssets": ["public/bolt"],
+      "summary": "Retail snippet provider + product carousel."
+    },
+    {
+      "name": "HomeMostPopularBlock",
+      "kind": "block",
+      "export": "HomeMostPopularBlock",
+      "dependsOn": ["ThumbnailMRowBlock"],
+      "contentAssets": ["public/bolt"],
+      "summary": "Home most popular restaurants row."
+    },
+    {
+      "name": "HomeSaveMeBlock",
+      "kind": "block",
+      "export": "HomeSaveMeBlock",
+      "dependsOn": ["ThumbnailMRowBlock"],
+      "contentAssets": ["public/bolt"],
+      "summary": "Home save me restaurants row."
+    },
+    {
+      "name": "HomeAllRestaurantsBlock",
+      "kind": "block",
+      "export": "HomeAllRestaurantsBlock",
+      "dependsOn": ["ThumbnailLListBlock"],
+      "contentAssets": ["public/bolt"],
+      "summary": "Home all restaurants vertical list."
+    },
+    {
+      "name": "StoreProviderHeaderBlock",
+      "kind": "block",
+      "export": "StoreProviderHeaderBlock",
+      "prefixes": [],
+      "contentAssets": ["public/bolt"],
+      "figma": ["70408:1768062"],
+      "summary": "Store provider hero header."
+    },
+    {
+      "name": "StoreMiniBannersBlock",
+      "kind": "block",
+      "export": "StoreMiniBannersBlock",
+      "prefixes": ["home-horizontal-scroll"],
+      "dependsOn": ["HomeHorizontalScroll"],
+      "figma": ["70394:111124"],
+      "summary": "Store mini promo banner carousel."
+    },
+    {
+      "name": "CardDivider",
+      "kind": "component",
+      "export": "CardDivider",
+      "prefixes": ["card-divider"],
+      "figma": ["77857:92979"],
+      "summary": "Full-width card divider — fixed 24px caps, stretchable center bar."
+    },
+    {
+      "name": "StoreCardDividerBlock",
+      "kind": "block",
+      "export": "StoreCardDividerBlock",
+      "dependsOn": ["CardDivider"],
+      "prefixes": ["card-divider"],
+      "figma": ["77857:92979"],
+      "summary": "Stores section wrapper for CardDivider."
+    },
+    {
+      "name": "StoreQuickNavBlock",
+      "kind": "block",
+      "export": "StoreQuickNavBlock",
+      "prefixes": [],
+      "figma": ["70416:856462"],
+      "summary": "Store quick nav (search, categories, my list)."
+    },
+    {
+      "name": "BannerCarousel",
+      "kind": "component",
+      "export": "BannerCarousel",
+      "prefixes": ["banner-carousel"],
+      "figma": ["77842:552848", "77842:552851"],
+      "summary": "Horizontal promo banner carousel — 24px padding, 12px gap, 8px radius, 327:156 aspect."
+    },
+    {
+      "name": "StorePromoBannerBlock",
+      "kind": "block",
+      "export": "StorePromoBannerBlock",
+      "prefixes": ["stores-promo-banner", "stores-promo-mosaic", "banner-carousel__slide--composed"],
+      "dependsOn": ["BannerCarousel"],
+      "figma": ["77303:218315"],
+      "summary": "Stores hub promo banner carousel (Multiple 375)."
+    },
+    {
+      "name": "StoreProductCarouselBlock",
+      "kind": "block",
+      "export": "StoreProductCarouselBlock",
+      "dependsOn": ["CarouselItem"],
+      "summary": "Store product carousel by title."
+    },
+    {
+      "name": "StoreMoreToExploreBlock",
+      "kind": "block",
+      "export": "StoreMoreToExploreBlock",
+      "prefixes": ["carousel-grid-row--padded"],
+      "figma": ["70394:111443"],
+      "summary": "More to explore category tiles."
+    },
+    {
+      "name": "StoreCategoriesBlock",
+      "kind": "block",
+      "export": "StoreCategoriesBlock",
+      "prefixes": [],
+      "figma": ["70394:111492"],
+      "summary": "Store categories grid."
+    }
+  ]
+}

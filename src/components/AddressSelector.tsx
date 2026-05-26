@@ -8,7 +8,7 @@ export type AddressSelectorProps = {
   avatarInitial?: string
   onAddressClick?: () => void
   onAvatarClick?: () => void
-  /** When false, parent supplies horizontal inset (e.g. {@link HeroBanner}). */
+  /** When false, parent supplies horizontal inset (e.g. {@link HomeHeroBlock}). */
   withGutter?: boolean
 }
 
@@ -27,7 +27,11 @@ export function AddressSelector({
     <>
       <div className="flex shrink-0 items-center justify-center">
         <div className="relative size-5 shrink-0" data-name="icon">
-          <img alt="" src={as.locationPin} className="pointer-events-none absolute inset-0 block size-full max-w-none" />
+          <img
+            alt=""
+            src={as.locationPin}
+            className="pointer-events-none absolute top-0 left-0.5 block h-full w-[18px] max-w-none"
+          />
         </div>
       </div>
       <div className="relative flex min-w-0 flex-1 flex-col items-start justify-center">

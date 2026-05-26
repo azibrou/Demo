@@ -1,0 +1,8 @@
+export { HomeHeroBlock, type HomeHeroBlockProps } from './HomeHeroBlock'
+export { HomeSearchBlock, type HomeSearchBlockProps } from './HomeSearchBlock'
+export { HomeShortcutsBlock } from './HomeShortcutsBlock'
+export { HomeOrderAgainBlock } from './HomeOrderAgainBlock'
+export { HomeRetailBlock } from './HomeRetailBlock'
+export { HomeMostPopularBlock } from './HomeMostPopularBlock'
+export { HomeSaveMeBlock } from './HomeSaveMeBlock'
+export { HomeAllRestaurantsBlock } from './HomeAllRestaurantsBlock'
