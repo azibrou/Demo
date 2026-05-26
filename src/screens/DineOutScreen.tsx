@@ -17,7 +17,7 @@ export function DineOutScreen() {
         <GoogleMapBackground center={geo.center} />
       </div>
 
-      <div className="relative z-10 flex min-h-svh w-full flex-col pointer-events-none">
+      <div className="relative z-10 flex min-h-svh w-full flex-col overflow-visible pointer-events-none">
         <DineOutTopNavBlock />
       </div>
     </div>

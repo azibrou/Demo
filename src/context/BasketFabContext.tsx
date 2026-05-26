@@ -18,8 +18,8 @@ import { isMerchantHubPath } from '../lib/merchantHubPath'
 export const TAB_BAR_ITEM_GAP_PX = 12
 /** TabAction diameter — keep in sync with TabAction `size-[56px]`. */
 export const TAB_ACTION_SIZE_PX = 56
-/** Home round basket FAB slot width (FAB only; add {@link TAB_BAR_ITEM_GAP_PX} for row reserve). */
-export const BASKET_FAB_RESERVE_PX = 60
+/** Round basket FAB slot width in tab bar rows (FAB only; add {@link TAB_BAR_ITEM_GAP_PX} for row reserve). */
+export const BASKET_FAB_RESERVE_PX = 56
 /** Home row reserve when basket slot is open (FAB + leading gap). */
 export const BASKET_FAB_TOTAL_RESERVE_PX = BASKET_FAB_RESERVE_PX + TAB_BAR_ITEM_GAP_PX
 /** Home row reserve for the search TabAction (button + leading gap). */
@@ -30,8 +30,6 @@ export const WIDE_BASKET_FAB_SLOT_PX = 56
 export const MERCHANT_TAB_SOLO_PX = 56
 /** Pre–wide-FAB reserve in tab row (56px FAB + 12px gap) — Figma merchant compact step. */
 export const MERCHANT_PRE_FAB_RESERVE_PX = 68
-/** Merchant wide FAB — expand at ms from sequence start (after loading spin). */
-export const MERCHANT_BASKET_EXPAND_AT_MS = 1500
 /** Pill shrink, basket slot grow, wide FAB padding — one duration, ease-out. */
 export const TAB_BAR_LAYOUT_MS = 150
 export const TAB_BAR_LAYOUT_EASE = 'ease-out'
@@ -43,10 +41,14 @@ export const MERCHANT_FAB_EXPAND_MS = TAB_BAR_LAYOUT_MS
 export const MERCHANT_FAB_POP_MS = TAB_BAR_LAYOUT_MS
 /** Home basket FAB scale-in — matches slot reserve tween. */
 export const BASKET_FAB_POP_MS = TAB_BAR_LAYOUT_MS
+/** Round FAB enter pop — slight bounce; keep in sync with `basket-fab-button-pop` in styles.css. */
+export const BASKET_FAB_BUTTON_POP_MS = 220
 /** Loading spinner visible duration — Figma 77550:93474. */
 export const BASKET_FAB_LOADER_SPIN_MS = 1500
 /** Spinner fade-out before basket icon appears. */
 export const BASKET_FAB_LOADER_FADE_MS = 150
+/** Merchant wide FAB — expand after home loader spin + fade (Figma 77550:93474). */
+export const MERCHANT_BASKET_EXPAND_AT_MS = BASKET_FAB_LOADER_SPIN_MS + BASKET_FAB_LOADER_FADE_MS
 /** Count badge appears this long after FAB reveal starts. */
 export const BASKET_BADGE_DELAY_MS = 150
 /** Badge scale bounce — keep in sync with `basket-fab-badge-pop` in styles.css. */
@@ -224,7 +226,8 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
     setCarouselUnits((c) => Math.max(0, c + delta))
   }, [])
 
-  const scheduleLoaderToBasket = useCallback(() => {
+  const scheduleLoaderToBasket = useCallback((opts?: { showBadgeAfter?: boolean }) => {
+    const showBadgeAfter = opts?.showBadgeAfter !== false
     const spinEndMs = BASKET_FAB_LOADER_SPIN_MS
     const iconPopStartMs = spinEndMs + BASKET_FAB_LOADER_FADE_MS
 
@@ -238,12 +241,15 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
       timerIdsRef.current.push(tIconDone)
     }, iconPopStartMs)
 
-    const tBadge = window.setTimeout(() => {
-      setShowBasketBadge(true)
-      setBadgePopNonce((n) => n + 1)
-    }, iconPopStartMs + BASKET_BADGE_DELAY_MS)
+    if (showBadgeAfter) {
+      const tBadge = window.setTimeout(() => {
+        setShowBasketBadge(true)
+        setBadgePopNonce((n) => n + 1)
+      }, iconPopStartMs + BASKET_BADGE_DELAY_MS)
+      timerIdsRef.current.push(tBadge)
+    }
 
-    timerIdsRef.current.push(tLoaderFade, tIcon, tBadge)
+    timerIdsRef.current.push(tLoaderFade, tIcon)
   }, [])
 
   const startBasketLoading = useCallback(() => {
@@ -254,7 +260,7 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
     setFabReveal(true)
     setFabPopIn(true)
     setFabLoading(true)
-    const tPopDone = window.setTimeout(() => setFabPopIn(false), BASKET_FAB_POP_MS)
+    const tPopDone = window.setTimeout(() => setFabPopIn(false), BASKET_FAB_BUTTON_POP_MS)
     timerIdsRef.current.push(tPopDone)
     scheduleLoaderToBasket()
   }, [scheduleLoaderToBasket])
@@ -299,25 +305,22 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
     setShowBasketBadge(false)
     setFabReservePx(0)
 
-    const rafLoading = window.requestAnimationFrame(() => {
-      setMerchantWideFabPhase('loading')
-      setFabLoading(true)
-      setFabReveal(true)
-      setFabPopIn(true)
-      const tPopDone = window.setTimeout(() => setFabPopIn(false), MERCHANT_FAB_POP_MS)
-      timerIdsRef.current.push(tPopDone)
-    })
-    rafIdsRef.current.push(rafLoading)
+    setMerchantWideFabPhase('loading')
+    setFabLoading(true)
+    setFabReveal(true)
+    setFabPopIn(true)
+    const tPopDone = window.setTimeout(() => setFabPopIn(false), BASKET_FAB_BUTTON_POP_MS)
+    timerIdsRef.current.push(tPopDone)
+    scheduleLoaderToBasket({ showBadgeAfter: false })
 
     const tDefault = window.setTimeout(() => {
       triggerHaptic('success')
-      setFabLoading(false)
       setMerchantWideFabPhase('default')
       setMerchantTabSolo(true)
     }, MERCHANT_BASKET_EXPAND_AT_MS)
 
     timerIdsRef.current.push(tDefault)
-  }, [])
+  }, [scheduleLoaderToBasket])
 
   const startBasketExit = useCallback((prev: number) => {
     setExitDisplayCount(prev)

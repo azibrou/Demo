@@ -1,11 +1,12 @@
+import { BannerCarousel } from '../components/BannerCarousel'
 import {
   allGroceryStores,
   bakerySweets,
   boltPlusDiscounts,
 } from '../lib/boltFoodTallinnStoresContent'
+import { storesHubBannerCarouselSlides } from '../lib/bannerCarouselContent'
 import { HomeShortcutsBlock } from '../sections/home'
 import {
-  StorePromoBannerBlock,
   StoresAllStoresBlock,
   StoresFeaturedStoreBlock,
   StoresPopularGroceriesBlock,
@@ -24,7 +25,10 @@ export function StoresScreen() {
     >
       <StoresTopBlock />
       <HomeShortcutsBlock />
-      <StorePromoBannerBlock />
+      <BannerCarousel
+        banners={storesHubBannerCarouselSlides}
+        data-node-id="77303:218315"
+      />
       <StoresPopularGroceriesBlock />
       <StoresFeaturedStoreBlock />
       <StoresProviderSectionBlock

@@ -19,10 +19,21 @@ export const merchantTabBarHeightCssMustInclude = [
   'max-height: 56px;',
 ] as const
 
-/** Loading slot opens to 56px — pill flex-1 shrinks in sync (150ms). */
+/** Loading: layout snap + FAB pop-in only (matches home FloatingTabBar). */
 export const merchantBasketSlotLoadingCssMustInclude = [
+  ".merchant-ftb__row--basket[data-basket-phase='loading']",
+  'transition: none;',
   ".merchant-ftb__row--basket[data-basket-phase='loading'] .floating-tab-bar__basket-slot--wide",
-  'flex: 0 0 56px;',
+  'transition: none !important;',
+  'basket-fab-button-pop',
+] as const
+
+/** Merchant loading uses BasketFabHome spinner (same as home FloatingTabBar). */
+export const merchantBasketFabLoadingCssMustInclude = [
+  '.basket-fab--merchant-slot',
+  '--basket-fab-size: 56px;',
+  '.basket-fab__loader--spin',
+  'animation: basket-fab-loader-spin',
 ] as const
 
 export const merchantBasketSlotDefaultCssMustInclude = [

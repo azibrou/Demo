@@ -144,21 +144,6 @@ export const design = {
     slideB: figma('c7a3f4fdcce2c176e2aa7d0b620d3276fdf97edc.png'),
   },
   /**
-   * Stores hub promo banners — Figma 77303:218315 (BM Banner + Bolt Plus).
-   * Refresh via `npm run figma:sync`.
-   */
-  storesHubPromo: {
-    mosaicTiles: [
-      figma('f9401e58b97393ae42a30a5294455157f100c58b.png'),
-      figma('5e200193354b9c659bff15d23c8f20d1e0ecdfb7.png'),
-      figma('a331565945546fc80feb80c4d2fd8fbfe8ae4243.png'),
-      figma('d30c6716246bb5b62e19aeb7be6529bbba84f8e7.png'),
-    ],
-    boltPlusHero: figma('ea87fefc8f922b846e9d1649eca44e53619848d3.png'),
-    boltPlusLogoUnion: figma('d49fea7082ffd654a29c5c50d34c976b0b669275.svg'),
-    boltPlusLogoGroup: figma('47448f3332c6d609c94175700b1f44997f27ea46.svg'),
-  },
-  /**
    * Store merchant GroceryHome — Figma 77237:150610 / 151500.
    * Refresh via `npm run figma:sync`.
    */
@@ -222,6 +207,21 @@ export const design = {
   heroBanner: {
     illustration: figma('768a268423a94f5da23949750be3f8c1.png'),
     joinNowArrow: figma('31626d35a5c74848b4ed2e477663a27d.svg'),
+  },
+  /** Figma 77937:93121 — DineOut top navigation (search, avatar, filter chips). */
+  dineOutTopNav: {
+    searchIcon: figma('f8d280a83b694e7abe0b4d007a8eb7b9.svg'),
+    filtersIcon: figma('5ca7ed033b634c9091512caef6d7ae45.svg'),
+    avatarRing: figma('a25219c7ea554b1b8ee769089652b3bf.svg'),
+    userAltOutline: figma('6ab084277e6b4f8aaec46b75b34c4781.svg'),
+    offerOutline: figma('f653b4db388b4d31b0fc252a00ffa5f0.svg'),
+    ratingSelected: figma('31f9394eb9f14f14b22eb81377e65075.svg'),
+    chevronDown: figma('2901061f12234863ba241ec5a3934161.svg'),
+    bikeDeliveryOutline: figma('ff16af5a16c543b28dd56cd8db118bb1.svg'),
+    timerOutline: figma('3784193f2e214d909a2c99a0220d3665.svg'),
+    walk: figma('662acdfc2ef8402fb26cabf338c1b8ac.svg'),
+    calendarOutline: figma('f19388e2531e4f73a7cf6b204ed9d31b.svg'),
+    boltPlusOutline: figma('320c5b624862421780113cf267cd5a6.svg'),
   },
   /** Figma 76330:70427 / 76330:70414 — SearchInput-default (+ filter indicator). */
   searchField: {

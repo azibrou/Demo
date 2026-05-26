@@ -5,10 +5,10 @@ import { describe, expect, it } from 'vitest'
 import {
   MERCHANT_TAB_BAR_ROW_HEIGHT_PX,
   merchantBasketSlotDefaultCssMustInclude,
+  merchantBasketFabLoadingCssMustInclude,
   merchantBasketSlotLoadingCssMustInclude,
   merchantTabBarHeightCssMustInclude,
   wideBasketFabInTabBarCssMustNotInclude,
-  wideBasketFabLoadingCssMustInclude,
 } from './merchantFloatingTabBarLayout'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -37,8 +37,14 @@ describe('merchant floating tab bar CSS contract', () => {
     }
   })
 
-  it('uses 56px basket slot during loading (pill fills row, no gap)', () => {
+  it('uses 56px basket slot during loading without width slide (pill fills row)', () => {
     for (const snippet of merchantBasketSlotLoadingCssMustInclude) {
+      expect(stylesCss).toContain(snippet)
+    }
+  })
+
+  it('uses BasketFabHome 56px loader pop-in during merchant loading', () => {
+    for (const snippet of merchantBasketFabLoadingCssMustInclude) {
       expect(stylesCss).toContain(snippet)
     }
   })
@@ -64,9 +70,4 @@ describe('merchant floating tab bar CSS contract', () => {
     }
   })
 
-  it('shows only spinner in loading state', () => {
-    for (const snippet of wideBasketFabLoadingCssMustInclude) {
-      expect(stylesCss).toContain(snippet)
-    }
-  })
 })

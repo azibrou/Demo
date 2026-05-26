@@ -12,6 +12,7 @@ import {
   TAB_BAR_LAYOUT_EASE,
   TAB_ACTION_TOTAL_RESERVE_PX,
   TAB_BAR_ITEM_GAP_PX,
+  BASKET_FAB_RESERVE_PX,
   WIDE_BASKET_FAB_SLOT_PX,
   MERCHANT_FAB_POP_MS,
   MERCHANT_FAB_EXPAND_MS,
@@ -21,12 +22,12 @@ import { MERCHANT_TAB_SEARCH_ICON } from '../config/merchantFloatingTabBarConfig
 import { WIDE_BASKET_FAB_IN_TAB_BAR_CLASS } from '../lib/wideBasketFabExpand'
 import { FLOATING_CHROME_SHADOW_CLASS } from '../lib/floatingChromeShadow'
 import { design } from '../lib/figmaDesignAssets'
+import { BasketFabHome } from './BasketFabHome'
 import { WideBasketFab, type WideBasketFabState } from './WideBasketFab'
 import { TabAction } from './TabAction'
 import type { FloatingTabBarItem } from './FloatingTabBar'
 
-function merchantWideFabUiState(phase: string, fabLoading: boolean): WideBasketFabState {
-  if (phase === 'loading' || fabLoading) return 'loading'
+function merchantWideFabUiState(phase: string): WideBasketFabState {
   if (phase === 'collapsed') return 'collapsed'
   return 'default'
 }
@@ -163,9 +164,10 @@ function MerchantFTabBarInner({
 
   if (n === 0) return null
 
-  const wideFabState = basketEnabled
-    ? merchantWideFabUiState(wideFabPhase, basket.fabLoading)
-    : 'default'
+  const showWideBasketFab =
+    showWideFab && (wideFabPhase === 'default' || wideFabPhase === 'collapsed')
+
+  const wideFabState = basketEnabled ? merchantWideFabUiState(wideFabPhase) : 'default'
 
   return (
     <div
@@ -262,8 +264,45 @@ function MerchantFTabBarInner({
         </div>
 
         {merchantBasketRow && basket ? (
-          <div className="floating-tab-bar__basket-slot floating-tab-bar__basket-slot--wide relative overflow-visible">
-            {showWideFab ? (
+          <div
+            className={[
+              'floating-tab-bar__basket-slot floating-tab-bar__basket-slot--wide relative shrink-0 overflow-visible',
+              basketRowPhase === 'loading' ? 'floating-tab-bar__basket-slot--merchant-loading' : '',
+            ]
+              .filter(Boolean)
+              .join(' ')}
+            style={
+              basketRowPhase === 'loading'
+                ? ({
+                    width: BASKET_FAB_RESERVE_PX,
+                    flex: `0 0 ${BASKET_FAB_RESERVE_PX}px`,
+                    minWidth: BASKET_FAB_RESERVE_PX,
+                    maxWidth: BASKET_FAB_RESERVE_PX,
+                  } as CSSProperties)
+                : undefined
+            }
+          >
+            {basketRowPhase === 'loading' ? (
+              <div
+                className="absolute right-0 top-1/2 -translate-y-1/2"
+                style={{ width: BASKET_FAB_RESERVE_PX }}
+              >
+                <BasketFabHome
+                  size="merchant"
+                  count={basket.basketDisplayCount}
+                  fabReveal={basket.fabReveal}
+                  fabLoading={basket.fabLoading}
+                  loaderExiting={basket.loaderExiting}
+                  fabIconPopIn={basket.fabIconPopIn}
+                  showBadge={basket.showBasketBadge}
+                  badgeExiting={basket.badgeExiting}
+                  fabExiting={basket.fabExiting}
+                  fabPopIn={basket.fabPopIn}
+                  exiting={basket.basketFabExiting}
+                  badgePopNonce={basket.badgePopNonce}
+                />
+              </div>
+            ) : showWideBasketFab ? (
               <WideBasketFab
                 state={wideFabState}
                 count={basket.basketDisplayCount}

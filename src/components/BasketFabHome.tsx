@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { BASKET_FAB_LOADER_FADE_MS } from '../context/BasketFabContext'
+import { BASKET_FAB_BUTTON_POP_MS, BASKET_FAB_LOADER_FADE_MS } from '../context/BasketFabContext'
 import { design } from '../lib/figmaDesignAssets'
 import { FLOATING_CHROME_SHADOW_CLASS } from '../lib/floatingChromeShadow'
 
@@ -16,6 +16,8 @@ export type BasketFabHomeProps = {
   fabPopIn: boolean
   exiting: boolean
   badgePopNonce: number
+  /** `home` — hub FloatingTabBar; `merchant` — MerchantFTabBar loading slot (both 56px). */
+  size?: 'home' | 'merchant'
 }
 
 function basketFabAriaLabel(count: number) {
@@ -44,21 +46,25 @@ export function BasketFabHome({
   fabPopIn,
   exiting,
   badgePopNonce,
+  size = 'home',
 }: BasketFabHomeProps) {
   const navigate = useNavigate()
   const showLoader = fabLoading || loaderExiting
   const showIcon = fabReveal && !showLoader
   const label = basketFabAriaLabel(count)
+  const sizeClass = size === 'merchant' ? 'basket-fab--merchant-slot' : 'basket-fab--home'
 
   return (
     <div
       className={[
-        'basket-fab basket-fab--home relative size-[60px] shrink-0 origin-center overflow-visible',
+        'basket-fab relative shrink-0 origin-center overflow-visible',
+        sizeClass,
         fabLoading ? 'basket-fab--loading' : '',
       ].join(' ')}
       style={
         {
           '--basket-fab-loader-fade-ms': `${BASKET_FAB_LOADER_FADE_MS}ms`,
+          '--basket-fab-button-pop-ms': `${BASKET_FAB_BUTTON_POP_MS}ms`,
         } as CSSProperties
       }
       data-name="basket-fab"
@@ -69,7 +75,7 @@ export function BasketFabHome({
         disabled={count <= 0 || exiting || fabLoading}
         onClick={() => navigate('/shopping-list')}
         className={[
-          'basket-fab__button relative flex size-[60px] shrink-0 items-center justify-center rounded-[60px]',
+          'basket-fab__button relative flex shrink-0 items-center justify-center',
           'bg-[var(--color-bg-action-primary,#2b8659)] outline-none',
           FLOATING_CHROME_SHADOW_CLASS,
           'ring-[var(--color-special-brand-alt,#0c2c1c)]/20 focus-visible:ring-2',

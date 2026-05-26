@@ -1,3 +1,4 @@
+import { AccountButton } from './AccountButton'
 import { design } from '../lib/figmaDesignAssets'
 
 const as = design.addressSelector
@@ -66,18 +67,7 @@ export function AddressSelector({
         <div className="flex min-w-0 flex-1 items-center gap-2">{addressBody}</div>
       )}
 
-      <button
-        type="button"
-        onClick={onAvatarClick}
-        aria-label="Account"
-        className={`relative size-12 shrink-0 bg-transparent ${focusRing}`}
-        data-name="[Eater] Avatar - initial"
-      >
-        <img alt="" src={as.avatarRing} className="pointer-events-none absolute inset-0 block size-full max-w-none" />
-        <div className="absolute inset-[4.55%] flex flex-col items-center justify-center rounded-full bg-[var(--color-bg-action-secondary)] p-2">
-          <p className="bolt-font-heading-xs-accent text-[var(--color-content-action-primary)]">{avatarInitial}</p>
-        </div>
-      </button>
+      <AccountButton initial={avatarInitial} onClick={onAvatarClick} avatarRingSrc={as.avatarRing} />
     </div>
   )
 }

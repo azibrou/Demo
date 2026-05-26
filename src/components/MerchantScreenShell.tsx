@@ -32,6 +32,11 @@ export function MerchantScreenShell({ children }: MerchantScreenShellProps) {
   }, [])
 
   useLayoutEffect(() => {
+    document.querySelector('.eater-hub-scroll')?.scrollTo(0, 0)
+    document.querySelector('.merchant-screen')?.scrollTo(0, 0)
+  }, [])
+
+  useLayoutEffect(() => {
     if (!portalReady) return
     setChromeEnter(false)
     let inner = 0

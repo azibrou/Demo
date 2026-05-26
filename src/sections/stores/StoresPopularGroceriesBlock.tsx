@@ -4,7 +4,7 @@ import { storesRetailSnippetProducts, storesRetailSnippetStore } from '../../lib
 /** Popular groceries — Figma 77303:218316 (retail snippet only, no section title). */
 export function StoresPopularGroceriesBlock() {
   return (
-    <section className="stores-popular-groceries w-full pt-3" data-node-id="77303:218316">
+    <section className="stores-popular-groceries w-full" data-node-id="77303:218316">
       <RetailSnippet store={storesRetailSnippetStore} products={storesRetailSnippetProducts} />
     </section>
   )

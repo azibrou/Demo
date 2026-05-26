@@ -17,10 +17,6 @@ body,
   overflow-x: clip;
 }
 
-#root {
-  border-radius: 12px;
-}
-
 html,
 body {
   overflow-y: auto;
@@ -75,6 +71,41 @@ html.eater-hub-active #root {
     cursor: pointer;
     border: none;
     outline: none;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16);
+  }
+
+  /** Figma 77937:93123 — [Eater] SearchInput shadow. */
+  .dine-out-search-field {
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
+  }
+
+  /** DineOut top panel — account avatar matches search / filter chip elevation. */
+  .dine-out-top-nav .dine-out-account-button {
+    border-radius: 9999px;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16);
+  }
+
+  .dine-out-top-nav {
+    overflow: visible;
+  }
+
+  /** Chip shadows / focus rings must not be clipped by horizontal-scroll chrome. */
+  .dine-out-top-nav .home-horizontal-scroll-outer {
+    overflow: visible;
+  }
+
+  .dine-out-top-nav .home-horizontal-scroll-row {
+    contain: none;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding-block-end: 8px;
+    margin-block-end: -8px;
+  }
+
+  .dine-out-top-nav__filters-track {
+    align-items: center;
+    padding-inline: var(--home-gutter);
+    overflow: visible;
   }
 
   .dine-out-filter-chip:focus-visible {
@@ -215,16 +246,53 @@ html.eater-hub-active #root {
   }
 
   /**
-   * Merchant provider screens — hero cover extends under the system status bar;
-   * no mock status bar chrome (unlike home hero). Nav sits in safe-area padding only.
+   * Merchant provider screens — edge-to-edge under system status bar; cover behind it.
+   * Drop #root preview rounding so status bar / hero align to the viewport top.
    */
+  html.merchant-immersive-active #root,
+  html.merchant-immersive-active .eater-hub-shell,
+  html.merchant-immersive-active .eater-ios-stack,
   html.merchant-immersive-active .eater-ios-stack__panel {
-    padding-top: 0;
+    border-radius: 0;
   }
 
-  .merchant-screen {
+  /**
+   * Merchant scroll lives on `.merchant-screen`. Constrain the hub → stack chain to the
+   * viewport so the panel does not grow with content (which disables overflow scrolling).
+   */
+  html.merchant-immersive-active .eater-hub-scroll {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  html.merchant-immersive-active .eater-ios-stack {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  html.merchant-immersive-active .eater-ios-stack__panel {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+    padding-top: 0;
+    overflow: hidden;
+  }
+
+  html.merchant-immersive-active .merchant-screen {
     margin-top: 0;
     padding-top: 0;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-x: clip;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
   }
 
   :root {
@@ -843,6 +911,11 @@ html.eater-hub-active #root {
     box-sizing: border-box;
   }
 
+  .home-horizontal-scroll-track.dine-out-top-nav__filters-track {
+    box-sizing: content-box;
+    overflow: visible;
+  }
+
   .shortcut-item-scaled {
     display: flex;
     flex-direction: column;
@@ -1101,6 +1174,23 @@ html.eater-hub-active #root {
     width: 56px;
     min-width: 56px;
     max-width: 56px;
+  }
+
+  /**
+   * Loading: snap layout instantly (same beat as home FloatingTabBar). Only the FAB
+   * button uses basket-fab-button-pop — no row / pill / slot width tween (that reads as slide).
+   */
+  .merchant-ftb__row--basket[data-basket-phase='loading'] {
+    transition: none;
+  }
+
+  .merchant-ftb__row--basket[data-basket-phase='loading'] .floating-tab-bar__pill:not([data-merchant-solo='true']) {
+    transition: none;
+  }
+
+  .merchant-ftb__row--basket[data-basket-phase='loading'] .floating-tab-bar__basket-slot--wide,
+  .merchant-ftb__row--basket[data-basket-phase='loading'] .floating-tab-bar__basket-slot--merchant-loading {
+    transition: none !important;
   }
 
   .merchant-ftb__row--basket[data-basket-phase='default'] .floating-tab-bar__basket-slot--wide {
@@ -1432,11 +1522,13 @@ html.eater-hub-active #root {
   }
 
   .basket-fab__button--in {
-    animation: basket-fab-pop var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) ease-out forwards;
+    transform-origin: center;
+    animation: basket-fab-button-pop var(--basket-fab-button-pop-ms, 220ms) ease-out forwards;
   }
 
   .basket-fab__button--out {
-    animation: basket-fab-pop var(--ftb-layout-ms, var(--ftb-compact-ms, 150ms)) ease-out reverse forwards;
+    transform-origin: center;
+    animation: basket-fab-button-pop var(--basket-fab-button-pop-ms, 220ms) ease-out reverse forwards;
   }
 
   .basket-fab__badge--in {
@@ -1455,6 +1547,25 @@ html.eater-hub-active #root {
       opacity: 0;
     }
     to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /** First quick-add — FAB scales in with a small bounce (ease-out). */
+  @keyframes basket-fab-button-pop {
+    0% {
+      transform: scale(0.35);
+      opacity: 0;
+    }
+    55% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+    78% {
+      transform: scale(0.96);
+    }
+    100% {
       transform: scale(1);
       opacity: 1;
     }
@@ -1522,8 +1633,18 @@ html.eater-hub-active #root {
   /**
    * BasketFab — Figma 77550:93513 (default), 77550:93474 (loading).
    */
-  .basket-fab--home {
-    --basket-fab-size: 60px;
+  .basket-fab--home,
+  .basket-fab--merchant-slot {
+    --basket-fab-size: 56px;
+    width: var(--basket-fab-size);
+    height: var(--basket-fab-size);
+  }
+
+  .basket-fab--home .basket-fab__button,
+  .basket-fab--merchant-slot .basket-fab__button {
+    width: var(--basket-fab-size);
+    height: var(--basket-fab-size);
+    border-radius: var(--basket-fab-size);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1531,6 +1652,12 @@ html.eater-hub-active #root {
     .basket-fab__badge,
     .basket-fab__loader {
       animation: none !important;
+    }
+
+    .basket-fab__button--in,
+    .basket-fab__button--out {
+      transform: scale(1);
+      opacity: 1;
     }
 
     .basket-fab__loader--out {
@@ -1962,12 +2089,9 @@ html.eater-hub-active #root {
 
   .top-section-store__hero {
     position: relative;
-    display: flex;
     height: calc(179px + env(safe-area-inset-top, 0px));
     width: 100%;
     margin-bottom: -64px;
-    flex-direction: column;
-    align-items: stretch;
     overflow: hidden;
     flex-shrink: 0;
   }
@@ -1990,13 +2114,16 @@ html.eater-hub-active #root {
   }
 
   .top-section-store__nav {
-    position: relative;
-    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
     display: flex;
     width: 100%;
     flex-direction: column;
     padding-top: env(safe-area-inset-top, 0px);
-    flex-shrink: 0;
+    pointer-events: none;
   }
 
   .top-section-store__nav-bar {
@@ -2007,6 +2134,7 @@ html.eater-hub-active #root {
     gap: 8px;
     padding-inline: 14px;
     flex-shrink: 0;
+    pointer-events: auto;
   }
 
   .top-section-store__nav-spacer {
@@ -2232,12 +2360,9 @@ html.eater-hub-active #root {
 
   .top-section-restaurant__hero {
     position: relative;
-    display: flex;
     height: calc(244px + env(safe-area-inset-top, 0px));
     width: 100%;
     margin-bottom: -16px;
-    flex-direction: column;
-    align-items: stretch;
     overflow: hidden;
   }
 
@@ -2264,13 +2389,16 @@ html.eater-hub-active #root {
   }
 
   .top-section-restaurant__nav {
-    position: relative;
-    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
     display: flex;
     width: 100%;
     flex-direction: column;
     padding-top: env(safe-area-inset-top, 0px);
-    flex-shrink: 0;
+    pointer-events: none;
   }
 
   .top-section-restaurant__nav-bar {
@@ -2281,6 +2409,7 @@ html.eater-hub-active #root {
     gap: 8px;
     padding-inline: 14px;
     flex-shrink: 0;
+    pointer-events: auto;
   }
 
   .top-section-restaurant__nav-spacer {
@@ -2324,7 +2453,10 @@ html.eater-hub-active #root {
   }
 
   .top-section-restaurant__title-block {
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 1;
     display: flex;
     height: 128px;
@@ -2333,8 +2465,8 @@ html.eater-hub-active #root {
     align-items: center;
     justify-content: center;
     padding-bottom: 16px;
-    flex-shrink: 0;
     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.24));
+    pointer-events: none;
   }
 
   .top-section-restaurant__title-row {
@@ -2370,6 +2502,7 @@ html.eater-hub-active #root {
     color: #fff;
     cursor: pointer;
     padding: 0;
+    pointer-events: auto;
   }
 
   .top-section-restaurant__more-info-chevron {
@@ -2569,184 +2702,6 @@ html.eater-hub-active #root {
         100vw - 2 * var(--banner-carousel-gutter) - var(--banner-carousel-peek)
       );
     }
-  }
-
-  /**
-   * Stores hub composed promo banners — Figma 77303:218315 (BM Banner + Bolt Plus).
-   */
-  .banner-carousel__slide--composed {
-    height: 156px;
-  }
-
-  .banner-carousel__slide--composed .stores-promo-banner {
-    height: 100%;
-    width: 100%;
-  }
-
-  .stores-promo-banner {
-    overflow: hidden;
-    border-radius: 8px;
-  }
-
-  .stores-promo-banner__inner {
-    display: flex;
-    height: 156px;
-    width: 100%;
-    align-items: stretch;
-    gap: 12px;
-    overflow: hidden;
-  }
-
-  .stores-promo-banner--discount {
-    background: #eeeebd;
-  }
-
-  .stores-promo-banner--bolt-plus {
-    background: var(--color-special-brand, #2a9c64);
-  }
-
-  .stores-promo-banner__copy {
-    display: flex;
-    min-width: 0;
-    flex: 1 1 0;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-    padding: 16px 0 8px 16px;
-  }
-
-  .stores-promo-banner__copy--bolt-plus {
-    gap: 4px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-  }
-
-  .stores-promo-banner__title {
-    margin: 0;
-    letter-spacing: -0.252px;
-  }
-
-  .stores-promo-banner__subtitle {
-    margin: 0;
-  }
-
-  .stores-promo-banner__validity {
-    margin: 6px 0 0;
-    max-width: 143px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 8px;
-    line-height: 12px;
-    color: var(--color-content-secondary);
-    font-feature-settings: 'lnum' 1, 'tnum' 1;
-  }
-
-  .stores-promo-banner__bolt-logo {
-    position: relative;
-    width: 62px;
-    height: 25px;
-    flex-shrink: 0;
-  }
-
-  .stores-promo-banner__bolt-logo-union {
-    position: absolute;
-    inset: 7.82% 39.38% 3.95% 0;
-    display: block;
-    height: auto;
-    width: auto;
-    max-width: none;
-  }
-
-  .stores-promo-banner__bolt-logo-plus {
-    position: absolute;
-    inset: 0.03% 0.06% 18.04% 66.91%;
-    display: block;
-    height: auto;
-    width: auto;
-    max-width: none;
-  }
-
-  .stores-promo-banner__bolt-hero {
-    position: relative;
-    width: 156px;
-    flex-shrink: 0;
-    overflow: hidden;
-  }
-
-  .stores-promo-banner__bolt-hero-img {
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-    display: block;
-    height: 100%;
-    width: 100%;
-    max-width: none;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .stores-promo-mosaic {
-    position: relative;
-    width: 156px;
-    height: 156px;
-    flex-shrink: 0;
-    overflow: hidden;
-  }
-
-  .stores-promo-mosaic__tile {
-    position: absolute;
-    overflow: hidden;
-    border: 1px solid rgb(0 0 0 / 0.04);
-    background: #fff;
-    box-shadow: 0 3px 4px rgb(80 66 44 / 0.06);
-  }
-
-  .stores-promo-mosaic__img {
-    pointer-events: none;
-    display: block;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-
-  .stores-promo-mosaic__tile--primary {
-    top: 4.67px;
-    left: 12.67px;
-    width: 80px;
-    height: 80px;
-    border-radius: 12px;
-    box-shadow: 1px 5px 11px rgb(80 66 44 / 0.08);
-    transform: rotate(5deg);
-  }
-
-  .stores-promo-mosaic__tile--top-right {
-    top: 4.37px;
-    left: 90.37px;
-    width: 66px;
-    height: 66px;
-    border-radius: 10px;
-    transform: rotate(21deg);
-  }
-
-  .stores-promo-mosaic__tile--bottom-left {
-    top: 77px;
-    left: 6px;
-    width: 64px;
-    height: 64px;
-    border-radius: 9px;
-    box-shadow: 0 1px 3px rgb(80 66 44 / 0.06);
-    transform: rotate(-10deg);
-  }
-
-  .stores-promo-mosaic__tile--bottom-right {
-    top: 67px;
-    left: 72px;
-    width: 72px;
-    height: 72px;
-    border-radius: 11px;
-    box-shadow: 0 2px 8px rgb(80 66 44 / 0.06);
-    transform: rotate(9deg);
   }
 
   /**

@@ -341,17 +341,8 @@
       "kind": "component",
       "export": "BannerCarousel",
       "prefixes": ["banner-carousel"],
-      "figma": ["77842:552848", "77842:552851"],
+      "figma": ["77303:218315", "77842:552848", "77842:552851"],
       "summary": "Horizontal promo banner carousel — 24px padding, 12px gap, 8px radius, 327:156 aspect."
-    },
-    {
-      "name": "StorePromoBannerBlock",
-      "kind": "block",
-      "export": "StorePromoBannerBlock",
-      "prefixes": ["stores-promo-banner", "stores-promo-mosaic", "banner-carousel__slide--composed"],
-      "dependsOn": ["BannerCarousel"],
-      "figma": ["77303:218315"],
-      "summary": "Stores hub promo banner carousel (Multiple 375)."
     },
     {
       "name": "StoreProductCarouselBlock",

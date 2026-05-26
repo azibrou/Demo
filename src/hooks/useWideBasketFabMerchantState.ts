@@ -5,8 +5,11 @@ import { WIDE_BASKET_FAB_LOADING_MS } from '../components/WideBasketFab'
 const SCROLL_TOP_EXPAND_PX = 8
 const SCROLL_DELTA_PX = 1
 
-function getEaterHubScrollEl(): HTMLElement | null {
+function getMerchantScrollEl(): HTMLElement | null {
   if (typeof document === 'undefined') return null
+  if (document.documentElement.classList.contains('merchant-immersive-active')) {
+    return document.querySelector('.merchant-screen') ?? document.querySelector('.eater-hub-scroll')
+  }
   return document.querySelector('.eater-hub-scroll')
 }
 
@@ -71,7 +74,7 @@ export function useWideBasketFabMerchantState(basketUnitTotal: number) {
   useLayoutEffect(() => {
     if (!visible || !ready) return
     setScrollCollapsed(false)
-    const el = getEaterHubScrollEl()
+    const el = getMerchantScrollEl()
     if (el) lastScrollTopRef.current = el.scrollTop
   }, [visible, ready])
 
@@ -91,7 +94,7 @@ export function useWideBasketFabMerchantState(basketUnitTotal: number) {
   useEffect(() => {
     if (!visible) return
 
-    const el = getEaterHubScrollEl()
+    const el = getMerchantScrollEl()
     if (!el) return
 
     lastScrollTopRef.current = el.scrollTop

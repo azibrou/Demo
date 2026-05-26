@@ -232,7 +232,10 @@ function FloatingTabBarInner({
             className="floating-tab-bar__basket-slot relative shrink-0 overflow-visible"
             style={basketSlotStyle}
           >
-            <div className="absolute right-0 top-1/2 w-[60px] -translate-y-1/2">
+            <div
+              className="absolute right-0 top-1/2 -translate-y-1/2"
+              style={{ width: BASKET_FAB_RESERVE_PX }}
+            >
               <BasketFabHome
                 count={basket.basketDisplayCount}
                 fabReveal={basket.fabReveal}
