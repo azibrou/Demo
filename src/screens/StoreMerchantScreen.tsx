@@ -16,7 +16,7 @@ export function StoreMerchantScreen() {
 
   return (
     <MerchantScreenShell>
-    <div className="bolt-font-base relative min-h-svh w-full bg-[var(--color-layer-floor-0)] pb-[calc(env(safe-area-inset-bottom,0px)+96px)] text-[var(--color-content-primary)]">
+    <div className="merchant-screen bolt-font-base relative min-h-svh w-full bg-[var(--color-layer-floor-0)] pb-[calc(env(safe-area-inset-bottom,0px)+96px)] text-[var(--color-content-primary)]">
       <div className="flex flex-col">
         <TopSectionStore provider={storeMerchantProvider} onBack={onBack} />
 

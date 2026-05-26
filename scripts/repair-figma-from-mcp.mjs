@@ -156,11 +156,19 @@ const REPAIR_MAP = {
   '2c2fe8c2adab3abdcf334211f793273699a9b669.svg':
     'http://localhost:3845/assets/2c2fe8c2adab3abdcf334211f793273699a9b669.svg',
 
-  // Merchant tab bar — 77237:148679 area (reuse floating icons where matched)
-  '77ac5126f0174e76be05f139bbc45051.svg':
-    'https://www.figma.com/api/mcp/asset/5903c842-f71a-4379-860b-c9aeed5a75d5',
-  'f986f75e0f8d4936b32ad3da4485f464.svg':
-    'https://www.figma.com/api/mcp/asset/fad657e6-7b54-4630-a1a2-a55901cd83c4',
+  // Merchant tab bar — Figma 77900:93000–93014
+  '489dcdf80e3d484082e2961e3796d613.svg':
+    'https://www.figma.com/api/mcp/asset/489dcdf8-0e3d-4840-82e2-961e3796d613',
+  'feee67782c1b458fbca39f0abca7c4ba.svg':
+    'https://www.figma.com/api/mcp/asset/feee6778-2c1b-458f-bca3-9f0abca7c4ba',
+  '8ae5a2d6f0774612a8f02f9ec6277174.svg':
+    'https://www.figma.com/api/mcp/asset/8ae5a2d6-f077-4612-a8f0-2f9ec6277174',
+  'd0d29941e95542c78824262fffa9dda.svg':
+    'https://www.figma.com/api/mcp/asset/d0d29941-e955-42c7-8824-4262fffa9dda',
+  'e42806b8434d4ff28379e6bc00810c6d.svg':
+    'https://www.figma.com/api/mcp/asset/e42806b8-434d-4ff2-8379-e6bc00810c6d',
+  'b5a2b0ef79e34bcdb2181f24fb4dd968.svg':
+    'https://www.figma.com/api/mcp/asset/b5a2b0ef-79e3-4bcd-b218-1f24fb4dd968',
   '91d28e75e71f4238b5e231b7c4718380.svg':
     'https://www.figma.com/api/mcp/asset/fad657e6-7b54-4630-a1a2-a55901cd83c4',
 }

@@ -109,21 +109,27 @@ export const design = {
     search: figma('baa3b78a6cc04bd49e06df4dcaf11263.svg'),
   },
   /**
-   * Merchant floating tab bar — Figma 77237:148679 / 148754 / 148713.
+   * Merchant floating tab bar — Figma 77900:93000–93014 (stores / isles / list).
    * Refresh via `npm run figma:sync`.
    */
   merchantFloatingTabBar: {
     venue: {
-      default: figma('77ac5126f0174e76be05f139bbc45051.svg'),
-      selected: figma('77ac5126f0174e76be05f139bbc45051.svg'),
+      /** 77900:93006 — stores-default */
+      default: figma('feee67782c1b458fbca39f0abca7c4ba.svg'),
+      /** 77900:93000 — stores-select */
+      selected: figma('489dcdf80e3d484082e2961e3796d613.svg'),
     },
     isles: {
-      default: figma('f986f75e0f8d4936b32ad3da4485f464.svg'),
-      selected: figma('f986f75e0f8d4936b32ad3da4485f464.svg'),
+      /** 77900:93010 — isles-default */
+      default: figma('d0d29941e95542c78824262fffa9dda.svg'),
+      /** 77900:93008 — isles-select */
+      selected: figma('8ae5a2d6f0774612a8f02f9ec6277174.svg'),
     },
     list: {
-      default: figma('049e8d19903d4a689d6e62c8d797ba48.svg'),
-      selected: figma('049e8d19903d4a689d6e62c8d797ba48.svg'),
+      /** 77900:93012 — list-default */
+      default: figma('b5a2b0ef79e34bcdb2181f24fb4dd968.svg'),
+      /** 77900:93014 — list-select */
+      selected: figma('e42806b8434d4ff28379e6bc00810c6d.svg'),
     },
     search: figma('91d28e75e71f4238b5e231b7c4718380.svg'),
     basketExpanded: figma('8e90a2751b5944bd92fe997b0417743e.svg'),

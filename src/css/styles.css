@@ -214,6 +214,19 @@ html.eater-hub-active #root {
     }
   }
 
+  /**
+   * Merchant provider screens — hero cover extends under the system status bar;
+   * no mock status bar chrome (unlike home hero). Nav sits in safe-area padding only.
+   */
+  html.merchant-immersive-active .eater-ios-stack__panel {
+    padding-top: 0;
+  }
+
+  .merchant-screen {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
   :root {
     --home-gutter: var(--layout-hr-screen-margin);
     --scaled-tile-baseline: 86px;
@@ -1950,7 +1963,7 @@ html.eater-hub-active #root {
   .top-section-store__hero {
     position: relative;
     display: flex;
-    height: 179px;
+    height: calc(179px + env(safe-area-inset-top, 0px));
     width: 100%;
     margin-bottom: -64px;
     flex-direction: column;
@@ -1982,7 +1995,7 @@ html.eater-hub-active #root {
     display: flex;
     width: 100%;
     flex-direction: column;
-    padding-top: 44px;
+    padding-top: env(safe-area-inset-top, 0px);
     flex-shrink: 0;
   }
 
@@ -2220,7 +2233,7 @@ html.eater-hub-active #root {
   .top-section-restaurant__hero {
     position: relative;
     display: flex;
-    height: 244px;
+    height: calc(244px + env(safe-area-inset-top, 0px));
     width: 100%;
     margin-bottom: -16px;
     flex-direction: column;
@@ -2256,7 +2269,7 @@ html.eater-hub-active #root {
     display: flex;
     width: 100%;
     flex-direction: column;
-    padding-top: 44px;
+    padding-top: env(safe-area-inset-top, 0px);
     flex-shrink: 0;
   }
 

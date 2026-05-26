@@ -25,8 +25,10 @@ export function MerchantScreenShell({ children }: MerchantScreenShellProps) {
 
   useEffect(() => {
     setPortalReady(true)
-    document.documentElement.classList.add('merchant-ftb-active')
-    return () => document.documentElement.classList.remove('merchant-ftb-active')
+    document.documentElement.classList.add('merchant-ftb-active', 'merchant-immersive-active')
+    return () => {
+      document.documentElement.classList.remove('merchant-ftb-active', 'merchant-immersive-active')
+    }
   }, [])
 
   useLayoutEffect(() => {
