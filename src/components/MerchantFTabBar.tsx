@@ -224,7 +224,7 @@ function MerchantFTabBarInner({
         'bolt-font-base relative flex w-full min-w-0 flex-col items-start justify-end',
         'bg-gradient-to-b from-[rgba(255,255,255,0)] to-[rgba(255,255,255,0.9)]',
         'floating-tab-bar pt-3',
-        'pb-[calc(34px+env(safe-area-inset-bottom,0px))]',
+        'pb-[calc(12px+env(safe-area-inset-bottom,0px))]',
         className,
       ].join(' ')}
       data-name="merchant-ftb"
