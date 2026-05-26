@@ -8,12 +8,11 @@ on:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
-# contents: write — required when repo workflow permissions are read-only by default (checkout 403).
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
-  actions: read
+  actions: write
 
 concurrency:
   group: pages
@@ -25,17 +24,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-        with:
-          fetch-depth: 1
-          persist-credentials: false
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
 
-      - run: npm ci
-      - run: npm run build
+      - name: Install and build
+        run: npm ci && npm run build
 
       - name: Verify production build
         run: |
@@ -43,7 +40,7 @@ jobs:
           ! grep -q '/src/main.tsx' dist/index.html
           test -f dist/404.html
 
-      # Same artifact layout as upload-pages-artifact, without that composite action.
+      # Matches upload-pages-artifact output (artifact name: github-pages) without that composite action.
       - name: Package Pages artifact
         run: |
           tar --dereference --hard-dereference \
@@ -65,12 +62,12 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
