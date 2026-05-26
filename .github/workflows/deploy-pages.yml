@@ -5,10 +5,12 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# contents: write matches repo "Read and write" workflow permissions (required for reliable checkout).
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
+  actions: read
 
 # Do not cancel in-progress deploys — cancelling checkout often surfaces as git exit 128.
 concurrency:
@@ -41,9 +43,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
