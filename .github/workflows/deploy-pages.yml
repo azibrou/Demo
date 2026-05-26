@@ -30,7 +30,7 @@ jobs:
           grep -q '/Demo/assets/' dist/index.html
           ! grep -q '/src/main.tsx' dist/index.html
           test -f dist/404.html
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v4
         with:
           enablement: true
       - uses: actions/upload-pages-artifact@v3
