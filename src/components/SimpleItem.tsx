@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { useBasketFabOptional } from '../context/BasketFabContext'
 import { design } from '../lib/figmaDesignAssets'
 import { QuickAddExpandPill } from './QuickAddExpandPill'
@@ -59,15 +59,6 @@ export function SimpleItem({
     const delta = units - contributedRef.current
     contributedRef.current = units
     if (delta !== 0) adjustBasketRef.current?.(delta)
-  }, [])
-
-  useEffect(() => {
-    return () => {
-      if (contributedRef.current !== 0) {
-        adjustBasketRef.current?.(-contributedRef.current)
-        contributedRef.current = 0
-      }
-    }
   }, [])
 
   const handleAdd = useCallback(() => {

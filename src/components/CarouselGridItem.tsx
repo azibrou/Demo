@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { useBasketFabOptional } from '../context/BasketFabContext'
 import { design } from '../lib/figmaDesignAssets'
 import { QuickAddExpandPill } from './QuickAddExpandPill'
@@ -59,16 +59,6 @@ export function CarouselGridItem({
     const delta = units - contributedRef.current
     contributedRef.current = units
     if (delta !== 0) adjustCarouselRef.current?.(delta)
-  }, [])
-
-  /** Only unwind this tile’s units on unmount — not when basket context re-renders. */
-  useEffect(() => {
-    return () => {
-      if (contributedRef.current !== 0) {
-        adjustCarouselRef.current?.(-contributedRef.current)
-        contributedRef.current = 0
-      }
-    }
   }, [])
 
   const handleAdd = useCallback(() => {

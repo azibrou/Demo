@@ -1,21 +1,14 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { WideBasketFabState } from '../components/WideBasketFab'
 import { WIDE_BASKET_FAB_LOADING_MS } from '../components/WideBasketFab'
-
-const SCROLL_TOP_EXPAND_PX = 8
-const SCROLL_DELTA_PX = 1
-
-function getMerchantScrollEl(): HTMLElement | null {
-  if (typeof document === 'undefined') return null
-  if (document.documentElement.classList.contains('merchant-immersive-active')) {
-    return document.querySelector('.merchant-screen') ?? document.querySelector('.eater-hub-scroll')
-  }
-  return document.querySelector('.eater-hub-scroll')
-}
+import { getMerchantScrollEl, resolveMerchantScrollCompact } from '../lib/merchantBasketScrollChrome'
 
 /**
  * Merchant wide basket FAB: hidden until first quick-add (basket &gt; 0),
- * loading (1500ms) → expanded default immediately; scroll down → collapsed; scroll up → default.
+ * loading (1500ms) → expanded; first scroll → collapsed wide FAB (latched until reset).
+ *
+ * Scroll-driven tab/basket layout is owned by {@link BasketFabProvider}; this hook is for
+ * standalone WideBasketFab state when not using the context.
  */
 export function useWideBasketFabMerchantState(basketUnitTotal: number) {
   const [ready, setReady] = useState(false)
@@ -98,6 +91,7 @@ export function useWideBasketFabMerchantState(basketUnitTotal: number) {
     if (!el) return
 
     lastScrollTopRef.current = el.scrollTop
+    let compact = false
 
     const onScroll = () => {
       const top = el.scrollTop
@@ -106,14 +100,11 @@ export function useWideBasketFabMerchantState(basketUnitTotal: number) {
 
       if (!readyRef.current) return
 
-      if (top <= SCROLL_TOP_EXPAND_PX) {
-        setScrollCollapsed(false)
-        return
+      const next = resolveMerchantScrollCompact(top, prevTop, compact)
+      if (next !== compact) {
+        compact = next
+        setScrollCollapsed(next)
       }
-
-      const delta = top - prevTop
-      if (delta > SCROLL_DELTA_PX) setScrollCollapsed(true)
-      else if (delta < -SCROLL_DELTA_PX) setScrollCollapsed(false)
     }
 
     el.addEventListener('scroll', onScroll, { passive: true })

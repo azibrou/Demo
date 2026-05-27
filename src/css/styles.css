@@ -419,10 +419,14 @@ html.eater-hub-active #root {
   }
 
   .home-search-section {
-    margin-top: 0;
+    margin-top: -32px;
     margin-bottom: 0;
     padding-top: 12px;
     padding-bottom: 12px;
+  }
+
+  .stores-top .home-search-section {
+    margin-top: 12px;
   }
 
   .hero-banner__promo {
@@ -1333,6 +1337,8 @@ html.eater-hub-active #root {
   .floating-tab-bar__pill[data-merchant-solo='true'] .floating-tab-bar__indicator {
     width: calc(100% - 8px);
     transform: translate3d(0, 0, 0);
+    opacity: 0;
+    visibility: hidden;
   }
 
   /**

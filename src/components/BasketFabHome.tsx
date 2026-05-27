@@ -116,7 +116,7 @@ export function BasketFabHome({
           <span
             key={badgeExiting ? 'exit' : badgePopNonce}
             className={[
-              'basket-fab__badge absolute right-[2px] top-[2px] flex h-5 min-h-5 min-w-5 items-center justify-center rounded-[20px]',
+              'basket-fab__badge absolute right-0 top-0 flex h-5 min-h-5 min-w-5 items-center justify-center rounded-[20px]',
               'bg-[var(--color-special-brand-alt,#0c2c1c)] text-white',
               'bolt-font-body-xs-accent [font-feature-settings:"cv03"_1,"cv04"_1]',
               badgeExiting

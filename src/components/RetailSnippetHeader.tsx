@@ -75,14 +75,7 @@ export function RetailSnippetHeader({ store, titleId, onHeaderClick }: RetailSni
   )
 
   return (
-    <div className="home-gutter-inline relative w-full shrink-0">
-      <button
-        type="button"
-        aria-label="Schedule delivery"
-        className="absolute left-2 top-4 z-[1] flex size-3 shrink-0 items-center justify-center rounded text-[var(--color-content-primary)] outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-content-primary)]"
-      >
-        <img alt="" src={rsp.calendarFilled} className="pointer-events-none block size-full max-w-none object-contain" />
-      </button>
+    <div className="home-gutter-inline w-full shrink-0">
       {onHeaderClick ? (
         <button
           type="button"

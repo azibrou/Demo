@@ -12,7 +12,15 @@ import {
 import { useLocation } from 'react-router-dom'
 import type { WideBasketFabState } from '../components/WideBasketFab'
 import { triggerHaptic } from '../lib/haptic'
+import { shouldResetBasketOnRouteChange } from '../lib/eaterNavigation'
 import { isMerchantHubPath } from '../lib/merchantHubPath'
+import {
+  getMerchantScrollEl,
+  isMerchantScrollPastExpandTop,
+  merchantScrollCompactToFabPhase,
+  merchantScrollCompactToTabSolo,
+  resolveMerchantScrollCompact,
+} from '../lib/merchantBasketScrollChrome'
 
 /** Gap between tab bar row siblings (pill · actions · basket). */
 export const TAB_BAR_ITEM_GAP_PX = 12
@@ -79,7 +87,7 @@ export type BasketFabContextValue = {
   loaderExiting: boolean
   fabIconPopIn: boolean
   badgePopNonce: number
-  /** Merchant {@link MerchantFTabBar} — single 56px tab pill after basket reveal. */
+  /** Merchant {@link MerchantFTabBar} — single 56px tab pill while scrolled (wide basket). */
   merchantTabSolo: boolean
   /** Merchant wide FAB phase (hidden until compact finishes). */
   merchantWideFabPhase: MerchantWideFabPhase
@@ -89,6 +97,8 @@ export type BasketFabContextValue = {
   expandMerchantTabs: () => void
   adjustCarouselBasketUnits: (delta: number) => void
   syncShoppingListBasketUnits: (units: number, opts?: { initial?: boolean }) => void
+  /** Clears units and FAB chrome — call before navigations that change venue context. */
+  resetBasket: () => void
 }
 
 const BasketFabContext = createContext<BasketFabContextValue | null>(null)
@@ -147,6 +157,41 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
     rafIdsRef.current = []
   }, [])
 
+  /** Route-boundary reset — not hub tab switches or merchant tab toggles. */
+  const resetBasketUnits = useCallback(() => {
+    clearAnimationTimers()
+    pendingInitialRef.current = false
+    prevTotalRef.current = 0
+    setCarouselUnits(0)
+    setShoppingUnits(0)
+    setBasketFabExiting(false)
+    setBadgeExiting(false)
+    setFabExiting(false)
+    setFabPopIn(false)
+    setFabLoading(false)
+    setLoaderExiting(false)
+    setFabIconPopIn(false)
+    setExitDisplayCount(0)
+    setCompactTabs(false)
+    setMerchantTabSolo(false)
+    setMerchantLayoutReservePx(0)
+    setMerchantWideFabPhase('hidden')
+    setFabReservePx(0)
+    setFabReveal(false)
+    setShowBasketBadge(false)
+  }, [clearAnimationTimers])
+
+  const prevPathnameRef = useRef(pathname)
+
+  useLayoutEffect(() => {
+    const prev = prevPathnameRef.current
+    const next = pathname
+    prevPathnameRef.current = next
+    if (prev !== next && shouldResetBasketOnRouteChange(prev, next)) {
+      resetBasketUnits()
+    }
+  }, [pathname, resetBasketUnits])
+
   const applyImmediateBasketVisible = useCallback(
     (nextTotal: number) => {
       prevTotalRef.current = nextTotal
@@ -162,12 +207,22 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
       setMerchantLayoutReservePx(0)
       setCompactTabs(nextTotal > 0)
       if (merchantMode) {
-        setMerchantWideFabPhase(nextTotal > 0 ? 'default' : 'hidden')
-        setMerchantTabSolo(nextTotal > 0)
+        setMerchantWideFabPhase(nextTotal > 0 ? 'collapsed' : 'hidden')
+        setMerchantTabSolo(false)
         setFabReservePx(0)
         setFabReveal(nextTotal > 0)
         setFabLoading(false)
         setShowBasketBadge(false)
+        if (nextTotal > 0) {
+          const rafScroll = window.requestAnimationFrame(() => {
+            const el = getMerchantScrollEl()
+            if (el && isMerchantScrollPastExpandTop(el.scrollTop)) {
+              setMerchantTabSolo(true)
+              setMerchantWideFabPhase('default')
+            }
+          })
+          rafIdsRef.current.push(rafScroll)
+        }
       } else {
         setMerchantWideFabPhase('hidden')
         setFabReservePx(nextTotal > 0 ? BASKET_FAB_RESERVE_PX : 0)
@@ -187,6 +242,48 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
     setMerchantWideFabPhase('collapsed')
     setFabReservePx(0)
   }, [merchantMode])
+
+  const applyMerchantScrollCompact = useCallback((scrollCompact: boolean) => {
+    setMerchantTabSolo(merchantScrollCompactToTabSolo(scrollCompact))
+    setMerchantWideFabPhase(merchantScrollCompactToFabPhase(scrollCompact))
+  }, [])
+
+  /** Scroll: expanded tab pill + 56px basket at top; solo tab + wide basket when scrolling. */
+  useEffect(() => {
+    const scrollListening =
+      merchantMode &&
+      total > 0 &&
+      !basketFabExiting &&
+      (merchantWideFabPhase === 'collapsed' || merchantWideFabPhase === 'default')
+
+    if (!scrollListening) return
+
+    const el = getMerchantScrollEl()
+    if (!el) return
+
+    let lastTop = el.scrollTop
+    let scrollCompact =
+      merchantTabSoloRef.current && merchantWideFabPhaseRef.current === 'default'
+
+    const onScroll = () => {
+      const top = el.scrollTop
+      const prevTop = lastTop
+      lastTop = top
+      const next = resolveMerchantScrollCompact(top, prevTop, scrollCompact)
+      if (next === scrollCompact) return
+      scrollCompact = next
+      applyMerchantScrollCompact(next)
+    }
+
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => el.removeEventListener('scroll', onScroll)
+  }, [
+    merchantMode,
+    total,
+    basketFabExiting,
+    merchantWideFabPhase,
+    applyMerchantScrollCompact,
+  ])
 
   /** Leaving merchant with basket → home round FAB. */
   useLayoutEffect(() => {
@@ -342,7 +439,7 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
    * Merchant quick-add sequence (ms from t=0):
    * A+B) 0–150  — compact tabs + loading FAB pop-in (parallel, ease-out)
    * C) 150–1500 — loading spinner
-   * D) 1500–1650 — solo tab 56px + FAB expands left (150ms ease-out)
+   * D) 1500–1650 — full tab pill + 56px basket; scroll → solo tab + wide FAB (150ms ease-out)
    * Exit — collapse (150ms) → FAB pop-out (220ms) → basket hidden.
    */
   const startMerchantBasketEnter = useCallback(() => {
@@ -379,14 +476,16 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
       triggerHaptic('success')
       setFabPopIn(false)
       setFabReservePx(0)
-      // Two frames: (1) default + wide pill @ 136px trailing, transitions on; (2) solo + shrink — matches home FTB.
-      const rafExpand = window.requestAnimationFrame(() => {
-        setMerchantWideFabPhase('default')
+      const rafRest = window.requestAnimationFrame(() => {
+        setMerchantWideFabPhase('collapsed')
         setMerchantTabSolo(false)
-        const rafSolo = window.requestAnimationFrame(() => setMerchantTabSolo(true))
-        rafIdsRef.current.push(rafSolo)
+        const el = getMerchantScrollEl()
+        if (el && isMerchantScrollPastExpandTop(el.scrollTop)) {
+          setMerchantTabSolo(true)
+          setMerchantWideFabPhase('default')
+        }
       })
-      rafIdsRef.current.push(rafExpand)
+      rafIdsRef.current.push(rafRest)
     }, MERCHANT_BASKET_EXPAND_AT_MS)
 
     timerIdsRef.current.push(tDefault)
@@ -467,8 +566,11 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
       return
     }
 
-    if (prev > 0 && next > prev) {
+    if (prev > 0 && next > 0 && next !== prev) {
       prevTotalRef.current = next
+      if (!merchantMode && showBasketBadge && !basketFabExiting) {
+        setBadgePopNonce((n) => n + 1)
+      }
       return
     }
 
@@ -488,6 +590,8 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
     shoppingUnits,
     carouselUnits,
     merchantMode,
+    showBasketBadge,
+    basketFabExiting,
     applyImmediateBasketVisible,
     clearAnimationTimers,
     startBasketLoading,
@@ -520,6 +624,7 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
       expandMerchantTabs,
       adjustCarouselBasketUnits,
       syncShoppingListBasketUnits,
+      resetBasket: resetBasketUnits,
     }),
     [
       total,
@@ -542,6 +647,7 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
       expandMerchantTabs,
       adjustCarouselBasketUnits,
       syncShoppingListBasketUnits,
+      resetBasketUnits,
     ],
   )
 
