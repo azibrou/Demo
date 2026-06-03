@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useMemo, useRef, useState, useLayoutEffect } from 'react'
 import { EaterSearchInput } from '../components/EaterSearchInput'
 import { HomeHorizontalScroll } from '../components/HomeHorizontalScroll'
 import { HomeSearchProviderResult } from '../components/HomeSearchProviderResult'
@@ -41,6 +41,10 @@ export function HomeSearchScreen({ onCancel }: HomeSearchScreenProps) {
   )
   const showResults = filteredSnapshot != null && query.trim().length > 0
 
+  useLayoutEffect(() => {
+    inputRef.current?.focus({ preventScroll: true })
+  }, [])
+
   return (
     <div
       className="home-search-screen bolt-font-base flex min-h-full w-full flex-col bg-[var(--color-layer-floor-2)] text-[var(--color-content-primary)]"
@@ -56,7 +60,6 @@ export function HomeSearchScreen({ onCancel }: HomeSearchScreenProps) {
             filters={false}
             indicator={false}
             onCancel={onCancel}
-            autoFocus
             inputRef={inputRef}
           />
         </div>

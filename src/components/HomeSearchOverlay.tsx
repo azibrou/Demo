@@ -8,12 +8,15 @@ import {
   type PointerEvent as ReactPointerEvent,
   type TransitionEvent,
 } from 'react'
+import { createPortal } from 'react-dom'
 import { HomeSearchScreen } from '../screens/HomeSearchScreen'
 import { HomeSearchBasketFab } from './HomeSearchBasketFab'
 
 const HOME_SEARCH_SLIDE_MS = 150
 const HOME_SEARCH_SLIDE_EASE = 'ease-out'
 const DISMISS_DRAG_THRESHOLD_PX = 96
+/** Off-screen enter/exit — viewport units avoid % of a mis-sized fixed box on mobile. */
+const HOME_SEARCH_OFFSCREEN_Y = '100dvh' as const
 
 /** Ignore drag-dismiss when the gesture starts on a control (Cancel, filters, input, etc.). */
 function isInteractiveDragTarget(target: EventTarget | null): boolean {
@@ -23,7 +26,7 @@ function isInteractiveDragTarget(target: EventTarget | null): boolean {
   )
 }
 
-type TranslateY = number | '100%'
+type TranslateY = number | typeof HOME_SEARCH_OFFSCREEN_Y
 
 function toTransform(value: TranslateY): string {
   return typeof value === 'number' ? `translateY(${value}px)` : `translateY(${value})`
@@ -58,8 +61,9 @@ export function HomeSearchOverlay({ onClosed }: HomeSearchOverlayProps) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const closingRef = useRef(false)
   const dragEnabled = useMobileDragDismissEnabled()
+  const [portalReady, setPortalReady] = useState(false)
 
-  const [translateY, setTranslateY] = useState<TranslateY>('100%')
+  const [translateY, setTranslateY] = useState<TranslateY>(HOME_SEARCH_OFFSCREEN_Y)
   const [transitionOn, setTransitionOn] = useState(false)
   const [isDragging, setIsDragging] = useState(false)
 
@@ -68,8 +72,15 @@ export function HomeSearchOverlay({ onClosed }: HomeSearchOverlayProps) {
   const dragStartXRef = useRef(0)
   const dragOffsetRef = useRef(0)
 
+  useEffect(() => {
+    setPortalReady(true)
+    document.documentElement.classList.add('home-search-open')
+    return () => document.documentElement.classList.remove('home-search-open')
+  }, [])
+
   useLayoutEffect(() => {
-    setTranslateY('100%')
+    scrollRef.current?.scrollTo(0, 0)
+    setTranslateY(HOME_SEARCH_OFFSCREEN_Y)
     setTransitionOn(false)
     let inner = 0
     const outer = requestAnimationFrame(() => {
@@ -93,7 +104,7 @@ export function HomeSearchOverlay({ onClosed }: HomeSearchOverlayProps) {
 
     if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setTransitionOn(false)
-      setTranslateY('100%')
+      setTranslateY(HOME_SEARCH_OFFSCREEN_Y)
       onClosed()
       return
     }
@@ -103,7 +114,7 @@ export function HomeSearchOverlay({ onClosed }: HomeSearchOverlayProps) {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         setTransitionOn(true)
-        setTranslateY('100%')
+        setTranslateY(HOME_SEARCH_OFFSCREEN_Y)
       })
     })
   }, [onClosed])
@@ -215,7 +226,7 @@ export function HomeSearchOverlay({ onClosed }: HomeSearchOverlayProps) {
     '--home-search-slide-ms': `${HOME_SEARCH_SLIDE_MS}ms`,
   } as CSSProperties
 
-  return (
+  const overlay = (
     <div
       className="home-search-overlay motion-reduce:transition-none"
       data-dragging={isDragging ? '' : undefined}
@@ -238,4 +249,8 @@ export function HomeSearchOverlay({ onClosed }: HomeSearchOverlayProps) {
       <HomeSearchBasketFab />
     </div>
   )
+
+  if (!portalReady) return null
+
+  return createPortal(overlay, document.body)
 }
