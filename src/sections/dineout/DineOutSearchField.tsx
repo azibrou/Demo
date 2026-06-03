@@ -1,6 +1,4 @@
-import { design } from '../../lib/figmaDesignAssets'
-
-const dn = design.dineOutTopNav
+import { KalepIcon } from '../../components/KalepIcon'
 
 export type DineOutSearchFieldProps = {
   placeholder?: string
@@ -32,9 +30,7 @@ export function DineOutSearchField({
         data-node-id="77937:93124"
         data-name="Content"
       >
-        <span className="relative size-6 shrink-0" aria-hidden data-name="search" data-node-id="77937:95159">
-          <img alt="" src={dn.searchIcon} className="pointer-events-none absolute inset-0 block size-full max-w-none" />
-        </span>
+        <KalepIcon name="search-dineout" size={24} />
         <span
           className="bolt-font-body-m-regular min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[var(--color-content-secondary)]"
           data-node-id="77937:93126"
@@ -51,7 +47,7 @@ export function DineOutSearchField({
         data-name="filters (outline)"
         data-node-id="77937:95157"
       >
-        <img alt="" src={dn.filtersIcon} className="pointer-events-none absolute inset-0 block size-full max-w-none" />
+        <KalepIcon name="filters-alt" size={24} />
       </button>
     </div>
   )

@@ -1,4 +1,5 @@
 import { SearchField } from '../../components/SearchField'
+import { useHomeSearch } from '../../context/HomeSearchContext'
 
 export type HomeSearchBlockProps = {
   placeholder?: string
@@ -14,12 +15,14 @@ export function HomeSearchBlock({
   onSearchClick,
   onFilterClick,
 }: HomeSearchBlockProps) {
+  const homeSearch = useHomeSearch()
+
   return (
     <section className="home-search-section home-gutter-inline w-full min-w-0 shrink-0" aria-label="Search">
       <SearchField
         placeholder={placeholder}
         filterCount={filterCount}
-        onSearchClick={onSearchClick}
+        onSearchClick={onSearchClick ?? homeSearch?.openHomeSearch}
         onFilterClick={onFilterClick}
       />
     </section>

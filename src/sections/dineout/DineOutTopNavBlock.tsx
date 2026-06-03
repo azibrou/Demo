@@ -1,17 +1,12 @@
 import { AccountButton } from '../../components/AccountButton'
-import { design } from '../../lib/figmaDesignAssets'
+import { KalepIcon } from '../../components/KalepIcon'
 import { dineOutFilterChips } from '../../lib/dineOutFilterContent'
+import type { KalepIconStem } from '../../lib/kalepIcons'
 import { HomeHorizontalScroll } from '../../components/HomeHorizontalScroll'
 import { DineOutSearchField } from './DineOutSearchField'
 
-const dn = design.dineOutTopNav
-
-function FilterIcon({ src, name }: { src: string; name: string }) {
-  return (
-    <span className="relative size-5 shrink-0" aria-hidden data-name={name}>
-      <img alt="" src={src} className="pointer-events-none absolute inset-0 block size-full max-w-none" />
-    </span>
-  )
+function FilterIcon({ name }: { name: KalepIconStem }) {
+  return <KalepIcon name={name} size={20} />
 }
 
 /**
@@ -47,7 +42,7 @@ export function DineOutTopNavBlock() {
               className="dine-out-filter-chip flex shrink-0 items-start gap-1 rounded-lg bg-[var(--color-layer-floor-1)] px-3 py-2"
               data-name="Filter"
             >
-              {chip.iconSrc ? <FilterIcon src={chip.iconSrc} name={chip.id} /> : null}
+              {chip.iconName ? <FilterIcon name={chip.iconName} /> : null}
               <span
                 className={[
                   'bolt-font-body-s-accent whitespace-nowrap',
@@ -56,7 +51,7 @@ export function DineOutTopNavBlock() {
               >
                 {chip.label}
               </span>
-              {chip.chevron ? <FilterIcon src={dn.chevronDown} name="chevron_down" /> : null}
+              {chip.chevron ? <FilterIcon name="chevron-down" /> : null}
             </button>
           ))}
         </div>

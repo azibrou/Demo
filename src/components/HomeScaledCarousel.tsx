@@ -39,7 +39,7 @@ export function HomeScaledCarousel({
   return (
     <div
       ref={shellRef}
-      className={[shellClass, 'min-w-0 max-w-full', className].filter(Boolean).join(' ')}
+      className={[shellClass, 'w-full min-w-0 max-w-full', className].filter(Boolean).join(' ')}
       style={style}
       data-tile-count={variant === 'tile-fit' ? tileCount : undefined}
       data-name={dataName}

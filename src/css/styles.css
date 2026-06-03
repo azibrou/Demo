@@ -79,6 +79,119 @@ html.eater-hub-active #root {
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
   }
 
+  /**
+   * Figma 79413:251183 (default) / 79413:251186 (scrolled) — [Eater] Avatar - initial.
+   */
+  .account-button {
+    transition: box-shadow 200ms ease-out;
+  }
+
+  .account-button--default {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.18);
+  }
+
+  .account-button--scrolled {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.18);
+  }
+
+  .account-button--bounce-in {
+    animation: account-button-bounce-in 520ms cubic-bezier(0.34, 1.4, 0.64, 1);
+  }
+
+  @keyframes account-button-bounce-in {
+    0% {
+      transform: scale(0.82);
+      opacity: 0.65;
+    }
+    45% {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+    70% {
+      transform: scale(0.96);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .account-button {
+      transition: none;
+    }
+
+    .account-button--bounce-in {
+      animation: none;
+    }
+  }
+
+  /**
+   * Figma 79413:251103 — top bar: absolute over hero; fixed when scrolled (gradient only, no bar border).
+   */
+  .hub-top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding-top: max(12px, env(safe-area-inset-top, 0px));
+    padding-right: 24px;
+    padding-bottom: 16px;
+    padding-left: 20px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  /** Pinned on scroll — same gradient; avatar shadow only (79413:251186). */
+  .hub-top-bar--elevated {
+    position: fixed;
+    left: 0;
+    right: 0;
+  }
+
+  .hub-top-bar .address-selector {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    gap: 8px;
+    background: transparent;
+  }
+
+  /** Figma 79413:251118 — 40×40 avatar in top bar. */
+  .hub-top-bar .account-button {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    border-radius: 20px;
+  }
+
+  .home-hero-stack {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .home-hero-stack .hero-banner__content {
+    justify-content: flex-end;
+  }
+
+  .stores-top {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
   /** DineOut top panel — account avatar matches search / filter chip elevation. */
   .dine-out-top-nav .dine-out-account-button {
     border-radius: 9999px;
@@ -192,6 +305,177 @@ html.eater-hub-active #root {
     .eater-hub-fade--active .eater-hub-fade__layer[data-state='leaving'],
     .eater-hub-fade--active .eater-hub-fade__layer[data-state='entering'],
     .eater-hub-fade--active .eater-hub-fade__layer[data-state='visible'] {
+      transition: none;
+    }
+  }
+
+  /**
+   * Home search overlay — slide up from bottom (78810:114696).
+   * Transform / transition are driven inline (enter, cancel, drag dismiss).
+   */
+  .home-search-overlay {
+    --home-search-slide-ms: 150ms;
+    --home-search-slide-ease: ease-out;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--color-layer-floor-2, #fff);
+    will-change: transform;
+  }
+
+  .home-search-overlay[data-dragging] .home-search-overlay__scroll {
+    overflow-y: hidden;
+    touch-action: none;
+  }
+
+  .home-search-overlay__scroll {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    overflow-x: clip;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+
+  /**
+   * Search overlay basket FAB — slides up from bottom, centered, 12px above safe area.
+   * WideBasketFab: loading (1500ms) → default expand inside __slot.
+   */
+  .home-search-basket-fab {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    padding-inline: var(--home-gutter, 24px);
+    pointer-events: none;
+    transform: translateY(calc(100% + 24px));
+    transition: transform var(--home-search-slide-ms, 150ms) var(--home-search-slide-ease, ease-out);
+  }
+
+  .home-search-basket-fab--shown {
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .home-search-basket-fab__slot {
+    width: 56px;
+    height: 56px;
+    transition: width var(--home-search-slide-ms, 150ms) var(--home-search-slide-ease, ease-out);
+    overflow: hidden;
+  }
+
+  .home-search-basket-fab__slot[data-state='default'] {
+    width: min(100%, 191px);
+  }
+
+  .home-search-basket-fab__slot .wide-basket-fab-anchor {
+    flex: none;
+    width: 100%;
+    min-width: 56px;
+  }
+
+  .home-search-basket-fab .wide-basket-fab--hidden,
+  .home-search-basket-fab .wide-basket-fab--shown {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .home-search-basket-fab .wide-basket-fab[data-state='default'] .wide-basket-fab__icon {
+    top: 18px;
+    left: 18px;
+    width: 20px;
+    height: 20px;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .home-search-overlay:has(.home-search-basket-fab--shown) .home-search-overlay__scroll {
+    scroll-padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .home-search-overlay:has(.home-search-basket-fab--shown) .home-search-screen__providers {
+    padding-bottom: calc(24px + 56px + 12px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .home-search-screen__results,
+  .home-search-screen__results-body {
+    overflow: visible;
+  }
+
+  .home-search-screen__filters-track {
+    padding-inline: var(--home-gutter);
+  }
+
+  .home-search-screen__providers {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: visible;
+  }
+
+
+  .home-search-provider {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: visible;
+  }
+
+  .home-search-provider > .home-product-carousel {
+    align-self: stretch;
+  }
+
+  /** Dish carousels — scalable product strip; shell spans full scrollport width. */
+  .home-search-provider .home-product-carousel,
+  .home-search-provider .shortcuts-carousel-cq,
+  .home-search-provider .shortcuts-carousel-scale-row {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .home-search-provider .home-product-carousel {
+    contain: none;
+    overflow: visible;
+  }
+
+  .home-search-provider .shortcuts-carousel-scale-row {
+    contain: none;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  .home-search-provider .home-product-carousel .shortcuts-carousel-track {
+    padding-top: 0;
+    padding-bottom: 0.25rem;
+  }
+
+  .home-search-provider__schedule img {
+    width: 12px;
+    height: 12px;
+  }
+
+  .home-search-screen__filter-chip:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-special-brand-alt, #0c2c1c) 20%, transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-search-overlay[data-dragging] .home-search-overlay__scroll {
+      overflow-y: auto;
+      touch-action: auto;
+    }
+
+    .home-search-basket-fab,
+    .home-search-basket-fab__slot {
       transition: none;
     }
   }
@@ -363,6 +647,75 @@ html.eater-hub-active #root {
   }
 
   /**
+   * Figma 79413:250410 — [Eater] SearchInput (empty / empty-focused / filled / filled-focused).
+   * Filled unfocused: 79413:251200 — neutral secondary fill, clear visible, no focus ring.
+   * State transitions: 100ms ease-out.
+   */
+  .eater-search-input {
+    --eater-search-input-transition: 100ms ease-out;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    background-color: var(--color-layer-floor-1, #fff);
+    transition:
+      border-color var(--eater-search-input-transition),
+      background-color var(--eater-search-input-transition);
+  }
+
+  .eater-search-input--empty {
+    background-image:
+      linear-gradient(90deg, rgba(0, 45, 30, 0.07) 0%, rgba(0, 45, 30, 0.07) 100%),
+      linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);
+    background-color: transparent;
+  }
+
+  .eater-search-input--empty-focused,
+  .eater-search-input--filled-focused {
+    border-color: var(--color-border-action-primary, #2b8659);
+    background-image: none;
+    background-color: var(--color-layer-floor-1, #fff);
+  }
+
+  .eater-search-input--filled {
+    border-color: transparent;
+    background-image: none;
+    background-color: var(--color-bg-neutral-secondary);
+  }
+
+  .eater-search-input__field {
+    caret-color: var(--color-content-action-primary, rgba(0, 112, 66, 0.92));
+  }
+
+  .eater-search-input__clear {
+    width: 0;
+    min-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity var(--eater-search-input-transition),
+      width var(--eater-search-input-transition),
+      min-width var(--eater-search-input-transition);
+  }
+
+  .eater-search-input__clear--visible {
+    width: 1.5rem;
+    min-width: 1.5rem;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .eater-search-input__filter-indicator {
+    right: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .eater-search-input,
+    .eater-search-input__clear {
+      transition: none;
+    }
+  }
+
+  /**
    * Figma 76281:33163 — full width, locked 232px tall; nothing inside may scroll.
    */
   .hero-banner {
@@ -374,7 +727,7 @@ html.eater-hub-active #root {
     height: var(--hero-banner-height);
     max-height: var(--hero-banner-height);
     min-height: var(--hero-banner-height);
-    overflow: clip;
+    overflow: visible;
     overscroll-behavior: none;
     box-sizing: border-box;
   }
@@ -384,6 +737,7 @@ html.eater-hub-active #root {
     inset: 0;
     overflow: clip;
     pointer-events: none;
+    z-index: 0;
   }
 
   .hero-banner__illustration img {
@@ -414,19 +768,16 @@ html.eater-hub-active #root {
     vertical-align: bottom;
   }
 
-  .hero-banner .address-selector {
-    margin-top: 0;
-  }
-
   .home-search-section {
     margin-top: -32px;
     margin-bottom: 0;
-    padding-top: 12px;
+    padding-top: 0;
     padding-bottom: 12px;
   }
 
   .stores-top .home-search-section {
-    margin-top: 12px;
+    margin-top: 0;
+    padding-top: 64px;
   }
 
   .hero-banner__promo {

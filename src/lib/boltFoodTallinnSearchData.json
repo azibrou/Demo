@@ -1,0 +1,1481 @@
+{
+  "b": {
+    "query": "b",
+    "categoryLabel": "🍌 b",
+    "resultCount": 384,
+    "providers": [
+      {
+        "id": "1497",
+        "name": "Blossom",
+        "deliveryFee": "1,90 €",
+        "eta": "25–30 min",
+        "rating": "4.6",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5770245230775122",
+            "name": "Black Pepper Beef",
+            "price": "14,50 €",
+            "imageSrc": "search/412a1569-4a29-4cf9-970e-19344d5b2b4c-391d5993e7.jpeg"
+          },
+          {
+            "id": "5348025583528290",
+            "name": "Beef with Broccoli and Bamboo Shoots with Basmati rice",
+            "price": "15,50 €",
+            "imageSrc": "search/6e87fb88-71b0-409f-9b4a-d640f2bb1bb8-7acfe758e1.jpeg"
+          },
+          {
+            "id": "5629503638316462",
+            "name": "Bhuna Duck🌶",
+            "price": "14,50 €",
+            "imageSrc": "search/e90e669c-6bc2-4b7c-b288-e9b278656d60-7d7ca6bbae.jpeg"
+          },
+          {
+            "id": "5770245230775151",
+            "name": "Bhuna Pork🌶",
+            "price": "11,90 €",
+            "imageSrc": "search/d02f6ebb-92f0-4cc7-882e-c7e5aa9f15e7-c27e9e9d5a.jpeg"
+          },
+          {
+            "id": "5488764097909477",
+            "name": "Onion Bhaji",
+            "price": "8,00 €",
+            "imageSrc": "search/17462166-1f19-4fd9-9aa8-0b2a5ae1a1d2-676752404a.jpeg"
+          },
+          {
+            "id": "5770245230775114",
+            "name": "Kung Pao Beef🌶",
+            "price": "14,50 €",
+            "imageSrc": "search/18f8066b-56df-4cc0-a6ba-d7e2f82586ec-c31e1dbb76.jpeg"
+          }
+        ],
+        "imageSrc": "search/d0676445-8ca6-4676-9234-f557749152b2-17ffd3191d.jpeg"
+      },
+      {
+        "id": "28032",
+        "name": "Bolt Market Toompuiestee",
+        "deliveryFee": "1,90 €",
+        "eta": "25–30 min",
+        "rating": "4.9",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "6333327789865880",
+            "name": "Oral-B, Toothpaste Advanced Whitening, 75ml",
+            "price": "4,99 €",
+            "imageSrc": "search/2bfab441-4193-48ed-a5cf-f6d5ff55cf2a-b76399bd34.png"
+          },
+          {
+            "id": "6333327789865875",
+            "name": "Oral-B, Essential Mint Waxed Floss, 50m",
+            "price": "3,99 €",
+            "imageSrc": "search/abfdefb3-21ae-492e-afe2-d15fbc1256a4-a96b7e154b.png"
+          },
+          {
+            "id": "6333327789865860",
+            "name": "Oral-B, Mouthwash, Pro-Expert Rinse Professional Protection, 500ml",
+            "price": "6,09 €",
+            "imageSrc": "search/a3718155-d305-41ee-a9fc-ff0cd50ab8a2-4233688577.png"
+          },
+          {
+            "id": "6333327789865551",
+            "name": "JusCheck, SARS-CoV-2 and Influenza A+B Antigen Combo Rapid Test, 1pc",
+            "price": "4,89 €",
+            "imageSrc": "search/0fe6e1f4-57b7-431d-80dc-8e9cf0c9705c-6fe082664a.png"
+          },
+          {
+            "id": "6333327789863369",
+            "name": "Bergader, Bavari Blu Blue Cheese, 150g",
+            "price": "3,95 €",
+            "imageSrc": "search/62179549-0ec9-4b8b-8d07-7ab15e130965-42365395ee.jpeg"
+          },
+          {
+            "id": "5770245823435728",
+            "name": "Leibur, Brioche Burger Buns, 280g",
+            "price": "3,45 €",
+            "imageSrc": "search/c1386926-e9ad-42c6-b443-881963b8e40a-4530e6c261.png"
+          }
+        ],
+        "imageSrc": "search/f23b4550-d6cb-4c7c-8d2e-af499e181eb6-1021e1c8aa.jpeg"
+      },
+      {
+        "id": "172613",
+        "name": "Blue Dragon",
+        "deliveryFee": "1,90 €",
+        "eta": "25–30 min",
+        "rating": "4.7",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5488764195949275",
+            "name": "58.Lamb Bamboo",
+            "price": "9,90 €",
+            "imageSrc": "search/d4c2825b-2238-4b6b-a8a5-1210c3ccc0ff-56fb8ef5ce.jpeg"
+          },
+          {
+            "id": "5488764195949252",
+            "name": "42.Pork Bamboo",
+            "price": "8,80 €",
+            "imageSrc": "search/aa22f2ad-f33c-4645-9bfc-8dfd5d2bebd9-9defa40613.jpeg"
+          },
+          {
+            "id": "5488764195949266",
+            "name": "51.Oyster Beef",
+            "price": "10,00 €",
+            "imageSrc": "search/81a04ef7-c4d2-48c3-ab36-60685d1fdbd7-976b124382.jpeg"
+          },
+          {
+            "id": "5488764195949268",
+            "name": "53.Crispy Beef",
+            "price": "10,00 €",
+            "imageSrc": "search/b8775d4e-45e8-4456-8a0e-c06b94817433-e939a44d6b.jpeg"
+          },
+          {
+            "id": "5629503834396060",
+            "name": "137.Butter Prawn",
+            "price": "12,50 €",
+            "imageSrc": "search/284d9518-37d4-4130-8113-ea60280a63f2-c7e4c83425.jpeg"
+          },
+          {
+            "id": "5488764195949269",
+            "name": "54.Szechuan Beef",
+            "price": "10,00 €",
+            "imageSrc": "search/32185cb8-4e4b-46a8-8416-dc1c20927b15-d26ee0e46a.jpeg"
+          }
+        ],
+        "imageSrc": "search/42ff14b6-e3ba-4b5e-89f7-d001e509cf61-eef2c3e9ce.jpeg"
+      },
+      {
+        "id": "5064",
+        "name": "Hesburger Viru tänav",
+        "deliveryFee": "1,90 €",
+        "eta": "15–20 min",
+        "rating": "4.5",
+        "ratingCount": "500+",
+        "scheduled": false,
+        "items": [
+          {
+            "id": "6051746020847390",
+            "name": "BBQ  Burger",
+            "price": "7,00 €",
+            "imageSrc": "search/147d0de4-90a4-4f8b-8342-903c6b28ee0b-0e13cdf33b.jpeg"
+          },
+          {
+            "id": "6051746020846640",
+            "name": "BBQ Burger Meal",
+            "price": "10,00 €",
+            "imageSrc": "search/2fdf89fe-a8b2-4b79-bf3b-86e63fe04b44-55d71c1a18.jpeg"
+          },
+          {
+            "id": "6051746020847413",
+            "name": "Giant Bacon Burger",
+            "price": "9,30 €",
+            "imageSrc": "search/d64db6d4-ffdb-4710-a4d4-02d4f8b2dd83-e8bc2b37d7.jpeg"
+          },
+          {
+            "id": "6051746020846691",
+            "name": "Large BBQ Burger Meal",
+            "price": "11,40 €",
+            "imageSrc": "search/140b85d2-c730-4239-8f93-0a543a88716d-fac767b12d.jpeg"
+          },
+          {
+            "id": "6192517530771119",
+            "name": "BBQ Dip",
+            "price": "1,00 €",
+            "imageSrc": "search/569ce73b-9751-4c2a-abb8-7e55e2bf17ab-c224099dbf.jpeg"
+          },
+          {
+            "id": "5770245527960368",
+            "name": "Giant Bacon Burger Meal",
+            "price": "12,30 €",
+            "imageSrc": "search/638e6f94-9c30-4212-abaa-8203eca1ee82-b55f86fb43.jpeg"
+          }
+        ],
+        "imageSrc": "search/68142fda-71f1-4543-ace1-8c11c22873ae-0fc356a1e6.jpeg"
+      },
+      {
+        "id": "70433",
+        "name": "Bolt Market Pallasti",
+        "deliveryFee": "2,72 €",
+        "eta": "25–30 min",
+        "rating": "4.9",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "6333326373484920",
+            "name": "Oral-B, Toothpaste Advanced Whitening, 75ml",
+            "price": "4,99 €",
+            "imageSrc": "search/2bfab441-4193-48ed-a5cf-f6d5ff55cf2a-b76399bd34.png"
+          },
+          {
+            "id": "6333326373484915",
+            "name": "Oral-B, Essential Mint Waxed Floss, 50m",
+            "price": "3,99 €",
+            "imageSrc": "search/abfdefb3-21ae-492e-afe2-d15fbc1256a4-a96b7e154b.png"
+          },
+          {
+            "id": "6333326373484900",
+            "name": "Oral-B, Mouthwash, Pro-Expert Rinse Professional Protection, 500ml",
+            "price": "6,09 €",
+            "imageSrc": "search/a3718155-d305-41ee-a9fc-ff0cd50ab8a2-4233688577.png"
+          },
+          {
+            "id": "6333326373484550",
+            "name": "JusCheck, SARS-CoV-2 and Influenza A+B Antigen Combo Rapid Test, 1pc",
+            "price": "4,89 €",
+            "imageSrc": "search/0fe6e1f4-57b7-431d-80dc-8e9cf0c9705c-6fe082664a.png"
+          },
+          {
+            "id": "6333326373482540",
+            "name": "Bergader, Bavari Blu Blue Cheese, 150g",
+            "price": "3,95 €",
+            "imageSrc": "search/62179549-0ec9-4b8b-8d07-7ab15e130965-42365395ee.jpeg"
+          },
+          {
+            "id": "6333326373484697",
+            "name": "Bosto, Bulgur, 4x75g",
+            "price": "2,85 €",
+            "imageSrc": "search/48ff9bea-5cee-41ec-a1f2-3adf56f623e9-507757b2b8.jpeg"
+          }
+        ],
+        "imageSrc": "search/bd4cdd93-5fd0-44fe-bfc3-967649ecd5d5-3e7c87f707.jpeg"
+      }
+    ]
+  },
+  "ba": {
+    "query": "ba",
+    "categoryLabel": "🍌 ba",
+    "resultCount": 222,
+    "providers": [
+      {
+        "id": "127",
+        "name": "Damak Döner & Kebab",
+        "deliveryFee": "1,90 €",
+        "eta": "15–20 min",
+        "rating": "4.6",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5910991707499301",
+            "name": "Baklava Turkish Dessert",
+            "price": "5,00 €",
+            "imageSrc": "search/7eb62843-e027-41ad-b73d-58d31683da76-cea8eb2986.jpeg"
+          },
+          {
+            "id": "5629503833357000",
+            "name": "Sweet Potato",
+            "price": "8,15 €",
+            "imageSrc": "search/89682722-6273-4847-90e2-334b1cf88ec9-76932dac56.jpeg"
+          },
+          {
+            "id": "5629503833356961",
+            "name": "Damak Box",
+            "price": "15,10 €",
+            "imageSrc": "search/f28ab2da-2bb0-4d02-b381-95b9eafc5ea7-873fc34d79.jpeg"
+          },
+          {
+            "id": "5910991707499196",
+            "name": "Protein Lavash",
+            "price": "15,49 €",
+            "imageSrc": "search/e34cd4dd-e9f9-4453-bfdf-0749c18fb72a-3ff14d7336.jpeg"
+          },
+          {
+            "id": "5770245620856232",
+            "name": "Cheesy Shaurma",
+            "price": "16,50 €",
+            "imageSrc": "search/e7158078-41bb-4802-9192-970b259d8ea8-7cf2b4fb79.png"
+          },
+          {
+            "id": "5770245620856099",
+            "name": "Kebab with Fries",
+            "price": "14,49 €",
+            "imageSrc": "search/509592d2-9009-46d7-a66f-4c8f21a25ab3-c50d5df368.jpeg"
+          }
+        ],
+        "imageSrc": "search/12def9d5-8bb9-45db-8590-2b8450892303-d6f0f85d9e.jpeg"
+      },
+      {
+        "id": "5064",
+        "name": "Hesburger Viru tänav",
+        "deliveryFee": "1,90 €",
+        "eta": "15–20 min",
+        "rating": "4.5",
+        "ratingCount": "500+",
+        "scheduled": false,
+        "items": [
+          {
+            "id": "6192517530771393",
+            "name": "Banana Milkshake",
+            "price": "2,25 €",
+            "imageSrc": "search/8b7c0970-9d34-4744-b45b-4a51feaef27d-9ab229da6f.jpeg"
+          },
+          {
+            "id": "6051746020847413",
+            "name": "Giant Bacon Burger",
+            "price": "9,30 €",
+            "imageSrc": "search/d64db6d4-ffdb-4710-a4d4-02d4f8b2dd83-e8bc2b37d7.jpeg"
+          },
+          {
+            "id": "5770245527960368",
+            "name": "Giant Bacon Burger Meal",
+            "price": "12,30 €",
+            "imageSrc": "search/638e6f94-9c30-4212-abaa-8203eca1ee82-b55f86fb43.jpeg"
+          },
+          {
+            "id": "5770245527960418",
+            "name": "Large Giant Bacon Burger Meal",
+            "price": "13,70 €",
+            "imageSrc": "search/d10d24e1-e0c6-4c42-adef-e348317bb6e6-7b9ae7f9c3.jpeg"
+          },
+          {
+            "id": "6192517530771119",
+            "name": "BBQ Dip",
+            "price": "1,00 €",
+            "imageSrc": "search/569ce73b-9751-4c2a-abb8-7e55e2bf17ab-c224099dbf.jpeg"
+          },
+          {
+            "id": "5629503786909083",
+            "name": "Large Hesburger Meal",
+            "price": "10,70 €",
+            "imageSrc": "search/e3dcdc89-bf53-4891-870b-b6a181665d01-6ff9ecc40b.jpeg"
+          }
+        ],
+        "imageSrc": "search/68142fda-71f1-4543-ace1-8c11c22873ae-0fc356a1e6.jpeg"
+      },
+      {
+        "id": "116427",
+        "name": "Dawat Kebab Restaurant",
+        "deliveryFee": "1,90 €",
+        "eta": "15–20 min",
+        "rating": "4.5",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "4785074670361079",
+            "name": "Turkish Baklava",
+            "price": "4,50 €",
+            "imageSrc": "search/7a4c5527-eef6-408d-aafb-1a594463afc4-008e42b7d8.jpeg"
+          },
+          {
+            "id": "6051745934601901",
+            "name": "Cheese Balls (6 pcs.)",
+            "price": "13,55 €",
+            "imageSrc": "search/7b74d6a7-d3e6-424a-a8ca-b7739961ef7f-d60d7bcd88.jpeg"
+          },
+          {
+            "id": "5770245506399124",
+            "name": "Chicken Biryani",
+            "price": "17,13 €",
+            "imageSrc": "search/eb206ab9-8bd0-4367-99c7-2fc3b75d28eb-e2339b9107.png"
+          },
+          {
+            "id": "5910991478584861",
+            "name": "Chicken Tikka Biryani",
+            "price": "17,87 €",
+            "imageSrc": "search/57c40415-df9d-4ceb-88ec-8a98f2b551c7-e91860131f.jpeg"
+          },
+          {
+            "id": "5910991478585059",
+            "name": "LAVASH KEBAB",
+            "price": "12,14 €",
+            "imageSrc": "search/2d20dabe-a701-49cf-93ff-32b733d059dd-8407a2039c.webp"
+          },
+          {
+            "id": "5910991478585032",
+            "name": "kebab box",
+            "price": "12,40 €",
+            "imageSrc": "search/8a0f477d-0f34-4cf6-b5eb-b7cf64da448a-6b921d8766.webp"
+          }
+        ],
+        "imageSrc": "search/54927214-6b21-4603-91f5-8704f89ce5c4-9c21ae4c87.jpeg"
+      },
+      {
+        "id": "704",
+        "name": "Tallinn Pizza & Kebab",
+        "deliveryFee": "1,90 €",
+        "eta": "10–15 min",
+        "rating": "4.3",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5207287368479383",
+            "name": "Turkish Baklava",
+            "price": "2,95 €",
+            "imageSrc": "search/b68042c7-8f5c-4391-8e2c-ea4e1b0a40d8-84bb11b903.jpeg"
+          },
+          {
+            "id": "5348025156166954",
+            "name": "Cheese Balls & French-Fries (5 pcs.)",
+            "price": "8,00 €"
+          },
+          {
+            "id": "5066549730457934",
+            "name": "Mexicana Pasta with Jalapenos and Bacon",
+            "price": "9,90 €",
+            "imageSrc": "search/e3a5d93c-f528-4cde-8ab0-072fefafa917-ead943234e.jpeg"
+          },
+          {
+            "id": "5348025156166973",
+            "name": "Beef Kebab with French Fries",
+            "price": "9,90 €",
+            "imageSrc": "search/865606db-fb1e-46fc-8049-47caa0ae6ff1-5028404094.jpeg"
+          },
+          {
+            "id": "5348025156166974",
+            "name": "Chicken Kebab with French Fries",
+            "price": "9,90 €",
+            "imageSrc": "search/a330cbd6-35f0-4a3e-b871-6971c573531d-d0393710e6.jpeg"
+          },
+          {
+            "id": "5207287368479376",
+            "name": "Chicken Pasta with Cream Sauce",
+            "price": "9,90 €",
+            "imageSrc": "search/735dac9f-4e90-452e-9fbc-ee48f9a83a6d-93445c4959.jpeg"
+          }
+        ],
+        "imageSrc": "search/1be58aad-d372-4f28-a360-bb70a31134c4-d33d4f054f.jpeg"
+      },
+      {
+        "id": "84",
+        "name": "McDonald's® Viru",
+        "deliveryFee": "1,90 €",
+        "eta": "15–20 min",
+        "rating": "4.3",
+        "ratingCount": "500+",
+        "scheduled": false,
+        "items": [
+          {
+            "id": "6192518647474815",
+            "name": "Barbeque",
+            "price": "1,40 €",
+            "imageSrc": "search/ff9e56d9-4a35-45c6-bd59-82da171e3279-fda672c54e.png"
+          },
+          {
+            "id": "6192518647475347",
+            "name": "Big Tasty™ Bacon",
+            "price": "8,00 €",
+            "imageSrc": "search/c0286679-2293-4972-9877-99748491a173-9e1a92656b.jpeg"
+          },
+          {
+            "id": "6192518647474596",
+            "name": "McToast™ with bacon and cheese",
+            "price": "1,50 €",
+            "imageSrc": "search/c932ac14-74a6-4115-9c09-8673334332df-74656e2b1b.jpeg"
+          },
+          {
+            "id": "6051746579199981",
+            "name": "Big Mac® large meal",
+            "price": "10,25 €",
+            "imageSrc": "search/68b8891f-7ff5-497d-a4b6-ec0c21349b46-940d3fd652.jpeg"
+          },
+          {
+            "id": "6192518647474251",
+            "name": "Double Cheesburger large meal",
+            "price": "10,00 €",
+            "imageSrc": "search/2d6beacd-a09f-42af-aa6d-18172c4dd57e-d71bb63a4b.jpeg"
+          },
+          {
+            "id": "6051746579199887",
+            "name": "Big Tasty™ large meal",
+            "price": "12,10 €",
+            "imageSrc": "search/a7b3d67f-3cbf-4c9e-9e00-8ccb21d48081-3c29833602.jpeg"
+          }
+        ],
+        "imageSrc": "search/b6419a9c-cce7-4557-a0bf-686d93ad5e00-380b37cb5b.jpeg"
+      }
+    ]
+  },
+  "ban": {
+    "query": "ban",
+    "categoryLabel": "🍌 ban",
+    "resultCount": 127,
+    "providers": [
+      {
+        "id": "5064",
+        "name": "Hesburger Viru tänav",
+        "deliveryFee": "1,90 €",
+        "eta": "15–20 min",
+        "rating": "4.5",
+        "ratingCount": "500+",
+        "scheduled": false,
+        "items": [
+          {
+            "id": "6192517530771393",
+            "name": "Banana Milkshake",
+            "price": "2,25 €",
+            "imageSrc": "search/8b7c0970-9d34-4744-b45b-4a51feaef27d-9ab229da6f.jpeg"
+          },
+          {
+            "id": "5629503786909083",
+            "name": "Large Hesburger Meal",
+            "price": "10,70 €",
+            "imageSrc": "search/e3dcdc89-bf53-4891-870b-b6a181665d01-6ff9ecc40b.jpeg"
+          },
+          {
+            "id": "6051746020847340",
+            "name": "Double Cheeseburger",
+            "price": "5,25 €",
+            "imageSrc": "search/f2dca3a3-c65f-4316-981b-88cf0b5333b4-20dca2a3b9.jpeg"
+          },
+          {
+            "id": "5629503786909182",
+            "name": "Large Mega Burger Meal",
+            "price": "13,70 €",
+            "imageSrc": "search/1eccdd0b-b0e5-489f-bc4b-246dcc30ad0d-c91c638f03.jpeg"
+          },
+          {
+            "id": "6051746020847426",
+            "name": "Chicken Tortilla",
+            "price": "6,40 €",
+            "imageSrc": "search/7c0b5ce4-a7de-4ae2-8cb7-e13a770a18b7-8d25a25bbb.jpeg"
+          },
+          {
+            "id": "6051746020847350",
+            "name": "Cheeseburger",
+            "price": "2,40 €",
+            "imageSrc": "search/9373aa02-3e3a-49f8-8bf3-1fe696bd5a73-05ecf8db56.jpeg"
+          }
+        ],
+        "imageSrc": "search/68142fda-71f1-4543-ace1-8c11c22873ae-0fc356a1e6.jpeg"
+      },
+      {
+        "id": "45713",
+        "name": "Everest Grill & Resto",
+        "deliveryFee": "1,90 €",
+        "eta": "20–25 min",
+        "rating": "4.5",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5629503190560897",
+            "name": "BANAANI JÄÄTISE JOOK",
+            "price": "7,00 €",
+            "imageSrc": "search/7de02545-bf50-4580-995c-31974dd834e4-6588b2ccaf.jpeg"
+          },
+          {
+            "id": "5488763874031737",
+            "name": "120,BANANA FRITTERS WITH VANILA ICE CREAM",
+            "price": "7,00 €",
+            "imageSrc": "search/f96900eb-61ba-4483-b3fe-91026f64518b-66da56cada.jpeg"
+          },
+          {
+            "id": "5066549809313547",
+            "name": "Honey chicken+ mixed noodles +cheese naan+coca-cola",
+            "price": "24,50 €",
+            "imageSrc": "search/80fcbb5a-576e-428c-8fcf-3dc358a1d99d-f82b7c9467.jpeg"
+          },
+          {
+            "id": "5066549809313550",
+            "name": "Butter chicken +Rice+Cheese naan",
+            "price": "22,90 €",
+            "imageSrc": "search/b6d62c03-2a66-4c6f-946b-b6c7b27a1d94-31a2f64083.jpeg"
+          },
+          {
+            "id": "5207287526190611",
+            "name": "Crispy Honey Chicken + Vegetables and egg Noodle combo",
+            "price": "20,90 €",
+            "imageSrc": "search/bd796116-e70e-49e2-ab4a-77602731afb2-692eb3469f.jpeg"
+          },
+          {
+            "id": "5207287526190620",
+            "name": "Lamb biryani",
+            "price": "17,00 €",
+            "imageSrc": "search/35813fd7-dd5d-4de6-be4a-e5e141c6af16-468993ae0a.jpeg"
+          }
+        ],
+        "imageSrc": "search/989a78e3-7569-42e9-83c3-c89dd9ff9192-de485f8808.jpeg"
+      },
+      {
+        "id": "165957",
+        "name": "Everest Momo",
+        "deliveryFee": "1,90 €",
+        "eta": "30–35 min",
+        "rating": "4.6",
+        "ratingCount": "277",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5348025547999801",
+            "name": "BANAANI JÄÄTISE JOOK",
+            "price": "7,00 €",
+            "imageSrc": "search/7de02545-bf50-4580-995c-31974dd834e4-6588b2ccaf.jpeg"
+          },
+          {
+            "id": "5348025547999793",
+            "name": "120,BANANA FRITTERS WITH VANILA ICE CREAM",
+            "price": "7,00 €",
+            "imageSrc": "search/f96900eb-61ba-4483-b3fe-91026f64518b-66da56cada.jpeg"
+          },
+          {
+            "id": "5066549828416138",
+            "name": "Peking chicken + vegetables and egg noodles +vegetables spring rolls",
+            "price": "23,50 €",
+            "imageSrc": "search/95b34aaa-ad6d-413b-ba0d-529678dc8912-04d15e5924.jpeg"
+          },
+          {
+            "id": "5207287564395798",
+            "name": "Chicken momo(8 tk hand made)",
+            "price": "16,50 €",
+            "imageSrc": "search/51903d9e-1b1d-4542-9699-94b570496842-abc1a43d03.jpeg"
+          },
+          {
+            "id": "5066549828416136",
+            "name": "Honey chicken+ mixed noodles +cheese naan",
+            "price": "24,00 €",
+            "imageSrc": "search/949f8d92-dc43-4e23-a364-fe300a7b802c-36d1f19fb0.jpeg"
+          },
+          {
+            "id": "5207287564395801",
+            "name": "Chicken biryani",
+            "price": "15,00 €",
+            "imageSrc": "search/ad97032d-e73d-485c-a043-acd6d8556bad-b52975b6ef.jpeg"
+          }
+        ],
+        "imageSrc": "search/a16dbc2a-ac93-417b-b54f-5c9a0c33afb2-0731e5eefc.jpeg"
+      },
+      {
+        "id": "28032",
+        "name": "Bolt Market Toompuiestee",
+        "deliveryFee": "1,90 €",
+        "eta": "25–30 min",
+        "rating": "4.9",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5770245823435543",
+            "name": "Banana, 1kg",
+            "price": "1,39 €",
+            "imageSrc": "search/958caf67-9fd8-4365-a9a6-fc55d63c4e2d-4dfe8ad6de.png"
+          },
+          {
+            "id": "5770245823435545",
+            "name": "Mini Bananas, 250g",
+            "price": "2,39 €",
+            "imageSrc": "search/f4099f13-6634-4cfc-b3fb-fed3266787dd-2ca46be0d5.png"
+          },
+          {
+            "id": "5770245823435544",
+            "name": "Organic Banana, ~1kg",
+            "price": "3,69 €",
+            "imageSrc": "search/39bbbd26-dd8e-41f0-a188-b922aba9a8f7-7598bc99d4.png"
+          },
+          {
+            "id": "6333327789864845",
+            "name": "Red Band, Strawberry Laces, 100g",
+            "price": "1,49 €",
+            "imageSrc": "search/92a6ef4d-b090-4503-b54f-fb5e81f2205c-5f92484dc8.jpeg"
+          },
+          {
+            "id": "6333327789865245",
+            "name": "Bla Band, Italian Casserole, 150g",
+            "price": "3,39 €",
+            "imageSrc": "search/593d1915-8eef-4f33-b6bb-d88abfc32a73-b32dfeab1e.png"
+          },
+          {
+            "id": "6333327789864840",
+            "name": "Red Band, Truly Party Animals, 110g",
+            "price": "1,39 €",
+            "imageSrc": "search/a96a19ac-1c22-4344-acd9-092a4002e6f5-767b3b29f0.jpeg"
+          }
+        ],
+        "imageSrc": "search/f23b4550-d6cb-4c7c-8d2e-af499e181eb6-1021e1c8aa.jpeg"
+      },
+      {
+        "id": "57164",
+        "name": "Ragu",
+        "deliveryFee": "1,90 €",
+        "eta": "35–40 min",
+        "rating": "4.4",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5488764233788142",
+            "name": "Banana smoothie",
+            "price": "5,00 €",
+            "imageSrc": "search/124019a0-813a-4ac9-8043-6f32ee743a53-d2efd3a5c0.png"
+          },
+          {
+            "id": "5348025651467624",
+            "name": "American Pancakes with Banana",
+            "price": "10,00 €",
+            "imageSrc": "search/a41f2fa9-7fd4-4f21-a36c-7ae823e6902b-efafc535d1.jpeg"
+          },
+          {
+            "id": "5488764233788113",
+            "name": "Pasta Alla Carbonara",
+            "price": "12,00 €",
+            "imageSrc": "search/36c826e5-5644-4d7e-8a03-00478fb1caa2-a66cb9dc76.jpeg"
+          },
+          {
+            "id": "5488764233788119",
+            "name": "Homemade Syrniki",
+            "price": "8,00 €",
+            "imageSrc": "search/6c910518-51ad-49c8-94fe-e4a92fc65a3d-e63d1134fa.jpeg"
+          },
+          {
+            "id": "5488764233788096",
+            "name": "English Breakfast",
+            "price": "13,00 €",
+            "imageSrc": "search/efabe6c2-6473-4f01-8d75-7372637ba7d7-02b6d0f7e3.jpeg"
+          },
+          {
+            "id": "5348025651467640",
+            "name": "Omelette with Bacon, Bread, Cheese and Champignons",
+            "price": "10,00 €",
+            "imageSrc": "search/0cf232e4-5b8f-4895-8f0f-03468ec9d97a-5fc14bfefc.jpeg"
+          }
+        ],
+        "imageSrc": "search/afc64bb8-90cd-463d-82b0-87933df269b0-c58d327fea.jpeg"
+      }
+    ]
+  },
+  "bana": {
+    "query": "bana",
+    "categoryLabel": "🍌 bana",
+    "resultCount": 112,
+    "providers": [
+      {
+        "id": "5064",
+        "name": "Hesburger Viru tänav",
+        "deliveryFee": "1,90 €",
+        "eta": "15–20 min",
+        "rating": "4.5",
+        "ratingCount": "500+",
+        "scheduled": false,
+        "items": [
+          {
+            "id": "6192517530771393",
+            "name": "Banana Milkshake",
+            "price": "2,25 €",
+            "imageSrc": "search/8b7c0970-9d34-4744-b45b-4a51feaef27d-9ab229da6f.jpeg"
+          },
+          {
+            "id": "5629503786909083",
+            "name": "Large Hesburger Meal",
+            "price": "10,70 €",
+            "imageSrc": "search/e3dcdc89-bf53-4891-870b-b6a181665d01-6ff9ecc40b.jpeg"
+          },
+          {
+            "id": "6051746020847340",
+            "name": "Double Cheeseburger",
+            "price": "5,25 €",
+            "imageSrc": "search/f2dca3a3-c65f-4316-981b-88cf0b5333b4-20dca2a3b9.jpeg"
+          },
+          {
+            "id": "5629503786909182",
+            "name": "Large Mega Burger Meal",
+            "price": "13,70 €",
+            "imageSrc": "search/1eccdd0b-b0e5-489f-bc4b-246dcc30ad0d-c91c638f03.jpeg"
+          },
+          {
+            "id": "6051746020847426",
+            "name": "Chicken Tortilla",
+            "price": "6,40 €",
+            "imageSrc": "search/7c0b5ce4-a7de-4ae2-8cb7-e13a770a18b7-8d25a25bbb.jpeg"
+          },
+          {
+            "id": "6051746020847350",
+            "name": "Cheeseburger",
+            "price": "2,40 €",
+            "imageSrc": "search/9373aa02-3e3a-49f8-8bf3-1fe696bd5a73-05ecf8db56.jpeg"
+          }
+        ],
+        "imageSrc": "search/68142fda-71f1-4543-ace1-8c11c22873ae-0fc356a1e6.jpeg"
+      },
+      {
+        "id": "45713",
+        "name": "Everest Grill & Resto",
+        "deliveryFee": "1,90 €",
+        "eta": "20–25 min",
+        "rating": "4.5",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5629503190560897",
+            "name": "BANAANI JÄÄTISE JOOK",
+            "price": "7,00 €",
+            "imageSrc": "search/7de02545-bf50-4580-995c-31974dd834e4-6588b2ccaf.jpeg"
+          },
+          {
+            "id": "5488763874031737",
+            "name": "120,BANANA FRITTERS WITH VANILA ICE CREAM",
+            "price": "7,00 €",
+            "imageSrc": "search/f96900eb-61ba-4483-b3fe-91026f64518b-66da56cada.jpeg"
+          },
+          {
+            "id": "5066549809313547",
+            "name": "Honey chicken+ mixed noodles +cheese naan+coca-cola",
+            "price": "24,50 €",
+            "imageSrc": "search/80fcbb5a-576e-428c-8fcf-3dc358a1d99d-f82b7c9467.jpeg"
+          },
+          {
+            "id": "5066549809313550",
+            "name": "Butter chicken +Rice+Cheese naan",
+            "price": "22,90 €",
+            "imageSrc": "search/b6d62c03-2a66-4c6f-946b-b6c7b27a1d94-31a2f64083.jpeg"
+          },
+          {
+            "id": "5207287526190611",
+            "name": "Crispy Honey Chicken + Vegetables and egg Noodle combo",
+            "price": "20,90 €",
+            "imageSrc": "search/bd796116-e70e-49e2-ab4a-77602731afb2-692eb3469f.jpeg"
+          },
+          {
+            "id": "5207287526190620",
+            "name": "Lamb biryani",
+            "price": "17,00 €",
+            "imageSrc": "search/35813fd7-dd5d-4de6-be4a-e5e141c6af16-468993ae0a.jpeg"
+          }
+        ],
+        "imageSrc": "search/989a78e3-7569-42e9-83c3-c89dd9ff9192-de485f8808.jpeg"
+      },
+      {
+        "id": "165957",
+        "name": "Everest Momo",
+        "deliveryFee": "1,90 €",
+        "eta": "30–35 min",
+        "rating": "4.6",
+        "ratingCount": "277",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5348025547999801",
+            "name": "BANAANI JÄÄTISE JOOK",
+            "price": "7,00 €",
+            "imageSrc": "search/7de02545-bf50-4580-995c-31974dd834e4-6588b2ccaf.jpeg"
+          },
+          {
+            "id": "5348025547999793",
+            "name": "120,BANANA FRITTERS WITH VANILA ICE CREAM",
+            "price": "7,00 €",
+            "imageSrc": "search/f96900eb-61ba-4483-b3fe-91026f64518b-66da56cada.jpeg"
+          },
+          {
+            "id": "5066549828416138",
+            "name": "Peking chicken + vegetables and egg noodles +vegetables spring rolls",
+            "price": "23,50 €",
+            "imageSrc": "search/95b34aaa-ad6d-413b-ba0d-529678dc8912-04d15e5924.jpeg"
+          },
+          {
+            "id": "5207287564395798",
+            "name": "Chicken momo(8 tk hand made)",
+            "price": "16,50 €",
+            "imageSrc": "search/51903d9e-1b1d-4542-9699-94b570496842-abc1a43d03.jpeg"
+          },
+          {
+            "id": "5066549828416136",
+            "name": "Honey chicken+ mixed noodles +cheese naan",
+            "price": "24,00 €",
+            "imageSrc": "search/949f8d92-dc43-4e23-a364-fe300a7b802c-36d1f19fb0.jpeg"
+          },
+          {
+            "id": "5207287564395801",
+            "name": "Chicken biryani",
+            "price": "15,00 €",
+            "imageSrc": "search/ad97032d-e73d-485c-a043-acd6d8556bad-b52975b6ef.jpeg"
+          }
+        ],
+        "imageSrc": "search/a16dbc2a-ac93-417b-b54f-5c9a0c33afb2-0731e5eefc.jpeg"
+      },
+      {
+        "id": "80975",
+        "name": "Sushi Panda",
+        "deliveryFee": "1,90 €",
+        "eta": "25–30 min",
+        "rating": "4.7",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "6192518812293989",
+            "name": "Carbonated soft drink Milkis, banana flavored",
+            "price": "2,90 €",
+            "imageSrc": "search/c4a7ba5b-aa73-4c01-b66d-3a672d35d71a-f0610e06d7.png"
+          },
+          {
+            "id": "5910991842088517",
+            "name": "Our Classic Set (30 pcs.)",
+            "price": "33,00 €",
+            "imageSrc": "search/a3e36721-c22c-4b5e-a1e9-b6717632ed1f-d4c5194e9a.jpeg"
+          },
+          {
+            "id": "5770245688151033",
+            "name": "Large Sushi Platter (50 pcs.)",
+            "price": "53,50 €",
+            "imageSrc": "search/19cb62e8-7341-487f-a572-f02d42f5a6a2-e74b4054e9.jpeg"
+          },
+          {
+            "id": "5910991842088726",
+            "name": "Fifth Set for Mother (26 pcs.)",
+            "price": "29,50 €",
+            "imageSrc": "search/4420085a-19e0-447c-920b-3f12d05ced5b-cb2e1b348a.jpeg"
+          },
+          {
+            "id": "5910991842088612",
+            "name": "Chicken Tempura Set (20 pcs.)",
+            "price": "23,50 €",
+            "imageSrc": "search/2eb2f44b-be0e-4539-a425-aebdbd0005fd-379832b629.jpeg"
+          },
+          {
+            "id": "5910991842088555",
+            "name": "Father's Set (40 pcs.)",
+            "price": "47,90 €",
+            "imageSrc": "search/7cf301e7-3d57-43ea-a2db-3557b811ced7-2b98e07b46.jpeg"
+          }
+        ],
+        "imageSrc": "search/6878713a-38a4-434a-a233-86eb9f19b3bc-24a18d641e.jpeg"
+      },
+      {
+        "id": "28032",
+        "name": "Bolt Market Toompuiestee",
+        "deliveryFee": "1,90 €",
+        "eta": "25–30 min",
+        "rating": "4.9",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5770245823435543",
+            "name": "Banana, 1kg",
+            "price": "1,39 €",
+            "imageSrc": "search/958caf67-9fd8-4365-a9a6-fc55d63c4e2d-4dfe8ad6de.png"
+          },
+          {
+            "id": "5770245823435545",
+            "name": "Mini Bananas, 250g",
+            "price": "2,39 €",
+            "imageSrc": "search/f4099f13-6634-4cfc-b3fb-fed3266787dd-2ca46be0d5.png"
+          },
+          {
+            "id": "5770245823435544",
+            "name": "Organic Banana, ~1kg",
+            "price": "3,69 €",
+            "imageSrc": "search/39bbbd26-dd8e-41f0-a188-b922aba9a8f7-7598bc99d4.png"
+          },
+          {
+            "id": "6333327789865049",
+            "name": "Ali-baba, Halva, 200g",
+            "price": "1,95 €",
+            "imageSrc": "search/f4f48b51-03c7-4cd8-a13b-208f7fb97c17-4b32f3b622.webp"
+          },
+          {
+            "id": "6333327789864898",
+            "name": "Pähklinäpp, Banana Chips, 150g",
+            "price": "1,19 €",
+            "imageSrc": "search/de5bf3d8-bf94-47e7-bb4f-ed12bbedf285-c2b7796ee5.jpeg"
+          },
+          {
+            "id": "6333327789863174",
+            "name": "Tere, Emma ​​Banana Curd Paste, 150g",
+            "price": "1,29 €",
+            "imageSrc": "search/b97c5994-54b1-41c3-b179-b8b30a2734e0-2f8de16895.jpeg"
+          }
+        ],
+        "imageSrc": "search/f23b4550-d6cb-4c7c-8d2e-af499e181eb6-1021e1c8aa.jpeg"
+      }
+    ]
+  },
+  "banan": {
+    "query": "banan",
+    "categoryLabel": "🍌 banan",
+    "resultCount": 109,
+    "providers": [
+      {
+        "id": "5064",
+        "name": "Hesburger Viru tänav",
+        "deliveryFee": "1,90 €",
+        "eta": "15–20 min",
+        "rating": "4.5",
+        "ratingCount": "500+",
+        "scheduled": false,
+        "items": [
+          {
+            "id": "6192517530771393",
+            "name": "Banana Milkshake",
+            "price": "2,25 €",
+            "imageSrc": "search/8b7c0970-9d34-4744-b45b-4a51feaef27d-9ab229da6f.jpeg"
+          },
+          {
+            "id": "5629503786909083",
+            "name": "Large Hesburger Meal",
+            "price": "10,70 €",
+            "imageSrc": "search/e3dcdc89-bf53-4891-870b-b6a181665d01-6ff9ecc40b.jpeg"
+          },
+          {
+            "id": "6051746020847340",
+            "name": "Double Cheeseburger",
+            "price": "5,25 €",
+            "imageSrc": "search/f2dca3a3-c65f-4316-981b-88cf0b5333b4-20dca2a3b9.jpeg"
+          },
+          {
+            "id": "5629503786909182",
+            "name": "Large Mega Burger Meal",
+            "price": "13,70 €",
+            "imageSrc": "search/1eccdd0b-b0e5-489f-bc4b-246dcc30ad0d-c91c638f03.jpeg"
+          },
+          {
+            "id": "6051746020847426",
+            "name": "Chicken Tortilla",
+            "price": "6,40 €",
+            "imageSrc": "search/7c0b5ce4-a7de-4ae2-8cb7-e13a770a18b7-8d25a25bbb.jpeg"
+          },
+          {
+            "id": "6051746020847350",
+            "name": "Cheeseburger",
+            "price": "2,40 €",
+            "imageSrc": "search/9373aa02-3e3a-49f8-8bf3-1fe696bd5a73-05ecf8db56.jpeg"
+          }
+        ],
+        "imageSrc": "search/68142fda-71f1-4543-ace1-8c11c22873ae-0fc356a1e6.jpeg"
+      },
+      {
+        "id": "28032",
+        "name": "Bolt Market Toompuiestee",
+        "deliveryFee": "1,90 €",
+        "eta": "25–30 min",
+        "rating": "4.9",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5770245823435543",
+            "name": "Banana, 1kg",
+            "price": "1,39 €",
+            "imageSrc": "search/958caf67-9fd8-4365-a9a6-fc55d63c4e2d-4dfe8ad6de.png"
+          },
+          {
+            "id": "5770245823435544",
+            "name": "Organic Banana, ~1kg",
+            "price": "3,69 €",
+            "imageSrc": "search/39bbbd26-dd8e-41f0-a188-b922aba9a8f7-7598bc99d4.png"
+          },
+          {
+            "id": "6333327789864898",
+            "name": "Pähklinäpp, Banana Chips, 150g",
+            "price": "1,19 €",
+            "imageSrc": "search/de5bf3d8-bf94-47e7-bb4f-ed12bbedf285-c2b7796ee5.jpeg"
+          },
+          {
+            "id": "5629503934646710",
+            "name": "Mamma, Banana Curd Pancakes, 200g",
+            "price": "2,95 €",
+            "imageSrc": "search/943ee498-1cb3-44d1-b5c4-4bb64e4c6a8f-0102befc8e.jpeg"
+          },
+          {
+            "id": "6333327789863174",
+            "name": "Tere, Emma ​​Banana Curd Paste, 150g",
+            "price": "1,29 €",
+            "imageSrc": "search/b97c5994-54b1-41c3-b179-b8b30a2734e0-2f8de16895.jpeg"
+          },
+          {
+            "id": "6333327789863031",
+            "name": "Little Tom, Pasteurized Banana Milk, 0,2l",
+            "price": "0,89 €",
+            "imageSrc": "search/9817764c-266e-439d-8ed4-6a172be9d338-88ff94d825.png"
+          }
+        ],
+        "imageSrc": "search/f23b4550-d6cb-4c7c-8d2e-af499e181eb6-1021e1c8aa.jpeg"
+      },
+      {
+        "id": "57164",
+        "name": "Ragu",
+        "deliveryFee": "1,90 €",
+        "eta": "35–40 min",
+        "rating": "4.4",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5488764233788142",
+            "name": "Banana smoothie",
+            "price": "5,00 €",
+            "imageSrc": "search/124019a0-813a-4ac9-8043-6f32ee743a53-d2efd3a5c0.png"
+          },
+          {
+            "id": "5348025651467624",
+            "name": "American Pancakes with Banana",
+            "price": "10,00 €",
+            "imageSrc": "search/a41f2fa9-7fd4-4f21-a36c-7ae823e6902b-efafc535d1.jpeg"
+          },
+          {
+            "id": "5488764233788113",
+            "name": "Pasta Alla Carbonara",
+            "price": "12,00 €",
+            "imageSrc": "search/36c826e5-5644-4d7e-8a03-00478fb1caa2-a66cb9dc76.jpeg"
+          },
+          {
+            "id": "5488764233788119",
+            "name": "Homemade Syrniki",
+            "price": "8,00 €",
+            "imageSrc": "search/6c910518-51ad-49c8-94fe-e4a92fc65a3d-e63d1134fa.jpeg"
+          },
+          {
+            "id": "5488764233788096",
+            "name": "English Breakfast",
+            "price": "13,00 €",
+            "imageSrc": "search/efabe6c2-6473-4f01-8d75-7372637ba7d7-02b6d0f7e3.jpeg"
+          },
+          {
+            "id": "5348025651467640",
+            "name": "Omelette with Bacon, Bread, Cheese and Champignons",
+            "price": "10,00 €",
+            "imageSrc": "search/0cf232e4-5b8f-4895-8f0f-03468ec9d97a-5fc14bfefc.jpeg"
+          }
+        ],
+        "imageSrc": "search/afc64bb8-90cd-463d-82b0-87933df269b0-c58d327fea.jpeg"
+      },
+      {
+        "id": "70433",
+        "name": "Bolt Market Pallasti",
+        "deliveryFee": "2,72 €",
+        "eta": "25–30 min",
+        "rating": "4.9",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5629503890384889",
+            "name": "Banana, 1kg",
+            "price": "1,39 €",
+            "imageSrc": "search/958caf67-9fd8-4365-a9a6-fc55d63c4e2d-4dfe8ad6de.png"
+          },
+          {
+            "id": "5770245734911828",
+            "name": "Organic Banana, ~1kg",
+            "price": "3,69 €",
+            "imageSrc": "search/39bbbd26-dd8e-41f0-a188-b922aba9a8f7-7598bc99d4.png"
+          },
+          {
+            "id": "6333326373483950",
+            "name": "Pähklinäpp, Banana Chips, 150g",
+            "price": "1,19 €",
+            "imageSrc": "search/de5bf3d8-bf94-47e7-bb4f-ed12bbedf285-c2b7796ee5.jpeg"
+          },
+          {
+            "id": "5629503890384808",
+            "name": "Mamma, Banana Curd Pancakes, 200g",
+            "price": "2,95 €",
+            "imageSrc": "search/943ee498-1cb3-44d1-b5c4-4bb64e4c6a8f-0102befc8e.jpeg"
+          },
+          {
+            "id": "6192519186382708",
+            "name": "Tere, Emma ​​Banana Curd Paste, 150g",
+            "price": "1,29 €",
+            "imageSrc": "search/b97c5994-54b1-41c3-b179-b8b30a2734e0-2f8de16895.jpeg"
+          },
+          {
+            "id": "6192519186382585",
+            "name": "Little Tom, Pasteurized Banana Milk, 0,2l",
+            "price": "0,89 €",
+            "imageSrc": "search/9817764c-266e-439d-8ed4-6a172be9d338-88ff94d825.png"
+          }
+        ],
+        "imageSrc": "search/bd4cdd93-5fd0-44fe-bfc3-967649ecd5d5-3e7c87f707.jpeg"
+      },
+      {
+        "id": "80975",
+        "name": "Sushi Panda",
+        "deliveryFee": "1,90 €",
+        "eta": "25–30 min",
+        "rating": "4.7",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "6192518812293989",
+            "name": "Carbonated soft drink Milkis, banana flavored",
+            "price": "2,90 €",
+            "imageSrc": "search/c4a7ba5b-aa73-4c01-b66d-3a672d35d71a-f0610e06d7.png"
+          },
+          {
+            "id": "5910991842088517",
+            "name": "Our Classic Set (30 pcs.)",
+            "price": "33,00 €",
+            "imageSrc": "search/a3e36721-c22c-4b5e-a1e9-b6717632ed1f-d4c5194e9a.jpeg"
+          },
+          {
+            "id": "5770245688151033",
+            "name": "Large Sushi Platter (50 pcs.)",
+            "price": "53,50 €",
+            "imageSrc": "search/19cb62e8-7341-487f-a572-f02d42f5a6a2-e74b4054e9.jpeg"
+          },
+          {
+            "id": "5910991842088726",
+            "name": "Fifth Set for Mother (26 pcs.)",
+            "price": "29,50 €",
+            "imageSrc": "search/4420085a-19e0-447c-920b-3f12d05ced5b-cb2e1b348a.jpeg"
+          },
+          {
+            "id": "5910991842088612",
+            "name": "Chicken Tempura Set (20 pcs.)",
+            "price": "23,50 €",
+            "imageSrc": "search/2eb2f44b-be0e-4539-a425-aebdbd0005fd-379832b629.jpeg"
+          },
+          {
+            "id": "5910991842088555",
+            "name": "Father's Set (40 pcs.)",
+            "price": "47,90 €",
+            "imageSrc": "search/7cf301e7-3d57-43ea-a2db-3557b811ced7-2b98e07b46.jpeg"
+          }
+        ],
+        "imageSrc": "search/6878713a-38a4-434a-a233-86eb9f19b3bc-24a18d641e.jpeg"
+      }
+    ]
+  },
+  "banana": {
+    "query": "banana",
+    "categoryLabel": "🍌 banana",
+    "resultCount": 111,
+    "providers": [
+      {
+        "id": "5064",
+        "name": "Hesburger Viru tänav",
+        "deliveryFee": "1,90 €",
+        "eta": "15–20 min",
+        "rating": "4.5",
+        "ratingCount": "500+",
+        "scheduled": false,
+        "items": [
+          {
+            "id": "6192517530771393",
+            "name": "Banana Milkshake",
+            "price": "2,25 €",
+            "imageSrc": "search/8b7c0970-9d34-4744-b45b-4a51feaef27d-9ab229da6f.jpeg"
+          },
+          {
+            "id": "5629503786909083",
+            "name": "Large Hesburger Meal",
+            "price": "10,70 €",
+            "imageSrc": "search/e3dcdc89-bf53-4891-870b-b6a181665d01-6ff9ecc40b.jpeg"
+          },
+          {
+            "id": "6051746020847340",
+            "name": "Double Cheeseburger",
+            "price": "5,25 €",
+            "imageSrc": "search/f2dca3a3-c65f-4316-981b-88cf0b5333b4-20dca2a3b9.jpeg"
+          },
+          {
+            "id": "5629503786909182",
+            "name": "Large Mega Burger Meal",
+            "price": "13,70 €",
+            "imageSrc": "search/1eccdd0b-b0e5-489f-bc4b-246dcc30ad0d-c91c638f03.jpeg"
+          },
+          {
+            "id": "6051746020847426",
+            "name": "Chicken Tortilla",
+            "price": "6,40 €",
+            "imageSrc": "search/7c0b5ce4-a7de-4ae2-8cb7-e13a770a18b7-8d25a25bbb.jpeg"
+          },
+          {
+            "id": "6051746020847350",
+            "name": "Cheeseburger",
+            "price": "2,40 €",
+            "imageSrc": "search/9373aa02-3e3a-49f8-8bf3-1fe696bd5a73-05ecf8db56.jpeg"
+          }
+        ],
+        "imageSrc": "search/68142fda-71f1-4543-ace1-8c11c22873ae-0fc356a1e6.jpeg"
+      },
+      {
+        "id": "28032",
+        "name": "Bolt Market Toompuiestee",
+        "deliveryFee": "1,90 €",
+        "eta": "25–30 min",
+        "rating": "4.9",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5770245823435543",
+            "name": "Banana, 1kg",
+            "price": "1,39 €",
+            "imageSrc": "search/958caf67-9fd8-4365-a9a6-fc55d63c4e2d-4dfe8ad6de.png"
+          },
+          {
+            "id": "5770245823435643",
+            "name": "Organic Banana, ~1kg",
+            "price": "3,69 €",
+            "imageSrc": "search/39bbbd26-dd8e-41f0-a188-b922aba9a8f7-7598bc99d4.png"
+          },
+          {
+            "id": "5770245823435545",
+            "name": "Mini Bananas, 250g",
+            "price": "2,39 €",
+            "imageSrc": "search/f4099f13-6634-4cfc-b3fb-fed3266787dd-2ca46be0d5.png"
+          },
+          {
+            "id": "6333327789864898",
+            "name": "Pähklinäpp, Banana Chips, 150g",
+            "price": "1,19 €",
+            "imageSrc": "search/de5bf3d8-bf94-47e7-bb4f-ed12bbedf285-c2b7796ee5.jpeg"
+          },
+          {
+            "id": "5629503934646710",
+            "name": "Mamma, Banana Curd Pancakes, 200g",
+            "price": "2,95 €",
+            "imageSrc": "search/943ee498-1cb3-44d1-b5c4-4bb64e4c6a8f-0102befc8e.jpeg"
+          },
+          {
+            "id": "6333327789863174",
+            "name": "Tere, Emma ​​Banana Curd Paste, 150g",
+            "price": "1,29 €",
+            "imageSrc": "search/b97c5994-54b1-41c3-b179-b8b30a2734e0-2f8de16895.jpeg"
+          }
+        ],
+        "imageSrc": "search/f23b4550-d6cb-4c7c-8d2e-af499e181eb6-1021e1c8aa.jpeg"
+      },
+      {
+        "id": "57164",
+        "name": "Ragu",
+        "deliveryFee": "1,90 €",
+        "eta": "35–40 min",
+        "rating": "4.4",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5488764233788142",
+            "name": "Banana smoothie",
+            "price": "5,00 €",
+            "imageSrc": "search/124019a0-813a-4ac9-8043-6f32ee743a53-d2efd3a5c0.png"
+          },
+          {
+            "id": "5348025651467624",
+            "name": "American Pancakes with Banana",
+            "price": "10,00 €",
+            "imageSrc": "search/a41f2fa9-7fd4-4f21-a36c-7ae823e6902b-efafc535d1.jpeg"
+          },
+          {
+            "id": "5488764233788113",
+            "name": "Pasta Alla Carbonara",
+            "price": "12,00 €",
+            "imageSrc": "search/36c826e5-5644-4d7e-8a03-00478fb1caa2-a66cb9dc76.jpeg"
+          },
+          {
+            "id": "5488764233788119",
+            "name": "Homemade Syrniki",
+            "price": "8,00 €",
+            "imageSrc": "search/6c910518-51ad-49c8-94fe-e4a92fc65a3d-e63d1134fa.jpeg"
+          },
+          {
+            "id": "5488764233788096",
+            "name": "English Breakfast",
+            "price": "13,00 €",
+            "imageSrc": "search/efabe6c2-6473-4f01-8d75-7372637ba7d7-02b6d0f7e3.jpeg"
+          },
+          {
+            "id": "5348025651467640",
+            "name": "Omelette with Bacon, Bread, Cheese and Champignons",
+            "price": "10,00 €",
+            "imageSrc": "search/0cf232e4-5b8f-4895-8f0f-03468ec9d97a-5fc14bfefc.jpeg"
+          }
+        ],
+        "imageSrc": "search/afc64bb8-90cd-463d-82b0-87933df269b0-c58d327fea.jpeg"
+      },
+      {
+        "id": "80975",
+        "name": "Sushi Panda",
+        "deliveryFee": "1,90 €",
+        "eta": "25–30 min",
+        "rating": "4.7",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "6192518812293989",
+            "name": "Carbonated soft drink Milkis, banana flavored",
+            "price": "2,90 €",
+            "imageSrc": "search/c4a7ba5b-aa73-4c01-b66d-3a672d35d71a-f0610e06d7.png"
+          },
+          {
+            "id": "5910991842088517",
+            "name": "Our Classic Set (30 pcs.)",
+            "price": "33,00 €",
+            "imageSrc": "search/a3e36721-c22c-4b5e-a1e9-b6717632ed1f-d4c5194e9a.jpeg"
+          },
+          {
+            "id": "5770245688151033",
+            "name": "Large Sushi Platter (50 pcs.)",
+            "price": "53,50 €",
+            "imageSrc": "search/19cb62e8-7341-487f-a572-f02d42f5a6a2-e74b4054e9.jpeg"
+          },
+          {
+            "id": "5910991842088726",
+            "name": "Fifth Set for Mother (26 pcs.)",
+            "price": "29,50 €",
+            "imageSrc": "search/4420085a-19e0-447c-920b-3f12d05ced5b-cb2e1b348a.jpeg"
+          },
+          {
+            "id": "5910991842088612",
+            "name": "Chicken Tempura Set (20 pcs.)",
+            "price": "23,50 €",
+            "imageSrc": "search/2eb2f44b-be0e-4539-a425-aebdbd0005fd-379832b629.jpeg"
+          },
+          {
+            "id": "5910991842088555",
+            "name": "Father's Set (40 pcs.)",
+            "price": "47,90 €",
+            "imageSrc": "search/7cf301e7-3d57-43ea-a2db-3557b811ced7-2b98e07b46.jpeg"
+          }
+        ],
+        "imageSrc": "search/6878713a-38a4-434a-a233-86eb9f19b3bc-24a18d641e.jpeg"
+      },
+      {
+        "id": "18777",
+        "name": "Taverna del Gallo Nero",
+        "deliveryFee": "2,09 €",
+        "eta": "30–35 min",
+        "rating": "4.8",
+        "ratingCount": "500+",
+        "scheduled": true,
+        "items": [
+          {
+            "id": "5207287594757144",
+            "name": "Banana and chocolate chips soft cake",
+            "price": "10,90 €",
+            "imageSrc": "search/1dd91177-97dd-4279-b485-aafcc2c70408-fd4a62fcbf.jpeg"
+          },
+          {
+            "id": "5488764148297796",
+            "name": "Pasta with chicken and dried tomatoes in a cheese-cream sauce",
+            "price": "7,90 €"
+          },
+          {
+            "id": "5629503739093225",
+            "name": "Capricciosa",
+            "price": "12,90 €",
+            "imageSrc": "search/c148ae7e-cd61-40ac-a0e9-153679df096a-5b0a3e845d.jpeg"
+          },
+          {
+            "id": "5629503739093207",
+            "name": "Piccante",
+            "price": "12,90 €",
+            "imageSrc": "search/3a8fd141-0b49-4737-9248-de16d16f4955-15f2b73f3e.jpeg"
+          },
+          {
+            "id": "5770245432328477",
+            "name": "Tagliatelle with Manzo, Porcini and Tartufo",
+            "price": "12,90 €"
+          },
+          {
+            "id": "5629503739093198",
+            "name": "Salame",
+            "price": "11,90 €",
+            "imageSrc": "search/92913ac2-c503-4fd6-9bd3-6f1d37b2b537-c2c4338c9b.jpeg"
+          }
+        ],
+        "imageSrc": "search/52b71c3b-cb8f-446f-ac44-53c48b3fd5a3-42801eb365.jpeg"
+      }
+    ]
+  }
+}

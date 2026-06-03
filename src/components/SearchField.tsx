@@ -1,6 +1,4 @@
-import { design } from '../lib/figmaDesignAssets'
-
-const sf = design.searchField
+import { KalepIcon } from './KalepIcon'
 
 export type SearchFieldProps = {
   placeholder?: string
@@ -43,9 +41,7 @@ export function SearchField({
         className="flex min-w-0 flex-1 items-center gap-3 bg-transparent p-0 text-left outline-none ring-[var(--color-special-brand-alt)]/20 focus-visible:ring-2"
         data-name="Content"
       >
-        <span className="relative size-6 shrink-0" aria-hidden data-name="search">
-          <img alt="" src={sf.searchIcon} className="pointer-events-none absolute inset-0 block size-full max-w-none" />
-        </span>
+        <KalepIcon name="search" size={24} />
         <span className="bolt-font-body-m-regular min-w-0 flex-1 break-words text-[var(--color-content-secondary)]">
           {placeholder}
         </span>
@@ -58,7 +54,7 @@ export function SearchField({
         className="relative size-6 shrink-0 bg-transparent p-0 outline-none ring-[var(--color-special-brand-alt)]/20 focus-visible:ring-2"
         data-name="filters (outline)"
       >
-        <img alt="" src={sf.filtersIcon} className="pointer-events-none block size-full max-w-none" />
+        <KalepIcon name="filters" size={24} />
       </button>
 
       {showIndicator ? (

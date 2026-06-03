@@ -1,4 +1,3 @@
-import { AddressSelector, type AddressSelectorProps } from '../../components/AddressSelector'
 import { design } from '../../lib/figmaDesignAssets'
 
 const hb = design.heroBanner
@@ -7,20 +6,15 @@ export type HomeHeroBlockProps = {
   promoTitle?: string
   joinLabel?: string
   onJoinClick?: () => void
-} & Pick<AddressSelectorProps, 'line1' | 'line2' | 'avatarInitial' | 'onAddressClick' | 'onAvatarClick'>
+}
 
 /**
- * Figma [76281:33163](https://www.figma.com/design/hTmBFTYdlynOcGtxFnHIbM/Consumer---in-progress?node-id=76281-33163) — Hero banner with {@link AddressSelector}.
+ * Figma [76281:33163](https://www.figma.com/design/hTmBFTYdlynOcGtxFnHIbM/Consumer---in-progress?node-id=76281-33163) — Hero banner (address in {@link HubTopBar}).
  */
 export function HomeHeroBlock({
   promoTitle = 'Free delivery with Bolt Plus',
   joinLabel = 'Join now',
   onJoinClick,
-  line1,
-  line2,
-  avatarInitial,
-  onAddressClick,
-  onAvatarClick,
 }: HomeHeroBlockProps) {
   return (
     <section
@@ -33,17 +27,6 @@ export function HomeHeroBlock({
       </div>
 
       <div className="hero-banner__content">
-        <div className="shrink-0">
-          <AddressSelector
-            withGutter={false}
-            line1={line1}
-            line2={line2}
-            avatarInitial={avatarInitial}
-            onAddressClick={onAddressClick}
-            onAvatarClick={onAvatarClick}
-          />
-        </div>
-
         <div className="hero-banner__promo w-full" data-name="Promo">
           <div className="hero-banner__promo-text min-w-0" data-name="Text">
             <p className="hero-banner__promo-title bolt-font-heading-s-accent text-[var(--color-content-primary)]">

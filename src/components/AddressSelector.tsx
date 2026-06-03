@@ -1,3 +1,4 @@
+import { useAccountButtonMountBounce, useHubScrollElevated } from '../context/HubScrollContext'
 import { AccountButton } from './AccountButton'
 import { design } from '../lib/figmaDesignAssets'
 
@@ -19,11 +20,13 @@ export type AddressSelectorProps = {
 export function AddressSelector({
   line1 = 'Rotermanni 6',
   line2 = 'Tallinn, Estonia',
-  avatarInitial = 'T',
   onAddressClick,
   onAvatarClick,
   withGutter = true,
 }: AddressSelectorProps) {
+  const scrollElevated = useHubScrollElevated()
+  const bounceOnMount = useAccountButtonMountBounce()
+
   const addressBody = (
     <>
       <div className="flex shrink-0 items-center justify-center">
@@ -47,8 +50,8 @@ export function AddressSelector({
   return (
     <div
       className={[
-        'address-selector bolt-font-base flex w-full items-center gap-2 py-3',
-        withGutter ? 'home-gutter-inline' : '',
+        'address-selector bolt-font-base flex w-full max-w-full min-w-0 items-center gap-2',
+        withGutter ? 'home-gutter-inline py-3' : 'py-0',
       ]
         .filter(Boolean)
         .join(' ')}
@@ -67,7 +70,11 @@ export function AddressSelector({
         <div className="flex min-w-0 flex-1 items-center gap-2">{addressBody}</div>
       )}
 
-      <AccountButton initial={avatarInitial} onClick={onAvatarClick} avatarRingSrc={as.avatarRing} />
+      <AccountButton
+        elevation={scrollElevated ? 'scrolled' : 'default'}
+        bounceOnMount={bounceOnMount}
+        onClick={onAvatarClick}
+      />
     </div>
   )
 }

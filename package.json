@@ -14,10 +14,14 @@
     "figma:seed": "node scripts/seed-figma-placeholders.mjs",
     "figma:assets": "node scripts/download-figma-assets.mjs",
     "figma:sync": "node scripts/sync-figma-mcp-assets.mjs",
+    "kalep:icons:vendor": "node scripts/bootstrap-kalep-icons-vendor.mjs",
+    "kalep:icons:prune-figma": "node scripts/prune-figma-glyph-sync.mjs",
     "bolt:assets": "node scripts/download-bolt-food-assets.mjs",
+    "bolt:search:sync": "node scripts/fetch-bolt-search-banana.mjs",
     "components:export": "node scripts/export-demo-components.mjs"
   },
   "dependencies": {
+    "@bolteu/kalep-icons-svg": "file:vendor/kalep-icons-svg",
     "@tailwindcss/vite": "^4.2.2",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
@@ -37,6 +41,7 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.5.0",
     "jsdom": "^26.1.0",
+    "playwright": "^1.49.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.2",
     "vite": "^8.0.9",

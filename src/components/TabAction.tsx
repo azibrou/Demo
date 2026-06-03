@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { FLOATING_CHROME_SHADOW_CLASS } from '../lib/floatingChromeShadow'
 
 export const TAB_ACTION_SIZE_PX = 56
@@ -12,9 +13,13 @@ export type TabActionProps = {
 /**
  * Circular tab action — Figma [76315:68795](https://www.figma.com/design/hTmBFTYdlynOcGtxFnHIbM/Consumer---in-progress?node-id=76315-68795).
  */
-export function TabAction({ iconSrc, ariaLabel, onClick, className = '' }: TabActionProps) {
+export const TabAction = forwardRef<HTMLButtonElement, TabActionProps>(function TabAction(
+  { iconSrc, ariaLabel, onClick, className = '' },
+  ref,
+) {
   return (
     <button
+      ref={ref}
       type="button"
       aria-label={ariaLabel}
       onClick={onClick}
@@ -32,4 +37,4 @@ export function TabAction({ iconSrc, ariaLabel, onClick, className = '' }: TabAc
       </span>
     </button>
   )
-}
+})

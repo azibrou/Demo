@@ -1,5 +1,4 @@
 import {
-  createContext,
   useCallback,
   useContext,
   useEffect,
@@ -8,12 +7,13 @@ import {
   useRef,
   useState,
   type ReactNode,
-  type RefObject,
   type TransitionEvent,
 } from 'react'
 import { Outlet, useLocation, useNavigate, useOutlet, type NavigateFunction } from 'react-router-dom'
 import { resolveFloatingTabBarModel } from '../config/floatingTabBarConfig'
-import { BasketFabProvider } from '../context/BasketFabContext'
+import { BasketFabProvider, useBasketFabOptional } from '../context/BasketFabContext'
+import { HomeSearchContext } from '../context/HomeSearchContext'
+import { HubScrollProvider, HubScrollRefContext } from '../context/HubScrollContext'
 import { HomeShoppingStackContext } from '../context/HomeShoppingStackContext'
 import { design } from '../lib/figmaDesignAssets'
 import { DineOutScreen } from '../screens/DineOutScreen'
@@ -22,6 +22,7 @@ import { HOME_FLOATING_TAB_BAR_ITEMS } from '../screens/homeFloatingTabBarItems'
 import { StoresScreen } from '../screens/StoresScreen'
 import { CrossFadeStack } from './CrossFadeStack'
 import { FloatingTabBar } from './FloatingTabBar'
+import { HomeSearchOverlay } from './HomeSearchOverlay'
 import { TabAction } from './TabAction'
 
 /** iOS UINavigationController default interactive transition duration. */
@@ -53,8 +54,6 @@ function hubTabIdFromPathname(pathname: string): string {
   if (last === 'dineout') return 'dineout'
   return 'home'
 }
-
-const HubScrollRefContext = createContext<RefObject<HTMLDivElement | null> | null>(null)
 
 /**
  * Cross-fades eater hub tabs on switch (300ms ease-out). Other routes render without fade.
@@ -104,16 +103,37 @@ function HubStackUnderlay({ pathname }: { pathname: string }) {
 }
 
 /** Persists home tab bar across hub routes so enter animation runs only on layout mount. */
-const hubSearchTabAction = <TabAction iconSrc={design.tabAction.search} ariaLabel="Search" />
-
 function HubLayoutShell({ children }: { children: ReactNode }) {
+  return (
+    <BasketFabProvider>
+      <HubLayoutShellInner>{children}</HubLayoutShellInner>
+    </BasketFabProvider>
+  )
+}
+
+function HubLayoutShellInner({ children }: { children: ReactNode }) {
   const location = useLocation()
   const navigate = useNavigate()
   const scrollRef = useRef<HTMLDivElement>(null)
+  const basket = useBasketFabOptional()
+  const [searchOpen, setSearchOpen] = useState(false)
   const resolved = useMemo(() => resolveFloatingTabBarModel(HOME_FLOATING_TAB_BAR_ITEMS), [])
   const showTabBar = isHubPath(location.pathname)
   const tabId = hubTabIdFromPathname(location.pathname)
   const ariaLabel = tabId === 'store' ? 'Stores' : tabId === 'dineout' ? 'DineOut' : 'Home'
+
+  const openHomeSearch = useCallback(() => {
+    setSearchOpen(true)
+  }, [])
+
+  const closeHomeSearch = useCallback(() => {
+    setSearchOpen(false)
+  }, [])
+
+  const homeSearchContextValue = useMemo(
+    () => ({ openHomeSearch, closeHomeSearch }),
+    [openHomeSearch, closeHomeSearch],
+  )
 
   const onHubTabChange = useCallback(
     (id: string) => {
@@ -133,10 +153,17 @@ function HubLayoutShell({ children }: { children: ReactNode }) {
     scrollRef.current?.scrollTo(0, 0)
   }, [location.pathname, location.key])
 
+  useLayoutEffect(() => {
+    basket?.setSearchOverlayOpen(searchOpen)
+    if (!searchOpen) {
+      basket?.revealHomeTabBarBasketFromSearch()
+    }
+  }, [searchOpen, basket])
+
   return (
-    <BasketFabProvider>
-      <HomeShoppingStackContext.Provider value={null}>
-        <HubScrollRefContext.Provider value={scrollRef}>
+    <HomeShoppingStackContext.Provider value={null}>
+      <HubScrollProvider scrollRef={scrollRef}>
+        <HomeSearchContext.Provider value={homeSearchContextValue}>
           <div className="eater-hub-shell">
             <div ref={scrollRef} className="eater-hub-scroll">
               {children}
@@ -148,14 +175,22 @@ function HubLayoutShell({ children }: { children: ReactNode }) {
                   activeId={tabId}
                   onTabChange={onHubTabChange}
                   ariaLabel={ariaLabel}
-                  tabActions={hubSearchTabAction}
+                  showBasketFab={!searchOpen}
+                  tabActions={
+                    <TabAction
+                      iconSrc={design.tabAction.search}
+                      ariaLabel="Search"
+                      onClick={openHomeSearch}
+                    />
+                  }
                 />
               </div>
             ) : null}
+            {searchOpen ? <HomeSearchOverlay onClosed={closeHomeSearch} /> : null}
           </div>
-        </HubScrollRefContext.Provider>
-      </HomeShoppingStackContext.Provider>
-    </BasketFabProvider>
+        </HomeSearchContext.Provider>
+      </HubScrollProvider>
+    </HomeShoppingStackContext.Provider>
   )
 }
 

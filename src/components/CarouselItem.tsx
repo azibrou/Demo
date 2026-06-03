@@ -22,11 +22,26 @@ export type CarouselItemProps = {
   children?: ReactNode
   /** Product track uses `--shortcut-scale` gutters (retail snippet). */
   scaledTrack?: boolean
+  /** Override default section layout (e.g. home search provider). */
+  className?: string
+  'data-name'?: string
 }
 
 /** Node 70394:111156 — ItemCarousel; header node 70394:111157 */
-export function CarouselItem({ title, titleId, topSlot, children, scaledTrack }: CarouselItemProps) {
+export function CarouselItem({
+  title,
+  titleId,
+  topSlot,
+  children,
+  scaledTrack,
+  className,
+  'data-name': dataName,
+}: CarouselItemProps) {
   const headingId = titleId ?? useId()
+
+  const defaultSectionClassName =
+    'bolt-font-base flex w-full flex-col items-start text-[var(--color-content-primary)]'
+  const sectionClassName = className ?? `${defaultSectionClassName} gap-4 py-3`
 
   const productTrack = scaledTrack ? (
     <HomeScaledCarousel variant="product-scroll" aria-label={title}>
@@ -74,8 +89,9 @@ export function CarouselItem({ title, titleId, topSlot, children, scaledTrack }:
     if (topSlot != null) {
       return (
         <section
-          className="bolt-font-base my-0 flex w-full flex-col items-start gap-3 py-4 text-[var(--color-content-primary)]"
+          className={className ?? `${defaultSectionClassName} my-0 gap-3 py-4`}
           aria-label={title}
+          data-name={dataName}
         >
           {topSlot}
           {productTrack}
@@ -85,8 +101,9 @@ export function CarouselItem({ title, titleId, topSlot, children, scaledTrack }:
 
     return (
       <section
-        className="bolt-font-base flex w-full flex-col items-start gap-4 py-3 text-[var(--color-content-primary)]"
+        className={sectionClassName}
         aria-labelledby={headingId}
+        data-name={dataName}
       >
         {header}
         {productTrack}
@@ -96,8 +113,9 @@ export function CarouselItem({ title, titleId, topSlot, children, scaledTrack }:
 
   return (
     <section
-      className="bolt-font-base flex w-full flex-col items-start gap-4 py-3 text-[var(--color-content-primary)]"
+      className={sectionClassName}
       aria-labelledby={headingId}
+      data-name={dataName}
     >
       <div className="flex w-full shrink-0 items-center px-6">
         <div className="flex min-w-0 flex-[1_0_0] flex-col items-start justify-center">

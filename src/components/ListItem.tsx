@@ -1,18 +1,20 @@
 import { useCallback, useEffect, useState } from 'react'
-import binIconUrl from '../assets/shopping-list-bin.svg?url'
 import { design } from '../lib/figmaDesignAssets'
+import { kalepIcons } from '../lib/kalepIcons'
 import { QuickAddExpandPill } from './QuickAddExpandPill'
 
 const h = design.providerHeader
 const c = design.carousel
 
-export type ListItemVariant = 'heart' | 'add' | 'added' | 'delete'
+export type ListItemVariant = 'heart' | 'add' | 'added' | 'delete' | 'search'
 
 export type ListItemProps = {
   variant: ListItemVariant
   title: string
-  price: string
-  imageSrc: string
+  price?: string
+  imageSrc?: string
+  /** Search rows — 24px leading icon (e.g. history). */
+  leadingIconSrc?: string
   showDivider?: boolean
   /** When variant is `added`, quantity in basket (controlled by parent). */
   basketQty?: number
@@ -26,8 +28,9 @@ export type ListItemProps = {
 export function ListItem({
   variant,
   title,
-  price,
-  imageSrc,
+  price = '',
+  imageSrc = '',
+  leadingIconSrc,
   showDivider = true,
   basketQty = 1,
   onHeartClick,
@@ -80,6 +83,24 @@ export function ListItem({
     onBasketIncrement?.()
   }, [onBasketIncrement])
 
+  if (variant === 'search') {
+    return (
+      <div className="font-sans flex w-full flex-col text-[var(--color-content-primary)]">
+        <div className="flex w-full items-start gap-3 overflow-hidden pt-4 pb-[15px]">
+          {leadingIconSrc ? (
+            <span className="relative size-6 shrink-0" aria-hidden>
+              <img alt="" src={leadingIconSrc} className="pointer-events-none absolute inset-0 block size-full max-w-none" />
+            </span>
+          ) : null}
+          <p className="bolt-font-body-m-regular min-w-0 flex-1 break-words">{title}</p>
+        </div>
+        {showDivider ? (
+          <div className="relative h-px w-full shrink-0 bg-[var(--color-border-separator)]" aria-hidden />
+        ) : null}
+      </div>
+    )
+  }
+
   const trailing = (() => {
     if (variant === 'heart') {
       return (
@@ -121,7 +142,7 @@ export function ListItem({
           className="flex items-center gap-2.5 rounded-[20px] p-2"
         >
           <span className="relative size-6 shrink-0" aria-hidden>
-            <img alt="" src={binIconUrl} className="pointer-events-none absolute inset-0 block size-full max-w-none" />
+            <img alt="" src={kalepIcons.bin} className="pointer-events-none absolute inset-0 block size-full max-w-none" />
           </span>
         </button>
       </div>

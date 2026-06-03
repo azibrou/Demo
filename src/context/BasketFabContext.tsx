@@ -99,6 +99,10 @@ export type BasketFabContextValue = {
   syncShoppingListBasketUnits: (units: number, opts?: { initial?: boolean }) => void
   /** Clears units and FAB chrome — call before navigations that change venue context. */
   resetBasket: () => void
+  /** Home search overlay — suppresses tab-bar enter animation while open. */
+  setSearchOverlayOpen: (open: boolean) => void
+  /** After search closes with items, show home tab-bar basket without replaying loading. */
+  revealHomeTabBarBasketFromSearch: () => void
 }
 
 const BasketFabContext = createContext<BasketFabContextValue | null>(null)
@@ -144,6 +148,7 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
   const merchantWideFabPhaseRef = useRef(merchantWideFabPhase)
   const timerIdsRef = useRef<ReturnType<typeof setTimeout>[]>([])
   const rafIdsRef = useRef<number[]>([])
+  const searchOverlayOpenRef = useRef(false)
 
   useLayoutEffect(() => {
     merchantTabSoloRef.current = merchantTabSolo
@@ -329,6 +334,16 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
     if (delta === 0) return
     setCarouselUnits((c) => Math.max(0, c + delta))
   }, [])
+
+  const setSearchOverlayOpen = useCallback((open: boolean) => {
+    searchOverlayOpenRef.current = open
+  }, [])
+
+  const revealHomeTabBarBasketFromSearch = useCallback(() => {
+    if (merchantMode || searchOverlayOpenRef.current) return
+    const next = shoppingUnits + carouselUnits
+    if (next > 0) applyImmediateBasketVisible(next)
+  }, [merchantMode, shoppingUnits, carouselUnits, applyImmediateBasketVisible])
 
   const scheduleLoaderToBasket = useCallback((opts?: { showBadgeAfter?: boolean }) => {
     const showBadgeAfter = opts?.showBadgeAfter !== false
@@ -545,6 +560,10 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
         return
       }
 
+      if (searchOverlayOpenRef.current) {
+        return
+      }
+
       setBasketFabExiting(false)
       setBadgeExiting(false)
       setFabExiting(false)
@@ -625,6 +644,8 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
       adjustCarouselBasketUnits,
       syncShoppingListBasketUnits,
       resetBasket: resetBasketUnits,
+      setSearchOverlayOpen,
+      revealHomeTabBarBasketFromSearch,
     }),
     [
       total,
@@ -648,6 +669,8 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
       adjustCarouselBasketUnits,
       syncShoppingListBasketUnits,
       resetBasketUnits,
+      setSearchOverlayOpen,
+      revealHomeTabBarBasketFromSearch,
     ],
   )
 
