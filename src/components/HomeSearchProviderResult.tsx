@@ -53,7 +53,7 @@ function HomeSearchProviderHeader({ provider }: { provider: BoltSearchProvider }
             ) : null}
             {provider.rating ? (
               <span className="flex min-w-0 flex-1 items-baseline gap-3">
-                <KalepIcon name="rating-star-selected" size={16} className="!size-3 shrink-0" />
+                <KalepIcon name="rating-star" size={16} className="!size-3 shrink-0" />
                 <span className="bolt-font-body-xs-regular shrink-0 text-[var(--color-content-primary)]">
                   {provider.rating}
                 </span>
@@ -99,6 +99,7 @@ export function HomeSearchProviderResult({ provider }: HomeSearchProviderResultP
       {provider.items.map((item) => (
         <CarouselGridItem
           key={item.id}
+          itemId={item.id}
           imageSrc={item.imageSrc}
           title={item.name}
           price={item.price}

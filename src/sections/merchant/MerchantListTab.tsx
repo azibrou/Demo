@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { ListItem } from '../../components/ListItem'
+import { useBasketFabOptional } from '../../context/BasketFabContext'
 import { design } from '../../lib/figmaDesignAssets'
 
 const ml = design.merchantList
@@ -18,6 +19,48 @@ const LIST_ITEMS = [
     image: ml.rowThumb[6]!,
   },
 ] as const
+
+function merchantListItemId(rowId: string) {
+  return `merchant-list:${rowId}`
+}
+
+type MerchantListRowProps = {
+  row: (typeof LIST_ITEMS)[number]
+  showDivider: boolean
+}
+
+function MerchantListRow({ row, showDivider }: MerchantListRowProps) {
+  const basket = useBasketFabOptional()
+  const itemId = merchantListItemId(row.id)
+  const qty = basket?.getCarouselItemQty(itemId) ?? 0
+
+  const onAdd = useCallback(() => {
+    basket?.setCarouselItemQty(itemId, 1)
+  }, [basket, itemId])
+
+  const onIncrement = useCallback(() => {
+    basket?.setCarouselItemQty(itemId, qty + 1)
+  }, [basket, itemId, qty])
+
+  const onDecrement = useCallback(() => {
+    if (qty <= 1) basket?.setCarouselItemQty(itemId, 0)
+    else basket?.setCarouselItemQty(itemId, qty - 1)
+  }, [basket, itemId, qty])
+
+  return (
+    <ListItem
+      variant={qty > 0 ? 'added' : 'add'}
+      title={row.title}
+      price={row.price}
+      imageSrc={row.image}
+      basketQty={Math.max(1, qty)}
+      showDivider={showDivider}
+      onAddClick={onAdd}
+      onBasketIncrement={onIncrement}
+      onBasketDecrement={onDecrement}
+    />
+  )
+}
 
 /**
  * Merchant List tab — Figma [77943:161673](https://www.figma.com/design/hTmBFTYdlynOcGtxFnHIbM/Consumer---in-progress?node-id=77943-161673).
@@ -65,12 +108,9 @@ export function MerchantListTab() {
         </div>
 
         {LIST_ITEMS.map((row, index) => (
-          <ListItem
+          <MerchantListRow
             key={row.id}
-            variant={isEditing ? 'delete' : 'add'}
-            title={row.title}
-            price={row.price}
-            imageSrc={row.image}
+            row={row}
             showDivider={index < LIST_ITEMS.length - 1}
           />
         ))}

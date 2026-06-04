@@ -74,6 +74,7 @@ export function RetailSnippet({
         p.variant === 'discount' ? (
           <CarouselGridItem
             key={p.id}
+            itemId={p.id}
             variant="discount"
             imageSrc={p.imageSrc}
             title={p.title}
@@ -85,6 +86,7 @@ export function RetailSnippet({
         ) : (
           <CarouselGridItem
             key={p.id}
+            itemId={p.id}
             variant="default"
             imageSrc={p.imageSrc}
             title={p.title}

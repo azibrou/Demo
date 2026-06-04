@@ -127,13 +127,12 @@ html.eater-hub-active #root {
   }
 
   /**
-   * Figma 79413:251103 — top bar: absolute over hero; fixed when scrolled (gradient only, no bar border).
+   * Figma 79413:251103 — sticky for full `.home-page` scroll (direct child of page root).
+   * `.hub-top-bar--elevated` only updates avatar shadow via {@link AccountButton}.
    */
-  .hub-top-bar {
-    position: absolute;
+  .home-page > .hub-top-bar {
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
     z-index: 40;
     width: 100%;
     max-width: 100%;
@@ -151,11 +150,11 @@ html.eater-hub-active #root {
     );
   }
 
-  /** Pinned on scroll — same gradient; avatar shadow only (79413:251186). */
-  .hub-top-bar--elevated {
-    position: fixed;
-    left: 0;
-    right: 0;
+  /** Pull hero under the in-flow top bar (overlay without shortening sticky scroll range). */
+  .home-page > .hub-top-bar + .home-hero-stack {
+    margin-top: calc(-1 * var(--hub-top-bar-height, 68px));
+    position: relative;
+    z-index: 0;
   }
 
   .hub-top-bar .address-selector {
@@ -175,7 +174,6 @@ html.eater-hub-active #root {
   }
 
   .home-hero-stack {
-    position: relative;
     width: 100%;
     max-width: 100%;
     min-width: 0;
@@ -784,7 +782,7 @@ html.eater-hub-active #root {
 
   .stores-top .home-search-section {
     margin-top: 0;
-    padding-top: 64px;
+    padding-top: 12px;
   }
 
   .hero-banner__promo {
@@ -2075,6 +2073,25 @@ html.eater-hub-active #root {
     }
   }
 
+  /** Wide FAB default row — keep translateY(-50%) while badge bounces. */
+  @keyframes wide-basket-fab-counter-pop-centered {
+    0% {
+      transform: translateY(-50%) scale(0.35);
+      opacity: 0;
+    }
+    55% {
+      transform: translateY(-50%) scale(1.14);
+      opacity: 1;
+    }
+    78% {
+      transform: translateY(-50%) scale(0.94);
+    }
+    100% {
+      transform: translateY(-50%) scale(1);
+      opacity: 1;
+    }
+  }
+
   /** Figma 77550:93474 — loading spinner (1500ms spin, 150ms fade). */
   @keyframes basket-fab-loader-spin {
     from {
@@ -2357,6 +2374,22 @@ html.eater-hub-active #root {
     right: 2px;
     top: 2px;
     transform: none;
+  }
+
+  .wide-basket-fab[data-state='default'] .wide-basket-fab__counter--pop:not(.wide-basket-fab__counter--badge) {
+    transform-origin: center;
+    animation: wide-basket-fab-counter-pop-centered 220ms cubic-bezier(0.34, 1.35, 0.64, 1) forwards;
+  }
+
+  .floating-tab-bar__basket-slot--wide
+    .wide-basket-fab--in-tab-bar[data-state='default']
+    .wide-basket-fab__counter--pop:not(.wide-basket-fab__counter--badge) {
+    animation: wide-basket-fab-counter-pop-centered 220ms cubic-bezier(0.34, 1.35, 0.64, 1) forwards;
+  }
+
+  .wide-basket-fab__counter--pop.wide-basket-fab__counter--badge {
+    transform-origin: top right;
+    animation: basket-fab-badge-pop 220ms cubic-bezier(0.34, 1.35, 0.64, 1) forwards;
   }
 
   .wide-basket-fab--hidden {

@@ -116,6 +116,8 @@ function HubLayoutShellInner({ children }: { children: ReactNode }) {
   const navigate = useNavigate()
   const scrollRef = useRef<HTMLDivElement>(null)
   const basket = useBasketFabOptional()
+  const basketRef = useRef(basket)
+  basketRef.current = basket
   const [searchOpen, setSearchOpen] = useState(false)
   const resolved = useMemo(() => resolveFloatingTabBarModel(HOME_FLOATING_TAB_BAR_ITEMS), [])
   const showTabBar = isHubPath(location.pathname)
@@ -154,11 +156,14 @@ function HubLayoutShellInner({ children }: { children: ReactNode }) {
   }, [location.pathname, location.key])
 
   useLayoutEffect(() => {
-    basket?.setSearchOverlayOpen(searchOpen)
-    if (!searchOpen) {
-      basket?.revealHomeTabBarBasketFromSearch()
-    }
-  }, [searchOpen, basket])
+    basketRef.current?.setSearchOverlayOpen(searchOpen)
+  }, [searchOpen])
+
+  /** Only when search closes — not on every basket context re-render (avoids update loop). */
+  useLayoutEffect(() => {
+    if (searchOpen) return
+    basketRef.current?.revealHomeTabBarBasketFromSearch()
+  }, [searchOpen])
 
   return (
     <HomeShoppingStackContext.Provider value={null}>

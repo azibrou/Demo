@@ -269,6 +269,7 @@ function MerchantFTabBarInner({
               <WideBasketFab
                 state={wideFabState}
                 count={basket.basketDisplayCount}
+                counterPopNonce={basket.badgePopNonce}
                 popIn={wideFabPopIn}
                 popOut={wideFabPopOut}
                 revealed={wideFabRevealed}

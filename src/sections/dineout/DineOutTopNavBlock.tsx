@@ -19,7 +19,7 @@ export function DineOutTopNavBlock() {
       data-node-id="77937:93121"
     >
       <div
-        className="flex w-full shrink-0 items-start gap-2 px-6 pb-3"
+        className="flex w-full shrink-0 items-center gap-2 px-6 pb-3"
         data-node-id="77937:93122"
         data-name="Panel"
       >

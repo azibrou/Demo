@@ -23,7 +23,7 @@ export function Rating({ rating, reviews, size = 'm', className = '' }: RatingPr
       <span className={`relative ${starClass} shrink-0`} aria-hidden data-name="Rating Selected">
         <img
           alt=""
-          src={kalepIconUrl('rating-star-selected')}
+          src={kalepIconUrl('rating-star')}
           className="pointer-events-none absolute inset-0 block size-full max-w-none object-contain"
         />
       </span>

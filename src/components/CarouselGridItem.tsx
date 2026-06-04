@@ -17,6 +17,8 @@ const defaultCopy = {
 export type CarouselGridItemVariant = 'default' | 'discount'
 
 export type CarouselGridItemProps = {
+  /** Stable id — qty persists in {@link BasketFabProvider} across hub tab switches. */
+  itemId?: string
   variant?: CarouselGridItemVariant
   /** Override `--carousel-tile-width` from the parent carousel shell (default: CSS). */
   tileWidth?: string
@@ -34,6 +36,7 @@ export type CarouselGridItemProps = {
  * Square image block contains quick add (4px inset from bottom/sides); pricing + copy sit 4px below that block.
  */
 export function CarouselGridItem({
+  itemId,
   variant = 'default',
   tileWidth,
   imageSrc,
@@ -45,11 +48,16 @@ export function CarouselGridItem({
   discountLabel = defaultCopy.discountLabel,
 }: CarouselGridItemProps) {
   const basket = useBasketFabOptional()
-  const [quickOpen, setQuickOpen] = useState(false)
-  const [qty, setQty] = useState(1)
+  const persisted = itemId != null && itemId !== '' && basket != null
+
+  const persistedQty = persisted ? basket.getCarouselItemQty(itemId) : 0
+
+  const [localOpen, setLocalOpen] = useState(false)
+  const [localQty, setLocalQty] = useState(1)
   const contributedRef = useRef(0)
 
-  const img = imageSrc ?? c.product
+  const quickOpen = persisted ? persistedQty > 0 : localOpen
+  const qty = persisted ? Math.max(1, persistedQty) : localQty
 
   const adjustCarouselRef = useRef(basket?.adjustCarouselBasketUnits)
   adjustCarouselRef.current = basket?.adjustCarouselBasketUnits
@@ -62,15 +70,27 @@ export function CarouselGridItem({
   }, [])
 
   const handleAdd = useCallback(() => {
-    setQty(1)
-    setQuickOpen(true)
+    if (persisted) {
+      basket.setCarouselItemQty(itemId, 1)
+      return
+    }
+    setLocalQty(1)
+    setLocalOpen(true)
     syncBasketUnits(1, true)
-  }, [syncBasketUnits])
+  }, [basket, itemId, persisted, syncBasketUnits])
 
   const handleDecrement = useCallback(() => {
-    setQty((q) => {
+    if (persisted) {
+      if (persistedQty <= 1) {
+        basket.setCarouselItemQty(itemId, 0)
+        return
+      }
+      basket.setCarouselItemQty(itemId, persistedQty - 1)
+      return
+    }
+    setLocalQty((q) => {
       if (q <= 1) {
-        setQuickOpen(false)
+        setLocalOpen(false)
         syncBasketUnits(1, false)
         return 1
       }
@@ -78,15 +98,19 @@ export function CarouselGridItem({
       syncBasketUnits(next, true)
       return next
     })
-  }, [syncBasketUnits])
+  }, [basket, itemId, persisted, persistedQty, syncBasketUnits])
 
   const handleIncrement = useCallback(() => {
-    setQty((q) => {
+    if (persisted) {
+      basket.setCarouselItemQty(itemId, persistedQty + 1)
+      return
+    }
+    setLocalQty((q) => {
       const next = q + 1
       syncBasketUnits(next, true)
       return next
     })
-  }, [syncBasketUnits])
+  }, [basket, itemId, persisted, persistedQty, syncBasketUnits])
 
   return (
     <article
@@ -108,7 +132,7 @@ export function CarouselGridItem({
           aria-hidden
         />
         <div className="relative z-[1] aspect-square w-full shrink-0 overflow-hidden">
-          <img alt="" src={img} className="thumbnail-fill-img" />
+          <img alt="" src={imageSrc ?? c.product} className="thumbnail-fill-img" />
         </div>
         <div className="absolute bottom-1 left-1 right-1 z-[4] flex min-w-0 justify-end">
           <QuickAddExpandPill

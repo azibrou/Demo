@@ -50,7 +50,7 @@ export function RestaurantMerchantScreen() {
 
         <CarouselItem title="Poke Bowl Hariduse">
           {restaurantPopularProducts.map((product) => (
-            <CarouselGridItem key={product.id} {...product} />
+            <CarouselGridItem key={product.id} itemId={product.id} {...product} />
           ))}
         </CarouselItem>
 

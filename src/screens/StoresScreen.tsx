@@ -1,3 +1,5 @@
+import { AddressSelector } from '../components/AddressSelector'
+import { HubTopBar } from '../components/HubTopBar'
 import { BannerCarousel } from '../components/BannerCarousel'
 import {
   allGroceryStores,
@@ -23,6 +25,9 @@ export function StoresScreen() {
       className="home-page bolt-font-base relative min-h-svh w-full bg-[var(--color-layer-floor-0)] pb-[calc(110px+env(safe-area-inset-bottom,0px))] text-[var(--color-content-primary)]"
       data-node-id="77303:218309"
     >
+      <HubTopBar>
+        <AddressSelector withGutter={false} />
+      </HubTopBar>
       <StoresTopBlock />
       <HomeShortcutsBlock />
       <BannerCarousel

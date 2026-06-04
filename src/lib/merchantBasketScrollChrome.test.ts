@@ -11,12 +11,17 @@ describe('resolveMerchantScrollCompact', () => {
     expect(resolveMerchantScrollCompact(0, 100, true)).toBe(true)
   })
 
-  it('compacts on first scroll movement while expanded', () => {
+  it('compacts when merchant content is scrolled down while expanded', () => {
     expect(resolveMerchantScrollCompact(8, 0, false)).toBe(true)
-    expect(resolveMerchantScrollCompact(0, 8, false)).toBe(true)
+    expect(resolveMerchantScrollCompact(100, 50, false)).toBe(true)
   })
 
-  it('ignores sub-pixel jitter while expanded', () => {
+  it('stays expanded at scroll top (tab switch scrollTo(0) does not re-compact)', () => {
+    expect(resolveMerchantScrollCompact(0, 100, false)).toBe(false)
+    expect(resolveMerchantScrollCompact(0, 8, false)).toBe(false)
+  })
+
+  it('ignores sub-pixel jitter while expanded at top', () => {
     expect(resolveMerchantScrollCompact(0, 0, false)).toBe(false)
     expect(resolveMerchantScrollCompact(0.5, 0, false)).toBe(false)
   })

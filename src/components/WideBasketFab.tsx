@@ -19,6 +19,8 @@ export type WideBasketFabProps = {
   popOut?: boolean
   /** Visible without pop animation (e.g. after reveal, before pop-in frame). */
   revealed?: boolean
+  /** Bumps when count changes — replays counter bounce (home {@link BasketFabHome} badge). */
+  counterPopNonce?: number
   className?: string
   onClick?: () => void
 }
@@ -52,6 +54,7 @@ export function WideBasketFab({
   popIn = false,
   popOut = false,
   revealed = false,
+  counterPopNonce = 0,
   className = '',
   onClick,
 }: WideBasketFabProps) {
@@ -102,9 +105,11 @@ export function WideBasketFab({
 
       {showCounter ? (
         <span
+          key={counterPopNonce}
           className={[
             'wide-basket-fab__counter',
             'bolt-font-body-xs-accent [font-feature-settings:"cv03"_1,"cv04"_1]',
+            'motion-reduce:animate-none wide-basket-fab__counter--pop',
             state === 'collapsed' ? 'wide-basket-fab__counter--badge' : '',
           ].join(' ')}
           aria-hidden

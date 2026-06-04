@@ -43,7 +43,7 @@ function StoreMerchantVenueTab({
       {storeMerchantCarousels.map((carousel) => (
         <CarouselItem key={carousel.id} title={carousel.title}>
           {carousel.products.map((product) => (
-            <CarouselGridItem key={`${carousel.id}-${product.id}`} {...product} />
+            <CarouselGridItem key={`${carousel.id}-${product.id}`} itemId={product.id} {...product} />
           ))}
         </CarouselItem>
       ))}

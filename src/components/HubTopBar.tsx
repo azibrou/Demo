@@ -7,8 +7,8 @@ export type HubTopBarProps = {
 }
 
 /**
- * Figma 79413:251103 — absolute top bar (gradient only).
- * Overlays hero at top; `fixed` when scrolled so it stays visible (no solid fill / border on the bar).
+ * Figma 79413:251103 — direct child of `.home-page`; sticky for full hub scroll (gradient only).
+ * Home hero overlap via `.home-page > .hub-top-bar + .home-hero-stack` negative margin in styles.css.
  */
 export function HubTopBar({ children, className = '' }: HubTopBarProps) {
   const elevated = useHubScrollElevated()

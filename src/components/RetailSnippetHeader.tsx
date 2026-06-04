@@ -58,7 +58,7 @@ export function RetailSnippetHeader({ store, titleId, onHeaderClick }: RetailSni
             <span className="relative size-3 shrink-0" aria-hidden>
               <img
                 alt=""
-                src={kalepIconUrl('rating-star-selected')}
+                src={kalepIconUrl('rating-star')}
                 className="pointer-events-none absolute inset-0 block size-full max-w-none object-contain"
               />
             </span>

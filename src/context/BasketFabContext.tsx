@@ -95,6 +95,10 @@ export type BasketFabContextValue = {
   merchantLayoutReservePx: number
   /** Expand tab bar (icons, no labels) and collapse wide FAB — active tab tap when solo. */
   expandMerchantTabs: () => void
+  /** Hub carousel tile qty by product id (persists across tab switches). */
+  getCarouselItemQty: (itemId: string) => number
+  setCarouselItemQty: (itemId: string, qty: number) => void
+  /** Delta updates for tiles without an `itemId` (e.g. merchant {@link SimpleItem}). */
   adjustCarouselBasketUnits: (delta: number) => void
   syncShoppingListBasketUnits: (units: number, opts?: { initial?: boolean }) => void
   /** Clears units and FAB chrome — call before navigations that change venue context. */
@@ -117,11 +121,22 @@ export function useBasketFabOptional() {
   return useContext(BasketFabContext)
 }
 
+function sumCarouselUnits(itemQty: Record<string, number>, orphanUnits: number): number {
+  let sum = orphanUnits
+  for (const n of Object.values(itemQty)) sum += n
+  return sum
+}
+
 export function BasketFabProvider({ children }: { children: ReactNode }) {
   const { pathname } = useLocation()
   const merchantMode = isMerchantHubPath(pathname)
 
-  const [carouselUnits, setCarouselUnits] = useState(0)
+  const [carouselItemQty, setCarouselItemQtyState] = useState<Record<string, number>>({})
+  const [carouselOrphanUnits, setCarouselOrphanUnits] = useState(0)
+  const carouselUnits = useMemo(
+    () => sumCarouselUnits(carouselItemQty, carouselOrphanUnits),
+    [carouselItemQty, carouselOrphanUnits],
+  )
   const [shoppingUnits, setShoppingUnits] = useState(0)
   const total = carouselUnits + shoppingUnits
 
@@ -167,7 +182,8 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
     clearAnimationTimers()
     pendingInitialRef.current = false
     prevTotalRef.current = 0
-    setCarouselUnits(0)
+    setCarouselItemQtyState({})
+    setCarouselOrphanUnits(0)
     setShoppingUnits(0)
     setBasketFabExiting(false)
     setBadgeExiting(false)
@@ -330,9 +346,26 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
     if (opts?.initial) pendingInitialRef.current = true
   }, [])
 
+  const getCarouselItemQty = useCallback(
+    (itemId: string) => carouselItemQty[itemId] ?? 0,
+    [carouselItemQty],
+  )
+
+  const setCarouselItemQty = useCallback((itemId: string, qty: number) => {
+    setCarouselItemQtyState((prev) => {
+      if (qty <= 0) {
+        if (!(itemId in prev)) return prev
+        const { [itemId]: _removed, ...rest } = prev
+        return rest
+      }
+      if (prev[itemId] === qty) return prev
+      return { ...prev, [itemId]: qty }
+    })
+  }, [])
+
   const adjustCarouselBasketUnits = useCallback((delta: number) => {
     if (delta === 0) return
-    setCarouselUnits((c) => Math.max(0, c + delta))
+    setCarouselOrphanUnits((c) => Math.max(0, c + delta))
   }, [])
 
   const setSearchOverlayOpen = useCallback((open: boolean) => {
@@ -342,8 +375,20 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
   const revealHomeTabBarBasketFromSearch = useCallback(() => {
     if (merchantMode || searchOverlayOpenRef.current) return
     const next = shoppingUnits + carouselUnits
-    if (next > 0) applyImmediateBasketVisible(next)
-  }, [merchantMode, shoppingUnits, carouselUnits, applyImmediateBasketVisible])
+    if (next <= 0) return
+    // Already showing hub basket chrome — avoid re-applying on unrelated re-renders.
+    if (fabReveal && showBasketBadge && !fabLoading && !basketFabExiting) return
+    applyImmediateBasketVisible(next)
+  }, [
+    merchantMode,
+    shoppingUnits,
+    carouselUnits,
+    applyImmediateBasketVisible,
+    fabReveal,
+    showBasketBadge,
+    fabLoading,
+    basketFabExiting,
+  ])
 
   const scheduleLoaderToBasket = useCallback((opts?: { showBadgeAfter?: boolean }) => {
     const showBadgeAfter = opts?.showBadgeAfter !== false
@@ -587,7 +632,12 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
 
     if (prev > 0 && next > 0 && next !== prev) {
       prevTotalRef.current = next
-      if (!merchantMode && showBasketBadge && !basketFabExiting) {
+      const showHubBadge = !merchantMode && showBasketBadge && !basketFabExiting
+      const showMerchantCounter =
+        merchantMode &&
+        !basketFabExiting &&
+        (merchantWideFabPhase === 'collapsed' || merchantWideFabPhase === 'default')
+      if (showHubBadge || showMerchantCounter) {
         setBadgePopNonce((n) => n + 1)
       }
       return
@@ -609,6 +659,7 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
     shoppingUnits,
     carouselUnits,
     merchantMode,
+    merchantWideFabPhase,
     showBasketBadge,
     basketFabExiting,
     applyImmediateBasketVisible,
@@ -641,6 +692,8 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
       merchantWideFabPhase,
       merchantLayoutReservePx,
       expandMerchantTabs,
+      getCarouselItemQty,
+      setCarouselItemQty,
       adjustCarouselBasketUnits,
       syncShoppingListBasketUnits,
       resetBasket: resetBasketUnits,
@@ -666,6 +719,8 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
       merchantWideFabPhase,
       merchantLayoutReservePx,
       expandMerchantTabs,
+      getCarouselItemQty,
+      setCarouselItemQty,
       adjustCarouselBasketUnits,
       syncShoppingListBasketUnits,
       resetBasketUnits,

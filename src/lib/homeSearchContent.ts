@@ -12,7 +12,7 @@ export type HomeSearchFilterChip = {
 export const HOME_SEARCH_FILTER_CHIPS: readonly HomeSearchFilterChip[] = [
   { id: 'sort', label: 'Sort', iconName: 'reorder-vert', chevron: true },
   { id: 'offers', label: 'Offers', iconName: 'offer-outline' },
-  { id: 'rating', label: 'Rating', iconName: 'rating-star-selected', chevron: true },
+  { id: 'rating', label: 'Rating', iconName: 'rating-star', chevron: true },
   { id: 'delivery-fee', label: 'Delivery fee', iconName: 'bike-delivery-outline', chevron: true },
   { id: 'delivery-time', label: 'Delivery time', iconName: 'timer-outline', chevron: true },
   { id: 'pickup', label: 'Pickup', iconName: 'walk' },

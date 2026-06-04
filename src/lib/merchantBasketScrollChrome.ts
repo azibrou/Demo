@@ -19,14 +19,15 @@ export function isMerchantScrollPastExpandTop(scrollTop: number): boolean {
  * - Expanded: full tab pill + 56px basket (`scrollCompact` false).
  * - Compact: solo tab + wide basket (`scrollCompact` true).
  * Scrolling up/down while compact does not re-expand; only {@link expandMerchantTabs} resets.
+ * Compact applies when content is scrolled down, not on programmatic scroll-to-top (e.g. tab switch).
  */
 export function resolveMerchantScrollCompact(
   scrollTop: number,
-  prevScrollTop: number,
+  _prevScrollTop: number,
   scrollCompact: boolean,
 ): boolean {
   if (scrollCompact) return true
-  return Math.abs(scrollTop - prevScrollTop) >= MERCHANT_SCROLL_COMPACT_DELTA_PX
+  return scrollTop >= MERCHANT_SCROLL_COMPACT_DELTA_PX
 }
 
 export function merchantScrollCompactToTabSolo(scrollCompact: boolean): boolean {
