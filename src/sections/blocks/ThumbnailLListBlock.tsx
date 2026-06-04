@@ -1,18 +1,17 @@
 import { useRef, type CSSProperties } from 'react'
 import { useThumbnailLScale } from '../../hooks/useThumbnailLScale'
-import { ThumbnailL, type ThumbnailLProps } from '../../components/ThumbnailL'
+import { ThumbnailL } from '../../components/ThumbnailL'
 
-export type ThumbnailLListBlockItem = Pick<
-  ThumbnailLProps,
-  | 'title'
-  | 'imageSrc'
-  | 'deliveryLabel'
-  | 'deliveryOriginalPrice'
-  | 'etaText'
-  | 'discountPct'
-  | 'rating'
-  | 'reviews'
->
+export type ThumbnailLListBlockItem = {
+  title: string
+  imageSrc: string
+  deliveryLabel: string
+  deliveryOriginalPrice?: string
+  etaText: string
+  discountPct?: string | null
+  rating?: string
+  reviews?: string
+}
 
 export type ThumbnailLListBlockProps = {
   title: string

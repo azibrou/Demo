@@ -75,12 +75,17 @@ export function isBoltMarketToompuiesteeLabel(line1: string): boolean {
   return line1 === retailSnippetStore.name
 }
 
-function thumbnailToRestaurantNavState(
-  item: Pick<
-    ThumbnailMRowBlockItem,
-    'title' | 'imageSrc' | 'deliveryLabel' | 'etaText' | 'rating' | 'reviews'
-  >,
-): RestaurantMerchantNavState {
+/** Shared fields for M/L thumbnail → restaurant merchant navigation. */
+export type ThumbnailRestaurantNavInput = {
+  title: string
+  imageSrc: string
+  deliveryLabel: string
+  etaText: string
+  rating?: string
+  reviews?: string
+}
+
+function thumbnailToRestaurantNavState(item: ThumbnailRestaurantNavInput): RestaurantMerchantNavState {
   const { eta, etaLabel } = parseEtaText(item.etaText)
   return {
     kind: 'restaurant',
