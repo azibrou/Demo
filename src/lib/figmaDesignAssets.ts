@@ -67,7 +67,11 @@ export const design = {
    * Refresh via `npm run figma:sync`.
    */
   floatingTabBar: {
-    home: ki.floatingTabBar.home,
+    /** Figma 79627:280745 (default), 79627:280749 (home-select). */
+    home: {
+      default: figma('9edbfadfa0ba4a27b0a6795dc90efcd0.svg'),
+      selected: figma('a41dbd3162634391b5336980e98dab1b.svg'),
+    },
     store: ki.floatingTabBar.store,
     dineout: ki.floatingTabBar.dineout,
     search: ki.floatingTabBar.search,
@@ -86,7 +90,11 @@ export const design = {
    * Refresh via `npm run figma:sync`.
    */
   merchantFloatingTabBar: {
-    venue: ki.merchantFloatingTabBar.venue,
+    /** Figma 79627:280764 (default), 79627:280766 (venue-select). */
+    venue: {
+      default: figma('cfd8c5ec2e1640c9ad1efc6711efc7c7.svg'),
+      selected: figma('fe01b5cf956349a2a0d0ec5bde0f4311.svg'),
+    },
     isles: ki.merchantFloatingTabBar.isles,
     list: ki.merchantFloatingTabBar.list,
     search: ki.merchantFloatingTabBar.search,
