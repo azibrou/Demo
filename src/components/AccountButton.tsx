@@ -22,7 +22,7 @@ const focusRing = 'outline-none ring-[var(--color-special-brand-alt)]/20 focus-v
 
 /**
  * Figma [Eater] Avatar - initial — 79413:251183 (default) / 79413:251186 (scrolled).
- * 32×32 white disc, user outline icon, elevation shadow transitions on scroll.
+ * 40×40 white disc, 24×24 user outline icon, elevation shadow transitions on scroll.
  */
 export function AccountButton({
   variant = 'user',
@@ -45,7 +45,7 @@ export function AccountButton({
       onClick={onClick}
       aria-label={ariaLabel}
       className={[
-        'account-button relative size-8 shrink-0 rounded-[20px] bg-[var(--color-layer-floor-1,#fff)] p-1',
+        'account-button relative size-10 shrink-0 rounded-[20px] bg-[var(--color-layer-floor-1,#fff)] p-2',
         'flex items-center justify-center',
         `account-button--${elevation}`,
         bounce ? 'account-button--bounce-in' : '',
