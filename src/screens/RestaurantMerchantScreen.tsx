@@ -12,7 +12,10 @@ import {
   restaurantMenuSections,
   restaurantPopularProducts,
 } from '../lib/restaurantMerchantContent'
-import { resolveRestaurantMerchantProvider } from '../lib/merchantNavigation'
+import {
+  isPavlovaViruKeskusRestaurant,
+  resolveRestaurantMerchantProvider,
+} from '../lib/merchantNavigation'
 import { MerchantScreenShell } from '../components/MerchantScreenShell'
 import { useStackBack } from '../hooks/useStackBack'
 import { StoreCardDividerBlock } from '../sections/stores/StoreCardDividerBlock'
@@ -21,10 +24,18 @@ export function RestaurantMerchantScreen() {
   const onBack = useStackBack()
   const location = useLocation()
   const provider = useMemo(() => resolveRestaurantMerchantProvider(location.state), [location.state])
+  const pavlovaSearchChrome = isPavlovaViruKeskusRestaurant(provider.name)
 
   return (
-    <MerchantScreenShell>
-    <div className="merchant-screen bolt-font-base relative min-h-svh w-full bg-[var(--color-layer-floor-0)] pb-[calc(env(safe-area-inset-bottom,0px)+96px)] text-[var(--color-content-primary)]">
+    <MerchantScreenShell bottomChrome={pavlovaSearchChrome ? 'restaurant-search' : 'tab-bar'}>
+    <div
+      className={[
+        'merchant-screen bolt-font-base relative min-h-svh w-full bg-[var(--color-layer-floor-0)] text-[var(--color-content-primary)]',
+        pavlovaSearchChrome
+          ? 'merchant-screen--restaurant-search pb-[calc(68px+env(safe-area-inset-bottom,0px))]'
+          : 'pb-[calc(env(safe-area-inset-bottom,0px)+96px)]',
+      ].join(' ')}
+    >
       <div className="flex flex-col">
         <TopSectionRestaurant provider={provider} onBack={onBack} />
 

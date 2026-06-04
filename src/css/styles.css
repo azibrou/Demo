@@ -1413,6 +1413,59 @@ html.eater-hub-active #root {
   }
 
   /**
+   * Figma 79562:242428 — Restaurant search (Pavlova Viru Keskus), centered bottom pill.
+   */
+  .restaurant-merchant-search-chrome-portal {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 50;
+  }
+
+  .restaurant-merchant-search-chrome {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    box-sizing: border-box;
+  }
+
+  .restaurant-merchant-search {
+    display: flex;
+    height: 56px;
+    width: 191px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    overflow: hidden;
+    border: none;
+    border-radius: 50px;
+    padding: 4px 4px 4px 12px;
+    background-color: var(--color-layer-floor-1, #fff);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    color: var(--color-content-secondary);
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .restaurant-merchant-search:focus-visible {
+    outline: 2px solid var(--color-border-action-primary, #2b8659);
+    outline-offset: 2px;
+  }
+
+  .restaurant-merchant-search__label {
+    width: 72px;
+    flex-shrink: 0;
+    overflow-wrap: anywhere;
+    text-align: left;
+    color: var(--color-content-secondary);
+  }
+
+  /**
    * Floating tab bar chrome row — 24px horizontal inset; 12px only between rendered siblings.
    */
   .floating-tab-bar {

@@ -75,6 +75,13 @@ export function isBoltMarketToompuiesteeLabel(line1: string): boolean {
   return line1 === retailSnippetStore.name
 }
 
+/** Restaurant merchant — bottom search chrome (Figma 79562:242428) instead of the merchant tab bar. */
+export const PAVLOVA_VIRU_KESKUS_NAME = 'Pavlova Viru Keskus' as const
+
+export function isPavlovaViruKeskusRestaurant(name: string): boolean {
+  return name === PAVLOVA_VIRU_KESKUS_NAME
+}
+
 /** Shared fields for M/L thumbnail → restaurant merchant navigation. */
 export type ThumbnailRestaurantNavInput = {
   title: string
