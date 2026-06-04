@@ -15,14 +15,30 @@ import { HomeSearchBasketFab } from './HomeSearchBasketFab'
 const HOME_SEARCH_SLIDE_MS = 150
 const HOME_SEARCH_SLIDE_EASE = 'ease-out'
 const DISMISS_DRAG_THRESHOLD_PX = 96
+/** Commit to sheet dismiss after this much downward drag at scroll top. */
+const DISMISS_DRAG_START_PX = 10
 /** Off-screen enter/exit — viewport units avoid % of a mis-sized fixed box on mobile. */
 const HOME_SEARCH_OFFSCREEN_Y = '100dvh' as const
 
-/** Ignore drag-dismiss when the gesture starts on a control (Cancel, filters, input, etc.). */
-function isInteractiveDragTarget(target: EventTarget | null): boolean {
+/** Ignore drag-dismiss when the gesture starts on a control or nested scroller. */
+function isDragDismissExempt(target: EventTarget | null): boolean {
+  if (!(target instanceof Element)) return false
   return (
-    target instanceof Element &&
-    target.closest('button, input, textarea, select, a, label, [role="button"]') != null
+    target.closest(
+      [
+        'button',
+        'input',
+        'textarea',
+        'select',
+        'a',
+        'label',
+        '[role="button"]',
+        '.home-horizontal-scroll-row',
+        '.home-product-carousel',
+        '.shortcuts-carousel-cq',
+        '.shortcuts-carousel-scale-row',
+      ].join(','),
+    ) != null
   )
 }
 
@@ -30,6 +46,22 @@ type TranslateY = number | typeof HOME_SEARCH_OFFSCREEN_Y
 
 function toTransform(value: TranslateY): string {
   return typeof value === 'number' ? `translateY(${value}px)` : `translateY(${value})`
+}
+
+function safeSetPointerCapture(el: HTMLElement, pointerId: number) {
+  try {
+    el.setPointerCapture(pointerId)
+  } catch {
+    /* Pointer already captured or element disconnected — ignore. */
+  }
+}
+
+function safeReleasePointerCapture(el: HTMLElement, pointerId: number) {
+  try {
+    if (el.hasPointerCapture(pointerId)) el.releasePointerCapture(pointerId)
+  } catch {
+    /* ignore */
+  }
 }
 
 function useMobileDragDismissEnabled() {
@@ -60,8 +92,10 @@ export type HomeSearchOverlayProps = {
 export function HomeSearchOverlay({ onClosed }: HomeSearchOverlayProps) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const closingRef = useRef(false)
+  const mountedRef = useRef(true)
+  const dismissActiveRef = useRef(false)
+  const closeRafIdsRef = useRef<number[]>([])
   const dragEnabled = useMobileDragDismissEnabled()
-  const [portalReady, setPortalReady] = useState(false)
 
   const [translateY, setTranslateY] = useState<TranslateY>(HOME_SEARCH_OFFSCREEN_Y)
   const [transitionOn, setTransitionOn] = useState(false)
@@ -72,10 +106,30 @@ export function HomeSearchOverlay({ onClosed }: HomeSearchOverlayProps) {
   const dragStartXRef = useRef(0)
   const dragOffsetRef = useRef(0)
 
+  const onClosedRef = useRef(onClosed)
+  onClosedRef.current = onClosed
+
   useEffect(() => {
-    setPortalReady(true)
+    mountedRef.current = true
     document.documentElement.classList.add('home-search-open')
-    return () => document.documentElement.classList.remove('home-search-open')
+    return () => {
+      mountedRef.current = false
+      document.documentElement.classList.remove('home-search-open')
+      closeRafIdsRef.current.forEach((id) => cancelAnimationFrame(id))
+      closeRafIdsRef.current = []
+    }
+  }, [])
+
+  const resetDismissGesture = useCallback(() => {
+    const scrollEl = scrollRef.current
+    const pointerId = pointerIdRef.current
+    if (scrollEl != null && pointerId != null) {
+      safeReleasePointerCapture(scrollEl, pointerId)
+    }
+    pointerIdRef.current = null
+    dismissActiveRef.current = false
+    dragOffsetRef.current = 0
+    if (mountedRef.current) setIsDragging(false)
   }, [])
 
   useLayoutEffect(() => {
@@ -85,6 +139,7 @@ export function HomeSearchOverlay({ onClosed }: HomeSearchOverlayProps) {
     let inner = 0
     const outer = requestAnimationFrame(() => {
       inner = requestAnimationFrame(() => {
+        if (!mountedRef.current) return
         setTransitionOn(true)
         setTranslateY(0)
       })
@@ -98,62 +153,54 @@ export function HomeSearchOverlay({ onClosed }: HomeSearchOverlayProps) {
   const animateClose = useCallback((fromOffset = 0) => {
     if (closingRef.current) return
     closingRef.current = true
-    setIsDragging(false)
-    pointerIdRef.current = null
-    dragOffsetRef.current = 0
+    resetDismissGesture()
 
     if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setTransitionOn(false)
       setTranslateY(HOME_SEARCH_OFFSCREEN_Y)
-      onClosed()
+      onClosedRef.current()
       return
     }
 
     setTransitionOn(false)
     setTranslateY(fromOffset)
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
+    const outer = requestAnimationFrame(() => {
+      const inner = requestAnimationFrame(() => {
+        if (!mountedRef.current) return
         setTransitionOn(true)
         setTranslateY(HOME_SEARCH_OFFSCREEN_Y)
       })
+      closeRafIdsRef.current.push(inner)
     })
-  }, [onClosed])
+    closeRafIdsRef.current.push(outer)
+  }, [resetDismissGesture])
 
-  const onOverlayTransitionEnd = useCallback(
-    (e: TransitionEvent<HTMLDivElement>) => {
-      if (e.propertyName !== 'transform') return
-      if (e.target !== e.currentTarget) return
-      if (!closingRef.current) return
-      onClosed()
-    },
-    [onClosed],
-  )
+  const onOverlayTransitionEnd = useCallback((e: TransitionEvent<HTMLDivElement>) => {
+    if (e.propertyName !== 'transform') return
+    if (e.target !== e.currentTarget) return
+    if (!closingRef.current) return
+    onClosedRef.current()
+  }, [])
 
   const endDrag = useCallback(() => {
-    const scrollEl = scrollRef.current
-    const pointerId = pointerIdRef.current
-    if (pointerId != null && scrollEl?.hasPointerCapture(pointerId)) {
-      scrollEl.releasePointerCapture(pointerId)
-    }
-    pointerIdRef.current = null
-    setIsDragging(false)
-
     const offset = dragOffsetRef.current
-    dragOffsetRef.current = 0
+    const wasDismiss = dismissActiveRef.current
+    resetDismissGesture()
 
-    if (offset > DISMISS_DRAG_THRESHOLD_PX) {
+    if (wasDismiss && offset > DISMISS_DRAG_THRESHOLD_PX) {
       animateClose(offset)
       return
     }
 
+    if (!mountedRef.current) return
     setTransitionOn(true)
     setTranslateY(0)
-  }, [animateClose])
+  }, [animateClose, resetDismissGesture])
 
   const onScrollPointerDown = useCallback(
     (e: ReactPointerEvent<HTMLDivElement>) => {
       if (!dragEnabled || closingRef.current) return
-      if (isInteractiveDragTarget(e.target)) return
+      if (isDragDismissExempt(e.target)) return
       const scrollEl = scrollRef.current
       if (!scrollEl || scrollEl.scrollTop > 0) return
       if (e.pointerType === 'mouse' && e.button !== 0) return
@@ -162,47 +209,44 @@ export function HomeSearchOverlay({ onClosed }: HomeSearchOverlayProps) {
       dragStartYRef.current = e.clientY
       dragStartXRef.current = e.clientX
       dragOffsetRef.current = 0
-      setIsDragging(true)
-      setTransitionOn(false)
-      scrollEl.setPointerCapture(e.pointerId)
+      dismissActiveRef.current = false
     },
     [dragEnabled],
   )
 
-  const onScrollPointerMove = useCallback((e: ReactPointerEvent<HTMLDivElement>) => {
-    if (pointerIdRef.current !== e.pointerId || closingRef.current) return
-    const scrollEl = scrollRef.current
-    if (!scrollEl) return
+  const onScrollPointerMove = useCallback(
+    (e: ReactPointerEvent<HTMLDivElement>) => {
+      if (pointerIdRef.current !== e.pointerId || closingRef.current) return
+      const scrollEl = scrollRef.current
+      if (!scrollEl) return
 
-    const deltaY = e.clientY - dragStartYRef.current
-    const deltaX = e.clientX - dragStartXRef.current
+      if (scrollEl.scrollTop > 0) {
+        resetDismissGesture()
+        return
+      }
 
-    if (dragOffsetRef.current === 0 && Math.abs(deltaX) > Math.abs(deltaY)) {
-      pointerIdRef.current = null
-      setIsDragging(false)
-      scrollEl.releasePointerCapture(e.pointerId)
-      return
-    }
+      const deltaY = e.clientY - dragStartYRef.current
+      const deltaX = e.clientX - dragStartXRef.current
 
-    if (deltaY > 0 && scrollEl.scrollTop <= 0) {
+      if (!dismissActiveRef.current) {
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+          resetDismissGesture()
+          return
+        }
+        if (deltaY <= DISMISS_DRAG_START_PX) return
+
+        dismissActiveRef.current = true
+        setIsDragging(true)
+        setTransitionOn(false)
+        safeSetPointerCapture(scrollEl, e.pointerId)
+      }
+
       dragOffsetRef.current = deltaY
       setTranslateY(deltaY)
       if (e.cancelable) e.preventDefault()
-      return
-    }
-
-    if (dragOffsetRef.current > 0 && deltaY <= 0) {
-      dragOffsetRef.current = 0
-      setTranslateY(0)
-      return
-    }
-
-    if (deltaY <= 0 && dragOffsetRef.current === 0) {
-      pointerIdRef.current = null
-      setIsDragging(false)
-      scrollEl.releasePointerCapture(e.pointerId)
-    }
-  }, [])
+    },
+    [resetDismissGesture],
+  )
 
   const onScrollPointerUp = useCallback(
     (e: ReactPointerEvent<HTMLDivElement>) => {
@@ -218,6 +262,24 @@ export function HomeSearchOverlay({ onClosed }: HomeSearchOverlayProps) {
       endDrag()
     },
     [endDrag],
+  )
+
+  const onScrollLostPointerCapture = useCallback(
+    (e: ReactPointerEvent<HTMLDivElement>) => {
+      if (pointerIdRef.current !== e.pointerId || !dismissActiveRef.current) return
+      const offset = dragOffsetRef.current
+      dismissActiveRef.current = false
+      pointerIdRef.current = null
+      dragOffsetRef.current = 0
+      if (mountedRef.current) setIsDragging(false)
+      if (offset > DISMISS_DRAG_THRESHOLD_PX) {
+        animateClose(offset)
+      } else if (mountedRef.current) {
+        setTransitionOn(true)
+        setTranslateY(0)
+      }
+    },
+    [animateClose],
   )
 
   const overlayStyle = {
@@ -243,14 +305,13 @@ export function HomeSearchOverlay({ onClosed }: HomeSearchOverlayProps) {
         onPointerMove={dragEnabled ? onScrollPointerMove : undefined}
         onPointerUp={dragEnabled ? onScrollPointerUp : undefined}
         onPointerCancel={dragEnabled ? onScrollPointerCancel : undefined}
+        onLostPointerCapture={dragEnabled ? onScrollLostPointerCapture : undefined}
       >
         <HomeSearchScreen onCancel={() => animateClose(0)} />
       </div>
       <HomeSearchBasketFab />
     </div>
   )
-
-  if (!portalReady) return null
 
   return createPortal(overlay, document.body)
 }

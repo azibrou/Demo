@@ -11,6 +11,7 @@ const SEARCH_BASKET_FAB_SLIDE_MS = 150
 export function useHomeSearchWideBasketFab(basketUnitTotal: number) {
   const hadItemsOnMount = useRef(basketUnitTotal > 0)
   const prevTotalRef = useRef(basketUnitTotal)
+  const mountedRef = useRef(true)
   const loadingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -19,11 +20,23 @@ export function useHomeSearchWideBasketFab(basketUnitTotal: number) {
   const [ready, setReady] = useState(hadItemsOnMount.current)
   const [popIn, setPopIn] = useState(false)
 
+  useEffect(() => {
+    mountedRef.current = true
+    return () => {
+      mountedRef.current = false
+      if (loadingTimerRef.current) clearTimeout(loadingTimerRef.current)
+      if (hideTimerRef.current) clearTimeout(hideTimerRef.current)
+    }
+  }, [])
+
   useLayoutEffect(() => {
     if (!hadItemsOnMount.current) return
     let inner = 0
     const outer = requestAnimationFrame(() => {
-      inner = requestAnimationFrame(() => setSlideIn(true))
+      inner = requestAnimationFrame(() => {
+        if (!mountedRef.current) return
+        setSlideIn(true)
+      })
     })
     return () => {
       cancelAnimationFrame(outer)
@@ -49,6 +62,7 @@ export function useHomeSearchWideBasketFab(basketUnitTotal: number) {
       setPopIn(false)
       hideTimerRef.current = window.setTimeout(() => {
         hideTimerRef.current = null
+        if (!mountedRef.current) return
         setVisible(false)
         setReady(false)
       }, SEARCH_BASKET_FAB_SLIDE_MS)
@@ -61,12 +75,16 @@ export function useHomeSearchWideBasketFab(basketUnitTotal: number) {
       setReady(false)
       setSlideIn(false)
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => setSlideIn(true))
+        requestAnimationFrame(() => {
+          if (!mountedRef.current) return
+          setSlideIn(true)
+        })
       })
 
       if (loadingTimerRef.current) clearTimeout(loadingTimerRef.current)
       loadingTimerRef.current = window.setTimeout(() => {
         loadingTimerRef.current = null
+        if (!mountedRef.current) return
         triggerHaptic('success')
         setReady(true)
       }, WIDE_BASKET_FAB_LOADING_MS)
@@ -81,20 +99,16 @@ export function useHomeSearchWideBasketFab(basketUnitTotal: number) {
     if (!visible || !slideIn) return
     let inner = 0
     const outer = requestAnimationFrame(() => {
-      inner = requestAnimationFrame(() => setPopIn(true))
+      inner = requestAnimationFrame(() => {
+        if (!mountedRef.current) return
+        setPopIn(true)
+      })
     })
     return () => {
       cancelAnimationFrame(outer)
       cancelAnimationFrame(inner)
     }
   }, [visible, slideIn])
-
-  useEffect(() => {
-    return () => {
-      if (loadingTimerRef.current) clearTimeout(loadingTimerRef.current)
-      if (hideTimerRef.current) clearTimeout(hideTimerRef.current)
-    }
-  }, [])
 
   const state: WideBasketFabState = ready ? 'default' : 'loading'
 
