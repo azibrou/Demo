@@ -25,7 +25,7 @@ export const TabAction = forwardRef<HTMLButtonElement, TabActionProps>(function 
       onClick={onClick}
       className={[
         FLOATING_CHROME_SHADOW_CLASS,
-        'flex size-[56px] shrink-0 items-center justify-center rounded-full bg-white outline-none',
+        'floating-tab-bar__action flex size-[56px] shrink-0 items-center justify-center rounded-full bg-white outline-none',
         'ring-[var(--color-special-brand-alt)]/20 focus-visible:ring-2',
         className,
       ].join(' ')}

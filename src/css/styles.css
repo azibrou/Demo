@@ -1469,6 +1469,9 @@ html.eater-hub-active #root {
    * Floating tab bar chrome row — 24px horizontal inset; 12px only between rendered siblings.
    */
   .floating-tab-bar {
+    --ftb-press-scale: 0.94;
+    --ftb-press-ms: 100ms;
+    --ftb-press-ease: ease-out;
     padding-inline: 24px;
   }
 
@@ -1770,6 +1773,37 @@ html.eater-hub-active #root {
   }
 
   /**
+   * FloatingTabBar — tap press: proportional scale on tabs, actions, and basket controls.
+   */
+  .floating-tab-bar__tab,
+  .floating-tab-bar__action,
+  .floating-tab-bar .basket-fab__button,
+  .floating-tab-bar .wide-basket-fab--in-tab-bar {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .floating-tab-bar__tab:active .floating-tab-bar__motion {
+    transform: scale(var(--ftb-press-scale));
+  }
+
+  .floating-tab-bar__action:active,
+  .floating-tab-bar .basket-fab__button:active:not(:disabled),
+  .floating-tab-bar .wide-basket-fab--in-tab-bar:active:not(:disabled) {
+    transform: scale(var(--ftb-press-scale));
+  }
+
+  .floating-tab-bar__action,
+  .floating-tab-bar .basket-fab__button,
+  .floating-tab-bar .wide-basket-fab--in-tab-bar {
+    transform-origin: center center;
+    transition: transform var(--ftb-press-ms) var(--ftb-press-ease);
+  }
+
+  .floating-tab-bar .wide-basket-fab--in-tab-bar {
+    transform-origin: 100% 50%;
+  }
+
+  /**
    * FloatingTabBar — icon translateY + label scale/opacity (compositor-friendly).
    * Expand = `animation-direction: reverse` on the same keyframes (150ms ease-out).
    */
@@ -1833,7 +1867,10 @@ html.eater-hub-active #root {
     box-sizing: border-box;
     padding-top: 2px;
     padding-bottom: 2px;
+    transform: scale(1);
+    transform-origin: center center;
     transition:
+      transform var(--ftb-press-ms, 100ms) var(--ftb-press-ease, ease-out),
       padding-top var(--ftb-ms, 150ms) var(--ftb-ease),
       padding-bottom var(--ftb-ms, 150ms) var(--ftb-ease);
   }
@@ -1910,6 +1947,13 @@ html.eater-hub-active #root {
     .floating-tab-bar__pill[data-compact='true'] .floating-tab-bar__label-row,
     .floating-tab-bar__pill[data-compact='false'] .floating-tab-bar__label-row {
       transition: none;
+    }
+
+    .floating-tab-bar__tab:active .floating-tab-bar__motion,
+    .floating-tab-bar__action:active,
+    .floating-tab-bar .basket-fab__button:active:not(:disabled),
+    .floating-tab-bar .wide-basket-fab--in-tab-bar:active:not(:disabled) {
+      transform: none;
     }
   }
 
