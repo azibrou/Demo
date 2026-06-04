@@ -1,3 +1,5 @@
+import { useMemo } from 'react'
+import { useLocation } from 'react-router-dom'
 import { CarouselGridItem } from '../components/CarouselGridItem'
 import { CarouselItem } from '../components/CarouselItem'
 import { MiniBannerCarousel } from '../components/MiniBannerCarousel'
@@ -7,22 +9,24 @@ import { miniBannerCarouselItems } from '../lib/miniBannerCarouselContent'
 import {
   restaurantFeaturedItem,
   restaurantMerchantDescription,
-  restaurantMerchantProvider,
   restaurantMenuSections,
   restaurantPopularProducts,
 } from '../lib/restaurantMerchantContent'
+import { resolveRestaurantMerchantProvider } from '../lib/merchantNavigation'
 import { MerchantScreenShell } from '../components/MerchantScreenShell'
 import { useStackBack } from '../hooks/useStackBack'
 import { StoreCardDividerBlock } from '../sections/stores/StoreCardDividerBlock'
 
 export function RestaurantMerchantScreen() {
   const onBack = useStackBack()
+  const location = useLocation()
+  const provider = useMemo(() => resolveRestaurantMerchantProvider(location.state), [location.state])
 
   return (
     <MerchantScreenShell>
     <div className="merchant-screen bolt-font-base relative min-h-svh w-full bg-[var(--color-layer-floor-0)] pb-[calc(env(safe-area-inset-bottom,0px)+96px)] text-[var(--color-content-primary)]">
       <div className="flex flex-col">
-        <TopSectionRestaurant provider={restaurantMerchantProvider} onBack={onBack} />
+        <TopSectionRestaurant provider={provider} onBack={onBack} />
 
         <div className="flex flex-col gap-0.5 pb-4" data-node-id="77237:146390">
           <MiniBannerCarousel items={miniBannerCarouselItems} />

@@ -10,6 +10,7 @@ export type TopSectionRestaurantProvider = {
   deliveryLabel: string
   eta: string
   etaLabel: string
+  heroImageSrc?: string
 }
 
 export type TopSectionRestaurantProps = {
@@ -87,11 +88,12 @@ function MetricColumn({
  */
 export function TopSectionRestaurant({ provider, onBack }: TopSectionRestaurantProps) {
   const p = provider
+  const heroSrc = p.heroImageSrc ?? a.hero
 
   return (
     <section className="top-section-restaurant w-full" data-node-id="77303:218235">
       <div className="top-section-restaurant__hero" data-node-id="77303:218133" data-name="Content">
-        <img alt="" src={a.hero} className="top-section-restaurant__hero-image" />
+        <img alt="" src={heroSrc} className="top-section-restaurant__hero-image" />
         <div className="top-section-restaurant__hero-gradient" aria-hidden data-node-id="77303:218233" />
 
         <div className="top-section-restaurant__nav" data-node-id="77303:218134" data-name="[Eater] Top-nav-bar - Provider">

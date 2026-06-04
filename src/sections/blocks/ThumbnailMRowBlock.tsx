@@ -15,7 +15,7 @@ export type ThumbnailMRowBlockProps = {
   title: string
   ariaLabel: string
   items: readonly ThumbnailMRowBlockItem[]
-  onItemClick?: () => void
+  onItemClick?: (item: ThumbnailMRowBlockItem) => void
 }
 
 /** Page block: headline + scaled {@link ThumbnailM} carousel (1.5 tiles visible @ 375px). */
@@ -36,7 +36,7 @@ export function ThumbnailMRowBlock({ title, ariaLabel, items, onItemClick }: Thu
             <button
               key={item.title}
               type="button"
-              onClick={onItemClick}
+              onClick={() => onItemClick(item)}
               className="cursor-pointer text-left"
             >
               <ThumbnailM

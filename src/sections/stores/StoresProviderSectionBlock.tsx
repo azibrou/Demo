@@ -13,7 +13,12 @@ export function StoresProviderSectionBlock({ title, ariaLabel, items, nodeId }: 
   const navigate = useNavigate()
   return (
     <div data-node-id={nodeId}>
-      <ThumbnailMRowBlock title={title} ariaLabel={ariaLabel} items={items} onItemClick={() => navigate('/store-merchant')} />
+      <ThumbnailMRowBlock
+        title={title}
+        ariaLabel={ariaLabel}
+        items={items}
+        onItemClick={() => navigate('/store-merchant')}
+      />
     </div>
   )
 }

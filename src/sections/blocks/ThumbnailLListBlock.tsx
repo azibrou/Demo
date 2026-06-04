@@ -17,7 +17,7 @@ export type ThumbnailLListBlockItem = Pick<
 export type ThumbnailLListBlockProps = {
   title: string
   items: readonly ThumbnailLListBlockItem[]
-  onItemClick?: () => void
+  onItemClick?: (item: ThumbnailLListBlockItem) => void
 }
 
 /** Page block: vertical list of scaled {@link ThumbnailL} cards — 24px gutters, 375px baseline. */
@@ -46,7 +46,7 @@ export function ThumbnailLListBlock({ title, items, onItemClick }: ThumbnailLLis
         {items.map((item) => (
           <li key={item.title} className="thumbnail-l-section__item">
             {onItemClick ? (
-              <button type="button" onClick={onItemClick} className="w-full cursor-pointer text-left">
+              <button type="button" onClick={() => onItemClick(item)} className="w-full cursor-pointer text-left">
                 <ThumbnailL variant="scaled" {...item} />
               </button>
             ) : (

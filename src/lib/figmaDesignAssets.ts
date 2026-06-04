@@ -126,6 +126,8 @@ export const design = {
   topSectionStore: {
     hero: figma('d11d9b710dce44df98d9b50def822d8e.png'),
     logo: figma('bb5d2762434a49fcb1e1d82442f2af84.png'),
+    /** Figma 79432:178992 — Bolt Market brand mark (Toompuiestee merchant logo). */
+    boltMarketToompuiesteeLogo: figma('dc6a51f32f2a42609e4e4d2eb9bbe541.png'),
     arrowLeft: ki.arrowLeftTop,
     shareIos: ki.shareIosTop,
     heartOutline: ki.heartOutlineTop,

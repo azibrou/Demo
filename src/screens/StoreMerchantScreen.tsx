@@ -1,11 +1,13 @@
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
+import { useLocation } from 'react-router-dom'
 import { BannerCarousel } from '../components/BannerCarousel'
 import { CarouselGridItem } from '../components/CarouselGridItem'
 import { CarouselItem } from '../components/CarouselItem'
 import { CrossFadeStack } from '../components/CrossFadeStack'
 import { TopSectionStore } from '../components/TopSectionStore'
 import { storeMerchantBannerCarouselSlides } from '../lib/bannerCarouselContent'
-import { storeMerchantCarousels, storeMerchantProvider } from '../lib/storeMerchantContent'
+import { resolveStoreMerchantProvider } from '../lib/merchantNavigation'
+import { storeMerchantCarousels } from '../lib/storeMerchantContent'
 import { MerchantScreenShell } from '../components/MerchantScreenShell'
 import { useMerchantTab } from '../context/MerchantTabContext'
 import { useStackBack } from '../hooks/useStackBack'
@@ -16,10 +18,16 @@ import { StoreCardDividerBlock, StoreMiniBannersBlock } from '../sections/stores
 /**
  * GroceryHome store merchant — Figma [77237:150610](https://www.figma.com/design/hTmBFTYdlynOcGtxFnHIbM/Consumer---in-progress?node-id=77237-150610).
  */
-function StoreMerchantVenueTab({ onBack }: { onBack: () => void }) {
+function StoreMerchantVenueTab({
+  onBack,
+  provider,
+}: {
+  onBack: () => void
+  provider: ReturnType<typeof resolveStoreMerchantProvider>
+}) {
   return (
     <div className="flex flex-col">
-      <TopSectionStore provider={storeMerchantProvider} onBack={onBack} />
+      <TopSectionStore provider={provider} onBack={onBack} />
 
       <StoreMiniBannersBlock />
 
@@ -55,6 +63,8 @@ export function StoreMerchantScreen() {
 
 function StoreMerchantScreenBody({ onBack }: { onBack: () => void }) {
   const { activeTabId } = useMerchantTab()
+  const location = useLocation()
+  const provider = useMemo(() => resolveStoreMerchantProvider(location.state), [location.state])
 
   const onTabSwitch = useCallback(() => {
     document.querySelector('.merchant-screen')?.scrollTo(0, 0)
@@ -66,7 +76,7 @@ function StoreMerchantScreenBody({ onBack }: { onBack: () => void }) {
     ) : activeTabId === 'list' ? (
       <MerchantListTab />
     ) : (
-      <StoreMerchantVenueTab onBack={onBack} />
+      <StoreMerchantVenueTab onBack={onBack} provider={provider} />
     )
 
   return (

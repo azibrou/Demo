@@ -1,5 +1,6 @@
 import { mostPopular } from '../../lib/boltFoodTallinnHomeContent'
 import { useEaterNavigate } from '../../hooks/useEaterNavigate'
+import { thumbnailMToRestaurantNavState } from '../../lib/merchantNavigation'
 import { ThumbnailMRowBlock } from '../blocks/ThumbnailMRowBlock'
 
 /** Home “Most popular” restaurant row block. */
@@ -10,7 +11,9 @@ export function HomeMostPopularBlock() {
       title="Most popular"
       ariaLabel="Most popular"
       items={mostPopular}
-      onItemClick={() => navigate('/restaurant')}
+      onItemClick={(item) =>
+        navigate('/restaurant', { state: thumbnailMToRestaurantNavState(item) })
+      }
     />
   )
 }

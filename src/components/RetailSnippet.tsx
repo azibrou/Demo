@@ -7,6 +7,7 @@ import {
 } from '../lib/boltFoodTallinnHomeContent'
 import type { RetailSnippetHeaderStore } from './RetailSnippetHeader'
 import { design } from '../lib/figmaDesignAssets'
+import { boltMarketToompuiesteeStoreNavState } from '../lib/merchantNavigation'
 import { CarouselGridItem } from './CarouselGridItem'
 import { CarouselItem } from './CarouselItem'
 import { RetailSnippetHeader } from './RetailSnippetHeader'
@@ -63,7 +64,9 @@ export function RetailSnippet({
         <RetailSnippetHeader
           store={store}
           titleId={titleId}
-          onHeaderClick={() => navigate('/store-merchant')}
+          onHeaderClick={() =>
+            navigate('/store-merchant', { state: boltMarketToompuiesteeStoreNavState() })
+          }
         />
       }
     >

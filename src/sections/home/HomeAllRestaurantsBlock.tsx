@@ -1,5 +1,6 @@
 import { allRestaurants } from '../../lib/boltFoodTallinnHomeContent'
 import { useEaterNavigate } from '../../hooks/useEaterNavigate'
+import { thumbnailLToRestaurantNavState } from '../../lib/merchantNavigation'
 import { ThumbnailLListBlock } from '../blocks/ThumbnailLListBlock'
 
 /** Home “All restaurants” vertical list block. */
@@ -9,7 +10,9 @@ export function HomeAllRestaurantsBlock() {
     <ThumbnailLListBlock
       title="All restaurants"
       items={allRestaurants}
-      onItemClick={() => navigate('/restaurant')}
+      onItemClick={(item) =>
+        navigate('/restaurant', { state: thumbnailLToRestaurantNavState(item) })
+      }
     />
   )
 }

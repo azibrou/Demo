@@ -166,9 +166,5 @@ export function ShortcutItem({
     )
   }
 
-  return (
-    <button type="button" className={`${colClass} bg-transparent p-0 ${focusRing}`}>
-      {inner}
-    </button>
-  )
+  return <div className={colClass}>{inner}</div>
 }

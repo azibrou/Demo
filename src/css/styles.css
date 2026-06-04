@@ -1354,6 +1354,15 @@ html.eater-hub-active #root {
     white-space: nowrap;
   }
 
+  button.thumbnail-xs-scaled {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+  }
+
   .thumbnail-xs-scaled {
     display: flex;
     flex-direction: column;

@@ -10,6 +10,8 @@ export type TopSectionStoreProvider = {
   deliveryLabel: string
   eta: string
   etaLabel: string
+  heroImageSrc?: string
+  logoImageSrc?: string
 }
 
 export type TopSectionStoreProps = {
@@ -87,11 +89,13 @@ function MetricColumn({
  */
 export function TopSectionStore({ provider, onBack }: TopSectionStoreProps) {
   const p = provider
+  const heroSrc = p.heroImageSrc ?? a.hero
+  const logoSrc = p.logoImageSrc ?? a.logo
 
   return (
     <section className="top-section-store w-full" data-node-id="77303:218308">
       <div className="top-section-store__hero" data-node-id="77303:218237" data-name="Img">
-        <img alt="" src={a.hero} className="top-section-store__hero-image" />
+        <img alt="" src={heroSrc} className="top-section-store__hero-image" />
         <div className="top-section-store__hero-gradient" aria-hidden data-node-id="77303:218240" data-name="fader" />
 
         <div className="top-section-store__nav" data-node-id="77303:218241" data-name="[Eater] Top-nav-bar - Provider">
@@ -111,7 +115,7 @@ export function TopSectionStore({ provider, onBack }: TopSectionStoreProps) {
       <div className="top-section-store__body" data-node-id="77303:218236" data-name="Provider header">
         <div className="top-section-store__title-stack" data-node-id="77303:218258" data-name="[Eater] Store_title">
           <div className="top-section-store__logo" data-node-id="77303:218259">
-            <img alt="" src={a.logo} className="top-section-store__logo-image" />
+            <img alt="" src={logoSrc} className="top-section-store__logo-image" />
           </div>
 
           <div className="top-section-store__card" data-node-id="77303:218260" data-name="Top Section">

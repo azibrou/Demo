@@ -6,6 +6,7 @@ export type ThumbnailXsProps = {
   line2?: string
   /** Scaled tile: `--shortcut-scale` from a `.home-viewport-scale` ancestor ({@link HomeScaledCarousel}). */
   variant?: 'default' | 'scaled'
+  onClick?: () => void
 }
 
 /** Figma 74916:29832 — XS thumb (86×86) + caption; `variant="scaled"` matches shortcuts row scaling. */
@@ -14,11 +15,12 @@ export function ThumbnailXs({
   line1 = 'Raw Garden',
   line2 = 'Hariduse',
   variant = 'default',
+  onClick,
 }: ThumbnailXsProps) {
   if (variant === 'scaled') {
     const showSecondLine = line2 != null && line2 !== ''
-    return (
-      <div className="thumbnail-xs-scaled bolt-font-base">
+    const body = (
+      <>
         <div className="thumbnail-xs-scaled__frame">
           <div className="thumbnail-xs-scaled__frame-inner">
             <img alt="" src={imageSrc} className="thumbnail-fill-img" />
@@ -33,8 +35,18 @@ export function ThumbnailXs({
             </>
           ) : null}
         </p>
-      </div>
+      </>
     )
+
+    if (onClick) {
+      return (
+        <button type="button" onClick={onClick} className="thumbnail-xs-scaled bolt-font-base cursor-pointer text-left">
+          {body}
+        </button>
+      )
+    }
+
+    return <div className="thumbnail-xs-scaled bolt-font-base">{body}</div>
   }
 
   return (

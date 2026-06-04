@@ -1,16 +1,20 @@
 import type { CarouselGridItemProps } from '../components/CarouselGridItem'
-import { retailSnippetProducts } from './boltFoodTallinnHomeContent'
+import { retailSnippetProducts, retailSnippetStore } from './boltFoodTallinnHomeContent'
+import { design } from './figmaDesignAssets'
 
 export type StoreMerchantProduct = CarouselGridItemProps & { id: string }
 
+/** Grocery merchant — matches home {@link retailSnippetStore} (Bolt Market Toompuiestee). */
 export const storeMerchantProvider = {
-  name: 'Bolt Market Wola',
-  rating: '4.8',
-  reviews: '(232)',
-  deliveryPrice: '3,50 €',
+  name: retailSnippetStore.name,
+  rating: retailSnippetStore.rating,
+  reviews: retailSnippetStore.reviews,
+  deliveryPrice: retailSnippetStore.deliveryPrice,
   deliveryLabel: 'delivery',
-  eta: '15-20',
+  eta: '15–25',
   etaLabel: 'min',
+  heroImageSrc: retailSnippetStore.imageSrc,
+  logoImageSrc: design.topSectionStore.boltMarketToompuiesteeLogo,
 } as const
 
 function fromRetail(index: number): StoreMerchantProduct {

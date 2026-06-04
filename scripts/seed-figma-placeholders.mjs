@@ -178,6 +178,7 @@ const files = [
   '27e42070e94a49c6bcb7033096f39ae9.svg',
   'd11d9b710dce44df98d9b50def822d8e.png',
   'bb5d2762434a49fcb1e1d82442f2af84.png',
+  'dc6a51f32f2a42609e4e4d2eb9bbe541.png',
   'adb5c008ed134052aec2c6f7c6a81e8e.svg',
   'e95da0397a1e4208bf4ba7c616c7deda.svg',
   '9f42788368dd45ae887eba79a6282cbb.svg',

@@ -29,7 +29,6 @@ export const homeShortcuts: readonly HomeShortcut[] = [
     iconSrc: shortcutIcons.allStores,
     iconVariant: 'basket',
     labelSingleLine: true,
-    to: '/stores',
     boltHref: 'https://food.bolt.eu/en/1-tallinn/stores/',
   },
   {
