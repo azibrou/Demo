@@ -206,9 +206,10 @@ export const design = {
     searchIcon: ki.search,
     filtersIcon: ki.filters,
   },
-  /** Figma 77857:525189 — [Eater] save-btn heart (ThumbnailM/L favorite). */
+  /** Figma 79589:184146 — [Eater] save-btn (ThumbnailM/L favorite). */
   eaterSaveBtn: {
-    heart: ki.heartFilled,
+    heartFill: figma('6fbbf349da6847caa6781c4e438b3e64.svg'),
+    heartOutline: figma('ba5b7847629b4dbd86a8a6417d0ef20.svg'),
   },
   /** Figma 76330:71602 — ThumbnailM meta + overlay icons. */
   thumbnailM: {

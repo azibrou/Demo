@@ -1,4 +1,6 @@
+import { KalepIcon } from './KalepIcon'
 import { design } from '../lib/figmaDesignAssets'
+import type { KalepIconStem } from '../lib/kalepIcons'
 
 const a = design.topSectionStore
 
@@ -60,11 +62,13 @@ function MetricVDivider({ src, variant }: { src: string; variant: 'start' | 'inn
 
 function MetricColumn({
   iconSrc,
+  kalepIcon,
   primary,
   secondary,
   dividers,
 }: {
-  iconSrc: string
+  iconSrc?: string
+  kalepIcon?: KalepIconStem
   primary: string
   secondary: string
   dividers: { start: string; end: string }
@@ -74,7 +78,11 @@ function MetricColumn({
       <MetricVDivider src={dividers.start} variant="start" />
       <div className="top-section-store__metric-body">
         <div className="top-section-store__metric-row-primary">
-          <img alt="" src={iconSrc} className="top-section-store__metric-icon" />
+          {kalepIcon ? (
+            <KalepIcon name={kalepIcon} size={16} className="top-section-store__metric-kalep shrink-0" />
+          ) : iconSrc ? (
+            <img alt="" src={iconSrc} className="top-section-store__metric-icon" />
+          ) : null}
           <span className="bolt-font-body-s-accent">{primary}</span>
         </div>
         <span className="bolt-font-body-s-regular text-[var(--color-content-secondary)]">{secondary}</span>
@@ -137,7 +145,7 @@ export function TopSectionStore({ provider, onBack }: TopSectionStoreProps) {
               data-name="[Eater] Provider Metrics"
             >
               <MetricColumn
-                iconSrc={a.ratingStar}
+                kalepIcon="rating-star-provider"
                 primary={p.rating}
                 secondary={p.reviews}
                 dividers={{ start: a.divider, end: a.dividerAlt }}

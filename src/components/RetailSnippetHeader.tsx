@@ -1,6 +1,4 @@
-import { design } from '../lib/figmaDesignAssets'
-
-const rsp = design.retailSnippetProvider
+import { kalepIconUrl } from '../lib/kalepIcons'
 
 export type RetailSnippetHeaderStore = {
   name: string
@@ -40,7 +38,7 @@ export function RetailSnippetHeader({ store, titleId, onHeaderClick }: RetailSni
             <span className="relative size-3 shrink-0" aria-hidden>
               <img
                 alt=""
-                src={rsp.bikeDelivery}
+                src={kalepIconUrl('bike-delivery-outline')}
                 className="pointer-events-none absolute inset-0 block size-full max-w-none object-contain"
               />
             </span>
@@ -50,7 +48,7 @@ export function RetailSnippetHeader({ store, titleId, onHeaderClick }: RetailSni
             <span className="relative size-3 shrink-0" aria-hidden>
               <img
                 alt=""
-                src={rsp.timer}
+                src={kalepIconUrl('timer-outline')}
                 className="pointer-events-none absolute inset-0 block size-full max-w-none object-contain"
               />
             </span>
@@ -60,7 +58,7 @@ export function RetailSnippetHeader({ store, titleId, onHeaderClick }: RetailSni
             <span className="relative size-3 shrink-0" aria-hidden>
               <img
                 alt=""
-                src={rsp.ratingStar}
+                src={kalepIconUrl('rating-star-selected')}
                 className="pointer-events-none absolute inset-0 block size-full max-w-none object-contain"
               />
             </span>

@@ -76,7 +76,7 @@
       "kind": "component",
       "export": "Favorite",
       "prefixes": ["thumbnail-favorite"],
-      "figma": ["77857:525189"],
+      "figma": ["79589:184146"],
       "summary": "Thumbnail favorite heart overlay."
     },
     {
