@@ -56,7 +56,7 @@ function menuToContent(menu: ScrapedMenu, name: string, description: string): Re
     items: section.items.map((item): SimpleItemProps & { id: string } => ({
       id: item.id,
       title: item.title,
-      description: item.description,
+      description: item.description ?? '',
       price: item.price,
       ...(item.imageSrc ? { imageSrc: boltImage(item.imageSrc) } : {}),
     })),
