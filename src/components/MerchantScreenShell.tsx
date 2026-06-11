@@ -1,8 +1,10 @@
-import { useEffect, useLayoutEffect, useMemo, useState, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useMemo, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { resolveMerchantFloatingTabBarModel } from '../config/merchantFloatingTabBarConfig'
+import { useHomeShoppingStack } from '../context/HomeShoppingStackContext'
 import { MerchantTabProvider, useMerchantTab } from '../context/MerchantTabContext'
 import { MERCHANT_FLOATING_TAB_BAR_ITEMS } from '../screens/merchantFloatingTabBarItems'
+import { BottomChromeSlide } from './BottomChromeSlide'
 import { MerchantFTabBar } from './MerchantFTabBar'
 import { RestaurantMerchantSearch } from './RestaurantMerchantSearch'
 
@@ -33,11 +35,14 @@ function MerchantScreenShellInner({
     [],
   )
   const { activeTabId, setActiveTabId } = useMerchantTab()
-  const [portalReady, setPortalReady] = useState(false)
+  // Mount the portal synchronously (client-only SPA) so the bar slides in on the
+  // same commit the screen navigates — deferring it makes the slide start late.
+  const portalReady = typeof document !== 'undefined'
   const useRestaurantSearch = bottomChrome === 'restaurant-search'
+  const stack = useHomeShoppingStack()
+  const chromeExiting = stack?.slidePhase === 'exiting'
 
   useEffect(() => {
-    setPortalReady(true)
     document.documentElement.classList.add('merchant-immersive-active')
     if (useRestaurantSearch) {
       document.documentElement.classList.add('merchant-restaurant-search-active')
@@ -64,13 +69,13 @@ function MerchantScreenShellInner({
 
   const bottomChromeNode = useRestaurantSearch ? (
     <div className="restaurant-merchant-search-chrome-portal pointer-events-none fixed inset-x-0 bottom-0 z-50 w-full max-w-full overflow-visible">
-      <div className="pointer-events-auto">
+      <BottomChromeSlide className="pointer-events-auto" exiting={chromeExiting}>
         <RestaurantMerchantSearch onSearchClick={onRestaurantSearch} />
-      </div>
+      </BottomChromeSlide>
     </div>
   ) : (
     <div className="merchant-ftb-chrome pointer-events-none fixed inset-x-0 bottom-0 z-50 w-full max-w-full overflow-visible">
-      <div className="pointer-events-auto">
+      <BottomChromeSlide className="pointer-events-auto" exiting={chromeExiting}>
         <MerchantFTabBar
           items={barItems}
           activeId={activeTabId}
@@ -78,7 +83,7 @@ function MerchantScreenShellInner({
           ariaLabel="Merchant navigation"
           onSearchClick={onSearchClick}
         />
-      </div>
+      </BottomChromeSlide>
     </div>
   )
 

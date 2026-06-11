@@ -12,6 +12,7 @@ import arrowLeft from '@bolteu/kalep-icons-svg/arrow-left.svg?url'
 import arrowLeftRestaurant from '@bolteu/kalep-icons-svg/arrow-left-restaurant.svg?url'
 import arrowLeftStore from '@bolteu/kalep-icons-svg/arrow-left-store.svg?url'
 import arrowLeftTop from '@bolteu/kalep-icons-svg/arrow-left-top.svg?url'
+import arrowRight from '@bolteu/kalep-icons-svg/arrow-right.svg?url'
 import basket from '@bolteu/kalep-icons-svg/basket.svg?url'
 import basketExpanded from '@bolteu/kalep-icons-svg/basket-expanded.svg?url'
 import basketWide from '@bolteu/kalep-icons-svg/basket-wide.svg?url'
@@ -82,6 +83,7 @@ import timer from '@bolteu/kalep-icons-svg/timer.svg?url'
 import timerOutline from '@bolteu/kalep-icons-svg/timer-outline.svg?url'
 import userAltOutline from '@bolteu/kalep-icons-svg/user-alt-outline.svg?url'
 import walk from '@bolteu/kalep-icons-svg/walk.svg?url'
+import stopHand from '@bolteu/kalep-icons-svg/stop-hand.svg?url'
 
 export const kalepIconUrls = {
   search,
@@ -93,6 +95,7 @@ export const kalepIconUrls = {
   'arrow-left-store': arrowLeftStore,
   'arrow-left-top': arrowLeftTop,
   'arrow-left-restaurant': arrowLeftRestaurant,
+  'arrow-right': arrowRight,
   'share-ios': shareIos,
   'share-ios-store': shareIosStore,
   'share-ios-top': shareIosTop,
@@ -115,6 +118,7 @@ export const kalepIconUrls = {
   timer,
   'timer-outline': timerOutline,
   walk,
+  'stop-hand': stopHand,
   'calendar-outline': calendarOutline,
   'calendar-filled': calendarFilled,
   'offer-outline': offerOutline,
@@ -182,6 +186,7 @@ export const kalepIcons = {
   arrowLeftStore,
   arrowLeftTop,
   arrowLeftRestaurant,
+  arrowRight,
   shareIos,
   shareIosStore,
   shareIosTop,
@@ -204,6 +209,7 @@ export const kalepIcons = {
   timer,
   timerOutline,
   walk,
+  stopHand,
   calendarOutline,
   calendarFilled,
   offerOutline,

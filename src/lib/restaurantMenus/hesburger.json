@@ -1,0 +1,1065 @@
+{
+  "source": "https://food.bolt.eu/en/1-tallinn/p/5064-hesburger-viru-tanav/",
+  "provider": {
+    "name": "Hesburger Viru tänav",
+    "cover": null
+  },
+  "sections": [
+    {
+      "id": "campaign-products",
+      "title": "Campaign products",
+      "items": [
+        {
+          "id": "hesburger-campaign-products-0",
+          "title": "Sweet&Sour Chicken Tortilla Meal",
+          "description": "Meal includes: tortilla, regular fries and a refreshing drink (0,25l).",
+          "price": "7,10 €",
+          "imageSrc": "hesburger/hesburger-f84336b499d3.jpeg"
+        },
+        {
+          "id": "hesburger-campaign-products-1",
+          "title": "Sweet&Sour Chicken Tortilla",
+          "description": "Juicy, crispy, and full of flavor... mmm, that’s our delicious this month’s campaign product – the Sweet&Sour Chicken Tortilla. Crispy chicken, sweet and sour sauce, iceberg salad, white cheese cubes, jalapeño peppers, onion, and the famous Hesburger paprika mayonnaise. Bon Appétit!",
+          "price": "4,50 €",
+          "imageSrc": "hesburger/hesburger-760a5723ab9d.jpeg"
+        },
+        {
+          "id": "hesburger-campaign-products-2",
+          "title": "Large Sweet&Sour Chicken Tortilla Meal",
+          "description": "Meal includes: tortilla, large fries and a large refreshing drink (0,5l).",
+          "price": "8,30 €",
+          "imageSrc": "hesburger/hesburger-b03fe89a332c.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "meals",
+      "title": "Meals",
+      "items": [
+        {
+          "id": "hesburger-meals-0",
+          "title": "Hesburger Meal",
+          "description": "The meal contains a burger, normal French fries and a 0.25-litre soft drink.",
+          "price": "9,30 €",
+          "imageSrc": "hesburger/hesburger-3970a0d94cf5.jpeg"
+        },
+        {
+          "id": "hesburger-meals-1",
+          "title": "Large Hesburger Meal",
+          "description": "The meal contains a burger, large French fries and a 0.5-litre soft drink.",
+          "price": "10,70 €",
+          "imageSrc": "hesburger/hesburger-6ff9ecc40b5e.jpeg"
+        },
+        {
+          "id": "hesburger-meals-2",
+          "title": "Mega Burger Meal",
+          "description": "The meal contains a burger, French fries and a sugar-free soft drink 0,4 l.",
+          "price": "12,30 €",
+          "imageSrc": "hesburger/hesburger-22596cae9da6.jpeg"
+        },
+        {
+          "id": "hesburger-meals-3",
+          "title": "Large Mega Burger Meal",
+          "description": "The meal contains a burger, large French fries and a sugar-free soft drink 0,5 l.",
+          "price": "13,70 €",
+          "imageSrc": "hesburger/hesburger-c91c638f0390.jpeg"
+        },
+        {
+          "id": "hesburger-meals-4",
+          "title": "Giant Bacon Burger Meal",
+          "description": "The meal contains a burger, French fries and a  sugar-free soft drink 0,4 l.",
+          "price": "12,30 €",
+          "imageSrc": "hesburger/hesburger-b55f86fb4330.jpeg"
+        },
+        {
+          "id": "hesburger-meals-5",
+          "title": "Large Giant Bacon Burger Meal",
+          "description": "The meal contains a burger, large French fries and a sugar-free soft drink 0,5 l.",
+          "price": "13,70 €",
+          "imageSrc": "hesburger/hesburger-7b9ae7f9c3dd.jpeg"
+        },
+        {
+          "id": "hesburger-meals-6",
+          "title": "Cheeseburger Meal",
+          "description": "The meal contains a burger, French fries and a sugar-free soft drink 0,4 l.",
+          "price": "5,40 €",
+          "imageSrc": "hesburger/hesburger-d49e7f4f4658.jpeg"
+        },
+        {
+          "id": "hesburger-meals-7",
+          "title": "Large Cheeseburger Meal",
+          "description": "The meal contains a cheeseburger, large French fries and a sugar-free soft drink 0,5 l.",
+          "price": "6,80 €",
+          "imageSrc": "hesburger/hesburger-0b9b03dac8be.jpeg"
+        },
+        {
+          "id": "hesburger-meals-8",
+          "title": "Double Cheese Burger Meal",
+          "description": "The meal contains a burger, French fries and a sugar-free soft drink 0,4 l.",
+          "price": "6,00 €",
+          "imageSrc": "hesburger/hesburger-8bd7f9786dc9.jpeg"
+        },
+        {
+          "id": "hesburger-meals-9",
+          "title": "Large Double Cheese Burger Meal",
+          "description": "The meal contains a burger, large French fries and a sugar-free soft drink 0,5 l.",
+          "price": "7,40 €",
+          "imageSrc": "hesburger/hesburger-11d81ee34ccf.jpeg"
+        },
+        {
+          "id": "hesburger-meals-10",
+          "title": "Hamburger Meal",
+          "description": "The meal contains a burger, French fries and a sugar-free soft drink 0,25 l.",
+          "price": "5,10 €",
+          "imageSrc": "hesburger/hesburger-a7b2247786e8.jpeg"
+        },
+        {
+          "id": "hesburger-meals-11",
+          "title": "Large Hamburger Meal",
+          "description": "The meal contains a burger, large French fries and a sugar-free soft drink 0,4 l.",
+          "price": "6,50 €",
+          "imageSrc": "hesburger/hesburger-64b030084c40.jpeg"
+        },
+        {
+          "id": "hesburger-meals-12",
+          "title": "Chicken Fillet Meal",
+          "description": "The meal contains a burger, French fries and a sugar-free soft drink 0,4 l.",
+          "price": "8,70 €",
+          "imageSrc": "hesburger/hesburger-f1aacd385c48.jpeg"
+        },
+        {
+          "id": "hesburger-meals-13",
+          "title": "Large Chicken Fillet Meal",
+          "description": "The meal contains a burger, French fries and a sugar-free soft drink 0,5 l.",
+          "price": "10,10 €",
+          "imageSrc": "hesburger/hesburger-82a86549c08b.jpeg"
+        },
+        {
+          "id": "hesburger-meals-14",
+          "title": "Mini Chicken Burger Meal",
+          "description": "The meal contains a burger, French fries and a sugar-free soft drink 0,25 l.",
+          "price": "3,00 €",
+          "imageSrc": "hesburger/hesburger-04027b666568.jpeg"
+        },
+        {
+          "id": "hesburger-meals-15",
+          "title": "Large Mini Chicken Burger Meal",
+          "description": "The meal contains a burger, large French fries and a sugar-free soft drink 0,4 l.",
+          "price": "4,20 €",
+          "imageSrc": "hesburger/hesburger-9e5a0be23b4a.jpeg"
+        },
+        {
+          "id": "hesburger-meals-16",
+          "title": "Chicken Burger Meal",
+          "description": "The meal contains a burger, French fries and a sugar-free soft drink 0,4 l.",
+          "price": "8,50 €",
+          "imageSrc": "hesburger/hesburger-08be64995cf4.jpeg"
+        },
+        {
+          "id": "hesburger-meals-17",
+          "title": "Large Chicken Burger Meal",
+          "description": "The meal contains a burger, large French fries and a sugar-free soft drink 0,5 l.",
+          "price": "9,90 €",
+          "imageSrc": "hesburger/hesburger-99c1c051340f.jpeg"
+        },
+        {
+          "id": "hesburger-meals-18",
+          "title": "Kebab Burger Meal",
+          "description": "The meal contains a burger, French fries and a soft drink 0,4 l.",
+          "price": "10,45 €",
+          "imageSrc": "hesburger/hesburger-28e9a7ac2f77.jpeg"
+        },
+        {
+          "id": "hesburger-meals-19",
+          "title": "Large Kebab Burger Meal",
+          "description": "The meal contains burger, large French fries and a 0,5 l soft drink.",
+          "price": "11,85 €",
+          "imageSrc": "hesburger/hesburger-5b366412ead2.jpeg"
+        },
+        {
+          "id": "hesburger-meals-20",
+          "title": "BBQ Burger Meal",
+          "description": "The meal contains a burger, normal French fries and a 0.25-litre soft drink.",
+          "price": "10,00 €",
+          "imageSrc": "hesburger/hesburger-55d71c1a1845.jpeg"
+        },
+        {
+          "id": "hesburger-meals-21",
+          "title": "Large BBQ Burger Meal",
+          "description": "The meal contains a burger, large French fries and a 0.5-litre soft drink.",
+          "price": "11,40 €",
+          "imageSrc": "hesburger/hesburger-fac767b12d62.jpeg"
+        },
+        {
+          "id": "hesburger-meals-22",
+          "title": "VEKE® Vegetarian Burger Meal",
+          "description": "The meal contains a burger, French fries and a sugar-free soft drink 0,4 l.",
+          "price": "5,20 €",
+          "imageSrc": "hesburger/hesburger-d44eab44b427.jpeg"
+        },
+        {
+          "id": "hesburger-meals-23",
+          "title": "VEKE® Vegetarian Burger Large Meal",
+          "description": "The meal contains a burger, large French fries and a sugar-free soft drink 0,5 l.",
+          "price": "6,60 €",
+          "imageSrc": "hesburger/hesburger-aeb2c724bc53.jpeg"
+        },
+        {
+          "id": "hesburger-meals-24",
+          "title": "VEKE® Cheese Veggie Burger Meal",
+          "description": "The meal contains a burger, French fries and a sugar-free soft drink 0,25 l.",
+          "price": "4,50 €",
+          "imageSrc": "hesburger/hesburger-ee7a5f1d7e3d.jpeg"
+        },
+        {
+          "id": "hesburger-meals-25",
+          "title": "VEKE® Cheeseburger Large Meal",
+          "description": "The meal contains a cheeseburger, large French fries and a sugar-free soft drink 0,4 l.",
+          "price": "5,95 €",
+          "imageSrc": "hesburger/hesburger-d8bbb97bf9b0.jpeg"
+        },
+        {
+          "id": "hesburger-meals-26",
+          "title": "VEKE® Double Cheese Veggie Meal",
+          "description": "The meal contains a burger, French fries and a sugar-free soft drink 0,4 l.",
+          "price": "5,90 €",
+          "imageSrc": "hesburger/hesburger-d9fd6f0349c8.jpeg"
+        },
+        {
+          "id": "hesburger-meals-27",
+          "title": "Large VEKE® Double Cheese Veggie Meal",
+          "description": "The meal contains a burger, large French fries and a sugar-free soft drink 0,5 l.",
+          "price": "7,30 €",
+          "imageSrc": "hesburger/hesburger-36ae1db9c681.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "children-s-meal",
+      "title": "Children's Meal",
+      "items": [
+        {
+          "id": "hesburger-children-s-meal-0",
+          "title": "Children's Meal: Hamburger",
+          "description": "The Hesburger Children's Menu solves two problems in one fell swoop: hunger and nothing to do. Delicious and fun!\n\n \n\nChildren's meal: Hamburger, regular fries and a sugar-free soft drink (0,25 l) and a toy or other children's product. You can replace Hamburger* to Cheeseburger*, Mini Chicken burger, VEKE® Cheese Veggie Burger or 4 pcs nuggets/soyfingers & dip. A mini salad, cucumber sticks, soy finger 5 pcs can be substituted for the fries. Oat drink 0,25 l, milk drink 0,25 l, juice, smoothie or Trip juice 0,2 l can be substituted for the soft drink. With extra cost you can also choose soft drink with sugar.\n\n \n\n*You can replace the regular bun to gluten-free bun.",
+          "price": "5,60 €",
+          "imageSrc": "hesburger/hesburger-7248a716ec85.jpeg"
+        },
+        {
+          "id": "hesburger-children-s-meal-1",
+          "title": "Children's Meal: Cheeseburger",
+          "description": "The Hesburger Children's Menu solves two problems in one fell swoop: hunger and nothing to do. Delicious and fun!\n\n \n\nChildren's meal: Hamburger, regular fries and a sugar-free soft drink (0,25 l) and a toy or other children's product. You can replace Hamburger* to Cheeseburger*, Mini Chicken burger, VEKE® Cheese Veggie Burger or 4 pcs nuggets/soyfingers & dip. A mini salad, cucumber sticks, soy finger 5 pcs can be substituted for the fries. Oat drink 0,25 l, milk drink 0,25 l, juice, smoothie or Trip juice 0,2 l can be substituted for the soft drink. With extra cost you can also choose soft drink with sugar.\n\n \n\n*You can replace the regular bun to gluten-free bun.",
+          "price": "5,60 €",
+          "imageSrc": "hesburger/hesburger-7248a716ec85.jpeg"
+        },
+        {
+          "id": "hesburger-children-s-meal-2",
+          "title": "Children's Meal: VEKE® Cheeseburger",
+          "description": "The Hesburger Children's Menu solves two problems in one fell swoop: hunger and nothing to do. Delicious and fun!\n\n \n\nChildren's meal: Hamburger, regular fries and a sugar-free soft drink (0,25 l) and a toy or other children's product. You can replace Hamburger* to Cheeseburger*, Mini Chicken burger, VEKE® Cheese Veggie Burger or 4 pcs nuggets/soyfingers & dip. A mini salad, cucumber sticks, soy finger 5 pcs can be substituted for the fries. Oat drink 0,25 l, milk drink 0,25 l, juice, smoothie or Trip juice 0,2 l can be substituted for the soft drink. With extra cost you can also choose soft drink with sugar.\n\n \n\n*You can replace the regular bun to gluten-free bun.",
+          "price": "5,60 €",
+          "imageSrc": "hesburger/hesburger-7248a716ec85.jpeg"
+        },
+        {
+          "id": "hesburger-children-s-meal-3",
+          "title": "Children's Meal: Chicken Nuggets 4 pcs + Dip",
+          "description": "The Hesburger Children's Menu solves two problems in one fell swoop: hunger and nothing to do. Delicious and fun!\n\n \n\nChildren's meal: Hamburger, regular fries and a sugar-free soft drink (0,25 l) and a toy or other children's product. You can replace Hamburger* to Cheeseburger*, Mini Chicken burger, VEKE® Cheese Veggie Burger or 4 pcs nuggets/soyfingers & dip. A mini salad, cucumber sticks, soy finger 5 pcs can be substituted for the fries. Oat drink 0,25 l, milk drink 0,25 l, juice, smoothie or Trip juice 0,2 l can be substituted for the soft drink. With extra cost you can also choose soft drink with sugar.\n\n \n\n*You can replace the regular bun to gluten-free bun.",
+          "price": "5,60 €",
+          "imageSrc": "hesburger/hesburger-7248a716ec85.jpeg"
+        },
+        {
+          "id": "hesburger-children-s-meal-4",
+          "title": "Children's Meal: VEKE® Soy Sticks 4 pcs + Dip",
+          "description": "The Hesburger Children's Menu solves two problems in one fell swoop: hunger and nothing to do. Delicious and fun!\n\n \n\nChildren's meal: Hamburger, regular fries and a sugar-free soft drink (0,25 l) and a toy or other children's product. You can replace Hamburger* to Cheeseburger*, Mini Chicken burger, VEKE® Cheese Veggie Burger or 4 pcs nuggets/soyfingers & dip. A mini salad, cucumber sticks, soy finger 5 pcs can be substituted for the fries. Oat drink 0,25 l, milk drink 0,25 l, juice, smoothie or Trip juice 0,2 l can be substituted for the soft drink. With extra cost you can also choose soft drink with sugar.\n\n \n\n*You can replace the regular bun to gluten-free bun.",
+          "price": "5,60 €",
+          "imageSrc": "hesburger/hesburger-7248a716ec85.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "hamburgers",
+      "title": "Hamburgers",
+      "items": [
+        {
+          "id": "hesburger-hamburgers-0",
+          "title": "VEKE®-Doublecheeseburger",
+          "description": "VEKE® for double, please. Bun, two VEKE® veggie patties, ketchup, mustard, onion, pickles, cheddar cheese and Hesburger's excellent VEKE® mayonnaise. (Allergens: Milk protein, Lactose, Mustard, Gluten, Soy)",
+          "price": "2,90 €",
+          "imageSrc": "hesburger/hesburger-08a00d2d05df.jpeg"
+        },
+        {
+          "id": "hesburger-hamburgers-1",
+          "title": "VEKE® Cheeseburger",
+          "description": "This beauty includes a soft roll, vegetable patty, fresh onion, cheddar cheese and pickled cucumber slices. Spiced with ketchup, mustard and fresh VEKE® Mayonnaise. (Allergens: Milk protein, Lactose, Mustard, Gluten, Soy)",
+          "price": "1,50 €",
+          "imageSrc": "hesburger/hesburger-57da5198d423.jpeg"
+        },
+        {
+          "id": "hesburger-hamburgers-2",
+          "title": "VEKE® Vegetarian Burger",
+          "description": "This burger features Hesburger's own VEKE® veggie patty, VEKE® mayonnaise, tomato, lettuce, onion and pickles. (Allergens: Gluten, Soy, Mustard)",
+          "price": "2,20 €",
+          "imageSrc": "hesburger/hesburger-7b5961c66e2f.jpeg"
+        },
+        {
+          "id": "hesburger-hamburgers-3",
+          "title": "Hesburger",
+          "description": "Although the legendary Double Burger really needs no introduction, please allow us... Tucked in between three soft buns are two all-beef patties, cheddar cheese, ketchup, onion, pickles and iceberg lettuce. Hesburger's own paprika and cucumber mayonnaise add the crowning touch. Oh baby! (Allergens: Milk protein, Lactose, Sesame seed, Gluten, Mustard, Egg)",
+          "price": "6,30 €",
+          "imageSrc": "hesburger/hesburger-4f2e5a50f3c7.jpeg"
+        },
+        {
+          "id": "hesburger-hamburgers-4",
+          "title": "Mega Burger",
+          "description": "Perched between three soft buns you’ll find two juicy all-beef patties, cheddar cheese, pickles, tomato and iceberg lettuce. Hesburger’s cucumber and paprika mayonnaises round out the taste sensation. Dinner is served! (Allergens: Milk protein, Lactose, Sesame seed, Gluten, Mustard, Egg)",
+          "price": "9,30 €",
+          "imageSrc": "hesburger/hesburger-4b3b30a6c4c8.jpeg"
+        },
+        {
+          "id": "hesburger-hamburgers-5",
+          "title": "Double Cheeseburger",
+          "description": "Double cheese please. Bun, two beef patties, ketchup, mustard, onion, pickled cucumber, cheddar cheese and guess what is the most important? Yes, Hesburgers splendid cucumber mayonnaise. Enjoy. (Allergens: Milk protein, Lactose, Mustard, Egg, Gluten)",
+          "price": "5,25 €",
+          "imageSrc": "hesburger/hesburger-20dca2a3b9aa.jpeg"
+        },
+        {
+          "id": "hesburger-hamburgers-6",
+          "title": "Cheeseburger",
+          "description": "The good thing about having a case of the munchies is that a Hesburger Cheeseburger is just the cure. This tasty little treat is an all-beef patty wrapped in a soft bun and topped with onion, cheddar cheese and pickles. Seasoned perfectly with ketchup, mustard and a generous dollop of our famous cucumber mayonnaise. Ahhhh. (Allergens: Milk protein, Lactose, Mustard, Egg, Gluten)",
+          "price": "2,40 €",
+          "imageSrc": "hesburger/hesburger-05ecf8db568d.jpeg"
+        },
+        {
+          "id": "hesburger-hamburgers-7",
+          "title": "Hamburger",
+          "description": "What’s the secret behind the great taste of a Hesburger hamburger? We’ll let you in on it. It’s a soft bun with an all-beef patty, topped with pickles, onion, ketchup, mustard and our famous cucumber mayonnaise. (Allergens: Mustard, Egg, Gluten)",
+          "price": "2,10 €",
+          "imageSrc": "hesburger/hesburger-0874646ae36f.jpeg"
+        },
+        {
+          "id": "hesburger-hamburgers-8",
+          "title": "Chicken Fillet Burger",
+          "description": "A symphony of flavors: Breaded chicken fillet patty, pickled cucumber, iceberg lettuce, tomato, Greek-style salad cheese cubes and VEKE® Mayonnaise between a bun. (Allergens: Mustard, Gluten, Lactose, Milk protein)",
+          "price": "5,70 €",
+          "imageSrc": "hesburger/hesburger-d5265559d64f.jpeg"
+        },
+        {
+          "id": "hesburger-hamburgers-9",
+          "title": "Mini Chicken Burger",
+          "description": "Even a tiny little burger can be a big treat. Just take the Mini Chicken Burger – a fluffy little bun, delicious chicken patty, fresh iceberg lettuce, Hesburger’s famous cucumber mayonnaise and an oh-so-low price. What more could a hungry tummy ask for? (Allergens: Gluten, Mustard, Egg)",
+          "price": "1,50 €",
+          "imageSrc": "hesburger/hesburger-781e79672333.jpeg"
+        },
+        {
+          "id": "hesburger-hamburgers-10",
+          "title": "Chicken Burger",
+          "description": "Between the giant bun you can find the even more delicious recipe: chicken patty fried to crisp perfection, pickles, ice berg salad, cheddar cheese and fresh tomato. And do not forget Hesburger’s cucumber mayonnaise. To be taken hot, with a side of good company. (Allergens: Milk protein, Lactose, Mustard, Egg, Gluten, Sesame seed)",
+          "price": "5,50 €",
+          "imageSrc": "hesburger/hesburger-0a6e0280b0f5.jpeg"
+        },
+        {
+          "id": "hesburger-hamburgers-11",
+          "title": "BBQ  Burger",
+          "description": "The new BBQ Burger is here. Between the buns, you'll find a 100% juicy beef patty, bacon, cheddar cheese, BBQ sauce, crispy onion rings, pickled cucumber, onion, mustard, ketchup, and appetizing Hesburger paprika mayonnaise. (Allergens: Milk, Lactose, Mustard, Gluten, Egg, Sesame seeds)",
+          "price": "7,00 €",
+          "imageSrc": "hesburger/hesburger-0e13cdf33b2c.jpeg"
+        },
+        {
+          "id": "hesburger-hamburgers-12",
+          "title": "Kebab Burger",
+          "description": "The successful recipe for the Kebab Burger includes pita bread, kebab seasoned beef patty, a slice of cheddar cheese, iceberg lettuce, jalapeno slices, tomato and fresh onion. The recipe is topped off with Hesburger's famous VEKE® chili and paprika mayonnaise.\n\nCome and enjoy yourself! (Allergens: Milk protein, Lactose, Gluten, Egg)",
+          "price": "7,45 €",
+          "imageSrc": "hesburger/hesburger-82ca74255a1c.jpeg"
+        },
+        {
+          "id": "hesburger-hamburgers-13",
+          "title": "Giant Bacon Burger",
+          "description": "Hesburger’s bigger bacon burger was named as simply as possible: the Giant Bacon Burger.\nInside the giant bun you can taste a large beef patty and some bacon along with mustard, fresh onion, cheddar cheese, and tomato. We topped this delicious burger off with some crispy lettuce and Hesburger’s famous paprika and cucumber mayonnaise.\nWelcome to great taste! (Allergens: Milk protein, Lactose, Mustard, Egg, Sesame seed, Gluten)",
+          "price": "9,30 €",
+          "imageSrc": "hesburger/hesburger-e8bc2b37d7db.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tortillas",
+      "title": "Tortillas",
+      "items": [
+        {
+          "id": "hesburger-tortillas-0",
+          "title": "Chicken Tortilla",
+          "description": "Hesburger also offers mouth-watering tortillas. The Chicken Tortilla wraps around chicken fillet strips, Greek-style cheese cubes, onion, tomato, iceberg lettuce and jalapeño with just the right amount of bite. This masterpiece is finished off with Hesburger’s renowned paprika mayonnaise. Bravo! (Allergens: Gluten, Egg, Lactose, Milk protein)",
+          "price": "6,40 €",
+          "imageSrc": "hesburger/hesburger-8d25a25bbb43.jpeg"
+        },
+        {
+          "id": "hesburger-tortillas-1",
+          "title": "Chicken Tortilla Meal",
+          "description": "The meal contains a tortilla, French fries and a sugar-free soft drink 0,4 l.",
+          "price": "9,40 €",
+          "imageSrc": "hesburger/hesburger-8e6dbfbb31a0.jpeg"
+        },
+        {
+          "id": "hesburger-tortillas-2",
+          "title": "Large Chicken Tortilla Meal",
+          "description": "The meal contains a chicken tortilla, large French fries and a 0.5-litre soft drink.",
+          "price": "10,80 €",
+          "imageSrc": "hesburger/hesburger-c72142bb53ff.jpeg"
+        },
+        {
+          "id": "hesburger-tortillas-3",
+          "title": "Soy Tortilla",
+          "description": "This tortilla delicacy will even win over meat-lovers easily. Wrapped inside the wheat tortilla, you'll find fried soy fingers*, Greek-style cheese cubes, onion, tomato and crisp iceberg lettuce. Hesburger's amazing paprika mayonnaise adds the crowning touch. Try it. You'll regret it if you don't!\n* Soy finger: water, breadcrumbs (wheat flour, salt, yeast, wheat gluten, dextrose, potato), soyprotein (14 %), coating flour (wheat flour, wheat starch, salt), rapeseed oil, concentrate vegetable flour (salt, yeast extract, pumpkin, carrot, tomato, parsnip, sugar, parsley, olive oil, nutmeg, thyme, white pepper, bay leaf, coriander, rosemary), chili, lemon concentrate, seasonings (paprika, onion, garlic, black pepper, cayenne). (Allergens: Gluten, Soy, Egg, Lactose, Milk protein)",
+          "price": "5,25 €",
+          "imageSrc": "hesburger/hesburger-cad024419f5a.jpeg"
+        },
+        {
+          "id": "hesburger-tortillas-4",
+          "title": "VEKE® Soy Tortilla Meal",
+          "description": "The meal contains a tortilla, French fries and a soft drink 0,4 l.",
+          "price": "8,25 €",
+          "imageSrc": "hesburger/hesburger-d667c4557cb0.jpeg"
+        },
+        {
+          "id": "hesburger-tortillas-5",
+          "title": "Large Soy Tortilla Meal",
+          "description": "The meal contains a burger, large French fries and a 0.25-litre soft drink.",
+          "price": "9,65 €",
+          "imageSrc": "hesburger/hesburger-2f358c578af5.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "title": "Drinks",
+      "items": [
+        {
+          "id": "hesburger-drinks-0",
+          "title": "Coca-Cola",
+          "description": "The one and only Coca-Cola goes perfectly with hamburgers. Even though the recipe has remained a secret for around 130 years, it is known that Coke does not contain any preservatives or artificial flavourings. Cheers!",
+          "price": "2,10 €",
+          "imageSrc": "hesburger/hesburger-64aa15e394ac.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-1",
+          "title": "Coca-Cola Zero Sugar",
+          "description": "If you would like a lighter cola drink, go for a Coca-Cola Zero Sugar. It tastes just as full as the original Coke, but contains a mere 0.3 calories per decilitre. Cheers!",
+          "price": "2,10 €",
+          "imageSrc": "hesburger/hesburger-02605c119a1b.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-2",
+          "title": "Sprite",
+          "description": "Sprite No Sugar is a light and effective thirst-quencher. Its refreshing lemon-lime flavour is an excellent complement to hamburgers - just try it! Available in three sizes: small (0.25 l), regular (0.4 l) and large (0.5 l).",
+          "price": "2,10 €",
+          "imageSrc": "hesburger/hesburger-d68e38afd435.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-3",
+          "title": "Fanta",
+          "description": "Fanta is the world's most famous orange soft drink. Its fresh, summery, and irresistible taste pairs perfectly with hamburgers. Simply fantastic!\n\nAvailable in three sizes: small (0.25 l), regular (0.4 l), and large (0.5 l).",
+          "price": "2,10 €",
+          "imageSrc": "hesburger/hesburger-06e712d0d873.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-4",
+          "title": "Smoothie",
+          "description": "Are you looking for a refreshing breakfast, a convenient snack or a light way to end the day? Well, look no further and choose smoothie. Try our delicious berry and fruit mixed smoothie.",
+          "price": "2,35 €",
+          "imageSrc": "hesburger/hesburger-6fb829f419ad.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-5",
+          "title": "Põltsamaa Apple Drink",
+          "description": "This kids' favourite will not only quench their thirst, it will wash all their troubles away! Juice boxes must have a little magic in them.",
+          "price": "1,75 €",
+          "imageSrc": "hesburger/hesburger-51a82f2b7c0c.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-6",
+          "title": "Rasens Strawberry Milk",
+          "description": "Rasen fortified milk is an everyday children's favorite. It's easy to take along and drink whenever you crave something delicious and nourishing. Rasen contains natural nutrients and vitamins essential for an active and growing child's body. The milk provides 30% of the daily recommended intake for vitamins A, B, and D. It contains no preservatives, artificial colors, or flavors. Rasen – the most delicious choice for every growing child!",
+          "price": "1,75 €",
+          "imageSrc": "hesburger/hesburger-9aa7e24aeee2.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-7",
+          "title": "Rhubarb Lemonade",
+          "description": "Refreshing rhubarb lemonade is the best summer drink!",
+          "price": "2,00 €",
+          "imageSrc": "hesburger/hesburger-023605e59402.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-8",
+          "title": "Caramel iced latte",
+          "description": "Superb caramel-flavored iced drink based on espresso and milk. Mmmm... delightfully icy.",
+          "price": "2,90 €",
+          "imageSrc": "hesburger/hesburger-811f6e814545.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-9",
+          "title": "Ruby Chocolate Iced",
+          "price": "2,50 €",
+          "imageSrc": "hesburger/hesburger-247186f1a8e7.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-10",
+          "title": "Cappy Multifruit Juice",
+          "description": "Cappy Multi juice is a delightful blend of various fruits carefully selected for their unique flavors and nutritional benefits. This vibrant and refreshing .",
+          "price": "2,45 €",
+          "imageSrc": "hesburger/hesburger-b3630a890bd9.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-11",
+          "title": "Cappy Orange Juice",
+          "description": "If desired, you can substitute any soft drink for orange juice. Sugar-free, preservative-free, and additive-free orange juice has a great taste and is rich in vitamin C. A great drink!",
+          "price": "2,45 €",
+          "imageSrc": "hesburger/hesburger-9ad0e7fb9f6d.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-12",
+          "title": "Cappy Apple Juice",
+          "description": "Cappy Apple juice is a delicious and refreshing beverage made from the finest hand-picked apples. With its pure and natural taste, it captures the essence of crisp and juicy apples, providing a delightful drinking",
+          "price": "2,45 €",
+          "imageSrc": "hesburger/hesburger-633b0756e3db.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-13",
+          "title": "Neptūnas carbonised water 0,5 l",
+          "description": "Carbonated Neptūnas is an ideal drink for a meal, aiding digestion and maintaining the body's fluid balance.",
+          "price": "2,20 €",
+          "imageSrc": "hesburger/hesburger-e98ad4b389cc.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-14",
+          "title": "Neptūnas still water 0,5 l",
+          "description": "Neptūnas is an ideal drink for a meal, aiding digestion and maintaining the body's fluid balance.",
+          "price": "2,20 €",
+          "imageSrc": "hesburger/hesburger-d47aab89759a.jpeg"
+        },
+        {
+          "id": "hesburger-drinks-15",
+          "title": "Ice Tea Peach",
+          "description": "Peach-flavored non-carbonated tea drink with hibiscus and black tea extract. With sugars and sweetener.",
+          "price": "2,55 €",
+          "imageSrc": "hesburger/hesburger-dfd51b27b365.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "finger-food",
+      "title": "Finger food",
+      "items": [
+        {
+          "id": "hesburger-finger-food-0",
+          "title": "French Fries",
+          "description": "Hesburger’s golden, crispy fries are fried in 100% canola oil. They come in regular (90 g) or large (130 g) and go perfectly with, for example, Hesburger’s famous mayonnaise. Now that’s a snack!\n\nMay contain restaurant-specific gluten residue. (Allergens: Gluten)",
+          "price": "2,25 €",
+          "imageSrc": "hesburger/hesburger-60eb7f55cd4c.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-1",
+          "title": "Large French Fries",
+          "description": "Hesburger’s golden, crispy fries are fried in 100% canola oil. They come in regular (90 g) or large (130 g) and go perfectly with, for example, Hesburger’s famous mayonnaise. Now that’s a snack!\n\nMay contain restaurant-specific gluten residue. (Allergens: Gluten)",
+          "price": "3,15 €",
+          "imageSrc": "hesburger/hesburger-975b2f41244f.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-2",
+          "title": "Chili Cheese Bites",
+          "description": "New snack available! Chili Cheese Bites combine a little spiciness, delicious cheese and a crispy breaded crust. This is what you've been waiting for! (Allergens: Milk protein, Gluten, Lactose)",
+          "price": "1,90 €",
+          "imageSrc": "hesburger/hesburger-d5d82d1791b1.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-3",
+          "title": "6 pcs Chili Cheese Bites",
+          "description": "Cheese snacks available! Chili Cheese Bites have a mild kick, tasty cheese and a crispy breaded crust. Long awaited. (Allergens: Milk protein, Gluten, Lactose)",
+          "price": "2,70 €",
+          "imageSrc": "hesburger/hesburger-da14fa0fb2a4.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-4",
+          "title": "9 pcs Chili Cheese Bites",
+          "description": "Cheese snacks available! Chili Cheese Bites have a mild kick, tasty cheese and a crispy breaded crust. Long awaited. (Allergens: Milk protein, Gluten, Lactose)",
+          "price": "3,50 €",
+          "imageSrc": "hesburger/hesburger-201141ae3d2b.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-5",
+          "title": "Crispy chicken fillet 2 pcs + sauce",
+          "description": "Crispy and delicious... mmmm. Have you tried Hesburger's crispy chicken yet? This crispy chicken is so delicious, it's hard to say no.",
+          "price": "4,55 €",
+          "imageSrc": "hesburger/hesburger-980c2d0f25d2.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-6",
+          "title": "Crispy chicken fillet 4 pcs + Dip 2 pcs",
+          "price": "6,85 €",
+          "imageSrc": "hesburger/hesburger-d8a3f4e3bc36.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-7",
+          "title": "Crispy chicken fillet 6 pcs + Dip 3 pcs",
+          "price": "9,15 €",
+          "imageSrc": "hesburger/hesburger-6b0d14568c9e.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-8",
+          "title": "Chicken Nuggets 4 pcs + Dip",
+          "description": "Crispy, tasty chicken nuggets with your choice of dip.",
+          "price": "3,25 €",
+          "imageSrc": "hesburger/hesburger-f0584f4b3b97.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-9",
+          "title": "Chicken Nuggets 4 pcs Meal",
+          "description": "Hesburger chicken nuggets servings are also available as a meal. This meal contains a serving of chicken nuggets, normal French fries and a 0.25-litre soft drink.",
+          "price": "6,25 €",
+          "imageSrc": "hesburger/hesburger-336a04a00dd7.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-10",
+          "title": "Chicken Nuggets 4 pcs Large Meal",
+          "description": "Hesburger nugget servings are also available as a meal. The meal contains a serving of nuggets, large French fries and a 0.5-litre soft drink.",
+          "price": "7,65 €",
+          "imageSrc": "hesburger/hesburger-37491d05ef3d.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-11",
+          "title": "Chicken Nuggets 6 pcs + Dip",
+          "description": "Crispy, tasty chicken nuggets with your choice of dip.",
+          "price": "4,65 €",
+          "imageSrc": "hesburger/hesburger-c86846197974.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-12",
+          "title": "Chicken Nuggets 6 pcs Meal",
+          "description": "The meal contains nuggets, French fries and a soft drink 0,4 l.",
+          "price": "7,45 €",
+          "imageSrc": "hesburger/hesburger-b2cd8da03155.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-13",
+          "title": "Chicken Nuggets 6 pcs Large Meal",
+          "description": "Hesburger nugget servings are also available as a meal. The meal contains a serving of nuggets, large French fries and a 0.5-litre soft drink.",
+          "price": "8,85 €",
+          "imageSrc": "hesburger/hesburger-32110322a6e9.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-14",
+          "title": "Chicken Nuggets 9 pcs + Dip 2 pcs",
+          "description": "Crispy, tasty chicken nuggets with your choice of two dips.",
+          "price": "6,30 €",
+          "imageSrc": "hesburger/hesburger-b32b39d23980.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-15",
+          "title": "Chicken Nuggets 9 pcs Meal",
+          "description": "The meal contains nuggets, French fries and a soft drink 0,4 l.",
+          "price": "9,30 €",
+          "imageSrc": "hesburger/hesburger-cd4280b1df23.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-16",
+          "title": "Chicken Nuggets 9 pcs Large Meal",
+          "description": "Hesburger nugget servings are also available as a meal. The meal contains a serving of nuggets, large French fries and a 0.5-litre soft drink.",
+          "price": "10,70 €",
+          "imageSrc": "hesburger/hesburger-c64fbf08f1cf.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-17",
+          "title": "Chicken Nuggets 15 pcs + Dip 3 pcs",
+          "description": "Crispy, tasty chicken nuggets with your choice of three dips.",
+          "price": "9,65 €",
+          "imageSrc": "hesburger/hesburger-58bd9e95055c.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-18",
+          "title": "Chicken Nuggets 15 pcs Meal",
+          "description": "The meal contains nuggets, French fries and a soft drink 0,4 l.",
+          "price": "12,65 €",
+          "imageSrc": "hesburger/hesburger-ad8f9cf150d3.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-19",
+          "title": "Chicken Nuggets 15 pcs Large Meal",
+          "description": "Hesburger nugget servings are also available as a meal. The meal contains a serving of nuggets, large French fries and a 0.5-litre soft drink.",
+          "price": "14,05 €",
+          "imageSrc": "hesburger/hesburger-86a108f69aec.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-20",
+          "title": "Onion Rings 5 pcs + dip",
+          "description": "A serving of 5 onion rings and your choice of dip.",
+          "price": "3,05 €",
+          "imageSrc": "hesburger/hesburger-b3b9a6ab0cab.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-21",
+          "title": "Onion rings Meal",
+          "description": "The meal contains onion rings, French fries and a soft drink 0,4 l.",
+          "price": "6,05 €",
+          "imageSrc": "hesburger/hesburger-a66f1f81b8bd.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-22",
+          "title": "Onion rings Large Meal",
+          "description": "Hesburger onion ring servings are also available as a meal. The meal contains a serving of onion rings, large French fries and a 0.5-litre soft drink.",
+          "price": "7,45 €",
+          "imageSrc": "hesburger/hesburger-6cac209d745c.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-23",
+          "title": "VEKE® Soy Sticks 4 pcs + Dip",
+          "description": "Hesburger's Soy Fingers * are the perfect finger food – delicious, crispy and high in protein to boot. One serving contains 18% protein and 7% fibre. For an extra fee, you can also order the dip of your choice.",
+          "price": "2,20 €",
+          "imageSrc": "hesburger/hesburger-35b7154bc0dc.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-24",
+          "title": "VEKE® Soy Sticks 4 pcs Meal",
+          "description": "The meal contains VEKE® Soy Fingers, French fries and a soft drink 0,4 l.",
+          "price": "5,20 €",
+          "imageSrc": "hesburger/hesburger-06274f6e1f60.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-25",
+          "title": "VEKE® Soy Sticks 4 pcs Large Meal",
+          "description": "The meal contains a serving of soy strips, large French fries and a 0,5 l soft drink.",
+          "price": "6,65 €",
+          "imageSrc": "hesburger/hesburger-cd96e27b141c.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-26",
+          "title": "VEKE® Soy Sticks 6 pcs + Dip",
+          "description": "Hesburger's Soy Fingers * are the perfect finger food – delicious, crispy and high in protein to boot. One serving contains 18% protein and 7% fibre. For an extra fee, you can also order the dip of your choice.",
+          "price": "3,25 €",
+          "imageSrc": "hesburger/hesburger-032067c09cbf.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-27",
+          "title": "VEKE® Soy Sticks 6 pcs Meal",
+          "description": "The meal contains VEKE® Soy Fingers, French fries and a soft drink 0,4 l.",
+          "price": "6,25 €",
+          "imageSrc": "hesburger/hesburger-95d7f2f61ba6.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-28",
+          "title": "VEKE® Soy Sticks 6 pcs Large Meal",
+          "description": "Hesburger soy strip servings are also available as a meal. The meal contains a serving of soy strips, large French fries and a 0.5-litre soft drink.",
+          "price": "7,70 €",
+          "imageSrc": "hesburger/hesburger-747ca59ad64d.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-29",
+          "title": "VEKE® Soy Sticks 9 pcs + Dip 2 pcs",
+          "description": "Hesburger's Soy Fingers * are the perfect finger food – delicious, crispy and high in protein to boot. One serving contains 18% protein and 7% fibre. For an extra fee, you can also order the dip of your choice.",
+          "price": "4,20 €",
+          "imageSrc": "hesburger/hesburger-55a967f0f188.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-30",
+          "title": "VEKE® Soy Sticks 9 pcs Meal",
+          "description": "The meal contains VEKE® Soy Fingers, French fries and a soft drink 0,4 l.",
+          "price": "7,20 €",
+          "imageSrc": "hesburger/hesburger-616dc7eb1ab0.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-31",
+          "title": "VEKE® Soy Sticks 9 pcs Large Meal",
+          "description": "Hesburger soy strip servings are also available as a meal. The meal contains a serving of soy strips, large French fries and a 0.5-litre soft drink.",
+          "price": "8,60 €",
+          "imageSrc": "hesburger/hesburger-bc2741a26411.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-32",
+          "title": "VEKE® Soy Fingers 15 pcs + Dip 3 pcs",
+          "description": "Servings of VEKE® soy fingers are also available to buy separately. No matter how hungry you feel, high protein (18%) and fiber (7%) soy sticks and some dip are just the things to have! And yes, you have your choice of dip from the wide selection of Hesburger dips, of course.",
+          "price": "6,05 €",
+          "imageSrc": "hesburger/hesburger-19d242b600c2.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-33",
+          "title": "VEKE® Soy Sticks 15 pcs Meal",
+          "description": "The meal contains VEKE® Soy Fingers, French fries and a soft drink 0,4 l.",
+          "price": "9,05 €",
+          "imageSrc": "hesburger/hesburger-a82dbd596d7d.jpeg"
+        },
+        {
+          "id": "hesburger-finger-food-34",
+          "title": "VEKE® Soy Sticks 15 pcs Large Meal",
+          "description": "Hesburger soy strip servings are also available as a meal. The meal contains a serving of soy strips, large French fries and a 0.5-litre soft drink.",
+          "price": "10,45 €",
+          "imageSrc": "hesburger/hesburger-408014f21449.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "dressings",
+      "title": "Dressings",
+      "items": [
+        {
+          "id": "hesburger-dressings-0",
+          "title": "VEKEMAJO® Naturel mayonnaise sauce",
+          "description": "Hesburger’s VEKEMAJO® Naturel mayonnaise sauce is naturally perfect. We have heard comments of many tasting groups: “wonderful fresh taste” and “here is sauce at its best”. So if you want to make the most of your dipping or salad moments, your choice is this. (Allergens: Mustard)",
+          "price": "1,00 €",
+          "imageSrc": "hesburger/hesburger-9bf0fd4c56e8.jpeg"
+        },
+        {
+          "id": "hesburger-dressings-1",
+          "title": "Cucumber Mayonnaise",
+          "description": "Many love Hesburger’s foods just because of the mayonnaise – this comes as no surprise. For example, Hesburger’s renowned Cucumber Mayonnaise will positively sweep you off your feet. Developed in 1972, the recipe for our mayonnaise is secret, but the end result can be enjoyed to the full in any of our restaurants. Lip-smacking good! (Allergens: Mustard, Egg)",
+          "price": "1,00 €",
+          "imageSrc": "hesburger/hesburger-c680602584dd.jpeg"
+        },
+        {
+          "id": "hesburger-dressings-2",
+          "title": "Paprika Mayonnaise",
+          "description": "Hesburger’s legendary Paprika Mayonnaise has delighted hamburger-eaters since 1973. Even though it is an inseparable part of the Double Burger, you can still use it to season your fries, onion rings or even the Burger Salad. (Allergens: Egg)",
+          "price": "1,00 €",
+          "imageSrc": "hesburger/hesburger-9502241546e1.jpeg"
+        },
+        {
+          "id": "hesburger-dressings-3",
+          "title": "Curry Mayonnaise",
+          "description": "Our super-tasty Curry Mayonnaise is the perfect combination of sweet and spicy. This golden sauce goes well with, for example, chicken dishes. Yum. (Allergens: Egg, Mustard)",
+          "price": "1,00 €",
+          "imageSrc": "hesburger/hesburger-61424e91fbb2.jpeg"
+        },
+        {
+          "id": "hesburger-dressings-4",
+          "title": "VEKE® Chili Mayonnaise",
+          "description": "Hesburger’s VEKE® Chili Mayonnaise is just the right amount of spicy – it doesn’t burn, but it has a pretty good kick. Its rich, creamy consistency enhances the overall taste sensation. Try it with fries or chicken nuggets.",
+          "price": "1,00 €",
+          "imageSrc": "hesburger/hesburger-62c2e00339f0.jpeg"
+        },
+        {
+          "id": "hesburger-dressings-5",
+          "title": "Cheddar cheese sauce",
+          "description": "Nice and tasty Cheddar Cheese Sauce and French fries are made for each other. Gooood!",
+          "price": "1,00 €",
+          "imageSrc": "hesburger/hesburger-512c878189a5.jpeg"
+        },
+        {
+          "id": "hesburger-dressings-6",
+          "title": "House Salad Dressing Light",
+          "description": "This Hesburger salad dressing is proof positive that even ’light’ food can be delicious. The canola oil-based dressing is lightly seasoned, sweet and, well, no - we won’t spoil the surprise. Try it yourself. (Allergens: Mustard)",
+          "price": "1,00 €",
+          "imageSrc": "hesburger/hesburger-8804c9e6b4af.jpeg"
+        },
+        {
+          "id": "hesburger-dressings-7",
+          "title": "BBQ Dip",
+          "description": "Have you always thought that American-style BBQ sauce was just for meat dishes? If you did, you might be surprised when you try dipping chicken nuggets or onion rings in Hesburger's BBQ Dip. It just works!",
+          "price": "1,00 €",
+          "imageSrc": "hesburger/hesburger-c224099dbf8e.jpeg"
+        },
+        {
+          "id": "hesburger-dressings-8",
+          "title": "Sweet & Sour Dip",
+          "description": "Hesburger's fruity Sweet & Sour Dip will tickle your taste buds. The subtle bite of ginger is excellent with chicken nuggets and other chicken dishes. What do you say?",
+          "price": "1,00 €",
+          "imageSrc": "hesburger/hesburger-66e8e6a8a68c.jpeg"
+        },
+        {
+          "id": "hesburger-dressings-9",
+          "title": "VEKE® Garlic Mayonnaise",
+          "description": "Garlic gives a really good and fresh flavor to the sauce. Choose VEKE® Garlic Mayonnaise together with French fries, chicken nuggets or salad portions.",
+          "price": "1,00 €",
+          "imageSrc": "hesburger/hesburger-10577f1ca625.jpeg"
+        },
+        {
+          "id": "hesburger-dressings-10",
+          "title": "Ketchup",
+          "description": "Did you know that we makes our own super-tasty ketchup at our Kaarina factory? We began developing our own ketchup in the 1990s for the simple reason that the commercially-available alternatives did not bring enough of the flavour out of our hamburgers. Our hard work paid – just try it yourself.",
+          "price": "0,50 €",
+          "imageSrc": "hesburger/hesburger-7bf164fd6f51.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "salads",
+      "title": "Salads",
+      "items": [
+        {
+          "id": "hesburger-salads-0",
+          "title": "Greek Salad",
+          "description": "A tasty piece of Greece!\n\nThe fresh and hearty Greek salad contains plenty of Greek-style cheese cubes, crunchy lettuce, tomato, cucumber, fresh onion and, of course, Kalamata olives.\n\nThe salad comes with your choice of salad dressing and seed mix or croutons. As good as it gets!",
+          "price": "7,55 €",
+          "imageSrc": "hesburger/hesburger-bbc490f28319.jpeg"
+        },
+        {
+          "id": "hesburger-salads-1",
+          "title": "Burger Salad",
+          "description": "How would you like to try a burger without the bun? Eeva from our product development team has come up with a meal that is right up your alley. The Burger salad has two, hearty all-beef patties, crispy bacon, cheddar cheese, fresh onion, tomatoes, fresh cucumber and a crunchy salad. The salad comes with your choice of mayonnaise or salad dressing and seed mix or croutons. Thanks, Eeva!",
+          "price": "7,55 €",
+          "imageSrc": "hesburger/hesburger-1a3cf65df30e.jpeg"
+        },
+        {
+          "id": "hesburger-salads-2",
+          "title": "Warm Chicken Fillet Salad",
+          "description": "Warm, crispy fried breaded chicken fillet patty, Greek-style cheese cubes, fresh onion, tomatoes, fresh cucumbers and crisp salad – oh yeah! The salad comes with your choice of salad dressing and seed mix or croutons. It doesn’t get any better than this.\n\nMay contain gluten residue.",
+          "price": "7,55 €",
+          "imageSrc": "hesburger/hesburger-99ee2177b8ef.jpeg"
+        },
+        {
+          "id": "hesburger-salads-3",
+          "title": "Chicken Salad",
+          "description": "Hesburger’s Chicken Salad is always a sure bet. This delicious salad ensemble includes chicken fillet, Greek-style cheese cubes, fresh onion, tomatoes and cucumber on a fresh crunchy salad. The salad comes with your choice of salad dressing and seed mix or croutons. As good as it gets!",
+          "price": "7,55 €",
+          "imageSrc": "hesburger/hesburger-ab593f4b79f9.jpeg"
+        },
+        {
+          "id": "hesburger-salads-4",
+          "title": "Warm VEKE® Soy Finger Salad",
+          "description": "Crispy fried VEKE® soy fingers are in main ingredient in Warm Soy Salad dish. With soy fingers* we serve fresh onion, tomatoes, fresh cucumbers and of course crispy and fresh salad – Tasty and different choice! The salad comes with your choice of salad dressing and seed mix or croutons. It doesn't get any better than this.",
+          "price": "7,55 €",
+          "imageSrc": "hesburger/hesburger-d2d585350dd3.jpeg"
+        },
+        {
+          "id": "hesburger-salads-5",
+          "title": "Mini Salad + sauce",
+          "description": "The salad serving contains cherry tomatoes and fresh cucumber on a bed of iceberg lettuce.",
+          "price": "2,60 €",
+          "imageSrc": "hesburger/hesburger-1a3b94f8970c.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "milkshakes",
+      "title": "Milkshakes",
+      "items": [
+        {
+          "id": "hesburger-milkshakes-0",
+          "title": "Vanilla Milkshake",
+          "description": "Drink, dessert, snack, a way to cool off – milkshakes serve so many purposes, all the while making you a happy camper. Not a bad invention by any stretch! If your favourite colour happens to be white or you otherwise have classic tastes, let us recommend vanilla. (Allergens: Milk protein)",
+          "price": "2,25 €",
+          "imageSrc": "hesburger/hesburger-45319d9d62b1.jpeg"
+        },
+        {
+          "id": "hesburger-milkshakes-1",
+          "title": "Strawberry Milkshake",
+          "description": "Drink, dessert, snack, a way to cool off – milkshakes serve so many purposes, all the while making you a happy camper. Not a bad invention by any stretch! If you want escape into a carefree summer mood, even for just a bit, get yourself a strawberry milkshake. (Allergens: Milk protein)",
+          "price": "2,25 €",
+          "imageSrc": "hesburger/hesburger-c23571765a17.jpeg"
+        },
+        {
+          "id": "hesburger-milkshakes-2",
+          "title": "Chocolate Milkshake",
+          "description": "Drink, dessert, snack, a way to cool off – milkshakes serve so many purposes, all the while making you a happy camper. Not a bad invention by any stretch! If you are a chocolate lover, this is certainly the way to go. (Allergens: Milk protein)",
+          "price": "2,25 €",
+          "imageSrc": "hesburger/hesburger-1c7b6bfc9500.jpeg"
+        },
+        {
+          "id": "hesburger-milkshakes-3",
+          "title": "Banana Milkshake",
+          "description": "Drink, dessert, snack, a way to cool off – milkshakes serve so many purposes, all the while making you a happy camper. Not a bad invention by any stretch! If fruity flavours are your thing, then you cannot pass up a banana milkshake. (Allergens: Milk protein)",
+          "price": "2,25 €",
+          "imageSrc": "hesburger/hesburger-9ab229da6faf.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "title": "Desserts",
+      "items": [
+        {
+          "id": "hesburger-desserts-0",
+          "title": "White Chocolate Cookie",
+          "description": "This crisp, American-style cookie contains a miracle ingredient that will brighten even the gloomiest day: white chocolate. You see? Just the thought of it puts a smile on your face! (Allergens: Egg, Milk protein, Soy, Lactose, Gluten)",
+          "price": "2,00 €",
+          "imageSrc": "hesburger/hesburger-471f0ef74267.jpeg"
+        },
+        {
+          "id": "hesburger-desserts-1",
+          "title": "Double Chocolate Cookie",
+          "description": "This American-style cookie is like a little slice of heaven for chocolate lovers. You see, the cookie is stuffed with chunks of real milk chocolate and dark chocolate. Double-yum. (Allergens: Soy, Egg, Gluten, Lactose, Milk protein)",
+          "price": "2,00 €",
+          "imageSrc": "hesburger/hesburger-4d45c5632cbe.jpeg"
+        },
+        {
+          "id": "hesburger-desserts-2",
+          "title": "Doughnut with milk chocolate",
+          "description": "This delicious treat will satisfy even the biggest sweet tooth. Perfect with Hesburger's aromatic coffee. (Allergens: Gluten, Soybeans, Lactose, Milk, Egg)",
+          "price": "1,60 €",
+          "imageSrc": "hesburger/hesburger-77e1d9442aff.jpeg"
+        },
+        {
+          "id": "hesburger-desserts-3",
+          "title": "Doughnut with white chocolate",
+          "description": "A donut with white chocolate glaze can be described in just one word – exquisite! It pairs perfectly with Hesburger's aromatic coffee. (Allergens: Soybeans, Milk, Eggs, Gluten, Lactose)",
+          "price": "1,60 €",
+          "imageSrc": "hesburger/hesburger-48b55db95cce.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "hot-drinks",
+      "title": "Hot drinks",
+      "items": [
+        {
+          "id": "hesburger-hot-drinks-0",
+          "title": "Coffee",
+          "description": "3 HOT SIZES!\nA majority of the Hesburger restaurants in Finland, we only fill our coffee cups with aromatic Paulig Mundo coffee, which is both EU Organic and Fair Trade certified. In other words, the coffee is produced organically and in a way that treats growers fairly. Not only that, it is fantastically smooth and creamy. The perfect coffee!\nAvailable in three sizes 2 dl, 3 dl, 4 dl.",
+          "price": "1,80 €",
+          "imageSrc": "hesburger/hesburger-05a5288f5c46.jpeg"
+        },
+        {
+          "id": "hesburger-hot-drinks-1",
+          "title": "Large coffee",
+          "description": "Our black coffee is pleasantly mild, with soft chocolatey and nutty nuances. It is the king of our hot drinks, and therefore we have gone the extra mile to find a harmony and balance of flavors when creating it.",
+          "price": "2,55 €",
+          "imageSrc": "hesburger/hesburger-85cfc898701c.jpeg"
+        },
+        {
+          "id": "hesburger-hot-drinks-2",
+          "title": "Coffee with milk",
+          "description": "Milk coffee is a timeless classic! We've added just the right amount of milk to our black coffee to make its flavor creamy, smooth, and caramel-like. We certainly love it!",
+          "price": "1,80 €",
+          "imageSrc": "hesburger/hesburger-8b2d098793d9.jpeg"
+        },
+        {
+          "id": "hesburger-hot-drinks-3",
+          "title": "Large coffee with milk",
+          "description": "Milk coffee is a timeless classic! We've added just the right amount of milk to our black coffee to make its flavor creamy, smooth, and caramel-like. We certainly love it!",
+          "price": "2,55 €",
+          "imageSrc": "hesburger/hesburger-3e0705fdcf56.jpeg"
+        },
+        {
+          "id": "hesburger-hot-drinks-4",
+          "title": "Cafe Latte 300 ml",
+          "description": "Caffè Latte is a large coffee drink with the mildest flavor, as it contains the most milk compared to other drinks for the same amount of coffee. The larger amount of milk keeps caffeine in the body for a longer time, making Caffè Latte especially suitable as a morning coffee for sleepyheads.",
+          "price": "2,90 €",
+          "imageSrc": "hesburger/hesburger-34b37fb7a952.jpeg"
+        },
+        {
+          "id": "hesburger-hot-drinks-5",
+          "title": "Cappuccino 200 ml",
+          "description": "Cappuccino is a frothy coffee drink of medium strength - a classic among milk coffees. When adapting the cappuccino recipe, our baristas have ensured that the robust espresso and sweet milk foam create perfect harmony.",
+          "price": "2,60 €",
+          "imageSrc": "hesburger/hesburger-e59d8a1ef26d.jpeg"
+        },
+        {
+          "id": "hesburger-hot-drinks-6",
+          "title": "Flat White 200 ml",
+          "description": "Caffé \"\"Flat White\"\" – this is the new favorite drink of trendy coffee lovers! What distinguishes a flat white from a cappuccino is that it uses more coffee and its foam layer is much thinner, hence the word \"\"flat\"\" . Thanks to these aspects, the coffee flavor in a flat white really stands out!",
+          "price": "2,60 €",
+          "imageSrc": "hesburger/hesburger-c64e5f948427.jpeg"
+        },
+        {
+          "id": "hesburger-hot-drinks-7",
+          "title": "Tea",
+          "description": "Bradley’s Organic Black Tea Earl GrayEarl Gray is one of the most popular flavored black tea variants in the world. The full-bodied taste is the fresh aroma of Bergamot citrus fruit.Bradley’s Organic Green Tea LemonA refreshing and light tea that is a blend of tasty green tea and fresh lemon. The taste has a little tinge of lemon peel's sweet aromas.Bradley’s Organic Red Fruit InfusionA richly aromatic stew with rosehip, raspberry and blackcurrant in its rich and reddish flavor. Decaffeinated.Selection of Bradley's series (Oy Paulig Ab).\nAvailable in three sizes 2 dl, 3 dl, 4 dl.",
+          "price": "1,65 €",
+          "imageSrc": "hesburger/hesburger-6be149dc5f91.jpeg"
+        },
+        {
+          "id": "hesburger-hot-drinks-8",
+          "title": "Large tea",
+          "description": "Hesburger offers Cha organic tea. You can choose from the natural and excellent Pure Black, Pure Green, Mango Mango, Blueberry, and Peppermint flavors. Discover your favorite... Flavors may vary by restaurant.",
+          "price": "2,00 €",
+          "imageSrc": "hesburger/hesburger-857c2d9d6fa7.jpeg"
+        }
+      ]
+    }
+  ]
+}

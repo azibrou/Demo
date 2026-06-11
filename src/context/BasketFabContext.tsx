@@ -232,21 +232,20 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
       setMerchantLayoutReservePx(0)
       setCompactTabs(nextTotal > 0)
       if (merchantMode) {
-        setMerchantWideFabPhase(nextTotal > 0 ? 'collapsed' : 'hidden')
-        setMerchantTabSolo(false)
         setFabReservePx(0)
-        setFabReveal(nextTotal > 0)
         setFabLoading(false)
         setShowBasketBadge(false)
         if (nextTotal > 0) {
-          const rafScroll = window.requestAnimationFrame(() => {
-            const el = getMerchantScrollEl()
-            if (el && isMerchantScrollPastExpandTop(el.scrollTop)) {
-              setMerchantTabSolo(true)
-              setMerchantWideFabPhase('default')
-            }
-          })
-          rafIdsRef.current.push(rafScroll)
+          // Entering a merchant screen that already has items — skip the loading
+          // animation and snap directly to the wide ("default") state so the
+          // basket is immediately visible and expanded.
+          setMerchantWideFabPhase('default')
+          setMerchantTabSolo(true)
+          setFabReveal(true)
+        } else {
+          setMerchantWideFabPhase('hidden')
+          setMerchantTabSolo(false)
+          setFabReveal(false)
         }
       } else {
         setMerchantWideFabPhase('hidden')

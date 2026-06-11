@@ -275,7 +275,7 @@ export const mostPopular = [
     etaText: '15–20 min',
   },
   {
-    title: 'Little Japan Kesklinn',
+    title: 'Poke Bowl Kristiine',
     imageSrc: a.littleJapanKesklinn,
     deliveryLabel: '1,90 €',
     etaText: '40–45 min',
@@ -301,6 +301,18 @@ export const saveMe = [
     imageSrc: a.shaurmaKebabViruKeskus,
     deliveryLabel: '1,90 €',
     etaText: '10–15 min',
+  },
+  {
+    title: 'Amijami Sushi Kadriorg',
+    imageSrc: a.amijamiSushiKadriorg,
+    deliveryLabel: '1,90 €',
+    etaText: '25–35 min',
+  },
+  {
+    title: 'Damak Döner & Kebab',
+    imageSrc: a.damakDonerKebab,
+    deliveryLabel: '1,90 €',
+    etaText: '15–20 min',
   },
 ] as const
 

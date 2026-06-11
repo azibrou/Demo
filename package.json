@@ -17,11 +17,13 @@
     "kalep:icons:vendor": "node scripts/bootstrap-kalep-icons-vendor.mjs",
     "kalep:icons:prune-figma": "node scripts/prune-figma-glyph-sync.mjs",
     "bolt:assets": "node scripts/download-bolt-food-assets.mjs",
+    "bolt:stores:sync": "node scripts/fetch-bolt-stores-screen.mjs",
     "bolt:search:sync": "node scripts/fetch-bolt-search-banana.mjs",
     "ilforno:menu": "node scripts/fetch-ilforno-menu.mjs",
     "boltmarket:menu": "node scripts/fetch-bolt-market-menu.mjs",
     "boltmarket:categories": "node scripts/fetch-bolt-market-categories.mjs",
-    "components:export": "node scripts/export-demo-components.mjs"
+    "components:export": "node scripts/export-demo-components.mjs",
+    "restaurants:menu": "node scripts/fetch-restaurant-menus.mjs"
   },
   "dependencies": {
     "@bolteu/kalep-icons-svg": "file:vendor/kalep-icons-svg",

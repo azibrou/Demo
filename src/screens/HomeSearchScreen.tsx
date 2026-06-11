@@ -1,4 +1,5 @@
-import { useMemo, useRef, useState, useLayoutEffect } from 'react'
+import { useCallback, useMemo, useRef, useState, useLayoutEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { EaterSearchInput } from '../components/EaterSearchInput'
 import { HomeHorizontalScroll } from '../components/HomeHorizontalScroll'
 import { HomeSearchProviderResult } from '../components/HomeSearchProviderResult'
@@ -7,9 +8,11 @@ import { KalepIcon } from '../components/KalepIcon'
 import { ListItem } from '../components/ListItem'
 import { kalepIcons as ki } from '../lib/kalepIcons'
 import {
+  boltSearchProviderNavState,
   filterBoltSearchSnapshotByTab,
   formatBoltSearchResultCount,
   getBoltSearchSnapshot,
+  type BoltSearchProvider,
 } from '../lib/boltFoodTallinnSearchData'
 import {
   HOME_SEARCH_CATEGORIES,
@@ -30,9 +33,20 @@ function FilterChipIcon({ name }: { name: Parameters<typeof KalepIcon>[0]['name'
  * Home search — Figma 78810:114696 (Results / Suggestions).
  */
 export function HomeSearchScreen({ onCancel }: HomeSearchScreenProps) {
+  const navigate = useNavigate()
   const inputRef = useRef<HTMLInputElement>(null)
   const [query, setQuery] = useState('')
   const [activeTab, setActiveTab] = useState<HomeSearchTab>('All')
+
+  const onSelectProvider = useCallback(
+    (provider: BoltSearchProvider) => {
+      const navState = boltSearchProviderNavState(provider)
+      const path = navState.kind === 'store' ? '/store-merchant' : '/restaurant'
+      navigate(path, { state: navState })
+      onCancel()
+    },
+    [navigate, onCancel],
+  )
 
   const searchSnapshot = useMemo(() => getBoltSearchSnapshot(query), [query])
   const filteredSnapshot = useMemo(
@@ -113,7 +127,11 @@ export function HomeSearchScreen({ onCancel }: HomeSearchScreenProps) {
             </div>
             <div className="home-search-screen__providers flex w-full flex-col gap-3 pb-6">
               {filteredSnapshot.providers.map((provider) => (
-                <HomeSearchProviderResult key={provider.id} provider={provider} />
+                <HomeSearchProviderResult
+                  key={provider.id}
+                  provider={provider}
+                  onSelectProvider={onSelectProvider}
+                />
               ))}
             </div>
           </div>

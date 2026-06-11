@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { KalepIcon } from './KalepIcon'
 import { WideBasketFab } from './WideBasketFab'
 import { useHomeSearchWideBasketFab } from '../hooks/useHomeSearchWideBasketFab'
@@ -30,6 +31,17 @@ export function RestaurantMerchantSearch({ onSearchClick, className = '' }: Rest
   /** Search collapses to a circle only once the basket has finished loading and expands. */
   const basketExpanded = visible && state === 'default'
 
+  // Nonce bumped on every count increment — causes WideBasketFab to remount the
+  // counter span and replay the badge-pop bounce animation.
+  const [counterPopNonce, setCounterPopNonce] = useState(0)
+  const prevCountRef = useRef(count)
+  useEffect(() => {
+    if (count > 0 && count !== prevCountRef.current) {
+      setCounterPopNonce((n) => n + 1)
+    }
+    prevCountRef.current = count
+  }, [count])
+
   return (
     <div
       className={['restaurant-merchant-search-chrome', className].filter(Boolean).join(' ')}
@@ -61,6 +73,7 @@ export function RestaurantMerchantSearch({ onSearchClick, className = '' }: Rest
             state={state}
             count={count}
             totalLabel={total > 0 ? formatEuro(total) : ''}
+            counterPopNonce={counterPopNonce}
             revealed
           />
         </div>

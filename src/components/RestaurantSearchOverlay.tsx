@@ -15,7 +15,8 @@ import { SimpleItem } from './SimpleItem'
 import type { RestaurantAssortmentItem } from '../lib/restaurantMerchantContent'
 
 const FADE_MS = 150
-const FADE_EASE = 'ease-out'
+const SLIDE_MS = 200
+const EASE = 'ease-out'
 
 export type RestaurantSearchOverlayProps = {
   /** Searchable items for the current restaurant. */
@@ -84,8 +85,9 @@ export function RestaurantSearchOverlay({ assortment, onClose }: RestaurantSearc
     setOffscreen(true)
   }, [])
 
-  const onOverlayTransitionEnd = useCallback((e: TransitionEvent<HTMLDivElement>) => {
-    if (e.propertyName !== 'opacity') return
+  /** Wait for the panel slide to finish before unmounting. */
+  const onPanelTransitionEnd = useCallback((e: TransitionEvent<HTMLDivElement>) => {
+    if (e.propertyName !== 'transform') return
     if (e.target !== e.currentTarget) return
     if (!closingRef.current) return
     onCloseRef.current()
@@ -101,21 +103,31 @@ export function RestaurantSearchOverlay({ assortment, onClose }: RestaurantSearc
     )
   }, [query, assortment])
 
-  const overlayStyle = {
+  /** Scrim: pure opacity fade. */
+  const scrimStyle = {
     opacity: offscreen ? 0 : 1,
-    transition: transitionOn ? `opacity ${FADE_MS}ms ${FADE_EASE}` : 'none',
+    transition: transitionOn ? `opacity ${FADE_MS}ms ${EASE}` : 'none',
+  } as CSSProperties
+
+  /** Panel: slides down from above. */
+  const panelStyle = {
+    transform: offscreen ? 'translateY(-100%)' : 'translateY(0)',
+    transition: transitionOn ? `transform ${SLIDE_MS}ms ${EASE}` : 'none',
   } as CSSProperties
 
   const overlay = (
     <div
       className="restaurant-search-overlay motion-reduce:transition-none"
-      style={overlayStyle}
-      onTransitionEnd={onOverlayTransitionEnd}
+      style={scrimStyle}
       role="dialog"
       aria-modal="true"
       aria-label="Search menu"
     >
-      <div className="restaurant-search-overlay__panel home-gutter-inline w-full shrink-0 pb-2 pt-[max(12px,env(safe-area-inset-top,0px))]">
+      <div
+        className="restaurant-search-overlay__panel home-gutter-inline w-full shrink-0 pb-2 pt-[max(12px,env(safe-area-inset-top,0px))] motion-reduce:transition-none"
+        style={panelStyle}
+        onTransitionEnd={onPanelTransitionEnd}
+      >
         <EaterSearchInput
           value={query}
           onChange={setQuery}

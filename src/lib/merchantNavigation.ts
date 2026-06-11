@@ -75,6 +75,34 @@ export function isBoltMarketToompuiesteeLabel(line1: string): boolean {
   return line1 === retailSnippetStore.name
 }
 
+/** Title field on store carousels / lists — same merchant as {@link isBoltMarketToompuiesteeLabel}. */
+export function isBoltMarketToompuiesteeTitle(title: string): boolean {
+  return isBoltMarketToompuiesteeLabel(title)
+}
+
+/**
+ * Build a minimal restaurant nav state from an "Order again" tile so tapping
+ * it opens the merchant screen. Only `name` and `imageSrc` are available; the
+ * rest falls back to sensible defaults (the merchant screen resolves real
+ * content by name from {@link resolveRestaurantContent}).
+ */
+export function orderAgainRestaurantNavState(
+  name: string,
+  imageSrc: string,
+): RestaurantMerchantNavState {
+  return {
+    kind: 'restaurant',
+    name,
+    heroImageSrc: imageSrc,
+    rating: '4.7',
+    reviews: '(500+)',
+    deliveryPrice: '1,90 €',
+    deliveryLabel: 'delivery',
+    eta: '20',
+    etaLabel: 'min',
+  }
+}
+
 /** Restaurant merchant — bottom search chrome (Figma 79562:242428) instead of the merchant tab bar. */
 export const PAVLOVA_VIRU_KESKUS_NAME = 'Pavlova Viru Keskus' as const
 

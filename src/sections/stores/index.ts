@@ -1,3 +1,4 @@
+export { StoresOrderAgainBlock } from './StoresOrderAgainBlock'
 export { StoreProviderHeaderBlock } from './StoreProviderHeaderBlock'
 export { StoresAllStoresBlock } from './StoresAllStoresBlock'
 export { StoresFeaturedStoreBlock } from './StoresFeaturedStoreBlock'

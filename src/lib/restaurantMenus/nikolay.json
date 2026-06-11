@@ -1,0 +1,503 @@
+{
+  "source": "https://food.bolt.eu/en/1-tallinn/p/21700-nikolay-bar-buffee/",
+  "provider": {
+    "name": "Nikolay Bar-buffeé",
+    "cover": null
+  },
+  "sections": [
+    {
+      "id": "new-menu",
+      "title": "New Menu",
+      "items": [
+        {
+          "id": "nikolay-new-menu-0",
+          "title": "Pie-Burger",
+          "description": "`Beef patty, cheddar cheese, pickles, red onion jam, homemade BBQ sauce",
+          "price": "16,00 €",
+          "imageSrc": "nikolay/nikolay-2de47df26082.jpeg"
+        },
+        {
+          "id": "nikolay-new-menu-1",
+          "title": "Omelette with Shrimp and Avocado",
+          "description": "Ingredients: omelette with cocktail shrimp, avocado, Philadelphia cream cheese, cherry tomatoes, lamb's lettuce and balsamic glaze.\n\nAllergens: eggs, milk, seafood.",
+          "price": "16,50 €",
+          "imageSrc": "nikolay/nikolay-2f117cd775a7.jpeg"
+        },
+        {
+          "id": "nikolay-new-menu-2",
+          "title": "Porridge",
+          "description": "Ingredients: fresh strawberries, pecan nuts, brown sugar, vanilla extract.\n\nAllergens: gluten, milk, nuts.\n\nBerry Porridge with Homemade Rhubarb & Orange Jam\n\nIngredients:\nOat porridge, mixed berries, homemade rhubarb and orange jam (rhubarb, orange, sugar), almonds, vanilla extract, cinnamon.\n\nAllergens:\nGluten (oats), almonds (tree nuts), orange, cinnamon, vanilla.",
+          "price": "4,00 €",
+          "imageSrc": "nikolay/nikolay-f4bfdf4f35db.jpeg"
+        },
+        {
+          "id": "nikolay-new-menu-3",
+          "title": "Homemade Chicken Strips with French Fries",
+          "description": "Ingredients: chicken fillet, eggs, flour, panko breadcrumbs, French fries, dill, parsley, salt, pepper, ketchup.\n\nAllergens: gluten, eggs.",
+          "price": "11,50 €",
+          "imageSrc": "nikolay/nikolay-9c247c66a95a.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "new",
+      "title": "New",
+      "items": [
+        {
+          "id": "nikolay-new-0",
+          "title": "Homemade Chicken Strips with French Fries",
+          "description": "Ingredients: chicken fillet, eggs, flour, panko breadcrumbs, French fries, dill, parsley, salt, pepper, ketchup.\n\nAllergens: gluten, eggs.",
+          "price": "11,50 €",
+          "imageSrc": "nikolay/nikolay-9c247c66a95a.jpeg"
+        },
+        {
+          "id": "nikolay-new-1",
+          "title": "Pie-Burger",
+          "description": "`Beef patty, cheddar cheese, pickles, red onion jam, homemade BBQ sauce",
+          "price": "16,00 €",
+          "imageSrc": "nikolay/nikolay-2de47df26082.jpeg"
+        },
+        {
+          "id": "nikolay-new-2",
+          "title": "Pistachio and Raspberry",
+          "description": "Pistachio cream, raspberries, mascarpone",
+          "price": "5,00 €",
+          "imageSrc": "nikolay/nikolay-44629fc384c0.jpeg"
+        },
+        {
+          "id": "nikolay-new-3",
+          "title": "Meat Chebure",
+          "description": "50% beef, 50% pork, onion, spicy tomato sauce",
+          "price": "8,00 €",
+          "imageSrc": "nikolay/nikolay-48f85dc17d3c.jpeg"
+        },
+        {
+          "id": "nikolay-new-4",
+          "title": "Chicken salad with celery and apples",
+          "description": "Apples, celery, iceberg lettuce, chicken, mustard, greek yogurt, honey, lemon, walnuts, lingonberries, ciabatta, parmesan cheese, salt, pepper, oregano.\nAllergens: celery, lactose, honey, walnuts, gluten.",
+          "price": "9,50 €",
+          "imageSrc": "nikolay/nikolay-159f157c1247.jpeg"
+        },
+        {
+          "id": "nikolay-new-5",
+          "title": "Chicken & baked potatoes",
+          "description": "Chicken, baked potatoes, cream sauce, leek, soy sauce, garlic, sesame seeds\nAllergens: chicken, lactose, leek, soy, sesame seeds",
+          "price": "14,00 €",
+          "imageSrc": "nikolay/nikolay-c1caca307313.jpeg"
+        },
+        {
+          "id": "nikolay-new-6",
+          "title": "Cold borscht",
+          "description": "Cold borscht with eggs, cucumber and potatoes",
+          "price": "10,00 €",
+          "imageSrc": "nikolay/nikolay-66425adcd8fa.jpeg"
+        },
+        {
+          "id": "nikolay-new-7",
+          "title": "Okroshka with kefir",
+          "description": "Classical Russian cold soup based on kefir with cucumber, potatoes, eggs, dill, parsley, green onions, radish, ham and creamy horseradish sauce.",
+          "price": "10,00 €",
+          "imageSrc": "nikolay/nikolay-60e8d13cedfc.jpeg"
+        },
+        {
+          "id": "nikolay-new-8",
+          "title": "Beefstroganoff with buckwheat",
+          "description": "Beef tenderloin, champignon, onions, cream, sour cream, salt, black pepper, pickled cucumbers, dill, parsley, buckwheat.\nAllergens: beef, lactose, buckwheat",
+          "price": "16,00 €",
+          "imageSrc": "nikolay/nikolay-61e9a0dc4846.jpeg"
+        },
+        {
+          "id": "nikolay-new-9",
+          "title": "Four cheese pie with herbs",
+          "description": "Mozzarella cheese, parmesan cheese, feta cheese, grated cheese, dill, parsley, sour cream.\nAllergens: gluten, lactose, eggs, sesame",
+          "price": "4,25 €",
+          "imageSrc": "nikolay/nikolay-f2dee6bd82ca.jpeg"
+        },
+        {
+          "id": "nikolay-new-10",
+          "title": "Strawberry and rhubarb pie",
+          "description": "Strawberries, rhubarb, sugar\nAllergens: gluten, lactose, eggs",
+          "price": "3,75 €",
+          "imageSrc": "nikolay/nikolay-4cb583ce310c.jpeg"
+        },
+        {
+          "id": "nikolay-new-11",
+          "title": "Beef stroganoff with mashed potatoes",
+          "description": "Beef tenderloin, champignon, onions, cream, sour cream, salt, black pepper, pickled cucumbers, dill, parsley, mashed potatoes. \nAllergens: beef, lactose",
+          "price": "16,00 €",
+          "imageSrc": "nikolay/nikolay-1e8970e46980.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "breakfast",
+      "title": "Breakfast",
+      "items": [
+        {
+          "id": "nikolay-breakfast-0",
+          "title": "Rice porridge with homemade jam",
+          "description": "Rice porridge with homemade jam and apples covered in honey and cinnamon\nDear friends!\nDue to supply disruptions, our packaging may differ from what you are used to seeing. For example, a package for porridge may not be 250 ml, but 500 ml. This may give the impression that we have prepared a dish for you of a smaller quantity than before. We assure you it's not. Weight is always the same.\n:)\nAllergens: lactose, honey, strawberry",
+          "price": "6,00 €",
+          "imageSrc": "nikolay/nikolay-79d5dbc6f1b1.jpeg"
+        },
+        {
+          "id": "nikolay-breakfast-1",
+          "title": "Fried Eggs with Buttered Toast and Tomatoes",
+          "description": "Fried eggs with buttered toast and tomatoes. Bacon is not included, but you can order it as an extra.\nAllergens: chicken eggs, gluten, and if you order with bacon then pork",
+          "price": "6,00 €",
+          "imageSrc": "nikolay/nikolay-dbfe1b8ebe0a.jpeg"
+        },
+        {
+          "id": "nikolay-breakfast-2",
+          "title": "Omlette with Salmon, Tomatoes and Philadelphia",
+          "description": "Omlette with salmon, tomatoes and philadelphia cheese.\nAllergens: chicken eggs, lactose, salmon",
+          "price": "13,00 €",
+          "imageSrc": "nikolay/nikolay-f108095cfd2a.jpeg"
+        },
+        {
+          "id": "nikolay-breakfast-3",
+          "title": "Omlette with Ham and Smoked Cheese",
+          "description": "Omlette with ham, tomatoes and smoked cheese.\nAllergens: chicken eggs, pork, lactose",
+          "price": "10,00 €",
+          "imageSrc": "nikolay/nikolay-15ff5d16e832.jpeg"
+        },
+        {
+          "id": "nikolay-breakfast-4",
+          "title": "Homemade Syrniki",
+          "description": "Syrniki with grapes and apples covered in honey and cinnamon. Served with sour cream and jam\nAllergens: eggs, lactose, honey, strawberry",
+          "price": "8,50 €",
+          "imageSrc": "nikolay/nikolay-907afdfb68d9.jpeg"
+        },
+        {
+          "id": "nikolay-breakfast-5",
+          "title": "English Breakfast",
+          "description": "Traditional english breakfast with 2 eggs, sausages, bacon, mushrooms, tomatoes, toast and red beans.\nAllergens: eggs, gluten, red beans, pork, beef",
+          "price": "15,50 €",
+          "imageSrc": "nikolay/nikolay-d2d8b1c40bc7.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "salads",
+      "title": "Salads",
+      "items": [
+        {
+          "id": "nikolay-salads-0",
+          "title": "Chicken salad with celery and apples",
+          "description": "Apples, celery, iceberg lettuce, chicken, mustard, greek yogurt, honey, lemon, walnuts, lingonberries, ciabatta, parmesan cheese, salt, pepper, oregano.\nAllergens: celery, lactose, honey, walnuts, gluten.",
+          "price": "9,50 €",
+          "imageSrc": "nikolay/nikolay-159f157c1247.jpeg"
+        },
+        {
+          "id": "nikolay-salads-1",
+          "title": "Greek Salad",
+          "description": "Tomatoes, feta cheese, cucumber, paprika, onion and black olives. Suitable for vegetarians\nAllergens: lactose",
+          "price": "9,50 €",
+          "imageSrc": "nikolay/nikolay-ccb0b350b0cd.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "soups",
+      "title": "Soups",
+      "items": [
+        {
+          "id": "nikolay-soups-0",
+          "title": "Okroshka with kvass",
+          "description": "Classical Russian cold soup based on kvass with cucumber, potatoes, eggs, dill, parsley, green onions, radish, ham and creamy horseradish sauce.",
+          "price": "10,00 €",
+          "imageSrc": "nikolay/nikolay-dd8ef6053461.jpeg"
+        },
+        {
+          "id": "nikolay-soups-1",
+          "title": "Cold borscht",
+          "description": "Cold borscht with eggs, cucumber and potatoes",
+          "price": "10,00 €",
+          "imageSrc": "nikolay/nikolay-66425adcd8fa.jpeg"
+        },
+        {
+          "id": "nikolay-soups-2",
+          "title": "Okroshka with kefir",
+          "description": "Classical Russian cold soup based on kefir with cucumber, potatoes, eggs, dill, parsley, green onions, radish, ham and creamy horseradish sauce.",
+          "price": "10,00 €",
+          "imageSrc": "nikolay/nikolay-60e8d13cedfc.jpeg"
+        },
+        {
+          "id": "nikolay-soups-3",
+          "title": "Chicken Soup with Egg",
+          "description": "Chicken soup with chicken meat and egg\nAllergens: chicken, eggs (Allergens for the cheese bun are gluten and lactose)",
+          "price": "6,50 €",
+          "imageSrc": "nikolay/nikolay-8e110b2523e6.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "main-courses",
+      "title": "Main courses",
+      "items": [
+        {
+          "id": "nikolay-main-courses-0",
+          "title": "Pie-Burger",
+          "description": "`Beef patty, cheddar cheese, pickles, red onion jam, homemade BBQ sauce",
+          "price": "16,00 €",
+          "imageSrc": "nikolay/nikolay-2de47df26082.jpeg"
+        },
+        {
+          "id": "nikolay-main-courses-1",
+          "title": "Meat Chebure",
+          "description": "50% beef, 50% pork, onion, spicy tomato sauce",
+          "price": "8,00 €",
+          "imageSrc": "nikolay/nikolay-48f85dc17d3c.jpeg"
+        },
+        {
+          "id": "nikolay-main-courses-2",
+          "title": "Chicken & baked potatoes",
+          "description": "Chicken, baked potatoes, cream sauce, leek, soy sauce, garlic, sesame seeds\nAllergens: chicken, lactose, leek, soy, sesame seeds",
+          "price": "14,00 €",
+          "imageSrc": "nikolay/nikolay-c1caca307313.jpeg"
+        },
+        {
+          "id": "nikolay-main-courses-3",
+          "title": "Beefstroganoff with buckwheat",
+          "description": "Beef tenderloin, champignon, onions, cream, sour cream, salt, black pepper, pickled cucumbers, dill, parsley, buckwheat.\nAllergens: beef, lactose, buckwheat",
+          "price": "16,00 €",
+          "imageSrc": "nikolay/nikolay-61e9a0dc4846.jpeg"
+        },
+        {
+          "id": "nikolay-main-courses-4",
+          "title": "Beef stroganoff with mashed potatoes",
+          "description": "Beef tenderloin, champignon, onions, cream, sour cream, salt, black pepper, pickled cucumbers, dill, parsley, mashed potatoes. \nAllergens: beef, lactose",
+          "price": "16,00 €",
+          "imageSrc": "nikolay/nikolay-1e8970e46980.jpeg"
+        },
+        {
+          "id": "nikolay-main-courses-5",
+          "title": "Homemade Dumplings",
+          "description": "Homemade dumplings with beef and pork\nAllergens: gluten, eggs, lactose, beef, pork",
+          "price": "10,00 €",
+          "imageSrc": "nikolay/nikolay-72936b9434c1.jpeg"
+        },
+        {
+          "id": "nikolay-main-courses-6",
+          "title": "Homemade Pierogi with Potatoes and Mushrooms",
+          "description": "Homemade pierogi with potatoes and mushrooms\nAllergens: gluten, eggs, lactose",
+          "price": "8,00 €",
+          "imageSrc": "nikolay/nikolay-9511b58b1dd0.jpeg"
+        },
+        {
+          "id": "nikolay-main-courses-7",
+          "title": "Homemade Pierogi with Cherries and Curd",
+          "description": "Homemade pierogi with cherries and curd\nAllergens: gluten, eggs, lactose",
+          "price": "8,50 €",
+          "imageSrc": "nikolay/nikolay-28d7be4ff24a.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "salty-pies",
+      "title": "Salty Pies",
+      "items": [
+        {
+          "id": "nikolay-salty-pies-0",
+          "title": "Four cheese pie with herbs",
+          "description": "Mozzarella cheese, parmesan cheese, feta cheese, grated cheese, dill, parsley, sour cream.\nAllergens: gluten, lactose, eggs, sesame",
+          "price": "4,25 €",
+          "imageSrc": "nikolay/nikolay-f2dee6bd82ca.jpeg"
+        },
+        {
+          "id": "nikolay-salty-pies-1",
+          "title": "Spinach with Feta Cheese Pie",
+          "description": "Pie with spinach and feta cheese\nAllergens: gluten, lactose, eggs",
+          "price": "3,50 €",
+          "imageSrc": "nikolay/nikolay-86f8cacee2f2.jpeg"
+        },
+        {
+          "id": "nikolay-salty-pies-2",
+          "title": "Salmon-Spinach and Cream Cheese Bun",
+          "description": "Salmon with spinach, cream cheese, sour cream, sauce and dill\nAllergens: gluten, lactose, eggs, salmon, sesame seeds",
+          "price": "4,75 €",
+          "imageSrc": "nikolay/nikolay-a4257fdc842f.jpeg"
+        },
+        {
+          "id": "nikolay-salty-pies-3",
+          "title": "Cabbage and Egg Pie",
+          "description": "Handmade pie with cabbage and boiled eggs. Suitable for vegetarians\nAllergens: gluten, lactose, eggs",
+          "price": "3,00 €",
+          "imageSrc": "nikolay/nikolay-2e286a8c818c.jpeg"
+        },
+        {
+          "id": "nikolay-salty-pies-4",
+          "title": "Kurnik Pie (Chicken Pie)",
+          "description": "Handmade pie with chicken, rice, mushrooms and homemade pancakes\nAllergens: gluten, lactose, eggs, chicken",
+          "price": "4,50 €",
+          "imageSrc": "nikolay/nikolay-b849803c3c54.jpeg"
+        },
+        {
+          "id": "nikolay-salty-pies-5",
+          "title": "Potatoes and Mushrooms Pie",
+          "description": "Handmade pie with potatoes, mushrooms and cheese. Suitable for vegetarians\nAllergens: gluten, lactose, eggs",
+          "price": "3,50 €",
+          "imageSrc": "nikolay/nikolay-70a72f92e3c8.jpeg"
+        },
+        {
+          "id": "nikolay-salty-pies-6",
+          "title": "Turkey and Dried Plums Pie",
+          "description": "Handmade pie with turkey, prunes, curry sauce and cheese\nAllergens: gluten, lactose, eggs, turkey, sesame seeds",
+          "price": "4,25 €",
+          "imageSrc": "nikolay/nikolay-79ca6a971083.jpeg"
+        },
+        {
+          "id": "nikolay-salty-pies-7",
+          "title": "Beef Pie",
+          "description": "Handmade pie with beef and egg\nAllergens: gluten, lactose, eggs, beef",
+          "price": "5,00 €",
+          "imageSrc": "nikolay/nikolay-a9351924f4c8.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "sweet-pies",
+      "title": "Sweet Pies",
+      "items": [
+        {
+          "id": "nikolay-sweet-pies-0",
+          "title": "Pistachio and Raspberry",
+          "description": "Pistachio cream, raspberries, mascarpone",
+          "price": "5,00 €",
+          "imageSrc": "nikolay/nikolay-44629fc384c0.jpeg"
+        },
+        {
+          "id": "nikolay-sweet-pies-1",
+          "title": "Strawberry and rhubarb pie",
+          "description": "Strawberries, rhubarb, sugar\nAllergens: gluten, lactose, eggs",
+          "price": "3,75 €",
+          "imageSrc": "nikolay/nikolay-4cb583ce310c.jpeg"
+        },
+        {
+          "id": "nikolay-sweet-pies-2",
+          "title": "Pie with Marzipan",
+          "description": "Pie with marzipan, apples and apricot\nAllergens: gluten, lactose, eggs, almonds",
+          "price": "4,00 €",
+          "imageSrc": "nikolay/nikolay-62af5e1e3fc1.jpeg"
+        },
+        {
+          "id": "nikolay-sweet-pies-3",
+          "title": "Pie with Poppy Seeds and Honey",
+          "description": "Pie with poppy seeds and honey\nAllergens: gluten, lactose, eggs, honey",
+          "price": "3,25 €",
+          "imageSrc": "nikolay/nikolay-8757ae15cfc6.jpeg"
+        },
+        {
+          "id": "nikolay-sweet-pies-4",
+          "title": "Strawberry and Curd Pie",
+          "description": "Handmade pie with strawberry and cottage cheese Suitable for vegetarians\nAllergens: gluten, lactose, eggs",
+          "price": "4,00 €",
+          "imageSrc": "nikolay/nikolay-fdf31ab312ba.jpeg"
+        },
+        {
+          "id": "nikolay-sweet-pies-5",
+          "title": "Cherry Pie",
+          "description": "Handmade pie with cherries. Suitable for vegetarians\nAllergens: gluten, lactose, eggs",
+          "price": "4,00 €",
+          "imageSrc": "nikolay/nikolay-461181d4355c.jpeg"
+        },
+        {
+          "id": "nikolay-sweet-pies-6",
+          "title": "Cherry and Curd Pie",
+          "description": "Handmade pie with cherries and cottage cheese. Suitable for vegetarians\nAllergens: gluten, lactose, eggs",
+          "price": "4,00 €",
+          "imageSrc": "nikolay/nikolay-ffd6052bdef0.jpeg"
+        },
+        {
+          "id": "nikolay-sweet-pies-7",
+          "title": "Apple and Cinnamon Pie",
+          "description": "Handmade pie with apples and cinnamon. Suitable for vegetarians\nAllergens: gluten, lactose, eggs",
+          "price": "2,75 €",
+          "imageSrc": "nikolay/nikolay-6bd4747dd750.jpeg"
+        },
+        {
+          "id": "nikolay-sweet-pies-8",
+          "title": "Raspberries, Cottage Cheese and White Chocolate Pie",
+          "description": "Handmade pie with raspberry, cottage cheese and white chocolate. Suitable for vegetarians\nAllergens: gluten, lactose, eggs",
+          "price": "4,00 €",
+          "imageSrc": "nikolay/nikolay-767321ad641b.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "title": "Drinks",
+      "items": [
+        {
+          "id": "nikolay-drinks-0",
+          "title": "Rhubarb juice 0.5 L",
+          "description": "Rhubarb homemade juice",
+          "price": "6,50 €",
+          "imageSrc": "nikolay/nikolay-bc546594f57c.jpeg"
+        },
+        {
+          "id": "nikolay-drinks-1",
+          "title": "Coca-Cola 0,25 l",
+          "description": "Soft drink",
+          "price": "5,00 €",
+          "imageSrc": "nikolay/nikolay-263e619a66bb.png"
+        },
+        {
+          "id": "nikolay-drinks-2",
+          "title": "Coca-Cola Zero 0,25 l",
+          "description": "Soft drink",
+          "price": "5,00 €",
+          "imageSrc": "nikolay/nikolay-acf4f0809023.png"
+        },
+        {
+          "id": "nikolay-drinks-3",
+          "title": "Red Bull 0,25 l",
+          "description": "Energy drink",
+          "price": "5,00 €",
+          "imageSrc": "nikolay/nikolay-211c731e2c51.png"
+        },
+        {
+          "id": "nikolay-drinks-4",
+          "title": "Red Bull Sugar Free 0,25 l",
+          "description": "Energy drink",
+          "price": "5,00 €",
+          "imageSrc": "nikolay/nikolay-e9c0b3c5ffdf.png"
+        }
+      ]
+    },
+    {
+      "id": "alcoholic-drinks",
+      "title": "Alcoholic Drinks",
+      "items": [
+        {
+          "id": "nikolay-alcoholic-drinks-0",
+          "title": "A.Le Coq Premium 0.5L",
+          "description": "Attention! Alcohol may be hazardous to health if consumed to excess Not for sale to persons under the age of 18 years",
+          "price": "5,00 €",
+          "imageSrc": "nikolay/nikolay-381d8a4276c4.jpeg"
+        },
+        {
+          "id": "nikolay-alcoholic-drinks-1",
+          "title": "White Mulled Wine",
+          "description": "White Mulled Wine with cinnamon, star anise, dianthus, apples and oranges",
+          "price": "6,00 €",
+          "imageSrc": "nikolay/nikolay-68b4314dc318.jpeg"
+        },
+        {
+          "id": "nikolay-alcoholic-drinks-2",
+          "title": "Red Mulled Wine",
+          "description": "Red Mulled Wine with cinnamon, star anise, dianthus, apples and oranges",
+          "price": "6,00 €",
+          "imageSrc": "nikolay/nikolay-de8b18454e8e.jpeg"
+        },
+        {
+          "id": "nikolay-alcoholic-drinks-3",
+          "title": "Stella Artois 0,33 l",
+          "description": "Attention! Alcohol may be hazardous to health if consumed to excess Not for sale to persons under the age of 18 years",
+          "price": "4,50 €",
+          "imageSrc": "nikolay/nikolay-75932202a446.jpeg"
+        }
+      ]
+    }
+  ]
+}

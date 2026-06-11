@@ -16,10 +16,18 @@ export type ThumbnailMRowBlockProps = {
   ariaLabel: string
   items: readonly ThumbnailMRowBlockItem[]
   onItemClick?: (item: ThumbnailMRowBlockItem) => void
+  /** When set, only matching tiles are interactive (others render as static cards). */
+  isItemClickable?: (item: ThumbnailMRowBlockItem) => boolean
 }
 
 /** Page block: headline + scaled {@link ThumbnailM} carousel (1.5 tiles visible @ 375px). */
-export function ThumbnailMRowBlock({ title, ariaLabel, items, onItemClick }: ThumbnailMRowBlockProps) {
+export function ThumbnailMRowBlock({
+  title,
+  ariaLabel,
+  items,
+  onItemClick,
+  isItemClickable,
+}: ThumbnailMRowBlockProps) {
   return (
     <section className="thumbnail-m-row" aria-labelledby={`${ariaLabel.replace(/\s+/g, '-')}-heading`}>
       <div className="thumbnail-m-row__header home-gutter-inline">
@@ -31,28 +39,9 @@ export function ThumbnailMRowBlock({ title, ariaLabel, items, onItemClick }: Thu
         </h2>
       </div>
       <ThumbnailMCarousel ariaLabel={ariaLabel}>
-        {items.map((item) =>
-          onItemClick ? (
-            <button
-              key={item.title}
-              type="button"
-              onClick={() => onItemClick(item)}
-              className="cursor-pointer text-left"
-            >
-              <ThumbnailM
-                variant="scaled"
-                imageSrc={item.imageSrc}
-                title={item.title}
-                deliveryLabel={item.deliveryLabel}
-                deliveryOriginalPrice={item.deliveryOriginalPrice}
-                etaText={item.etaText}
-                rating={item.rating}
-                reviews={item.reviews}
-              />
-            </button>
-          ) : (
+        {items.map((item) => {
+          const thumb = (
             <ThumbnailM
-              key={item.title}
               variant="scaled"
               imageSrc={item.imageSrc}
               title={item.title}
@@ -62,8 +51,22 @@ export function ThumbnailMRowBlock({ title, ariaLabel, items, onItemClick }: Thu
               rating={item.rating}
               reviews={item.reviews}
             />
-          ),
-        )}
+          )
+          const clickable = onItemClick && (isItemClickable?.(item) ?? true)
+          if (clickable) {
+            return (
+              <button
+                key={item.title}
+                type="button"
+                onClick={() => onItemClick(item)}
+                className="cursor-pointer text-left"
+              >
+                {thumb}
+              </button>
+            )
+          }
+          return <div key={item.title}>{thumb}</div>
+        })}
       </ThumbnailMCarousel>
     </section>
   )

@@ -1,23 +1,24 @@
 import { AddressSelector } from '../components/AddressSelector'
 import { HubTopBar } from '../components/HubTopBar'
-import { BannerCarousel } from '../components/BannerCarousel'
 import {
   allGroceryStores,
   bakerySweets,
   boltPlusDiscounts,
 } from '../lib/boltFoodTallinnStoresContent'
-import { storesHubBannerCarouselSlides } from '../lib/bannerCarouselContent'
+import { HomeHeroBlock } from '../sections/home/HomeHeroBlock'
 import { HomeShortcutsBlock } from '../sections/home'
 import {
   StoresAllStoresBlock,
   StoresFeaturedStoreBlock,
+  StoresOrderAgainBlock,
   StoresPopularGroceriesBlock,
   StoresProviderSectionBlock,
   StoresTopBlock,
 } from '../sections/stores'
 
 /**
- * Stores hub — Figma [77303:218309](https://www.figma.com/design/hTmBFTYdlynOcGtxFnHIbM/Consumer---in-progress?node-id=77303-218309).
+ * Stores hub — aligned with [Bolt Food Tallinn stores](https://food.bolt.eu/en/1-tallinn/stores/).
+ * Only {@link retailSnippetStore} (Bolt Market Toompuiestee) is actionable in this demo.
  */
 export function StoresScreen() {
   return (
@@ -28,12 +29,10 @@ export function StoresScreen() {
       <HubTopBar>
         <AddressSelector withGutter={false} />
       </HubTopBar>
+      <HomeHeroBlock />
       <StoresTopBlock />
       <HomeShortcutsBlock />
-      <BannerCarousel
-        banners={storesHubBannerCarouselSlides}
-        data-node-id="77303:218315"
-      />
+      <StoresOrderAgainBlock />
       <StoresPopularGroceriesBlock />
       <StoresFeaturedStoreBlock />
       <StoresProviderSectionBlock

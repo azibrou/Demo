@@ -1,0 +1,491 @@
+{
+  "source": "https://food.bolt.eu/en/1-tallinn/p/33474-shaurma-kebab-viru-keskus/",
+  "provider": {
+    "name": "Shaurma Kebab Viru Keskus",
+    "cover": null
+  },
+  "sections": [
+    {
+      "id": "combo",
+      "title": "Combo",
+      "items": [
+        {
+          "id": "shaurma-combo-0",
+          "title": "Shawarma + fries + Coca-Cola 0,5 l",
+          "description": "Wrap with chicken kebab, French fries (inside the wrap), garlic sauce, and pickles.",
+          "price": "15,70 €",
+          "imageSrc": "shaurma/shaurma-19085bcbc778.jpeg"
+        },
+        {
+          "id": "shaurma-combo-1",
+          "title": "2 x Shawarma Wrap + 2 x Drinks",
+          "description": "Indulge in savory shawarma wraps filled with tender meat, fresh veggies, and a touch of our signature sauces, perfectly paired with your choice of refreshing drinks.",
+          "price": "23,60 €",
+          "imageSrc": "shaurma/shaurma-0c10757f1f67.png"
+        },
+        {
+          "id": "shaurma-combo-2",
+          "title": "Döner + fries + Coca-Cola 0,5 l",
+          "description": "Chicken kebab, garlic sauce, salad with tomato, cucumber, lettuce, dill, carrot, and red onion (ingredients cannot be changed) (Halal)\nFrench fries + white sauce + 0,5 l Coca-Cola",
+          "price": "15,70 €",
+          "imageSrc": "shaurma/shaurma-f02bc64740e9.jpeg"
+        },
+        {
+          "id": "shaurma-combo-3",
+          "title": "3 x Shawarma Wrap + 3 x Drinks",
+          "description": "Indulge in three delicious Shawarma Wraps, each bursting with tender meat or falafel, fresh veggies, and savory sauces, paired perfectly with your choice of three refreshing drinks.",
+          "price": "35,40 €",
+          "imageSrc": "shaurma/shaurma-90bdcfd62e68.jpeg"
+        },
+        {
+          "id": "shaurma-combo-4",
+          "title": "Kebab Meal + Shawarma Wrap + 2 x Drinks",
+          "description": "Indulge in a delicious Kebab Meal featuring a savory Shawarma Wrap, perfectly seasoned and grilled to perfection accompanied by your choice of two refreshing drinks, this meal offers a satisfying blend of flavors and textures.",
+          "price": "25,70 €",
+          "imageSrc": "shaurma/shaurma-db8d5cb78e85.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "something-new",
+      "title": "Something new",
+      "items": [
+        {
+          "id": "shaurma-something-new-0",
+          "title": "Breaded shrimp",
+          "description": "With chili sauce",
+          "price": "8,50 €",
+          "imageSrc": "shaurma/shaurma-ff23553f11f9.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "kebab-d-ner",
+      "title": "Kebab & Döner",
+      "items": [
+        {
+          "id": "shaurma-kebab-d-ner-0",
+          "title": "Shawarma Wrap",
+          "description": "Wrap with chicken kebab, french fries (inside the wrap), garlic sauce and pickles.\nXL Shaurma contains fresh vegetables",
+          "price": "8,80 €",
+          "imageSrc": "shaurma/shaurma-7abec0531bcb.jpeg"
+        },
+        {
+          "id": "shaurma-kebab-d-ner-1",
+          "title": "Döner",
+          "description": "Chicken kebab, garlic sauce, salad with tomatoes, cucumber, salad, dill, carrot, and red onion (ingredients can not be changed)",
+          "price": "8,80 €",
+          "imageSrc": "shaurma/shaurma-e2652156f560.jpeg"
+        },
+        {
+          "id": "shaurma-kebab-d-ner-2",
+          "title": "Kebab Meal",
+          "description": "Chicken kebab, french fries, vegetables, garlic sauce, ketchup",
+          "price": "10,90 €",
+          "imageSrc": "shaurma/shaurma-89987222e1db.jpeg"
+        },
+        {
+          "id": "shaurma-kebab-d-ner-3",
+          "title": "Shawarma in a Bun",
+          "description": "Chicken kebab, french fries, garlic sauce, pickles, vegetables",
+          "price": "9,90 €",
+          "imageSrc": "shaurma/shaurma-fa0575c1881f.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "falafel",
+      "title": "Falafel",
+      "items": [
+        {
+          "id": "shaurma-falafel-0",
+          "title": "Falafel in Lavash",
+          "description": "Falafel, vegetables, garlic sauce",
+          "price": "7,80 €",
+          "imageSrc": "shaurma/shaurma-8f189bafbdcf.jpeg"
+        },
+        {
+          "id": "shaurma-falafel-1",
+          "title": "Falafel Meal",
+          "description": "Falafel, french fries, vegetables, garlic sauce, ketchup",
+          "price": "9,90 €",
+          "imageSrc": "shaurma/shaurma-477b8d97e160.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "poke-kebab",
+      "title": "Poke Kebab",
+      "items": [
+        {
+          "id": "shaurma-poke-kebab-0",
+          "title": "Poke Kebab",
+          "description": "Experience a delightful twist on traditional kebabs with our Poke Kebab, featuring marinated skewered meat grilled to perfection.",
+          "price": "10,90 €",
+          "imageSrc": "shaurma/shaurma-382610ddfa2a.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "appetizers",
+      "title": "Appetizers",
+      "items": [
+        {
+          "id": "shaurma-appetizers-0",
+          "title": "Chicken Popcorn",
+          "description": "Each bite-sized piece of tender chicken is seasoned to perfection, coated in a crunchy batter, and fried until golden brown.",
+          "price": "7,80 €",
+          "imageSrc": "shaurma/shaurma-f22a2a7a9563.jpeg"
+        },
+        {
+          "id": "shaurma-appetizers-1",
+          "title": "Breaded shrimp",
+          "description": "With chili sauce",
+          "price": "8,50 €",
+          "imageSrc": "shaurma/shaurma-ff23553f11f9.jpeg"
+        },
+        {
+          "id": "shaurma-appetizers-2",
+          "title": "Chicken Wings 6 psc.",
+          "description": "With ketchup white sauce",
+          "price": "8,90 €",
+          "imageSrc": "shaurma/shaurma-dae38eca7585.jpeg"
+        },
+        {
+          "id": "shaurma-appetizers-3",
+          "title": "Nuggets",
+          "description": "Chicken fillet, french fries, vegetables, garlic sauce, ketchup",
+          "price": "9,90 €",
+          "imageSrc": "shaurma/shaurma-5050d5512c74.jpeg"
+        },
+        {
+          "id": "shaurma-appetizers-4",
+          "title": "Cheese Sticks",
+          "description": "Mozzarella cheese, sweet syrup",
+          "price": "7,80 €",
+          "imageSrc": "shaurma/shaurma-faee36867589.jpeg"
+        },
+        {
+          "id": "shaurma-appetizers-5",
+          "title": "French Fries",
+          "description": "Garlic sauce",
+          "price": "3,90 €",
+          "imageSrc": "shaurma/shaurma-68343ed106f0.jpeg"
+        },
+        {
+          "id": "shaurma-appetizers-6",
+          "title": "Fries+",
+          "description": "Chicken fillet, french fries, vegetables, garlic sauce, ketchup",
+          "price": "9,90 €",
+          "imageSrc": "shaurma/shaurma-4e6079db917a.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "title": "Desserts",
+      "items": [
+        {
+          "id": "shaurma-desserts-0",
+          "title": "Coco Magus",
+          "price": "2,90 €",
+          "imageSrc": "shaurma/shaurma-ff632d7c3172.jpeg"
+        },
+        {
+          "id": "shaurma-desserts-1",
+          "title": "Turkish Baklava",
+          "description": "Indulge in the rich, sweet layers of Turkish Baklava, a classic dessert featuring delicate, flaky pastry filled with finely chopped nuts and sweetened with a luscious honey or syrup.",
+          "price": "3,90 €",
+          "imageSrc": "shaurma/shaurma-dd2c94ea0be5.jpeg"
+        },
+        {
+          "id": "shaurma-desserts-2",
+          "title": "Baklava",
+          "description": "This classic dessert features layers of flaky phyllo pastry, generously filled with a mixture of finely chopped nuts and sweetened with a drizzle of honey or syrup.",
+          "price": "3,90 €",
+          "imageSrc": "shaurma/shaurma-af9f7534c1ba.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "sauces",
+      "title": "Sauces",
+      "items": [
+        {
+          "id": "shaurma-sauces-0",
+          "title": "Ketchup",
+          "description": "A classic condiment made from ripe tomatoes, vinegar, sugar, and a blend of spices.",
+          "price": "0,80 €",
+          "imageSrc": "shaurma/shaurma-4a44c749b01a.jpeg"
+        },
+        {
+          "id": "shaurma-sauces-1",
+          "title": "Garlic Sauce",
+          "description": "Experience the rich and savory flavor of our Garlic Sauce, a perfect blend of fresh garlic, creamy mayonnaise, and a hint of lemon juice.",
+          "price": "0,90 €",
+          "imageSrc": "shaurma/shaurma-4a4bdbf466eb.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "title": "Drinks",
+      "items": [
+        {
+          "id": "shaurma-drinks-0",
+          "title": "Coca-Cola Zero 0,5 l",
+          "description": "Enjoy the classic taste of Coca-Cola",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-7b0c102f1dfa.png"
+        },
+        {
+          "id": "shaurma-drinks-1",
+          "title": "Coca-Cola 0,5 l",
+          "description": "Enjoy the classic taste of Coca-Cola",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-1e4286bb827f.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-2",
+          "title": "Fanta 0,5 l",
+          "description": "This 0.5-liter bottle is packed with the bright, tangy flavor of orange that you love.",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-b3aa77a59344.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-3",
+          "title": "Sprite 0,5 l",
+          "description": "This 0.5-liter bottle is perfect for quenching your thirst on the go, offering the perfect balance of sweetness and citrusy tang.",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-411796d17585.png"
+        },
+        {
+          "id": "shaurma-drinks-4",
+          "title": "Neptūnas mineral water 0,5 l",
+          "price": "2,00 €",
+          "imageSrc": "shaurma/shaurma-2f1f11d3c978.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-5",
+          "title": "Neptūnas sparkling water 0,5 l",
+          "price": "2,00 €",
+          "imageSrc": "shaurma/shaurma-8526c2020950.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-6",
+          "title": "Red Bull 0,25 l",
+          "description": "This refreshing energy drink combines a unique blend of caffeine, taurine, and B vitamins to help you stay alert and focused.",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-d20473b505c1.png"
+        },
+        {
+          "id": "shaurma-drinks-7",
+          "title": "Red Bull Zero 0,25 l",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-b82a77e4e851.png"
+        },
+        {
+          "id": "shaurma-drinks-8",
+          "title": "Red Bull Red Edition 0,25 l",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-a724201eb9f4.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-9",
+          "title": "Red Bull Green Edition 0,25 l",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-3b4dae5f1ed7.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-10",
+          "title": "Red Bull Blue Edition 0,25 l",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-8ecfbbb8a5f7.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-11",
+          "title": "Red Bull Yellow Edition 0,25 l",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-1701a6f47ad6.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-12",
+          "title": "Red Bull White Edition 0,25 l",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-99716df81535.png"
+        },
+        {
+          "id": "shaurma-drinks-13",
+          "title": "Red Bull White Peach Edition 0,25 l",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-a9f22c5ade93.png"
+        },
+        {
+          "id": "shaurma-drinks-14",
+          "title": "Red Bull Apricot Edition 0,25 l",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-8ef050ecddb4.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-15",
+          "title": "A. Le Coq Kvass 0,5 l",
+          "description": "This lightly carbonated drink offers a unique balance of sweet and tangy flavors, making it a perfect complement to your meals or a refreshing thirst-quencher on its own.",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-704d6df4d4ab.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-16",
+          "title": "Fuzetea Peach 0,5 l",
+          "description": "Refreshingly delicious, Fuzetea Peach combines the sweet, juicy flavor of ripe peaches with a blend of tea for a perfectly balanced beverage.",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-8f317bfc29b1.png"
+        },
+        {
+          "id": "shaurma-drinks-17",
+          "title": "Fuzetea Lemon 0,5 l",
+          "description": "Refreshingly delightful, Fuzetea Lemon combines the invigorating taste of real tea with zesty lemon flavors.",
+          "price": "3,00 €",
+          "imageSrc": "shaurma/shaurma-976a138cc3d9.png"
+        },
+        {
+          "id": "shaurma-drinks-18",
+          "title": "Aura tomato juice 1 l",
+          "description": "Enjoy the rich and refreshing taste of Aura Tomato Juice, made from premium, sun-ripened tomatoes.",
+          "price": "4,00 €",
+          "imageSrc": "shaurma/shaurma-ac742da90c12.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-19",
+          "title": "Aura orange juice 1 l",
+          "description": "Refreshingly vibrant and packed with the natural goodness of sun-ripened oranges, Aura Orange Juice offers a deliciously smooth taste in every sip.",
+          "price": "4,00 €",
+          "imageSrc": "shaurma/shaurma-44a4504794ee.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-20",
+          "title": "Aura apple juice 1 l",
+          "description": "Enjoy the crisp and refreshing taste of Aura Apple Juice, made from high-quality apples.",
+          "price": "4,00 €",
+          "imageSrc": "shaurma/shaurma-fdf06dbdfeaa.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-21",
+          "title": "Aura multinektar juice 1 l",
+          "description": "Savor the refreshing taste of Aura Multinektar Juice, a delightful blend of carefully selected fruits, packed with vitamins and natural goodness.",
+          "price": "4,00 €",
+          "imageSrc": "shaurma/shaurma-233e325edd9a.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-22",
+          "title": "Tarhun Lemonade 0,5 l",
+          "description": "Refreshingly tangy and vibrant, our Tarhun Lemonade combines the zesty flavors of tarragon with a classic lemonade base.",
+          "price": "3,90 €",
+          "imageSrc": "shaurma/shaurma-70f5d0c7d2f5.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-23",
+          "title": "Pear Lemonade 0,5 l",
+          "description": "Refreshingly light and bursting with flavor, our Pear Lemonade combines the crisp sweetness of ripe pears with zesty lemon for a perfectly balanced drink.",
+          "price": "3,90 €",
+          "imageSrc": "shaurma/shaurma-e0e683d9939e.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-24",
+          "title": "Feijoa Lemonade 0,5 l",
+          "description": "Refreshingly unique, this vibrant lemonade combines the tropical sweetness of feijoa with zesty lemon for a perfect balance of flavor.",
+          "price": "3,90 €",
+          "imageSrc": "shaurma/shaurma-080eb9a00417.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-25",
+          "title": "Grape Lemonade 0,5 l",
+          "description": "Refreshingly sweet and tangy, our Grape Lemonade combines the vibrant flavors of ripe grapes with a zesty lemon twist.",
+          "price": "3,90 €",
+          "imageSrc": "shaurma/shaurma-3c2517aa1373.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-26",
+          "title": "Traditional lemonade 0,5 l",
+          "description": "Quench your thirst with our refreshing Traditional Lemonade, expertly crafted from freshly squeezed lemons and pure sugar.",
+          "price": "3,50 €",
+          "imageSrc": "shaurma/shaurma-ddcb7f198bbe.jpeg"
+        },
+        {
+          "id": "shaurma-drinks-27",
+          "title": "Ayran 0,25 l",
+          "description": "Refresh yourself with this traditional yogurt-based drink, Ayran.",
+          "price": "2,80 €",
+          "imageSrc": null
+        }
+      ]
+    },
+    {
+      "id": "beer",
+      "title": "Beer",
+      "items": [
+        {
+          "id": "shaurma-beer-0",
+          "title": "Corona Extra 0,35 l",
+          "description": "Not recommended for children, pregnant or breastfeeding women",
+          "price": "4,40 €",
+          "imageSrc": "shaurma/shaurma-b5f0d96f39ba.jpeg"
+        },
+        {
+          "id": "shaurma-beer-1",
+          "title": "A. Le Coq Porter 6.5% 0,5 l",
+          "description": "Not recommended for children, pregnant or breastfeeding women",
+          "price": "4,40 €",
+          "imageSrc": "shaurma/shaurma-52c8726cfda9.jpeg"
+        },
+        {
+          "id": "shaurma-beer-2",
+          "title": "A. Le Coq Premium 6.5% 0,5 l",
+          "description": "Not recommended for children, pregnant or breastfeeding women",
+          "price": "4,40 €",
+          "imageSrc": "shaurma/shaurma-e883285e3246.jpeg"
+        },
+        {
+          "id": "shaurma-beer-3",
+          "title": "Alexander 5.2% 0,5 l",
+          "description": "Not recommended for children, pregnant or breastfeeding women",
+          "price": "4,40 €",
+          "imageSrc": "shaurma/shaurma-d8b0e070d325.jpeg"
+        },
+        {
+          "id": "shaurma-beer-4",
+          "title": "Heineken Original 5.0% 0,33 l",
+          "description": "Not recommended for children, pregnant or breastfeeding women",
+          "price": "4,40 €",
+          "imageSrc": "shaurma/shaurma-1febd221342a.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "wine",
+      "title": "Wine",
+      "items": [
+        {
+          "id": "shaurma-wine-0",
+          "title": "Chabiant White Semi-sweet Wine 11.5% 0,75 l",
+          "description": "Not recommended for children, pregnant or breastfeeding women",
+          "price": "25,00 €",
+          "imageSrc": "shaurma/shaurma-44a2f5fb3889.png"
+        },
+        {
+          "id": "shaurma-wine-1",
+          "title": "Chabiant White Dry Wine 12.5% 0,75 l",
+          "description": "Not recommended for children, pregnant or breastfeeding women",
+          "price": "25,00 €",
+          "imageSrc": "shaurma/shaurma-7cb2fcdea225.jpeg"
+        },
+        {
+          "id": "shaurma-wine-2",
+          "title": "Pomegranate Semi-sweet Wine 12% 0,75 l",
+          "description": "Not recommended for children, pregnant or breastfeeding women",
+          "price": "25,00 €",
+          "imageSrc": "shaurma/shaurma-55f6747c9a0a.jpeg"
+        }
+      ]
+    }
+  ]
+}

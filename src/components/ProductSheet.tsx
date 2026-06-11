@@ -46,19 +46,21 @@ export function ProductSheet({ product, provider, onClose }: ProductSheetProps) 
     <CategoryBottomSheet ariaLabel={product.title} onClose={onClose}>
       {(close) => (
         <>
+          {/* Close button lives outside the scroll area so it stays pinned while content scrolls */}
+          <button
+            type="button"
+            aria-label="Close"
+            onClick={close}
+            className="product-sheet__close"
+          >
+            <img alt="" src={ki.clear} className="block size-5" />
+          </button>
+
           <div className="product-sheet__scroll">
             <div className="product-sheet__media" data-node-id="80656:180637">
               {product.image ? (
                 <img alt="" src={product.image} className="product-sheet__media-img" />
               ) : null}
-              <button
-                type="button"
-                aria-label="Close"
-                onClick={close}
-                className="product-sheet__close"
-              >
-                <img alt="" src={ki.clear} className="block size-5" />
-              </button>
             </div>
 
             <div className="flex flex-col gap-2 p-6" data-node-id="80656:180640">

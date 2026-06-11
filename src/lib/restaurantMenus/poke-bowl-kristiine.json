@@ -1,0 +1,556 @@
+{
+  "source": "https://food.bolt.eu/en/1-tallinn/p/4-poke-bowl-kristiine/",
+  "provider": {
+    "name": "Poke Bowl Kristiine",
+    "cover": null
+  },
+  "sections": [
+    {
+      "id": "combos",
+      "title": "Combos",
+      "items": [
+        {
+          "id": "poke-bowl-kristiine-combos-0",
+          "title": "Chicken-Mango Wrap + Mango Smoothie Combo",
+          "description": "Chicken-mango wrap and mango smoothie",
+          "price": "11,15 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-e627d1c6efe2.png"
+        },
+        {
+          "id": "poke-bowl-kristiine-combos-1",
+          "title": "Warm Teriyaki Chicken Rice Bowl + NOCCO Cola",
+          "description": "Chicken, rice, carrot, red cabbage, edamame beans, kimchi, green onion, furikake (sesame, peanut), teriyaki-chili sauce, boiled soy egg.",
+          "price": "13,30 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-122bb46faf91.png"
+        },
+        {
+          "id": "poke-bowl-kristiine-combos-2",
+          "title": "Poke Bowl + Poke Bowl",
+          "description": "2x poke bowls of your choice",
+          "price": "21,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-e3a720c434fc.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "bowls",
+      "title": "Bowls",
+      "items": [
+        {
+          "id": "poke-bowl-kristiine-bowls-0",
+          "title": "Fantasy Bowl",
+          "description": "Choose your favorite ingredients in the bowl",
+          "price": "2,90 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-436bf98c36a8.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-bowls-1",
+          "title": "Chicken Bowl",
+          "description": "Sushi rice, cabbage-broccoli salad, citrus yuzu sauce(V), pickled red cabbage, carrot, edamame beans, spinach, mango, teriyaki chicken, roasted onion, \n~438g\n\nper 100g\nEnergy content 640 kJ\nEnergy content 152 kcal\nFats 4.75 g\nOf which saturated fatty acids 0.7 g\nCarbohydrates 21 g\nOf which sugars 3.5 g\nProtein 5.79 g\nSalt 0.52 g",
+          "price": "11,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-36cc8bb6331e.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-bowls-2",
+          "title": "Spicy Chicken Bowl",
+          "description": "Sushi rice, cabbage-broccoli salad, sriracha mayonnaise (V), carrot, pickled red cabbage, edamame beans, spinach, mango, spicy chicken, rosted onion ~438g  \nper 100g \nEnergy content 640 kJ \nEnergy content 152 kcal \nFats 4.75 g \nOf which saturated fatty acids 0.7 g \nCarbohydrates 21 g \nOf which sugars 3.5 g \nProtein 5.79 g \nSalt 0.52 g",
+          "price": "11,40 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-19ea1b9a123b.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-bowls-3",
+          "title": "Caesar bowl with chicken",
+          "description": "Sushi rice, cabbage-broccoli salad, Caesar dressing, egg, carrot, edamame beans, spinach, cherry tomato, chicken, parmesan, croutons.",
+          "price": "11,40 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-06c6ad838bdf.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-bowls-4",
+          "title": "Caesar bowl with shrimp",
+          "description": "Jumbo shrimp, rice, cabbage-broccoli salad, carrot, spinach, edamame beans, cherry tomato, boiled soy egg, parmesan, croutons, Caesar dressing",
+          "price": "11,80 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-9863821cd3fe.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-bowls-5",
+          "title": "BBQ Beef Bowl",
+          "description": "Shredded BBQ beef, rice, cabbage-broccoli salad, pickled red cabbage, carrot, edamame beans, kimchi, mango cubes, crispy onion, sriracha mayo",
+          "price": "11,40 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-5af94adc358f.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-bowls-6",
+          "title": "Salmon Bowl",
+          "description": "Sushi rice, cabbage-broccoli salad, sriracha mayonnaise (V), radish, carrot, pickled ginger, wakame, cucumber, spinach, salted salmon, sesame seeds, green onion ~429g\n\nper 100g\nEnergy content 645 kJ\nEnergy content 154 kcal\nFats 6.13 g\nOf which saturated fatty acids 0.76 g\nCarbohydrates 19.30 g\nOf which sugars 1.99 g\nProtein 4.87 g\nSalt 0.86 g",
+          "price": "13,40 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-4aa17a0fbc3d.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-bowls-7",
+          "title": "SUPER salmon bowl",
+          "description": "Quinoa, cabbage-broccoli salad, sriracha mayo, cucumber, wakame, avocado, edamame beans, spinach, salmon, furikake, green onions",
+          "price": "15,30 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-6ddd6a2f717d.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-bowls-8",
+          "title": "King Prawn Bowl",
+          "description": "Jumbo shrimp, rice, cabbage-broccoli salad, cucumber, spinach, wakame, kimchi, cilantro, furikake (sesame, peanut), chili teriyaki, wasabi mayo",
+          "price": "12,80 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-ce903aad13b5.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-bowls-9",
+          "title": "Pea Tempeh Bowl",
+          "description": "Rice, cabbage-broccoli salad, yuzu sauce, edamame beans, cucumber, carrot, ginger, radish, tempeh, coriander, furikake.",
+          "price": "11,40 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-4612be22d223.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-bowls-10",
+          "title": "Tempeh Fitlap bowl",
+          "description": "Rice, cabbage-broccoli salad, mango-chili sauce, avocado, cucumber, carrot, edamame beans, radish, spinach, tempeh, sesame seeds, spring onion.",
+          "price": "11,40 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-bb973effad66.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-bowls-11",
+          "title": "FITLAP Chicken Bowl 375 kcal",
+          "description": "Sushi rice, cabbage-broccoli salad, mango-chili sauce (V), avocado, carrot, pickled red cabbage, edamame beans, spinach, cucumber, radish, teriyaki chicken, green onion, sesame seeds ~439g\n\nper 100g\nEnergy content 389 kJ\nEnergy content 92.5 kcal\nFats 2.32 g\nOf which saturated fatty acids 0.36 g\nCarbohydrates 12.1 g\nOf which sugars 3.16 g\nProtein 5.01 g\nSalt 0.48 g",
+          "price": "11,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-d3fd62613b2d.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-bowls-12",
+          "title": "FITLAP Salmon Bowl 375 kcal",
+          "description": "Sushi rice, cabbage-broccoli salad, mango-chili sauce (V), carrot, pickled ginger, cucumber, spinach, radish, edamame beans, avocado, salted salmon, sesame seeds, green onion ~399g\n\nper 100g\nEnergy content 1691.76 kJ\nEnergy content 375 kcal\nFats 3.29 g\nOf which saturated fatty acids 2.36 g\nCarbohydrates 12.10 g\nOf which sugars 2.54 g\nProtein 4.91 g\nSalt 0.76 g",
+          "price": "13,40 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-89a8c1105fd8.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-bowls-13",
+          "title": "Children's Chicken Bowl",
+          "description": "Sushi rice, citrus yuzu mayonnaise (V), avocado, cucumber, carrot, spinach, teriyaki chicken, sesame seeds ~206g\n\nper 100g,\nEnergy content 696 kJ,\nEnergy content 166 kcal,\nFat 6.01 g, of which saturated fatty acids 0.67 g,\nCarbohydrates 21.2 g, of which sugars 2.16 g,\nProtein 6.24 g,\nSalt 0.53 g",
+          "price": "5,40 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-69a107ae1053.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "small-bowls",
+      "title": "Small Bowls",
+      "items": [
+        {
+          "id": "poke-bowl-kristiine-small-bowls-0",
+          "title": "Small Chicken Bowl",
+          "description": "Sushi rice, cabbage-broccoli salad, citrus yuzu mayonnaise (V), carrot, pickled red cabbage, edamame beans, spinach, mango, teriyaki chicken, roasted onion ~219g\n\nper 100g\nEnergy content 640 kJ\nEnergy content 152 kcal\nFats 4.75 g\nOf which saturated fatty acids 0.7 g\nCarbohydrates 21 g\nOf which sugars 3.5 g\nProtein 5.79 g\nSalt 0.52 g",
+          "price": "7,90 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-fb088b157c36.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-small-bowls-1",
+          "title": "Small Spicy Chicken Bowl",
+          "description": "Sushi rice, cabbage-broccoli salad, sriracha mayonnaise (V), carrot, pickled red cabbage, edamame beans, spinach, mango, spicy chicken, roasted onion ~219g \n\nper 100g \nEnergy content 640 kJ \nEnergy content 152 kcal \nFats 4.75 g \nOf which saturated fatty acids 0.7 g \nCarbohydrates 21 g \nOf which sugars 3.5 g \nProtein 5.79 g \nSalt 0.52 g",
+          "price": "8,10 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-7e0f6da6e408.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-small-bowls-2",
+          "title": "Caesar Bowl with Chicken",
+          "description": "Sushi rice, cabbage and broccoli salad, Caesar dressing, egg, carrot, edamame beans, spinach, cherry tomato, chicken, parmesan, croutons.",
+          "price": "8,10 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-06c6ad838bdf.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-small-bowls-3",
+          "title": "Small Caesar bowl with shrimp",
+          "description": "Jumbo shrimp, rice, cabbage-broccoli salad, carrot, spinach, edamame beans, cherry tomato, boiled soy egg, parmesan, croutons, Caesar dressing",
+          "price": "8,40 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-9863821cd3fe.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-small-bowls-4",
+          "title": "Small BBQ Beef Bowl",
+          "description": "Shredded BBQ beef, rice, cabbage-broccoli salad, pickled red cabbage, carrot, edamame beans, kimchi, mango cubes, crispy onion, sriracha mayo",
+          "price": "8,40 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-b99c5eced467.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-small-bowls-5",
+          "title": "Small Salmon Bowl",
+          "description": "Sushi rice, cabbage-broccoli salad, sriracha mayonnaise (V), radish, carrot, pickled ginger, cucumber, spinach, salted salmon, sesame seeds, green onion ~214g\n\nper 100g\nEnergy content 645 kJ\nEnergy content 154 kcal\nFats 6.13 g\nOf which saturated fatty acids 0.76 g\nCarbohydrates 19.30 g\nOf which sugars 1.99 g\nProtein 4.87 g\nSalt 0.86 g",
+          "price": "8,90 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-1d78d8b30916.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-small-bowls-6",
+          "title": "Small SUPER salmon bowl",
+          "description": "Quinoa, cabbage-broccoli salad, sriracha mayo, cucumber, wakame, avocado, edamame beans, spinach, salmon, furikake, green onions",
+          "price": "9,70 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-52c14808ffce.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-small-bowls-7",
+          "title": "Small King Prawn Bowl",
+          "description": "Sushi rice, cabbage-broccoli salad, wasabi mayonnaise (V), wakame, cucumber, spinach, kimchi, king prawns in lime-chilli marinade, teriyaki-chilli sauce (V), furikake (sesame, peanut), coriander ~217g\n\nPer 100g\nEnergy 624 kJ\nEnergy 148 kcal\nFat 5.04 g\nOf which saturates 0.48 g\nCarbohydrates 20.7 g\nOf which sugars 3.03 g\nProtein 4.63 g\nSalt 0.85 g",
+          "price": "8,40 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-8645a67ae074.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-small-bowls-8",
+          "title": "Small Korean Bowl",
+          "description": "rice, cabbage broccoli salad, sriracha mayo, edamame beans, cucumber, spinach, ginger, carrot, tempeh, cilantro, furikake (sesame, peanut)",
+          "price": "8,10 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-cca6cfdbc395.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "sauces",
+      "title": "Sauces",
+      "items": [
+        {
+          "id": "poke-bowl-kristiine-sauces-0",
+          "title": "Citrus yuzu mayonnaise",
+          "price": "1,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-6374f0510d10.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-sauces-1",
+          "title": "Sriracha Mayonnaise",
+          "price": "1,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-210ea9703603.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-sauces-2",
+          "title": "Caesar Dressing",
+          "price": "1,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-939e10a8d471.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-sauces-3",
+          "title": "Wasabi mayonnaise",
+          "price": "1,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-353f1a1efdde.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-sauces-4",
+          "title": "Sriracha-chili Sauce (V)",
+          "price": "1,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-d535cb27b0b1.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-sauces-5",
+          "title": "Soy Sauce",
+          "price": "1,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-b98cbdc904c0.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-sauces-6",
+          "title": "Teriyaki-chili sauce",
+          "price": "1,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-79979637cc9b.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-sauces-7",
+          "title": "Mango-Chili Sauce (V)",
+          "price": "1,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-a7f16fdb19cf.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "warm-teriyaki-mushroom-rice-bowls",
+      "title": "Warm Teriyaki Mushroom Rice Bowls",
+      "items": [
+        {
+          "id": "poke-bowl-kristiine-warm-teriyaki-mushroom-rice-bowls-0",
+          "title": "Teriyaki chicken rice bowl",
+          "description": "Chicken, rice, carrot, red cabbage, edamame beans, kimchi, green onion, furikake (sesame, peanut), boiled soy egg, teriyaki-chili sauce",
+          "price": "9,80 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-3a33648c29ff.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-warm-teriyaki-mushroom-rice-bowls-1",
+          "title": "Teriyaki Beef Rice Bowl",
+          "description": "Shredded BBQ beef, rice, carrot, red cabbage, edamame beans, kimchi, green onion, furikake (sesame, peanut), boiled soy egg, teriyaki-chili sauce",
+          "price": "10,30 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-50fd043ae2ac.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-warm-teriyaki-mushroom-rice-bowls-2",
+          "title": "Teriyaki Shrimp Bowl",
+          "description": "Jumbo shrimp, rice, carrot, red cabbage, edamame beans, kimchi, green onion, furikake (sesame, peanut), boiled soy egg, teriyaki-chili sauce",
+          "price": "10,30 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-d985f6414af4.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-warm-teriyaki-mushroom-rice-bowls-3",
+          "title": "Teriyaki Korean Tempeh Rice Bowl",
+          "description": "Pea tempeh, rice, carrot, red cabbage, edamame beans, kimchi, green onion, furikake (sesame, peanut), boiled soy egg, teriyaki-chilli sauce",
+          "price": "10,10 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-9df3cad7b097.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "wraps",
+      "title": "Wraps",
+      "items": [
+        {
+          "id": "poke-bowl-kristiine-wraps-0",
+          "title": "Chicken Mango Wrap",
+          "description": "Tortilla, cabbage-broccoli salad, citrus yuzu mayonnaise (V), carrot, pickled red cabbage, edamame beans, spinach, mango, teriyaki chicken, roasted onion ~248g\n\nper 100g\nEnergy content 817 kJ\nEnergy content 195 kcal\nFats 7.2 g\nOf which saturated fatty acids 1.3 g\nCarbohydrates 25.8 g\nOf which sugars 3.05 g\nProtein 6.18 g\nSalt 0.99 g",
+          "price": "7,40 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-c239fe249f0b.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-wraps-1",
+          "title": "Chicken Caesar Wrap",
+          "description": "Wheat tortilla, chicken cubes, rice, cabbage-broccoli salad, carrot, spinach, edamame beans, cherry tomato, parmesan, Caesar dressing",
+          "price": "7,60 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-6956f72d6088.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-wraps-2",
+          "title": "Caesar Shrimp Wrap",
+          "description": "Wheat tortilla, king prawns, rice, cabbage-broccoli salad, carrot, spinach, edamame beans, cherry tomato, parmesan, Caesar dressing",
+          "price": "7,80 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-26aab8e86843.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-wraps-3",
+          "title": "BBQ Beef Wrap",
+          "description": "Wheat tortilla, shredded BBQ beef, rice, cabbage-broccoli salad, pickled red cabbage, carrot, edamame beans, kimchi, mango cubes, crispy onion, sriracha mayo",
+          "price": "7,80 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-da6180eceb25.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-wraps-4",
+          "title": "Salmon Wakame Wrap",
+          "description": "Tortilla, cabbage-broccoli salad, sriracha mayonnaise (V), carrot, pickled ginger, wakame, cucumber, spinach, radish, salted salmon, sesame seeds, green onion ~244g\n\nper 100g\nEnergy content 828 kJ\nEnergy content 197 kcal\nFats 8.45 g\nOf which saturated fatty acids 1.4 g\nCarbohydrates 24.8 g\nOf which sugars 1.94 g\nProtein 5.19 g\nSalt 1.24 g",
+          "price": "8,40 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-606539def8dd.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-wraps-5",
+          "title": "SUPER salmon wrap",
+          "description": "Whole wheat tortilla, cabbage-broccoli salad, sriracha mayo, cucumber, wakame, avocado, edamame beans, spinach, salmon, furikake, green onions",
+          "price": "9,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-ced0a7b3575e.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-wraps-6",
+          "title": "King Prawn Kimchi Wrap",
+          "description": "Tortilla, cabbage-broccoli salad, sriracha mayonnaise (V), wakame, cucumber, spinach, kimchi, king prawns in lime-chilli marinade, furikake with peanuts, coriander ~241g\n\nper 100g\nEnergy content 760 kJ\nEnergy content 181 kcal\nFats 5.98 g\nOf which saturated fatty acids 1.07 g\nCarbohydrates 26.2 g\nOf which sugars 2.79 g\nProtein 5.3 g\nSalt 1.3 g",
+          "price": "7,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-91c36481fea0.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-wraps-7",
+          "title": "Korean Tempeh Wrap",
+          "description": "Tortilla, rice, cabbage and broccoli salad, sriracha mayonnaise, edamame beans, cucumber, spinach, ginger, carrot, pea tempeh, furikake (sesame, peanut), cilantro",
+          "price": "7,60 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-bea1869ca2b4.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-wraps-8",
+          "title": "FITLAP Chicken Wrap",
+          "description": "Whole wheat tortilla, cabbage-broccoli salad, mango-chilli sauce (V), pickled red cabbage, avocado, cucumber, teriyaki chicken ~256g\n\nper 100g\nEnergy content 647 kJ\nEnergy content 154 kcal\nFats 4.89 g\nOf which saturated fatty acids 0.77 g\nCarbohydrates 18 g\nOf which sugars 3.86 g\nProtein 8.18 g\nSalt 0.89 g\n\n375kcal",
+          "price": "7,80 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-9b28381d1e2a.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "soups",
+      "title": "Soups",
+      "items": [
+        {
+          "id": "poke-bowl-kristiine-soups-0",
+          "title": "Chicken Tom Kha",
+          "description": "Chicken, coconut milk, mushrooms, cherry tomatoes, carrot, cilantro, spices",
+          "price": "8,70 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-c2e89551b159.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-soups-1",
+          "title": "Small Tom Kha with Chicken",
+          "description": "Chicken, coconut milk, mushrooms, cherry tomatoes, carrot, cilantro, spices",
+          "price": "7,00 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-fbfe95431b69.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-soups-2",
+          "title": "Tom Yum with Shrimp",
+          "description": "Shrimp, coconut milk, mushrooms, cherry tomatoes, carrot, cilantro, spices",
+          "price": "9,00 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-7a9cb0c35447.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-soups-3",
+          "title": "Small Tom Yum with Shrimp",
+          "description": "Shrimp, coconut milk, mushrooms, cherry tomatoes, carrot, cilantro, spices",
+          "price": "7,40 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-ac9f851f04c6.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "onigiri",
+      "title": "Onigiri",
+      "items": [
+        {
+          "id": "poke-bowl-kristiine-onigiri-0",
+          "title": "Chicken Caesar onigiri",
+          "description": "Diced chicken fillet, rice, parmesan, caesar dressing, nori sheet",
+          "price": "3,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-3b69f462e2c8.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-onigiri-1",
+          "title": "Salmon-Ginger Onigiri",
+          "description": "Sushi rice, sriracha mayonnaise (V), salted salmon, pickled ginger, nori sheet, soy sauce, sesame seeds ~139g\n\nper 100g\nEnergy content 827 kJ\nEnergy content 196 kcal\nFats 4.64 g\nOf which saturated fatty acids 0.59 g\nCarbohydrates 32.2 g\nOf which sugars 1.24 g\nProtein 5.72 g\nSalt 1.17 g",
+          "price": "3,70 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-9bf00b76a605.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-onigiri-2",
+          "title": "Korean tempeh onigiri",
+          "description": "tempeh, rice, furikake (sesame, peanut), sriracha mayo, nori sheet",
+          "price": "3,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-2a74b65aac7a.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "snacks",
+      "title": "Snacks",
+      "items": [
+        {
+          "id": "poke-bowl-kristiine-snacks-0",
+          "title": "Kimchi 200 g",
+          "description": "Fermented Chinese cabbage, green onion, sesame seeds ~200g\n\nper 100g,\nEnergy content 212 kJ,\nEnergy content 50.4 kcal,\nFat 1.38 g, of which saturated fatty acids 0.23 g,\nCarbohydrates 6.25 g, of which sugars 3.63 g,\nProtein 2.57 g,\nSalt 0.91 g",
+          "price": "3,90 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-4e86dcd7e582.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "smoothie",
+      "title": "Smoothie",
+      "items": [
+        {
+          "id": "poke-bowl-kristiine-smoothie-0",
+          "title": "Raspberry Peanut Butter Smoothie",
+          "description": "banana, raspberries, mango, apple juice, peanut",
+          "price": "5,70 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-a70346596731.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-smoothie-1",
+          "title": "Matcha Super Smoothie",
+          "description": "Banana, avocado, apple juice, mint, lime juice, spinach, matcha, ice",
+          "price": "6,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-93a66e769778.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-smoothie-2",
+          "title": "Mango Smoothie",
+          "description": "Mango, banana, apple juice  - 400g\n\nper 100g,\nEnergy content 198 kJ,\nEnergy content 46.8 kcal,\nFat 0.05 g, of which saturated fatty acids 0.02 g,\nCarbohydrates 10.5 g, of which sugars 9.39 g,\nProtein 0.75 g,\nSalt 0.01 g",
+          "price": "5,70 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-5ada2f5b2d79.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "title": "Drinks",
+      "items": [
+        {
+          "id": "poke-bowl-kristiine-drinks-0",
+          "title": "Heavenly Lemonade 0.33l can",
+          "description": "Low-calorie carbonated soft drink with raspberry-rhubarb flavor",
+          "price": "2,75 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-f4d2a7ceada3.png"
+        },
+        {
+          "id": "poke-bowl-kristiine-drinks-1",
+          "title": "Värska still water 0.33 l",
+          "price": "2,50 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-41d99e70cb5f.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-drinks-2",
+          "title": "Värska sparkling water 0.33 l",
+          "price": "2,50 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-537304601914.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-drinks-3",
+          "title": "Juice Bottled 0,3 l",
+          "description": "Bottled",
+          "price": "2,80 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-db6a72ab3382.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-drinks-4",
+          "title": "Captain Kombucha 0,4 l",
+          "price": "3,90 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-51c60e08b8ef.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-drinks-5",
+          "title": "NOCCO Cola",
+          "price": "3,50 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-b560cac480ee.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "strengthen-your-immunity",
+      "title": "Strengthen Your Immunity!",
+      "items": [
+        {
+          "id": "poke-bowl-kristiine-strengthen-your-immunity-0",
+          "title": "Ginger Shot",
+          "description": "Water, ginger 17%, lemon juice, turmeric, honey",
+          "price": "3,20 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-16974a1dd321.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "sweets",
+      "title": "Sweets",
+      "items": [
+        {
+          "id": "poke-bowl-kristiine-sweets-0",
+          "title": "Mochi with matcha",
+          "description": "Traditional Japanese sweet mochi balls with matcha.",
+          "price": "2,00 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-71558bafca1c.jpeg"
+        },
+        {
+          "id": "poke-bowl-kristiine-sweets-1",
+          "title": "Peanut Mochi",
+          "price": "2,00 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-d694aa45bad8.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "saesoning",
+      "title": "Saesoning",
+      "items": [
+        {
+          "id": "poke-bowl-kristiine-saesoning-0",
+          "title": "Furikake",
+          "description": "A particularly rich flavor blend common in Japan which adds a pleasant texture to a variety of foods. Sprinkle on rice, noodles, meat, fish, egg dishes, cheese, carpaccio, sashimi, shrimp or even vanilla ice cream. Ingredients: Sesame seeds, peanut, brown cane sugar (unrefined), rice vinegar, nori, worchester sauce, wasabi, Himalayan salt.",
+          "price": "3,60 €",
+          "imageSrc": "poke-bowl-kristiine/poke-bowl-kristiine-66a9572c1433.jpeg"
+        }
+      ]
+    }
+  ]
+}

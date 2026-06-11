@@ -290,9 +290,9 @@ export const design = {
    */
   aisles: {
     moreToExplore: [
-      figma('831e285a66b34e0f922b2b9bdc89aee9.png'),
-      figma('9029c974016947c2ae179e8231d7683a.png'),
-      figma('cd480ab363f54618b271c6fb989fc627.png'),
+      figma('c464c581f06fb9d5c7ed3084ce60be97dd45e8b8.png'),
+      figma('a0e4967f84342f766149edf0ead75b73ca6dba25.png'),
+      figma('6f758b4bb18d84efe1c972e0a9a67f4b748c7c73.png'),
     ],
     categoryTiles: [
       figma('bf4d0c25ba9147efb15fa337c12fce40.png'),
@@ -327,11 +327,11 @@ export const design = {
       figma('f06160bd67d146568a9f31d3f15755f1.png'),
     ],
   },
-  /** Node 70394:111443 — MoreToExplore (tile art) */
+  /** Node 80859:171206 — MoreToExplore tile art (New / Freshly baked / Bolt favourites) */
   moreToExplore: [
-    figma('959c48ec516c3588a4a60f24a651dd29b62b99b5.png'),
-    figma('979450db5dcbacfd9253e7403e17d85e8b9abfe4.png'),
-    figma('18e3e1581f58a37c2e36d35499650d33b2912323.png'),
+    figma('c464c581f06fb9d5c7ed3084ce60be97dd45e8b8.png'),
+    figma('a0e4967f84342f766149edf0ead75b73ca6dba25.png'),
+    figma('6f758b4bb18d84efe1c972e0a9a67f4b748c7c73.png'),
   ],
   /** Category grid tile images, same order as Figma node 70394:111492 */
   categoryTiles: [
@@ -422,7 +422,7 @@ export const design = {
     offer: ki.offerOutline,
     chevronRight: ki.chevronRight,
     pin: ki.locationPin,
-    arrowRight: ki.joinArrow,
+    arrowRight: ki.arrowRight,
     homeIndicator: figma('f32a6ab0be790c7e3a3e2581374d651130d2bced.svg'),
   },
   /**
@@ -442,6 +442,7 @@ export const design = {
     favouritesIllustration: figma('def2801043bb4795b69bed5fc486ffec.png'),
     courier: figma('5fd7a2daaf6a4a29b3241218f4b9e816.png'),
     courierMask: figma('17363b2ffe684198bca962140bc47b1a.svg'),
+    courierBanner: figma('c79726c156fb5b522dd470eeef6af96aa17b956c.png'),
     info: figma('dbdcb59def6849d1bfe0a1f239537fa9.svg'),
     themeSystem: figma('ef3f8e518dd1439f9ab64275ad900569.svg'),
     themeLight: figma('c93aee97464041baa819db39ee44b7ca.svg'),
@@ -451,7 +452,7 @@ export const design = {
   },
   shoppingList: {
     navEditLarge: ki.navEdit,
-    navEditSmall: ki.navEditSmall,
+    navEditSmall: ki.navEdit,
     cardDivider: figma('220e7f2bb9323aef338a632f254b58a28a0d37ca.svg'),
     homeIndicator: figma('f32a6ab0be790c7e3a3e2581374d651130d2bced.svg'),
     emptyChicken: figma('196b13d552edd4165f49d4d29d3753337bb78734.png'),

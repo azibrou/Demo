@@ -17,10 +17,12 @@ export type ThumbnailLListBlockProps = {
   title: string
   items: readonly ThumbnailLListBlockItem[]
   onItemClick?: (item: ThumbnailLListBlockItem) => void
+  /** When set, only matching rows are interactive (others render as static cards). */
+  isItemClickable?: (item: ThumbnailLListBlockItem) => boolean
 }
 
 /** Page block: vertical list of scaled {@link ThumbnailL} cards — 24px gutters, 375px baseline. */
-export function ThumbnailLListBlock({ title, items, onItemClick }: ThumbnailLListBlockProps) {
+export function ThumbnailLListBlock({ title, items, onItemClick, isItemClickable }: ThumbnailLListBlockProps) {
   const rootRef = useRef<HTMLElement>(null)
   const scale = useThumbnailLScale(rootRef)
   const headingId = 'all-restaurants-heading'
@@ -42,17 +44,20 @@ export function ThumbnailLListBlock({ title, items, onItemClick }: ThumbnailLLis
         </h2>
       </header>
       <ul className="thumbnail-l-section__list">
-        {items.map((item) => (
-          <li key={item.title} className="thumbnail-l-section__item">
-            {onItemClick ? (
-              <button type="button" onClick={() => onItemClick(item)} className="w-full cursor-pointer text-left">
+        {items.map((item) => {
+          const clickable = onItemClick && (isItemClickable?.(item) ?? true)
+          return (
+            <li key={item.title} className="thumbnail-l-section__item">
+              {clickable ? (
+                <button type="button" onClick={() => onItemClick(item)} className="w-full cursor-pointer text-left">
+                  <ThumbnailL variant="scaled" {...item} />
+                </button>
+              ) : (
                 <ThumbnailL variant="scaled" {...item} />
-              </button>
-            ) : (
-              <ThumbnailL variant="scaled" {...item} />
-            )}
-          </li>
-        ))}
+              )}
+            </li>
+          )
+        })}
       </ul>
     </section>
   )

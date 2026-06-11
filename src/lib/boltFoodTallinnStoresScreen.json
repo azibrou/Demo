@@ -1,0 +1,310 @@
+{
+  "source": "https://food.bolt.eu/en/1-tallinn/stores/",
+  "screenId": 120001,
+  "fetchedAt": "2026-06-11T17:29:57.610Z",
+  "delivery": {
+    "city_id": 1,
+    "delivery_lat": 59.437,
+    "delivery_lng": 24.7536
+  },
+  "sections": {
+    "orderAgain": [
+      {
+        "providerId": 28032,
+        "title": "Bolt Market Toompuiestee",
+        "address": "Toompuiestee 33a",
+        "deliveryLabel": "1,90 €",
+        "etaText": "25–30 min",
+        "rating": "4.9",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2026/2026-03-03/f23b4550-d6cb-4c7c-8d2e-af499e181eb6.jpeg",
+        "localFile": "bolt-market-toompuiestee-28032.jpeg",
+        "assetKey": "bolt_market_toompuiestee_28032"
+      },
+      {
+        "providerId": 160148,
+        "title": "Selver Torupilli",
+        "address": "Vesivärava 37",
+        "deliveryLabel": "1,90 €",
+        "etaText": "40–45 min",
+        "rating": "4.5",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2026/2026-01-27/6d619953-51a9-4959-b868-d9146b911453.jpeg",
+        "localFile": "selver-torupilli-160148.jpeg",
+        "assetKey": "selver_torupilli_160148"
+      },
+      {
+        "providerId": 55133,
+        "title": "Araxes Linnamäe",
+        "address": "Linnamäe tee 37a, Tallinn",
+        "deliveryLabel": "8,05 €",
+        "etaText": "40–45 min",
+        "rating": "5.0",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2022/2022-10-07/ec20fcb8-de28-469a-a692-bd8da2cc8fc7.jpeg",
+        "localFile": "araxes-linnamae-55133.jpeg",
+        "assetKey": "araxes_linnamae_55133"
+      },
+      {
+        "providerId": 3223,
+        "title": "Home of Ice Cream Mustamäe",
+        "address": "Mustamäe Keskus, A.H Tammsaare tee 104",
+        "deliveryLabel": "6,27 €",
+        "etaText": "30–35 min",
+        "rating": "4.8",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2026/2026-02-19/448d03b5-114e-4f85-bffb-8420be4c5312.jpeg",
+        "localFile": "home-of-ice-cream-mustamae-3223.jpeg",
+        "assetKey": "home_of_ice_cream_mustamae_3223"
+      }
+    ],
+    "featured": [
+      {
+        "providerId": 160148,
+        "title": "Selver Torupilli",
+        "address": "Vesivärava 37",
+        "deliveryLabel": "1,90 €",
+        "etaText": "40–45 min",
+        "rating": "4.5",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2026/2026-01-27/6d619953-51a9-4959-b868-d9146b911453.jpeg",
+        "localFile": "selver-torupilli-160148.jpeg",
+        "assetKey": "selver_torupilli_160148"
+      }
+    ],
+    "allGroceryStores": [
+      {
+        "providerId": 186733,
+        "title": "Selver ABC Kreutzwaldi",
+        "address": "Narva mnt 21, 10120 Tallinn",
+        "deliveryLabel": "1,90 €",
+        "etaText": "25–30 min",
+        "rating": "4.4",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2026/2026-01-27/f795d7e0-1505-46ba-abe6-4c1791e55514.jpeg",
+        "localFile": "selver-abc-kreutzwaldi-186733.jpeg",
+        "assetKey": "selver_abc_kreutzwaldi_186733"
+      },
+      {
+        "providerId": 3534,
+        "title": "Kolmjalg Toidukauplus",
+        "address": "Rataskaevu 2",
+        "deliveryLabel": "1,90 €",
+        "etaText": "15–20 min",
+        "rating": "4.8",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2021/2021-10-20/21c92dce-29ad-4324-92b9-996e0916b8b6.jpeg",
+        "localFile": "kolmjalg-toidukauplus-3534.jpeg",
+        "assetKey": "kolmjalg_toidukauplus_3534"
+      },
+      {
+        "providerId": 28032,
+        "title": "Bolt Market Toompuiestee",
+        "address": "Toompuiestee 33a",
+        "deliveryLabel": "1,90 €",
+        "etaText": "25–30 min",
+        "rating": "4.9",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2026/2026-03-03/f23b4550-d6cb-4c7c-8d2e-af499e181eb6.jpeg",
+        "localFile": "bolt-market-toompuiestee-28032.jpeg",
+        "assetKey": "bolt_market_toompuiestee_28032"
+      },
+      {
+        "providerId": 61719,
+        "title": "No Bananas Sikupilli",
+        "address": "Tartu maantee 87, Tallinn",
+        "deliveryLabel": "2,54 €",
+        "etaText": "20–25 min",
+        "rating": "4.9",
+        "reviews": "(271)",
+        "imageUrl": "https://images.bolt.eu/store/2024/2024-03-01/154a8a49-7bd4-4d70-a0c7-93cd5b99adf1.jpeg",
+        "localFile": "no-bananas-sikupilli-61719.jpeg",
+        "assetKey": "no_bananas_sikupilli_61719"
+      }
+    ],
+    "boltPlusDiscounts": [
+      {
+        "providerId": 28032,
+        "title": "Bolt Market Toompuiestee",
+        "address": "Toompuiestee 33a",
+        "deliveryLabel": "1,90 €",
+        "etaText": "25–30 min",
+        "rating": "4.9",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2026/2026-03-03/f23b4550-d6cb-4c7c-8d2e-af499e181eb6.jpeg",
+        "localFile": "bolt-market-toompuiestee-28032.jpeg",
+        "assetKey": "bolt_market_toompuiestee_28032"
+      },
+      {
+        "providerId": 137498,
+        "title": "Charlot Viru Keskus",
+        "address": "Viru väljak 4 10111 Tallinn Estonia",
+        "deliveryLabel": "1,90 €",
+        "etaText": "10–15 min",
+        "rating": "4.3",
+        "reviews": "(59)",
+        "imageUrl": "https://images.bolt.eu/store/2025/2025-05-29/4cae68e2-1f53-460f-859d-1d0cae7fabfd.jpeg",
+        "localFile": "charlot-viru-keskus-137498.jpeg",
+        "assetKey": "charlot_viru_keskus_137498"
+      },
+      {
+        "providerId": 68058,
+        "title": "Candy POP Viru",
+        "address": "Viru väljak 4-6, Tallinn",
+        "deliveryLabel": "1,90 €",
+        "etaText": "10–15 min",
+        "rating": "4.5",
+        "reviews": "(268)",
+        "imageUrl": "https://images.bolt.eu/store/2023/2023-07-21/d43be641-33b6-40e0-a667-c3d8b9b8c721.jpeg",
+        "localFile": "candy-pop-viru-68058.jpeg",
+        "assetKey": "candy_pop_viru_68058"
+      }
+    ],
+    "bakerySweets": [
+      {
+        "providerId": 28032,
+        "title": "Bolt Market Toompuiestee",
+        "address": "Toompuiestee 33a",
+        "deliveryLabel": "1,90 €",
+        "etaText": "25–30 min",
+        "rating": "4.9",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2026/2026-03-03/f23b4550-d6cb-4c7c-8d2e-af499e181eb6.jpeg",
+        "localFile": "bolt-market-toompuiestee-28032.jpeg",
+        "assetKey": "bolt_market_toompuiestee_28032"
+      },
+      {
+        "providerId": 1406,
+        "title": "Home of Ice Cream Vanalinn",
+        "address": "Rataskaevu 2, Tallinn",
+        "deliveryLabel": "1,90 €",
+        "etaText": "15–20 min",
+        "rating": "4.8",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2026/2026-02-19/c591f4b3-fc3d-47b7-acdb-80039a65aa3a.jpeg",
+        "localFile": "home-of-ice-cream-vanalinn-1406.jpeg",
+        "assetKey": "home_of_ice_cream_vanalinn_1406"
+      },
+      {
+        "providerId": 57603,
+        "title": "Candy POP Solaris",
+        "address": "Estonia pst 9, Tallinn",
+        "deliveryLabel": "1,90 €",
+        "etaText": "15–20 min",
+        "rating": "4.5",
+        "reviews": "(329)",
+        "imageUrl": "https://images.bolt.eu/store/2023/2023-07-21/559180b9-3cb8-483d-a464-7bb3d4933ff1.jpeg",
+        "localFile": "candy-pop-solaris-57603.jpeg",
+        "assetKey": "candy_pop_solaris_57603"
+      },
+      {
+        "providerId": 189429,
+        "title": "Zotter Chocolate - Ehe Mood",
+        "address": "Telliskivi tänav 60a/3 10412 Tallinn Estonia",
+        "deliveryLabel": "3,26 €",
+        "etaText": "30–35 min",
+        "imageUrl": "https://images.bolt.eu/store/2026/2026-03-26/957606da-90c6-4a55-83af-7eba9bef9fa1.jpeg",
+        "localFile": "zotter-chocolate-ehe-mood-189429.jpeg",
+        "assetKey": "zotter_chocolate_ehe_mood_189429"
+      }
+    ],
+    "allStores": [
+      {
+        "providerId": 28032,
+        "title": "Bolt Market Toompuiestee",
+        "address": "Toompuiestee 33a",
+        "deliveryLabel": "1,90 €",
+        "etaText": "25–30 min",
+        "rating": "4.9",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2026/2026-03-03/f23b4550-d6cb-4c7c-8d2e-af499e181eb6.jpeg",
+        "localFile": "bolt-market-toompuiestee-28032.jpeg",
+        "assetKey": "bolt_market_toompuiestee_28032"
+      },
+      {
+        "providerId": 160148,
+        "title": "Selver Torupilli",
+        "address": "Vesivärava 37",
+        "deliveryLabel": "1,90 €",
+        "etaText": "40–45 min",
+        "rating": "4.5",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2026/2026-01-27/6d619953-51a9-4959-b868-d9146b911453.jpeg",
+        "localFile": "selver-torupilli-160148.jpeg",
+        "assetKey": "selver_torupilli_160148"
+      },
+      {
+        "providerId": 55133,
+        "title": "Araxes Linnamäe",
+        "address": "Linnamäe tee 37a, Tallinn",
+        "deliveryLabel": "8,05 €",
+        "etaText": "40–45 min",
+        "rating": "5.0",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2022/2022-10-07/ec20fcb8-de28-469a-a692-bd8da2cc8fc7.jpeg",
+        "localFile": "araxes-linnamae-55133.jpeg",
+        "assetKey": "araxes_linnamae_55133"
+      },
+      {
+        "providerId": 3223,
+        "title": "Home of Ice Cream Mustamäe",
+        "address": "Mustamäe Keskus, A.H Tammsaare tee 104",
+        "deliveryLabel": "6,27 €",
+        "etaText": "30–35 min",
+        "rating": "4.8",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2026/2026-02-19/448d03b5-114e-4f85-bffb-8420be4c5312.jpeg",
+        "localFile": "home-of-ice-cream-mustamae-3223.jpeg",
+        "assetKey": "home_of_ice_cream_mustamae_3223"
+      },
+      {
+        "providerId": 82070,
+        "title": "Lillelett",
+        "address": "Viru 26, Tallinn",
+        "deliveryLabel": "1,90 €",
+        "etaText": "10–15 min",
+        "rating": "4.9",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2023/2023-12-22/6d920392-eab4-4716-87f5-2386d3d17bfe.jpeg",
+        "localFile": "lillelett-82070.jpeg",
+        "assetKey": "lillelett_82070"
+      },
+      {
+        "providerId": 93414,
+        "title": "Naichai Bubble Tea Bar",
+        "address": "Suur-Karja tn 11, 10140 Tallinn",
+        "deliveryLabel": "1,90 €",
+        "etaText": "15–20 min",
+        "rating": "4.8",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2024/2024-05-02/24fbfe3f-f603-49fd-b299-2f124be5faab.jpeg",
+        "localFile": "naichai-bubble-tea-bar-93414.jpeg",
+        "assetKey": "naichai_bubble_tea_bar_93414"
+      },
+      {
+        "providerId": 21759,
+        "title": "Raasiku Õlletehas Smuuli",
+        "address": "J.Smuuli tee 9",
+        "deliveryLabel": "4,54 €",
+        "etaText": "30–35 min",
+        "rating": "5.0",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2024/2024-01-30/0e642c32-1cbf-4585-87db-d186929a1d41.jpeg",
+        "localFile": "raasiku-olletehas-smuuli-21759.jpeg",
+        "assetKey": "raasiku_olletehas_smuuli_21759"
+      },
+      {
+        "providerId": 27367,
+        "title": "CityAlko Tondi",
+        "address": "A.H.Tammsaare tee 62",
+        "deliveryLabel": "4,65 €",
+        "etaText": "30–35 min",
+        "rating": "5.0",
+        "reviews": "(500+)",
+        "imageUrl": "https://images.bolt.eu/store/2023/2023-07-17/bf5c9989-2b56-41cc-be3b-ed16e3b16377.jpeg",
+        "localFile": "cityalko-tondi-27367.jpeg",
+        "assetKey": "cityalko_tondi_27367"
+      }
+    ]
+  }
+}

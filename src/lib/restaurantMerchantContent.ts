@@ -3,6 +3,7 @@ import type { SimpleItemProps } from '../components/SimpleItem'
 import { retailSnippetProducts } from './boltFoodTallinnHomeContent'
 import { design } from './figmaDesignAssets'
 import { IL_FORNO_NAME, ilFornoContent } from './ilFornoMerchantContent'
+import { resolveMultiRestaurantContent } from './multiRestaurantContent'
 
 const rm = design.restaurantMerchant
 const carouselProduct = design.carousel.product
@@ -174,5 +175,7 @@ export function resolveRestaurantContent(name: string): RestaurantContent {
       sections: ilFornoContent.sections,
     }
   }
+  const multi = resolveMultiRestaurantContent(name)
+  if (multi) return multi
   return defaultRestaurantContent
 }

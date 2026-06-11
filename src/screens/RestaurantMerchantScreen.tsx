@@ -19,6 +19,7 @@ import { ProductSheet, type ProductSheetProduct } from '../components/ProductShe
 import { RestaurantSearchOverlay } from '../components/RestaurantSearchOverlay'
 import { MerchantOrderProvider } from '../context/OrderContext'
 import { IL_FORNO_NAME } from '../lib/ilFornoMerchantContent'
+import { MULTI_RESTAURANT_NAMES } from '../lib/multiRestaurantContent'
 import { restaurantOrderProviderRef } from '../lib/orderProvider'
 import { useStackBack } from '../hooks/useStackBack'
 import { StoreCardDividerBlock } from '../sections/stores/StoreCardDividerBlock'
@@ -35,7 +36,9 @@ export function RestaurantMerchantScreen() {
   const assortment = useMemo(() => restaurantAssortment(content), [content])
   /** Restaurants that use the centered search chrome + search overlay instead of the tab bar. */
   const searchChrome =
-    isPavlovaViruKeskusRestaurant(provider.name) || provider.name === IL_FORNO_NAME
+    isPavlovaViruKeskusRestaurant(provider.name) ||
+    provider.name === IL_FORNO_NAME ||
+    (MULTI_RESTAURANT_NAMES as readonly string[]).includes(provider.name)
   const [searchOpen, setSearchOpen] = useState(false)
   const [detailProduct, setDetailProduct] = useState<ProductSheetProduct | null>(null)
 

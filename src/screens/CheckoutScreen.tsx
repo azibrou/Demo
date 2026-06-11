@@ -1,13 +1,15 @@
-import { useCallback, useEffect, useLayoutEffect, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CardDivider } from '../components/CardDivider'
 import { CarouselGridItem } from '../components/CarouselGridItem'
-import { HomeHorizontalScroll } from '../components/HomeHorizontalScroll'
+import { CarouselItem } from '../components/CarouselItem'
+import { EmptyBasketDialog } from '../components/EmptyBasketDialog'
 import { KalepIcon } from '../components/KalepIcon'
 import { NavBar } from '../components/NavBar'
 import { QuickAddExpandPill } from '../components/QuickAddExpandPill'
 import { MerchantOrderProvider, useOrder, type OrderLine } from '../context/OrderContext'
 import { useStackBack } from '../hooks/useStackBack'
+import { resolveCheckoutUpsellProducts } from '../lib/checkoutUpsellContent'
 import { design } from '../lib/figmaDesignAssets'
 import { formatEuro, parsePrice } from '../lib/price'
 
@@ -16,39 +18,6 @@ const c = design.checkout
 const carousel = design.carousel
 
 type DeliveryId = 'delivery' | 'pickup' | 'schedule' | 'robot'
-
-const UPSELL = [
-  {
-    id: 'upsell-salmon',
-    variant: 'discount' as const,
-    image: c.upsellSalmon,
-    title: 'Poke with Salmon',
-    priceNow: '11,50 €',
-    priceWas: '13,50 €',
-    discountLabel: '−25 %',
-  },
-  {
-    id: 'upsell-chicken',
-    variant: 'default' as const,
-    image: c.upsellChicken,
-    title: 'Poke with Chicken',
-    price: '12,50 €',
-  },
-  {
-    id: 'upsell-tofu',
-    variant: 'default' as const,
-    image: c.upsellTofu,
-    title: 'Poke with Tofu',
-    price: '12,50 €',
-  },
-  {
-    id: 'upsell-salmon-2',
-    variant: 'default' as const,
-    image: c.upsellSalmon,
-    title: 'Poke with salmon',
-    price: '1,50 €',
-  },
-]
 
 const DELIVERY_OPTIONS: {
   id: DeliveryId
@@ -153,9 +122,9 @@ function OrderItemRow({
   return (
     <div className="flex w-full flex-col gap-[15px] pt-4">
       <div className="flex gap-3">
-        <div className="relative size-14 shrink-0 overflow-hidden rounded-xl bg-[rgba(0,45,30,0.06)]">
+        <div className="relative size-14 shrink-0 overflow-hidden rounded-lg bg-[rgba(0,45,30,0.06)]">
           {item.image ? <img alt="" src={item.image} className="size-full object-cover" /> : null}
-          <div className="absolute inset-0 rounded-xl bg-[rgba(0,45,30,0.06)]" aria-hidden />
+          <div className="absolute inset-0 rounded-lg bg-[rgba(0,45,30,0.06)]" aria-hidden />
         </div>
         <div className="flex min-w-0 flex-1 flex-col gap-1 pt-1">
           <p className="bolt-font-body-m-regular text-[#191f1c]">{item.title}</p>
@@ -188,6 +157,7 @@ export function CheckoutScreen() {
   const [delivery, setDelivery] = useState<DeliveryId>('delivery')
   const [tip, setTip] = useState('No tip')
   const [dropoff, setDropoff] = useState(DROPOFF_OPTIONS[0]!)
+  const [emptyBasketOpen, setEmptyBasketOpen] = useState(false)
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0)
@@ -200,14 +170,24 @@ export function CheckoutScreen() {
 
   const subtotal = items.reduce((sum, item) => sum + parsePrice(item.price) * item.qty, 0)
   const title = order.provider?.name ?? 'Basket'
+  const upsellProducts = useMemo(
+    () => resolveCheckoutUpsellProducts(order.provider, items.map((item) => item.id)),
+    [order.provider, items],
+  )
 
   const handleClear = useCallback(() => {
     order.clear()
+    setEmptyBasketOpen(false)
     navigate('/', { replace: true })
   }, [order, navigate])
 
   return (
     <div className="font-sans min-h-svh w-full bg-white text-[#191f1c]">
+      <EmptyBasketDialog
+        open={emptyBasketOpen}
+        onCancel={() => setEmptyBasketOpen(false)}
+        onConfirm={handleClear}
+      />
       <div className="mx-auto flex min-h-svh w-full max-w-full flex-col sm:max-w-[375px]">
         <NavBar
           title={title}
@@ -216,8 +196,8 @@ export function CheckoutScreen() {
           endSlot={
             <button
               type="button"
-              aria-label="Clear basket"
-              onClick={handleClear}
+              aria-label="Empty basket"
+              onClick={() => setEmptyBasketOpen(true)}
               className="relative grid size-6 shrink-0 place-items-center"
             >
               <KalepIcon name="bin" size={24} />
@@ -254,27 +234,15 @@ export function CheckoutScreen() {
             <RowDivider />
           </section>
 
-          <section className="flex flex-col gap-4 px-6 py-4">
-            <h2 className="bolt-font-heading-s-accent text-[#191f1c]">People also added</h2>
+          {upsellProducts.length > 0 ? (
             <MerchantOrderProvider provider={order.provider}>
-              <HomeHorizontalScroll aria-label="Suggested items">
-                {UPSELL.map((tile) => (
-                  <CarouselGridItem
-                    key={tile.id}
-                    itemId={tile.id}
-                    variant={tile.variant}
-                    tileWidth="132px"
-                    imageSrc={tile.image}
-                    title={tile.title}
-                    price={tile.price}
-                    priceNow={tile.priceNow}
-                    priceWas={tile.priceWas}
-                    discountLabel={tile.discountLabel}
-                  />
+              <CarouselItem title="People also added">
+                {upsellProducts.map((product) => (
+                  <CarouselGridItem key={product.id} itemId={product.id} {...product} />
                 ))}
-              </HomeHorizontalScroll>
+              </CarouselItem>
             </MerchantOrderProvider>
-          </section>
+          ) : null}
 
           <CardDivider />
 
@@ -504,10 +472,17 @@ export function CheckoutScreen() {
                 type="button"
                 className="relative h-14 w-full shrink-0 overflow-hidden rounded-full bg-[#2b8659]"
               >
-                <span className="absolute left-1 top-1/2 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                  <KalepIcon name="join-arrow" size={24} />
-                </span>
-                <span className="absolute inset-x-6 top-1/2 flex -translate-y-1/2 flex-col items-center text-center text-white">
+                {/* Figma 80868:171183 — slide-to-confirm FAB thumb */}
+                <div
+                  className="absolute left-1 top-1/2 size-12 -translate-y-1/2 drop-shadow-[0_4px_6px_rgba(0,0,0,0.2)]"
+                  aria-hidden
+                >
+                  <div className="absolute inset-0 rounded-full bg-white" />
+                  <div className="absolute inset-0 grid place-items-center">
+                    <KalepIcon name="arrow-right" size={24} />
+                  </div>
+                </div>
+                <span className="absolute left-10 right-6 top-1/2 flex -translate-y-1/2 flex-col items-center text-center text-white">
                   <span className="text-lg font-semibold leading-[22px] tracking-[-0.252px]">Place order</span>
                   <span className="text-xs leading-4">Slide to confirm</span>
                 </span>

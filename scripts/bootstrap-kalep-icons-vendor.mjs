@@ -23,6 +23,7 @@ const GLYPH_MAP = {
   'arrow-left-store': '511560e2cd954e7cbc56b7d47b6363d19.svg',
   'arrow-left-top': '7937d90c2c3644338c1a5ec88aa1d66f.svg',
   'arrow-left-restaurant': 'f3af9a0d77ae49d3bc880499ec3aacda.svg',
+  'arrow-right': 'a8f3c2e1b4d6470891e5d6c7f8a9b0c1d.svg',
   'share-ios': 'dc97c89954f5afee1cee9f7cd4e8bd787c09b3bf.svg',
   'share-ios-store': '8814ba82c78345bcb7335442adc42a07.svg',
   'share-ios-top': 'cd3e0e21c0234614b0758d430408afcb.svg',

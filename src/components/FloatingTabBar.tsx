@@ -37,6 +37,8 @@ export type FloatingTabBarProps = {
   showBasketFab?: boolean
   /** Trailing circular actions (e.g. search) — not affected by tab compact animation. */
   tabActions?: ReactNode
+  /** Built-in slide-up on mount. Disable when a {@link BottomChromeSlide} wrapper owns the slide. */
+  animateEnter?: boolean
 }
 
 /**
@@ -53,6 +55,7 @@ function FloatingTabBarInner({
   showHomeIndicator = false,
   showBasketFab: showBasketFabProp = true,
   tabActions,
+  animateEnter = true,
 }: FloatingTabBarProps) {
   const basket = useBasketFabOptional()
   const basketEnabled = showBasketFabProp && basket != null
@@ -98,9 +101,11 @@ function FloatingTabBarInner({
         'bg-gradient-to-b from-[rgba(255,255,255,0)] to-[rgba(255,255,255,0.9)]',
         'floating-tab-bar pt-3',
         'pb-[calc(12px+env(safe-area-inset-bottom,0px))]',
-        'animate-floating-tab-bar-enter motion-reduce:animate-none',
+        animateEnter ? 'animate-floating-tab-bar-enter motion-reduce:animate-none' : '',
         className,
-      ].join(' ')}
+      ]
+        .filter(Boolean)
+        .join(' ')}
       data-name="ftb"
       data-node-id="76281:68555"
     >

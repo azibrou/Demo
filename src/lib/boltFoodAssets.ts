@@ -12,6 +12,12 @@ function boltProduct(file: string): string {
   return `${base}bolt/products/${file}`
 }
 
+/** Store hub covers synced from live Bolt Food (`npm run bolt:stores:sync`). */
+function boltStore(file: string): string {
+  const base = import.meta.env.BASE_URL
+  return `${base}bolt/stores/${file}`
+}
+
 export const boltFoodAssets = {
   boltMarketToompuiestee: bolt('bolt-market-toompuiestee.jpeg'),
   mcdonaldsViru: bolt('mcdonalds-viru.jpeg'),
@@ -39,3 +45,5 @@ export const boltFoodAssets = {
   retailCocaColaZero: boltProduct('coca-cola-zero.png'),
   retailBatteryEnergy: boltProduct('battery-energy-drink.png'),
 } as const
+
+export { boltStore }

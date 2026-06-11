@@ -14,6 +14,7 @@
     "./arrow-left-store.svg": "./arrow-left-store.svg",
     "./arrow-left-top.svg": "./arrow-left-top.svg",
     "./arrow-left-restaurant.svg": "./arrow-left-restaurant.svg",
+    "./arrow-right.svg": "./arrow-right.svg",
     "./share-ios.svg": "./share-ios.svg",
     "./share-ios-store.svg": "./share-ios-store.svg",
     "./share-ios-top.svg": "./share-ios-top.svg",
@@ -79,6 +80,7 @@
     "./tab-isles-selected.svg": "./tab-isles-selected.svg",
     "./tab-merchant-list.svg": "./tab-merchant-list.svg",
     "./tab-merchant-list-selected.svg": "./tab-merchant-list-selected.svg",
-    "./tab-merchant-search.svg": "./tab-merchant-search.svg"
+    "./tab-merchant-search.svg": "./tab-merchant-search.svg",
+    "./stop-hand.svg": "./stop-hand.svg"
   }
 }

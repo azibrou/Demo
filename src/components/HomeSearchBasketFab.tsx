@@ -8,6 +8,7 @@ export function HomeSearchBasketFab() {
   const basket = useBasketFabOptional()
   const count = basket?.basketDisplayCount ?? 0
   const amount = basket?.basketDisplayAmount ?? 0
+  const badgePopNonce = basket?.badgePopNonce ?? 0
   const { visible, slideIn, state, popIn } = useHomeSearchWideBasketFab(count)
 
   if (!visible) return null
@@ -26,6 +27,7 @@ export function HomeSearchBasketFab() {
           state={state}
           count={count}
           totalLabel={amount > 0 ? formatEuro(amount) : ''}
+          counterPopNonce={badgePopNonce}
           popIn={popIn}
           revealed={slideIn}
         />

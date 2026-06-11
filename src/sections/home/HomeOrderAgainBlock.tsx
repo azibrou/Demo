@@ -5,6 +5,7 @@ import { useEaterNavigate } from '../../hooks/useEaterNavigate'
 import {
   boltMarketToompuiesteeStoreNavState,
   isBoltMarketToompuiesteeLabel,
+  orderAgainRestaurantNavState,
 } from '../../lib/merchantNavigation'
 
 /** Home “Order again” block — scaled XS thumb row (same scale model as {@link HomeShortcutsBlock}). */
@@ -29,7 +30,7 @@ export function HomeOrderAgainBlock() {
             onClick={
               isBoltMarketToompuiesteeLabel(item.line1)
                 ? () => navigate('/store-merchant', { state: boltMarketToompuiesteeStoreNavState() })
-                : undefined
+                : () => navigate('/restaurant', { state: orderAgainRestaurantNavState(item.line1, item.imageSrc) })
             }
           />
         ))}

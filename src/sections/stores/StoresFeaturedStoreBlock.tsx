@@ -1,12 +1,10 @@
 import { useRef, type CSSProperties } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { ThumbnailL } from '../../components/ThumbnailL'
 import { useThumbnailLScale } from '../../hooks/useThumbnailLScale'
 import { storesFeatured } from '../../lib/boltFoodTallinnStoresContent'
 
-/** Featured store card — Figma 77303:218318. */
+/** Featured store card — display-only promo on the stores tab. */
 export function StoresFeaturedStoreBlock() {
-  const navigate = useNavigate()
   const rootRef = useRef<HTMLElement>(null)
   const scale = useThumbnailLScale(rootRef)
 
@@ -22,13 +20,7 @@ export function StoresFeaturedStoreBlock() {
       data-node-id="77303:218318"
       aria-label={storesFeatured.title}
     >
-      <button
-        type="button"
-        onClick={() => navigate('/store-merchant')}
-        className="w-full cursor-pointer text-left"
-      >
-        <ThumbnailL variant="scaled" {...storesFeatured} />
-      </button>
+      <ThumbnailL variant="scaled" {...storesFeatured} />
     </section>
   )
 }

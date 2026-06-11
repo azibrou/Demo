@@ -132,7 +132,7 @@ export function ProfileScreen() {
           <SectionHeader title="Profile" />
           <ListItem
             variant="profile"
-            title="Pavel Zubarev"
+            title="Vieno Rauni"
             trailingAction="Edit"
             leadingSlot={<KalepLeading name="user-alt-outline" />}
           />
@@ -186,7 +186,7 @@ export function ProfileScreen() {
           <ListItem variant="profileMenu" title="Join Bolt Plus" leadingIconSrc={p.boltPlus} />
           <ListItem variant="profileMenu" title="Promo codes" leadingSlot={<KalepLeading name="offer-outline" />} />
           <ListItem variant="profileMenu" title="Account settings" leadingSlot={<KalepLeading name="filters" />} />
-          <ListItem variant="profileMenu" title="Privacy" leadingSlot={<KalepLeading name="clear" />} />
+          <ListItem variant="profileMenu" title="Privacy" leadingSlot={<KalepLeading name="stop-hand" />} />
           <ListItem variant="profileMenu" title="About" leadingIconSrc={p.info} />
           <ListItem
             variant="profileMenu"
@@ -198,16 +198,14 @@ export function ProfileScreen() {
 
         <button
           type="button"
-          className="relative flex w-full items-center overflow-hidden rounded-xl bg-[var(--color-bg-neutral-secondary)] px-4 py-4 text-left outline-none ring-[var(--color-special-brand-alt)]/20 focus-visible:ring-2"
+          className="w-full overflow-hidden rounded-2xl text-white outline-none ring-[var(--color-special-brand-alt)]/20 focus-visible:ring-2"
+          aria-label="Become a courier — earn money on your schedule"
         >
-          <div className="min-w-0 flex-1 pr-24">
-            <p className="bolt-font-body-l-accent text-[var(--color-content-primary)]">Become a courier</p>
-            <p className="bolt-font-body-s-regular text-[var(--color-content-secondary)]">Earn money on your schedule</p>
-          </div>
-          <div className="pointer-events-none absolute bottom-0 right-0 top-0 w-[140px]">
-            <img alt="" src={p.courierMask} className="absolute inset-0 size-full object-cover" />
-            <img alt="" src={p.courier} className="absolute bottom-0 right-0 h-[88px] w-auto max-w-none object-contain" />
-          </div>
+          <img
+            alt="Become a courier — earn money on your schedule"
+            src={p.courierBanner}
+            className="pointer-events-none block w-full object-cover"
+          />
         </button>
       </div>
     </div>

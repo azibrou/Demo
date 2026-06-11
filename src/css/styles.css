@@ -50,6 +50,50 @@ html.eater-hub-active #root {
 }
 
 /**
+ * Bottom-chrome slide handoff — tab bars / action rows slide up on mount and
+ * down when leaving (paired with the iOS stack slide-out). Keyframe animations
+ * (not transitions) so the slide-up reliably plays on mount even while the iOS
+ * stack panel is animating. 300ms ease-out everywhere; see
+ * `BOTTOM_CHROME_SLIDE_MS` in `BottomChromeSlide.tsx`.
+ */
+@keyframes bottom-chrome-slide-enter {
+  from {
+    transform: translateY(120%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes bottom-chrome-slide-exit {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(120%);
+  }
+}
+
+.bottom-chrome-slide {
+  will-change: transform;
+}
+
+.bottom-chrome-slide[data-slide='enter'] {
+  animation: bottom-chrome-slide-enter 300ms ease-out both;
+}
+
+.bottom-chrome-slide[data-slide='exit'] {
+  animation: bottom-chrome-slide-exit 300ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bottom-chrome-slide {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/**
  * Home: 390px column, 24px gutters. Shortcuts / Order again tiles scale to fit the row
  * (Figma 76281:68503 baseline: 86px tile, 12px gap @ 375px). Product carousels scroll inside the row.
  */
@@ -402,6 +446,7 @@ html.eater-hub-active #root {
     position: absolute;
     top: 12px;
     right: 12px;
+    z-index: 20;
     display: flex;
     height: 32px;
     width: 32px;
@@ -531,6 +576,11 @@ html.eater-hub-active #root {
   .category-tab-actions__basket--shown {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+
+  .category-tab-actions__badge {
+    animation: basket-fab-badge-pop 220ms cubic-bezier(0.34, 1.35, 0.64, 1) forwards;
+    transform-origin: center;
   }
 
   /**

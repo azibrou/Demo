@@ -1,0 +1,297 @@
+{
+  "source": "https://food.bolt.eu/en/1-tallinn/p/620-amalfi-ristorante-pizzeria/",
+  "provider": {
+    "name": "Amalfi Ristorante Pizzeria",
+    "cover": null
+  },
+  "sections": [
+    {
+      "id": "pizza",
+      "title": "Pizza",
+      "items": [
+        {
+          "id": "amalfi-pizza-0",
+          "title": "Margherita",
+          "description": "Tomato sauce, mozzarella, basil",
+          "price": "11,00 €",
+          "imageSrc": "amalfi/amalfi-7bffd8ba80ee.jpeg"
+        },
+        {
+          "id": "amalfi-pizza-1",
+          "title": "Cotto",
+          "description": "Tomato sauce, mozzarella, ham",
+          "price": "13,00 €",
+          "imageSrc": "amalfi/amalfi-f0f214073aa6.jpeg"
+        },
+        {
+          "id": "amalfi-pizza-2",
+          "title": "Cotto E Funghi",
+          "description": "Tomato sauce, ham, mozzarella, mushrooms",
+          "price": "14,00 €",
+          "imageSrc": null
+        },
+        {
+          "id": "amalfi-pizza-3",
+          "title": "4 Formaggi",
+          "description": "4 varieties of cheese (without tomato sauce)",
+          "price": "14,00 €",
+          "imageSrc": null
+        },
+        {
+          "id": "amalfi-pizza-4",
+          "title": "Pesto",
+          "description": "Home made pesto, cherry tomatoes, mozzarella",
+          "price": "14,00 €",
+          "imageSrc": null
+        },
+        {
+          "id": "amalfi-pizza-5",
+          "title": "Ortolana",
+          "description": "Tomato sauce, mozzarella, mix of vegetables\nPicture is illustrative",
+          "price": "14,00 €",
+          "imageSrc": "amalfi/amalfi-2c5ce68a44b9.png"
+        },
+        {
+          "id": "amalfi-pizza-6",
+          "title": "Romana",
+          "description": "Tomato sauce, mozzarella, anchovies, oregano, black olives, capers",
+          "price": "14,00 €",
+          "imageSrc": "amalfi/amalfi-3df66cf03171.jpeg"
+        },
+        {
+          "id": "amalfi-pizza-7",
+          "title": "Pepperoni Con Nduja",
+          "description": "Spicy salame, tomato sauce, mozzarella",
+          "price": "15,00 €",
+          "imageSrc": "amalfi/amalfi-3aeabe2ede35.jpeg"
+        },
+        {
+          "id": "amalfi-pizza-8",
+          "title": "Nettuno",
+          "description": "Tomato sauce, mozzarella, tunafish, onion\nPicture is illustrative",
+          "price": "15,00 €",
+          "imageSrc": "amalfi/amalfi-5e8547af09f2.png"
+        },
+        {
+          "id": "amalfi-pizza-9",
+          "title": "Gorgonzola E Speck",
+          "description": "Mozzarella (no tomato sauce), gorgonzola, speck ham\nPicture is illustrative",
+          "price": "15,00 €",
+          "imageSrc": "amalfi/amalfi-683ed22d98a5.png"
+        },
+        {
+          "id": "amalfi-pizza-10",
+          "title": "Capricciosa",
+          "description": "Tomato sauce, mozzarella, salami, ham, mushrooms, artichokes, black olives",
+          "price": "16,00 €",
+          "imageSrc": "amalfi/amalfi-0f28586a8c56.jpeg"
+        },
+        {
+          "id": "amalfi-pizza-11",
+          "title": "Bella Napoli",
+          "description": "Mozzarella, tomato sauce, rocket salad, Italian cured ham, parmesan",
+          "price": "16,00 €",
+          "imageSrc": "amalfi/amalfi-4cd4188cd33f.jpeg"
+        },
+        {
+          "id": "amalfi-pizza-12",
+          "title": "Pizza Mediterranea",
+          "description": "Pizza with mix of fresh sea food (mussels, calamari, tiger prawn), tomato sauce and\nmozzarella\nPicture is illustrative",
+          "price": "18,00 €",
+          "imageSrc": "amalfi/amalfi-ec60b795555a.png"
+        }
+      ]
+    },
+    {
+      "id": "antipasti",
+      "title": "Antipasti",
+      "items": [
+        {
+          "id": "amalfi-antipasti-0",
+          "title": "Olive verdi di Gaeta",
+          "description": "Italian green olives\nPicture is illustrative",
+          "price": "7,50 €",
+          "imageSrc": "amalfi/amalfi-335d74d0204e.png"
+        },
+        {
+          "id": "amalfi-antipasti-1",
+          "title": "Bruschetta montanara",
+          "description": "Roasted bread filled with cheese, tomatoes, parmesan and basil\nPicture is illustrative",
+          "price": "8,50 €",
+          "imageSrc": "amalfi/amalfi-4c3443e216b3.png"
+        },
+        {
+          "id": "amalfi-antipasti-2",
+          "title": "Parmigiana di Melanzane",
+          "description": "Baked eggplant with parmesan",
+          "price": "13,50 €",
+          "imageSrc": "amalfi/amalfi-29b876727955.jpeg"
+        },
+        {
+          "id": "amalfi-antipasti-3",
+          "title": "Cozze alla tarantina",
+          "description": "Fresh mussels in cherry tomato sauce\nPicture is illustrative",
+          "price": "14,50 €",
+          "imageSrc": "amalfi/amalfi-0459a92e6b4b.png"
+        },
+        {
+          "id": "amalfi-antipasti-4",
+          "title": "Fritturina di Calamari in Dino di Porro",
+          "description": "Fried baby calamari",
+          "price": "14,50 €",
+          "imageSrc": "amalfi/amalfi-c978a2236a06.jpeg"
+        },
+        {
+          "id": "amalfi-antipasti-5",
+          "title": "Carpaccio di Filetto, Rucola e Grana",
+          "description": "Beef fillett carpaccio",
+          "price": "15,50 €",
+          "imageSrc": "amalfi/amalfi-a03175912c58.jpeg"
+        },
+        {
+          "id": "amalfi-antipasti-6",
+          "title": "Burrata  con Prosciutto Crudo Affumicato",
+          "description": "Burrata cheese with smoked italian cured ham (prosciutto crudo)",
+          "price": "14,50 €",
+          "imageSrc": "amalfi/amalfi-8dfe5c4c42c2.jpeg"
+        },
+        {
+          "id": "amalfi-antipasti-7",
+          "title": "Insalta di Polpo",
+          "description": "Octopus salad",
+          "price": "16,50 €",
+          "imageSrc": "amalfi/amalfi-4238d5cc8e1c.jpeg"
+        },
+        {
+          "id": "amalfi-antipasti-8",
+          "title": "Antipasto Misto di Salumi e Formaggi",
+          "description": "Selection of italian cheeses, ham and salami served with green olives, bruschettas and focaccia (for 2/3 persons)\nPicture is illustrative",
+          "price": "30,00 €",
+          "imageSrc": "amalfi/amalfi-54bda3b57ab9.png"
+        },
+        {
+          "id": "amalfi-antipasti-9",
+          "title": "Sauté Amalfi (for Two Persons)",
+          "description": "Saute with fresh mussels, tiger prawns, baby calamari in white wine sauce\nPicture is illustrative",
+          "price": "35,00 €",
+          "imageSrc": "amalfi/amalfi-f2488a110f3f.png"
+        }
+      ]
+    },
+    {
+      "id": "salad",
+      "title": "Salad",
+      "items": [
+        {
+          "id": "amalfi-salad-0",
+          "title": "Insalata Caesare",
+          "description": "Caesar salad with chicken",
+          "price": "13,50 €",
+          "imageSrc": "amalfi/amalfi-60b098eb92df.png"
+        }
+      ]
+    },
+    {
+      "id": "pasta-and-ravioli",
+      "title": "Pasta and Ravioli",
+      "items": [
+        {
+          "id": "amalfi-pasta-and-ravioli-0",
+          "title": "Gnocchi alla sorrentina",
+          "description": "Gnocchi in tomato sauce and mozzarella\nPicture is illustrative",
+          "price": "13,50 €",
+          "imageSrc": "amalfi/amalfi-ef6786196345.png"
+        },
+        {
+          "id": "amalfi-pasta-and-ravioli-1",
+          "title": "Spaghetti con Sardine",
+          "description": "Spaghetti with lightly spicy oil, garlic and sardine",
+          "price": "15,50 €",
+          "imageSrc": "amalfi/amalfi-de8da535038e.jpeg"
+        },
+        {
+          "id": "amalfi-pasta-and-ravioli-2",
+          "title": "Spaghetti alla Carbonara",
+          "description": "Spaghetti carbonara",
+          "price": "14,50 €",
+          "imageSrc": "amalfi/amalfi-c5dad8f57ed4.jpeg"
+        },
+        {
+          "id": "amalfi-pasta-and-ravioli-3",
+          "title": "Lasagna Bolognese",
+          "description": "Oven baked lasagna bolognese",
+          "price": "15,50 €",
+          "imageSrc": "amalfi/amalfi-3fcbdec24154.jpeg"
+        },
+        {
+          "id": "amalfi-pasta-and-ravioli-4",
+          "title": "Scialatielli allo Scoglio",
+          "description": "Scialatielli pasta with fresh seafood",
+          "price": "18,00 €",
+          "imageSrc": "amalfi/amalfi-9931875755da.jpeg"
+        },
+        {
+          "id": "amalfi-pasta-and-ravioli-5",
+          "title": "Ravioli Capesante al Pesto",
+          "description": "Ravioli filled with scallops and tiger prawns in pesto sauce",
+          "price": "18,00 €",
+          "imageSrc": "amalfi/amalfi-6fb10ee8e8d4.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "dolci",
+      "title": "Dolci",
+      "items": [
+        {
+          "id": "amalfi-dolci-0",
+          "title": "Tiramisu",
+          "description": "tiramisu\nPhoto is illustrative",
+          "price": "7,50 €",
+          "imageSrc": "amalfi/amalfi-a3c9e454793a.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "title": "Drinks",
+      "items": [
+        {
+          "id": "amalfi-drinks-0",
+          "title": "Italian Still Water 0,75 l",
+          "description": "Soft drink\nPhoto is illustrative",
+          "price": "5,00 €",
+          "imageSrc": "amalfi/amalfi-433a2c83b2b6.jpeg"
+        },
+        {
+          "id": "amalfi-drinks-1",
+          "title": "Italian Sparkling Water 0,75 l",
+          "description": "Soft drink\nPhoto is illustrative",
+          "price": "5,00 €",
+          "imageSrc": "amalfi/amalfi-6f25058f5e77.jpeg"
+        },
+        {
+          "id": "amalfi-drinks-2",
+          "title": "Pepsi 0,33 l",
+          "description": "Soft drink",
+          "price": "3,50 €",
+          "imageSrc": "amalfi/amalfi-2f3950beffb7.png"
+        },
+        {
+          "id": "amalfi-drinks-3",
+          "title": "Juice",
+          "description": "Soft drink\nPhoto is illustrative",
+          "price": "4,00 €",
+          "imageSrc": "amalfi/amalfi-32f7a854eb0c.jpeg"
+        },
+        {
+          "id": "amalfi-drinks-4",
+          "title": "Italian Lemonsoda",
+          "description": "Soft drink",
+          "price": "4,00 €",
+          "imageSrc": "amalfi/amalfi-e1a238c5eb44.jpeg"
+        }
+      ]
+    }
+  ]
+}

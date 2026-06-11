@@ -1,0 +1,549 @@
+{
+  "source": "https://food.bolt.eu/en/1-tallinn/p/127-damak-doner-kebab/",
+  "provider": {
+    "name": "Damak Döner & Kebab",
+    "cover": null
+  },
+  "sections": [
+    {
+      "id": "starter",
+      "title": "Starter",
+      "items": [
+        {
+          "id": "damak-starter-0",
+          "title": "Chicken Samosa",
+          "price": "8,60 €",
+          "imageSrc": "damak/damak-420ae96baa39.png"
+        },
+        {
+          "id": "damak-starter-1",
+          "title": "Samosa (Veg)",
+          "description": "Crispy pastry filled with a delicious mix of spiced vegetables. This popular South Asian snack is golden-fried to perfection and full of flavor. Perfect as a light bite or starter, best enjoyed with chutney or your favorite dip.",
+          "price": "8,00 €",
+          "imageSrc": "damak/damak-43ec5f70df38.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "special-offer",
+      "title": "Special Offer",
+      "items": [
+        {
+          "id": "damak-special-offer-0",
+          "title": "Fish Finger (5 pcs)",
+          "description": "Crispy finger fish strips, golden-fried to perfection and served with a creamy dipping sauce—light, crunchy, and packed with flavor.",
+          "price": "11,99 €",
+          "imageSrc": "damak/damak-8d6f448bd380.png"
+        },
+        {
+          "id": "damak-special-offer-1",
+          "title": "Fish &  Chips",
+          "description": "Crispy golden fish fillet served with thick-cut fries, creamy tartar sauce, and a fresh lemon wedge—classic comfort food, perfectly fried and full of flavor.",
+          "price": "12,99 €",
+          "imageSrc": "damak/damak-90229de1d442.png"
+        },
+        {
+          "id": "damak-special-offer-2",
+          "title": "Chicken Haleem",
+          "description": "Experience the rich, slow-cooked flavors of Haleem, now making its delicious debut in Tallinn, served perfectly with traditional Plain naan—now available on the Tandoor platform app.",
+          "price": "18,00 €",
+          "imageSrc": "damak/damak-7356812bd0f3.jpeg"
+        },
+        {
+          "id": "damak-special-offer-3",
+          "title": "Special Chicken Biryani",
+          "description": "Authentic South Asian-style biryani made with tender chicken pieces cooked in rich, aromatic spices and layered with premium basmati rice. Each batch is freshly prepared daily for a perfect balance of flavor and aroma. Served with salad and raita for a complete meal experience.",
+          "price": "17,50 €",
+          "imageSrc": "damak/damak-8ac4ec67e543.png"
+        },
+        {
+          "id": "damak-special-offer-4",
+          "title": "Chicken Kebab Pizza (30 cm)",
+          "description": "Tomato paste, cheese, chicken kebab, onion, paprika, mix salad, garlic sauce",
+          "price": "18,75 €",
+          "imageSrc": "damak/damak-0a76801a6b26.jpeg"
+        },
+        {
+          "id": "damak-special-offer-5",
+          "title": "Kebab with French Fries + Drink 500ml + Side Dish",
+          "description": "Combo",
+          "price": "23,99 €",
+          "imageSrc": "damak/damak-1841fbeb8398.jpeg"
+        },
+        {
+          "id": "damak-special-offer-6",
+          "title": "Lavash Kebab + French Fries + Drink 500ml  + Side Dish",
+          "description": "Combo",
+          "price": "34,99 €",
+          "imageSrc": "damak/damak-218bbe11ae33.jpeg"
+        },
+        {
+          "id": "damak-special-offer-7",
+          "title": "Kebab + Side Dish + Drink",
+          "description": "Select your favourites. Choose between different types of kebab meats, garnishes, side dishes and drinks. Create a meal you would enjoy!",
+          "price": "26,99 €",
+          "imageSrc": "damak/damak-b38d914c962e.jpeg"
+        },
+        {
+          "id": "damak-special-offer-8",
+          "title": "2 x Lavash Kebab + French Fries + 2 x Drinks 500 ml",
+          "description": "Combo",
+          "price": "40,25 €",
+          "imageSrc": "damak/damak-cb3340659043.png"
+        },
+        {
+          "id": "damak-special-offer-9",
+          "title": "2 x Kebab Box + 1 Side Dish  x  2 Drinks 500ml",
+          "description": "Combo",
+          "price": "40,00 €",
+          "imageSrc": "damak/damak-ce059950adb7.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "damak-kebab-box",
+      "title": "Damak Kebab Box",
+      "items": [
+        {
+          "id": "damak-damak-kebab-box-0",
+          "title": "Damak Special Box",
+          "description": "Kebab meat, french fries and salad",
+          "price": "17,86 €",
+          "imageSrc": "damak/damak-4e3ab61e3f26.jpeg"
+        },
+        {
+          "id": "damak-damak-kebab-box-1",
+          "title": "Spicy Kebab Box with jalapeños",
+          "description": "French fries, meat (chicken, beef or mix) and jalapeno",
+          "price": "14,20 €",
+          "imageSrc": "damak/damak-e85fef0dc63a.png"
+        },
+        {
+          "id": "damak-damak-kebab-box-2",
+          "title": "Damak Box",
+          "description": "Box includes kebab and fries. Sauce comes separately.  You have the possibility to choose between chicken, beef or mix kebab",
+          "price": "15,10 €",
+          "imageSrc": "damak/damak-873fc34d79cc.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "snacks",
+      "title": "Snacks",
+      "items": [
+        {
+          "id": "damak-snacks-0",
+          "title": "Chilli cheese nuggets(10pcs)with fries and salad",
+          "description": "10 pcs.",
+          "price": "15,99 €",
+          "imageSrc": "damak/damak-46780028ed3b.png"
+        },
+        {
+          "id": "damak-snacks-1",
+          "title": "Sweet Potato",
+          "description": "Sweet potato",
+          "price": "8,15 €",
+          "imageSrc": "damak/damak-76932dac566c.jpeg"
+        },
+        {
+          "id": "damak-snacks-2",
+          "title": "Fries",
+          "description": "(pilt on illustratiivne)",
+          "price": "7,15 €",
+          "imageSrc": "damak/damak-4b78652d95c3.png"
+        },
+        {
+          "id": "damak-snacks-3",
+          "title": "Onion Rings with Fries",
+          "description": "Onion rings are served with fries (picture is illustrative)",
+          "price": "13,10 €",
+          "imageSrc": "damak/damak-0d831ff092dc.png"
+        },
+        {
+          "id": "damak-snacks-4",
+          "title": "Chicken Wings  (5 pcs.)",
+          "description": "Spicy chicken wings are served with fries, salad and sauce. (picture is illustrative)",
+          "price": "15,00 €",
+          "imageSrc": "damak/damak-82ecf5b895c4.png"
+        },
+        {
+          "id": "damak-snacks-5",
+          "title": "Chicken Wings with Fries (5 pcs.)",
+          "description": "Spicy chicken wings are served with fries, salad and sauce",
+          "price": "20,99 €",
+          "imageSrc": "damak/damak-5cba87af8a9f.jpeg"
+        },
+        {
+          "id": "damak-snacks-6",
+          "title": "Mozzarella Sticks with Fries",
+          "description": "Mozzarella sticks are served with fries, salad and sauce",
+          "price": "13,99 €",
+          "imageSrc": "damak/damak-98782f091a28.jpeg"
+        },
+        {
+          "id": "damak-snacks-7",
+          "title": "Chicken Nuggets with Fries",
+          "description": "Chicken nuggets are served with fries, salad and sauce",
+          "price": "12,99 €",
+          "imageSrc": "damak/damak-a8ba08a57e37.jpeg"
+        },
+        {
+          "id": "damak-snacks-8",
+          "title": "Breaded Chicken Fillet with French Fries",
+          "description": "Breaded chicken fillets are served with fries, salad and sauce",
+          "price": "15,25 €",
+          "imageSrc": "damak/damak-4ad4e7c3fd7f.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "kebab-meals",
+      "title": "Kebab Meals",
+      "items": [
+        {
+          "id": "damak-kebab-meals-0",
+          "title": "Kebab with Fries",
+          "description": "Kebab is served with fries, salad, tomatoes and sauces. You have the possibility to choose between chicken, beef or mix kebab",
+          "price": "15,99 €",
+          "imageSrc": "damak/damak-c50d5df368d4.jpeg"
+        },
+        {
+          "id": "damak-kebab-meals-1",
+          "title": "Lavash Kebab with Fries",
+          "description": "Kebab, salad and sauce in lavash. Served with fries. You have the possibility to choose between chicken, beef or mix kebab",
+          "price": "18,49 €",
+          "imageSrc": "damak/damak-dac7526ed757.jpeg"
+        },
+        {
+          "id": "damak-kebab-meals-2",
+          "title": "Pita Kebab with Fries",
+          "description": "Kebab, salad and sauce in pita bread. Served with fries. You have the possibility to choose between chicken, beef or mix kebab",
+          "price": "19,99 €",
+          "imageSrc": "damak/damak-3accd473bb48.jpeg"
+        },
+        {
+          "id": "damak-kebab-meals-3",
+          "title": "Iskander Кebab with Salad",
+          "description": "Iskander Kebab, served with bread slices with meat and fresh salad and the sauce is already on top of the meat",
+          "price": "20,49 €",
+          "imageSrc": "damak/damak-f958746f91b4.jpeg"
+        },
+        {
+          "id": "damak-kebab-meals-4",
+          "title": "Kebab with Rice",
+          "description": "Kebab is served with rice, salad and sauces. You have the possibility to choose between chicken, beef or mix kebab",
+          "price": "15,99 €",
+          "imageSrc": "damak/damak-a55899b2d7fd.jpeg"
+        },
+        {
+          "id": "damak-kebab-meals-5",
+          "title": "Kebab with Salad",
+          "description": "Kebab is served with salad and sauces. You have the possibility to choose between chicken, beef or mix kebab",
+          "price": "16,99 €",
+          "imageSrc": "damak/damak-a4e52063b47c.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "wraps",
+      "title": "Wraps",
+      "items": [
+        {
+          "id": "damak-wraps-0",
+          "title": "Damak Exclusive lavash( Naan bread) wrap",
+          "description": "Juicy chicken or beef kebab slices wrapped inside naan bread along with Fresh vegetables and garlic sauce.",
+          "price": "18,99 €",
+          "imageSrc": "damak/damak-b6ddc0b80c42.png"
+        },
+        {
+          "id": "damak-wraps-1",
+          "title": "Protein Lavash",
+          "description": "Lavash kebab with chicken (lots of meat), red cabbage, iceberg lettuce, Chinese cabbage, paprika, tomato, cucumber and tomato sauce",
+          "price": "15,49 €",
+          "imageSrc": "damak/damak-3ff14d733636.jpeg"
+        },
+        {
+          "id": "damak-wraps-2",
+          "title": "Shaurma Kebab",
+          "description": "Mix salad, meat, fries and sauce",
+          "price": "16,00 €",
+          "imageSrc": "damak/damak-3355685398e6.jpeg"
+        },
+        {
+          "id": "damak-wraps-3",
+          "title": "Cheesy Shaurma",
+          "description": "Kebab meat, salad mix, french fries, mozzarella cheese",
+          "price": "16,50 €",
+          "imageSrc": "damak/damak-7cf2b4fb7924.png"
+        },
+        {
+          "id": "damak-wraps-4",
+          "title": "Shaurma - (Chicken Meat, Fries, Garlic sauce with Marinated Cucumber",
+          "description": "Chicken meat, fries and loads of garlic sauce with marinated cucumber",
+          "price": "16,99 €",
+          "imageSrc": "damak/damak-e173b8d40c83.png"
+        },
+        {
+          "id": "damak-wraps-5",
+          "title": "Pita kebab Wrap",
+          "description": "Fresh kebab(chicken or beef), mixed salad(paprika, cucumber, tomato, cabbage) wrapped inside pita bread along with garlic and tomato sauce.",
+          "price": "16,99 €",
+          "imageSrc": "damak/damak-fffad0f4d7bc.jpeg"
+        },
+        {
+          "id": "damak-wraps-6",
+          "title": "Lavash kebab wrap",
+          "description": "Fresh kebab(chicken or beef), mixed salad(paprika, cucumber, tomato, cabbage) wrapped inside lavash along with garlic and tomato sauce.",
+          "price": "15,00 €",
+          "imageSrc": "damak/damak-d797fa16f532.png"
+        }
+      ]
+    },
+    {
+      "id": "veggies-falafels",
+      "title": "Veggies/falafels",
+      "items": [
+        {
+          "id": "damak-veggies-falafels-0",
+          "title": "Falafel (10 pcs.)",
+          "description": "(picture is illustrative)",
+          "price": "14,99 €",
+          "imageSrc": "damak/damak-4084a39463e4.webp"
+        },
+        {
+          "id": "damak-veggies-falafels-1",
+          "title": "Falafel (6 pcs ) with Fries",
+          "description": "Served with salad and sauce",
+          "price": "14,49 €",
+          "imageSrc": "damak/damak-6bf458421f5d.jpeg"
+        },
+        {
+          "id": "damak-veggies-falafels-2",
+          "title": "Lavash Falafel with French Fries and 550ml drink",
+          "price": "21,49 €",
+          "imageSrc": "damak/damak-5df9e8e4e891.jpeg"
+        },
+        {
+          "id": "damak-veggies-falafels-3",
+          "title": "Falafel with Rice",
+          "description": "Served with salad and sauce",
+          "price": "13,49 €",
+          "imageSrc": "damak/damak-1a1bac99df9f.jpeg"
+        },
+        {
+          "id": "damak-veggies-falafels-4",
+          "title": "Falafel with Salad",
+          "description": "Served with salad and sauce",
+          "price": "13,49 €",
+          "imageSrc": "damak/damak-249e4b629327.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "pizza",
+      "title": "Pizza",
+      "items": [
+        {
+          "id": "damak-pizza-0",
+          "title": "BBQ Pizza",
+          "price": "18,75 €",
+          "imageSrc": "damak/damak-18945517692b.png"
+        },
+        {
+          "id": "damak-pizza-1",
+          "title": "Margarita Pizza (30 cm)",
+          "description": "Tomato sauce and cheese",
+          "price": "17,50 €",
+          "imageSrc": "damak/damak-60eee1a7994b.jpeg"
+        },
+        {
+          "id": "damak-pizza-2",
+          "title": "Chicken Kebab Pizza (30 cm)",
+          "description": "Tomato paste, cheese, chicken kebab, onion, paprika, mix salad, garlic sauce",
+          "price": "18,75 €",
+          "imageSrc": "damak/damak-0a76801a6b26.jpeg"
+        },
+        {
+          "id": "damak-pizza-3",
+          "title": "Beef Kebab Pizza (30 cm)",
+          "description": "Tomato paste, cheese, beef kebab, onion, paprika, mix salad, garlic sauce",
+          "price": "18,75 €",
+          "imageSrc": "damak/damak-da4cbd374fb9.jpeg"
+        },
+        {
+          "id": "damak-pizza-4",
+          "title": "Mix Kebab Pizza (30 cm)",
+          "description": "Tomato paste, cheese, chicken and beef kebab, onion, paprika, mix salad, garlic sauce",
+          "price": "18,75 €",
+          "imageSrc": "damak/damak-01fc211ebef5.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "biryanis",
+      "title": "Biryanis",
+      "items": [
+        {
+          "id": "damak-biryanis-0",
+          "title": "Special Chicken Biryani",
+          "description": "Authentic South Asian-style biryani made with tender chicken pieces cooked in rich, aromatic spices and layered with premium basmati rice. Each batch is freshly prepared daily for a perfect balance of flavor and aroma. Served with salad and raita for a complete meal experience.",
+          "price": "17,50 €",
+          "imageSrc": "damak/damak-8ac4ec67e543.png"
+        },
+        {
+          "id": "damak-biryanis-1",
+          "title": "Turkish Chicken kebab Biryani",
+          "description": "Kebab chicken steamed with biryani rice which makes this dish heavenly tasty. Served with Raita",
+          "price": "18,49 €",
+          "imageSrc": "damak/damak-f97fa7607032.jpeg"
+        },
+        {
+          "id": "damak-biryanis-2",
+          "title": "Beef kebab Biryani",
+          "description": "Kebab beef cooked in basmati rice flavoured with exotic spices and saffron.Served with raita sauce",
+          "price": "20,00 €",
+          "imageSrc": "damak/damak-de0642e59878.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "fitness",
+      "title": "Fitness",
+      "items": [
+        {
+          "id": "damak-fitness-0",
+          "title": "Protein Lavash",
+          "description": "Lavash kebab with chicken (lots of meat), red cabbage, iceberg lettuce, Chinese cabbage, paprika, tomato, cucumber and tomato sauce",
+          "price": "15,49 €",
+          "imageSrc": "damak/damak-3ff14d733636.jpeg"
+        },
+        {
+          "id": "damak-fitness-1",
+          "title": "Kebab with Salad",
+          "description": "Kebab is served with salad and sauces. You have the possibility to choose between chicken, beef or mix kebab",
+          "price": "16,99 €",
+          "imageSrc": "damak/damak-a4e52063b47c.jpeg"
+        },
+        {
+          "id": "damak-fitness-2",
+          "title": "Doner Gym Box - Less Fat, More Protein",
+          "description": "Salad and meat (chicken, beef or mix)",
+          "price": "19,99 €",
+          "imageSrc": "damak/damak-737776be131e.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "title": "Desserts",
+      "items": [
+        {
+          "id": "damak-desserts-0",
+          "title": "Ras Gulla ( 2 Pcs )",
+          "price": "7,25 €",
+          "imageSrc": "damak/damak-f072c21599ab.png"
+        }
+      ]
+    },
+    {
+      "id": "baklava-turkish-sweets",
+      "title": "Baklava (Turkish Sweets)",
+      "items": [
+        {
+          "id": "damak-baklava-turkish-sweets-0",
+          "title": "Baklava Turkish Dessert",
+          "description": "Baklava is a rich, sweet dessert pastry made of layers of filo filled with chopped nuts and sweetened and held together with syrup",
+          "price": "5,00 €",
+          "imageSrc": "damak/damak-cea8eb2986c5.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "title": "Drinks",
+      "items": [
+        {
+          "id": "damak-drinks-0",
+          "title": "KAZBEGI Tarhun Soft Drink 500ml",
+          "price": "6,00 €",
+          "imageSrc": "damak/damak-fed66b8163b5.jpeg"
+        },
+        {
+          "id": "damak-drinks-1",
+          "title": "Coca Cola PET 500ml",
+          "price": "5,00 €",
+          "imageSrc": "damak/damak-bf01858b1043.jpeg"
+        },
+        {
+          "id": "damak-drinks-2",
+          "title": "FANTA Orange 500ml, PET",
+          "price": "5,00 €",
+          "imageSrc": "damak/damak-26d90b34dbc3.jpeg"
+        },
+        {
+          "id": "damak-drinks-3",
+          "title": "Coca Cola Zero PET 500ml",
+          "price": "5,00 €",
+          "imageSrc": "damak/damak-f494ae02ae37.jpeg"
+        },
+        {
+          "id": "damak-drinks-4",
+          "title": "Yogurt Drink Ayran",
+          "price": "4,00 €",
+          "imageSrc": "damak/damak-920c3a970123.jpeg"
+        },
+        {
+          "id": "damak-drinks-5",
+          "title": "Mango Lassi",
+          "price": "6,50 €",
+          "imageSrc": "damak/damak-ae29cf6750ff.png"
+        },
+        {
+          "id": "damak-drinks-6",
+          "title": "Red Bull energy drink 250ml",
+          "price": "3,99 €",
+          "imageSrc": "damak/damak-d1be9bb4153d.jpeg"
+        },
+        {
+          "id": "damak-drinks-7",
+          "title": "Fanta 330ml",
+          "description": "Soft drink",
+          "price": "3,90 €",
+          "imageSrc": "damak/damak-7a09b468ca8c.jpeg"
+        },
+        {
+          "id": "damak-drinks-8",
+          "title": "Cappy Orange 330 ml",
+          "price": "5,00 €",
+          "imageSrc": "damak/damak-3777add27e7c.jpeg"
+        },
+        {
+          "id": "damak-drinks-9",
+          "title": "Cappy Multivitamin 330 ml",
+          "price": "5,00 €",
+          "imageSrc": "damak/damak-8cc9322078f0.jpeg"
+        },
+        {
+          "id": "damak-drinks-10",
+          "title": "Cappy Apple 330 ml",
+          "price": "5,00 €",
+          "imageSrc": "damak/damak-c06c54bf1cbb.jpeg"
+        },
+        {
+          "id": "damak-drinks-11",
+          "title": "Water Still 0,5 l",
+          "description": "Soft drink",
+          "price": "3,50 €",
+          "imageSrc": "damak/damak-6b28103b4b6a.jpeg"
+        },
+        {
+          "id": "damak-drinks-12",
+          "title": "Water Sparkling 0,5 l",
+          "description": "Soft drink",
+          "price": "3,50 €",
+          "imageSrc": "damak/damak-a0f9bc0d61b9.jpeg"
+        }
+      ]
+    }
+  ]
+}

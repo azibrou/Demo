@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
+import { useHomeShoppingStack } from '../context/HomeShoppingStackContext'
 import { useOrder } from '../context/OrderContext'
 import { design } from '../lib/figmaDesignAssets'
 import { FLOATING_CHROME_SHADOW_CLASS } from '../lib/floatingChromeShadow'
 import { formatEuro, parsePrice } from '../lib/price'
+import { BottomChromeSlide } from './BottomChromeSlide'
 
 const a = design.categoryTabActions
 
@@ -49,11 +51,10 @@ export type CategoryTabActionsProps = {
 export function CategoryTabActions({ providerId, onDashboardClick, onSearchClick }: CategoryTabActionsProps) {
   const navigate = useNavigate()
   const order = useOrder()
-  const [portalReady, setPortalReady] = useState(false)
-
-  useEffect(() => {
-    setPortalReady(true)
-  }, [])
+  const stack = useHomeShoppingStack()
+  const chromeExiting = stack?.slidePhase === 'exiting'
+  // Mount the portal synchronously so the actions slide in on the navigation commit.
+  const portalReady = typeof document !== 'undefined'
 
   const matches = order.provider != null && order.provider.id === providerId
   const count = matches ? order.unitCount : 0
@@ -71,9 +72,20 @@ export function CategoryTabActions({ providerId, onDashboardClick, onSearchClick
     return () => window.cancelAnimationFrame(raf)
   }, [hasBasket])
 
+  // Increment nonce on every count change so the counter span is remounted
+  // and replays the badge-pop animation — matches WideBasketFab behaviour.
+  const [badgeNonce, setBadgeNonce] = useState(0)
+  const prevCountRef = useRef(count)
+  useEffect(() => {
+    if (count > 0 && count !== prevCountRef.current) {
+      setBadgeNonce((n) => n + 1)
+    }
+    prevCountRef.current = count
+  }, [count])
+
   const bar = (
     <div className="category-tab-actions pointer-events-none fixed inset-x-0 bottom-0 z-40 w-full max-w-full">
-      <div className="pointer-events-auto mx-auto flex w-full max-w-full items-center gap-3 bg-gradient-to-b from-[rgba(255,255,255,0)] to-[rgba(255,255,255,0.9)] px-6 pb-[calc(12px+env(safe-area-inset-bottom,0px))] pt-3 sm:max-w-[375px]">
+      <BottomChromeSlide className="pointer-events-auto mx-auto flex w-full max-w-full items-center gap-3 bg-gradient-to-b from-[rgba(255,255,255,0)] to-[rgba(255,255,255,0.9)] px-6 pb-[calc(12px+env(safe-area-inset-bottom,0px))] pt-3 sm:max-w-[375px]" exiting={chromeExiting}>
         <CircleFab iconSrc={a.dashboard} label="All categories" onClick={onDashboardClick} />
 
         <div className="flex min-w-0 flex-1 items-center justify-end gap-3">
@@ -104,7 +116,8 @@ export function CategoryTabActions({ providerId, onDashboardClick, onSearchClick
                 {formatEuro(total)}
               </span>
               <span
-                className="flex min-h-5 min-w-5 items-center justify-center rounded-[20px] bg-[var(--color-special-brand-alt,#0c2c1c)] px-1.5 py-0.5 bolt-font-body-xs-accent text-white [font-feature-settings:'cv03'_1,'cv04'_1,'lnum'_1,'pnum'_1]"
+                key={badgeNonce}
+                className="category-tab-actions__badge flex min-h-5 min-w-5 items-center justify-center rounded-[20px] bg-[var(--color-special-brand-alt,#0c2c1c)] px-1.5 py-0.5 bolt-font-body-xs-accent text-white [font-feature-settings:'cv03'_1,'cv04'_1,'lnum'_1,'pnum'_1] motion-reduce:animate-none"
                 aria-hidden
               >
                 {count > 99 ? '99+' : count}
@@ -112,7 +125,7 @@ export function CategoryTabActions({ providerId, onDashboardClick, onSearchClick
             </button>
           ) : null}
         </div>
-      </div>
+      </BottomChromeSlide>
     </div>
   )
 

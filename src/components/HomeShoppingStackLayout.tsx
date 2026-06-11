@@ -1,4 +1,5 @@
 import {
+  createContext,
   useCallback,
   useContext,
   useEffect,
@@ -26,6 +27,7 @@ import { HomeScreen } from '../screens/HomeScreen'
 import { HOME_FLOATING_TAB_BAR_ITEMS } from '../screens/homeFloatingTabBarItems'
 import { ProfileScreen } from '../screens/ProfileScreen'
 import { StoresScreen } from '../screens/StoresScreen'
+import { BottomChromeSlide, BOTTOM_CHROME_SLIDE_MS } from './BottomChromeSlide'
 import { CrossFadeStack } from './CrossFadeStack'
 import { FloatingTabBar } from './FloatingTabBar'
 import { HomeSearchOverlay } from './HomeSearchOverlay'
@@ -132,16 +134,50 @@ function StackUnderlay({ pathname }: { pathname: string }) {
   return <HubStackUnderlay pathname={pathname} />
 }
 
+/**
+ * Shares the iOS stack slide phase upward so the persistent hub tab bar (rendered above the
+ * stack) can slide back up in sync with the inner bar sliding down during a back gesture.
+ */
+type StackSlidePhaseContextValue = {
+  phase: SlidePhase | null
+  setPhase: (phase: SlidePhase | null) => void
+}
+
+const StackSlidePhaseContext = createContext<StackSlidePhaseContextValue | null>(null)
+
 /** Persists home tab bar across hub routes so enter animation runs only on layout mount. */
 function HubLayoutShell({ children }: { children: ReactNode }) {
+  const [stackPhase, setStackPhase] = useState<SlidePhase | null>(null)
+  const stackPhaseValue = useMemo(
+    () => ({ phase: stackPhase, setPhase: setStackPhase }),
+    [stackPhase],
+  )
   return (
     <OrderProvider>
       <BasketFabProvider>
-        <HubLayoutShellInner>{children}</HubLayoutShellInner>
+        <StackSlidePhaseContext.Provider value={stackPhaseValue}>
+          <HubLayoutShellInner>{children}</HubLayoutShellInner>
+        </StackSlidePhaseContext.Provider>
       </BasketFabProvider>
       <OrderSwitchDialog />
     </OrderProvider>
   )
+}
+
+/** Keeps `show` content mounted for `delayMs` after it turns false (for exit animations). */
+function useDelayedUnmount(show: boolean, delayMs: number): boolean {
+  const [mounted, setMounted] = useState(show)
+  useEffect(() => {
+    if (show) {
+      setMounted(true)
+      return
+    }
+    const timer = window.setTimeout(() => setMounted(false), delayMs)
+    return () => window.clearTimeout(timer)
+  }, [show, delayMs])
+  // `show || mounted` so it reports true synchronously when shown — avoids a one-render
+  // unmount/remount gap (which would replay the slide) when `show` flips back on.
+  return show || mounted
 }
 
 function HubLayoutShellInner({ children }: { children: ReactNode }) {
@@ -154,6 +190,22 @@ function HubLayoutShellInner({ children }: { children: ReactNode }) {
   const [searchOpen, setSearchOpen] = useState(false)
   const resolved = useMemo(() => resolveFloatingTabBarModel(HOME_FLOATING_TAB_BAR_ITEMS), [])
   const showTabBar = isHubPath(location.pathname)
+  /** Linger the hub tab bar through its slide-down before unmounting on hub → inner. */
+  const tabBarLingering = useDelayedUnmount(showTabBar, BOTTOM_CHROME_SLIDE_MS)
+
+  /**
+   * Back from a merchant slides out for ~350ms before the route changes. Bring the hub tab
+   * bar up at the start of that gesture (in sync with the merchant bar sliding down) instead
+   * of waiting for the route change, so the bar handoff is symmetric with forward navigation.
+   */
+  const stackPhase = useContext(StackSlidePhaseContext)?.phase ?? null
+  const innerLast = location.pathname.split('/').filter(Boolean).pop()
+  const isMerchantRoute = innerLast === 'store-merchant' || innerLast === 'restaurant'
+  const homeReturning = stackPhase === 'exiting' && isMerchantRoute
+
+  const tabBarMounted = tabBarLingering || homeReturning
+  /** Slide down only when leaving the hub forward — never while returning via back. */
+  const tabBarExiting = !showTabBar && !homeReturning
   const tabId = hubTabIdFromPathname(location.pathname)
   const ariaLabel = tabId === 'store' ? 'Stores' : tabId === 'dineout' ? 'DineOut' : 'Home'
 
@@ -206,22 +258,25 @@ function HubLayoutShellInner({ children }: { children: ReactNode }) {
             <div ref={scrollRef} className="eater-hub-scroll">
               {children}
             </div>
-            {showTabBar && resolved.barItems.length > 0 ? (
+            {tabBarMounted && resolved.barItems.length > 0 ? (
               <div className="eater-hub-shell__tabbar fixed inset-x-0 bottom-0 z-40 w-full max-w-full overflow-visible">
-                <FloatingTabBar
-                  items={resolved.barItems}
-                  activeId={tabId}
-                  onTabChange={onHubTabChange}
-                  ariaLabel={ariaLabel}
-                  showBasketFab={!searchOpen}
-                  tabActions={
-                    <TabAction
-                      iconSrc={design.tabAction.search}
-                      ariaLabel="Search"
-                      onClick={openHomeSearch}
-                    />
-                  }
-                />
+                <BottomChromeSlide exiting={tabBarExiting}>
+                  <FloatingTabBar
+                    items={resolved.barItems}
+                    activeId={tabId}
+                    onTabChange={onHubTabChange}
+                    ariaLabel={ariaLabel}
+                    showBasketFab={!searchOpen}
+                    animateEnter={false}
+                    tabActions={
+                      <TabAction
+                        iconSrc={design.tabAction.search}
+                        ariaLabel="Search"
+                        onClick={openHomeSearch}
+                      />
+                    }
+                  />
+                </BottomChromeSlide>
               </div>
             ) : null}
             {searchOpen ? <HomeSearchOverlay onClosed={closeHomeSearch} /> : null}
@@ -284,7 +339,10 @@ function StackSlideSurface({ children, navigate, slidePhase, onSlidePhaseChange 
     [onSlidePhaseChange, runPendingNav],
   )
 
-  const ctxValue = useMemo(() => ({ requestSlideOutClose }), [requestSlideOutClose])
+  const ctxValue = useMemo(
+    () => ({ requestSlideOutClose, slidePhase }),
+    [requestSlideOutClose, slidePhase],
+  )
 
   const onPanelTransitionEnd = useCallback(
     (e: TransitionEvent<HTMLDivElement>) => {
@@ -322,6 +380,17 @@ type EaterIosStackProps = {
 
 function EaterIosStack({ underlayPath, navigate, children }: EaterIosStackProps) {
   const [slidePhase, setSlidePhase] = useState<SlidePhase>('entering')
+  const stackPhaseCtx = useContext(StackSlidePhaseContext)
+  const setStackPhaseRef = useRef(stackPhaseCtx?.setPhase)
+  setStackPhaseRef.current = stackPhaseCtx?.setPhase
+
+  // Publish phase upward so the persistent hub tab bar can react to the back slide-out.
+  useEffect(() => {
+    setStackPhaseRef.current?.(slidePhase)
+  }, [slidePhase])
+  useEffect(() => {
+    return () => setStackPhaseRef.current?.(null)
+  }, [])
 
   return (
     <div className="eater-ios-stack" data-slide={slidePhase}>
