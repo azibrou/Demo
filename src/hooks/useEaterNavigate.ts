@@ -1,21 +1,17 @@
 import { useCallback } from 'react'
-import { useLocation, useNavigate, type NavigateOptions } from 'react-router-dom'
-import { useBasketFabOptional } from '../context/BasketFabContext'
-import { shouldResetBasketOnNavigation } from '../lib/eaterNavigation'
+import { useNavigate, type NavigateOptions } from 'react-router-dom'
 
-/** Navigate with basket reset before leaving when policy requires it. */
+/**
+ * Navigate within the eater hub. The active order now persists across navigation
+ * (the order engine clears only on empty or a confirmed merchant switch).
+ */
 export function useEaterNavigate() {
   const navigate = useNavigate()
-  const { pathname } = useLocation()
-  const basket = useBasketFabOptional()
 
   return useCallback(
     (to: string, options?: NavigateOptions) => {
-      if (basket && shouldResetBasketOnNavigation(pathname, to)) {
-        basket.resetBasket()
-      }
       navigate(to, options)
     },
-    [basket, navigate, pathname],
+    [navigate],
   )
 }

@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 import { ListItem } from '../../components/ListItem'
-import { useBasketFabOptional } from '../../context/BasketFabContext'
+import { useMerchantOrderProvider, useOrderOptional } from '../../context/OrderContext'
 import { design } from '../../lib/figmaDesignAssets'
 
 const ml = design.merchantList
@@ -30,22 +30,23 @@ type MerchantListRowProps = {
 }
 
 function MerchantListRow({ row, showDivider }: MerchantListRowProps) {
-  const basket = useBasketFabOptional()
+  const order = useOrderOptional()
+  const provider = useMerchantOrderProvider()
   const itemId = merchantListItemId(row.id)
-  const qty = basket?.getCarouselItemQty(itemId) ?? 0
+  const qty = order != null && provider != null ? order.getQtyFor(provider.id, itemId) : 0
 
   const onAdd = useCallback(() => {
-    basket?.setCarouselItemQty(itemId, 1)
-  }, [basket, itemId])
+    if (order == null || provider == null) return
+    order.addOne(provider, { id: itemId, title: row.title, price: row.price, image: row.image })
+  }, [order, provider, itemId, row.title, row.price, row.image])
 
   const onIncrement = useCallback(() => {
-    basket?.setCarouselItemQty(itemId, qty + 1)
-  }, [basket, itemId, qty])
+    order?.increment(itemId)
+  }, [order, itemId])
 
   const onDecrement = useCallback(() => {
-    if (qty <= 1) basket?.setCarouselItemQty(itemId, 0)
-    else basket?.setCarouselItemQty(itemId, qty - 1)
-  }, [basket, itemId, qty])
+    order?.decrement(itemId)
+  }, [order, itemId])
 
   return (
     <ListItem

@@ -1,5 +1,5 @@
-import { useCallback, useRef, useState } from 'react'
-import { useBasketFabOptional } from '../context/BasketFabContext'
+import { useCallback, useState } from 'react'
+import { useMerchantOrderProvider, useOrderOptional } from '../context/OrderContext'
 import { design } from '../lib/figmaDesignAssets'
 import { QuickAddExpandPill } from './QuickAddExpandPill'
 
@@ -11,6 +11,8 @@ export type SimpleItemTag = {
 }
 
 export type SimpleItemProps = {
+  /** Stable product id — attributes the add to the active order. */
+  itemId?: string
   title: string
   description: string
   price: string
@@ -24,12 +26,15 @@ export type SimpleItemProps = {
   /** Figma node id for traceability — default [Eater] Provider Item */
   nodeId?: string
   onAddClick?: () => void
+  /** Tap the row (name/description/image) to open the product detail sheet. */
+  onOpenDetails?: () => void
 }
 
 /**
  * [Eater] Provider Item — Figma 77237:157049 (restaurant menu list row).
  */
 export function SimpleItem({
+  itemId,
   title,
   description,
   price,
@@ -42,90 +47,111 @@ export function SimpleItem({
   showDivider = false,
   nodeId = '77237:157049',
   onAddClick,
+  onOpenDetails,
 }: SimpleItemProps) {
   const hasImage = !hideImage && imageSrc
   const salePrice = priceWas != null && priceWas !== ''
 
-  const basket = useBasketFabOptional()
-  const [quickOpen, setQuickOpen] = useState(false)
-  const [qty, setQty] = useState(1)
-  const contributedRef = useRef(0)
+  const order = useOrderOptional()
+  const merchantProvider = useMerchantOrderProvider()
+  const addProvider = merchantProvider ?? order?.provider ?? null
+  const persisted = itemId != null && itemId !== '' && order != null && addProvider != null
 
-  const adjustBasketRef = useRef(basket?.adjustCarouselBasketUnits)
-  adjustBasketRef.current = basket?.adjustCarouselBasketUnits
+  const [localOpen, setLocalOpen] = useState(false)
+  const [localQty, setLocalQty] = useState(1)
 
-  const syncBasketUnits = useCallback((nextQty: number, open: boolean) => {
-    const units = open ? nextQty : 0
-    const delta = units - contributedRef.current
-    contributedRef.current = units
-    if (delta !== 0) adjustBasketRef.current?.(delta)
-  }, [])
+  const orderQty = persisted ? order.getQtyFor(addProvider.id, itemId) : 0
+  const quickOpen = persisted ? orderQty > 0 : localOpen
+  const qty = persisted ? Math.max(1, orderQty) : localQty
 
   const handleAdd = useCallback(() => {
-    setQty(1)
-    setQuickOpen(true)
-    syncBasketUnits(1, true)
+    if (persisted) {
+      order.addOne(addProvider, { id: itemId, title, price, image: imageSrc })
+    } else {
+      setLocalQty(1)
+      setLocalOpen(true)
+    }
     onAddClick?.()
-  }, [onAddClick, syncBasketUnits])
+  }, [order, addProvider, itemId, persisted, title, price, imageSrc, onAddClick])
 
   const handleDecrement = useCallback(() => {
-    setQty((q) => {
+    if (persisted) {
+      order.decrement(itemId)
+      return
+    }
+    setLocalQty((q) => {
       if (q <= 1) {
-        setQuickOpen(false)
-        syncBasketUnits(1, false)
+        setLocalOpen(false)
         return 1
       }
-      const next = q - 1
-      syncBasketUnits(next, true)
-      return next
+      return q - 1
     })
-  }, [syncBasketUnits])
+  }, [order, itemId, persisted])
 
   const handleIncrement = useCallback(() => {
-    setQty((q) => {
-      const next = q + 1
-      syncBasketUnits(next, true)
-      return next
-    })
-  }, [syncBasketUnits])
+    if (persisted) {
+      order.increment(itemId)
+      return
+    }
+    setLocalQty((q) => q + 1)
+  }, [order, itemId, persisted])
+
+  const bodyContent = (
+    <>
+      {statusLabel ? (
+        <p className="simple-item__status bolt-font-body-xs-regular">{statusLabel}</p>
+      ) : null}
+      {badge ? <span className="simple-item__badge bolt-font-body-xs-accent">{badge}</span> : null}
+      <h3 className="simple-item__title bolt-font-body-m-accent">{title}</h3>
+      <p className="simple-item__description bolt-font-body-s-regular">{description}</p>
+      {tags && tags.length > 0 ? (
+        <div className="simple-item__tags">
+          {tags.map((tag) => (
+            <span key={tag.label} className="simple-item__tag">
+              {tag.iconSrc ? <img alt="" src={tag.iconSrc} className="simple-item__tag-icon" /> : null}
+              <span className="bolt-font-body-s-regular text-[var(--color-content-secondary)]">{tag.label}</span>
+            </span>
+          ))}
+        </div>
+      ) : null}
+      <div className="simple-item__price-row">
+        {salePrice ? (
+          <>
+            <span className="bolt-font-body-m-accent text-[var(--color-content-danger-primary)]">{price}</span>
+            <span className="bolt-font-body-m-regular text-[var(--color-content-secondary)]">·</span>
+            <span className="bolt-font-body-m-regular text-[var(--color-content-secondary)]">{priceWas}</span>
+          </>
+        ) : (
+          <span className="bolt-font-body-m-accent text-[var(--color-content-primary)]">{price}</span>
+        )}
+      </div>
+    </>
+  )
 
   return (
     <article className="simple-item" data-node-id={nodeId}>
       <div className="simple-item__content">
-        <div className="simple-item__body">
-          {statusLabel ? (
-            <p className="simple-item__status bolt-font-body-xs-regular">{statusLabel}</p>
-          ) : null}
-          {badge ? (
-            <span className="simple-item__badge bolt-font-body-xs-accent">{badge}</span>
-          ) : null}
-          <h3 className="simple-item__title bolt-font-body-m-accent">{title}</h3>
-          <p className="simple-item__description bolt-font-body-s-regular">{description}</p>
-          {tags && tags.length > 0 ? (
-            <div className="simple-item__tags">
-              {tags.map((tag) => (
-                <span key={tag.label} className="simple-item__tag">
-                  {tag.iconSrc ? <img alt="" src={tag.iconSrc} className="simple-item__tag-icon" /> : null}
-                  <span className="bolt-font-body-s-regular text-[var(--color-content-secondary)]">{tag.label}</span>
-                </span>
-              ))}
-            </div>
-          ) : null}
-          <div className="simple-item__price-row">
-            {salePrice ? (
-              <>
-                <span className="bolt-font-body-m-accent text-[var(--color-content-danger-primary)]">{price}</span>
-                <span className="bolt-font-body-m-regular text-[var(--color-content-secondary)]">·</span>
-                <span className="bolt-font-body-m-regular text-[var(--color-content-secondary)]">{priceWas}</span>
-              </>
-            ) : (
-              <span className="bolt-font-body-m-accent text-[var(--color-content-primary)]">{price}</span>
-            )}
-          </div>
-        </div>
+        {onOpenDetails ? (
+          <button type="button" onClick={onOpenDetails} className="simple-item__body simple-item__body--tappable">
+            {bodyContent}
+          </button>
+        ) : (
+          <div className="simple-item__body">{bodyContent}</div>
+        )}
         {hasImage ? (
           <div className="simple-item__media">
-            <img alt="" src={imageSrc} className="simple-item__image" />
+            {onOpenDetails ? (
+              <button
+                type="button"
+                aria-label={`Open ${title}`}
+                onClick={onOpenDetails}
+                className="simple-item__image-button"
+              >
+                <img alt="" src={imageSrc} className="simple-item__image" />
+              </button>
+            ) : (
+              <img alt="" src={imageSrc} className="simple-item__image" />
+            )}
             <div className="simple-item__quick-add">
               <QuickAddExpandPill
                 open={quickOpen}

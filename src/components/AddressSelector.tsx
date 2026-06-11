@@ -1,3 +1,5 @@
+import { useLocation, useNavigate } from 'react-router-dom'
+import { openProfile } from '../lib/profileNavigation'
 import { useAccountButtonMountBounce, useHubScrollElevated } from '../context/HubScrollContext'
 import { AccountButton } from './AccountButton'
 import { design } from '../lib/figmaDesignAssets'
@@ -24,6 +26,8 @@ export function AddressSelector({
   onAvatarClick,
   withGutter = true,
 }: AddressSelectorProps) {
+  const navigate = useNavigate()
+  const location = useLocation()
   const scrollElevated = useHubScrollElevated()
   const bounceOnMount = useAccountButtonMountBounce()
 
@@ -73,7 +77,7 @@ export function AddressSelector({
       <AccountButton
         elevation={scrollElevated ? 'scrolled' : 'default'}
         bounceOnMount={bounceOnMount}
-        onClick={onAvatarClick}
+        onClick={onAvatarClick ?? (() => openProfile(navigate, location.pathname))}
       />
     </div>
   )

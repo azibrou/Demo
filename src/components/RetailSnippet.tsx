@@ -8,6 +8,8 @@ import {
 import type { RetailSnippetHeaderStore } from './RetailSnippetHeader'
 import { design } from '../lib/figmaDesignAssets'
 import { boltMarketToompuiesteeStoreNavState } from '../lib/merchantNavigation'
+import { storeOrderProviderRef } from '../lib/orderProvider'
+import { MerchantOrderProvider } from '../context/OrderContext'
 import { CarouselGridItem } from './CarouselGridItem'
 import { CarouselItem } from './CarouselItem'
 import { RetailSnippetHeader } from './RetailSnippetHeader'
@@ -54,6 +56,7 @@ export function RetailSnippet({
 }: RetailSnippetProps) {
   const navigate = useNavigate()
   const titleId = `retail-snippet-title-${useId().replace(/:/g, '')}`
+  const orderProvider = storeOrderProviderRef(boltMarketToompuiesteeStoreNavState())
 
   return (
     <CarouselItem
@@ -70,6 +73,7 @@ export function RetailSnippet({
         />
       }
     >
+      <MerchantOrderProvider provider={orderProvider}>
       {products.map((p) =>
         p.variant === 'discount' ? (
           <CarouselGridItem
@@ -96,6 +100,7 @@ export function RetailSnippet({
         ),
       )}
       <RetailSnippetViewMore />
+      </MerchantOrderProvider>
     </CarouselItem>
   )
 }

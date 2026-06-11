@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, type ReactNode } from 'react'
 import { design } from '../lib/figmaDesignAssets'
 import { kalepIcons } from '../lib/kalepIcons'
 import { QuickAddExpandPill } from './QuickAddExpandPill'
@@ -6,23 +6,45 @@ import { QuickAddExpandPill } from './QuickAddExpandPill'
 const h = design.providerHeader
 const c = design.carousel
 
-export type ListItemVariant = 'heart' | 'add' | 'added' | 'delete' | 'search'
+export type ListItemVariant =
+  | 'heart'
+  | 'add'
+  | 'added'
+  | 'delete'
+  | 'search'
+  /** Profile row — icon, title, trailing action (e.g. Edit). Figma 80613:193631. */
+  | 'profile'
+  /** Profile payment row — icon, title, optional info, subtitle link, optional trailing value. */
+  | 'profileDetail'
+  /** Profile menu row — icon + body-l title. Figma 80613:193643. */
+  | 'profileMenu'
 
 export type ListItemProps = {
   variant: ListItemVariant
   title: string
   price?: string
   imageSrc?: string
-  /** Search rows — 24px leading icon (e.g. history). */
+  /** Search / profile rows — 24px leading icon. */
   leadingIconSrc?: string
+  /** Profile rows — custom leading node (e.g. Mastercard badge). */
+  leadingSlot?: ReactNode
   showDivider?: boolean
   /** When variant is `added`, quantity in basket (controlled by parent). */
   basketQty?: number
+  /** `profile` / `profileDetail` — green action on the right (Edit) or below title (Change). */
+  trailingAction?: string
+  subtitle?: string
+  trailingValue?: string
+  showInfoIcon?: boolean
+  infoIconSrc?: string
   onHeartClick?: () => void
   onAddClick?: () => void
   onBasketDecrement?: () => void
   onBasketIncrement?: () => void
   onDeleteClick?: () => void
+  onTrailingActionClick?: () => void
+  onSubtitleClick?: () => void
+  onRowClick?: () => void
 }
 
 export function ListItem({
@@ -31,13 +53,22 @@ export function ListItem({
   price = '',
   imageSrc = '',
   leadingIconSrc,
+  leadingSlot,
   showDivider = true,
   basketQty = 1,
+  trailingAction,
+  subtitle,
+  trailingValue,
+  showInfoIcon = false,
+  infoIconSrc,
   onHeartClick,
   onAddClick,
   onBasketDecrement,
   onBasketIncrement,
   onDeleteClick,
+  onTrailingActionClick,
+  onSubtitleClick,
+  onRowClick,
 }: ListItemProps) {
   const [localOpen, setLocalOpen] = useState(false)
   const [localQty, setLocalQty] = useState(1)
@@ -94,6 +125,104 @@ export function ListItem({
           ) : null}
           <p className="bolt-font-body-m-regular min-w-0 flex-1 break-words">{title}</p>
         </div>
+        {showDivider ? (
+          <div className="relative h-px w-full shrink-0 bg-[var(--color-border-separator)]" aria-hidden />
+        ) : null}
+      </div>
+    )
+  }
+
+  const leadingVisual =
+    leadingSlot ??
+    (leadingIconSrc ? (
+      <span className="relative size-6 shrink-0" aria-hidden>
+        <img alt="" src={leadingIconSrc} className="pointer-events-none absolute inset-0 block size-full max-w-none" />
+      </span>
+    ) : null)
+
+  if (variant === 'profile') {
+    const row = (
+      <div className="flex w-full items-center gap-3 overflow-hidden pt-4 pb-[15px]">
+        {leadingVisual}
+        <p className="bolt-font-body-m-regular min-w-0 flex-1 break-words">{title}</p>
+        {trailingAction ? (
+          <button
+            type="button"
+            onClick={onTrailingActionClick}
+            className="bolt-font-body-s-regular shrink-0 text-[var(--color-content-action-primary,#007042)]"
+          >
+            {trailingAction}
+          </button>
+        ) : null}
+      </div>
+    )
+    return (
+      <div className="font-sans flex w-full flex-col text-[var(--color-content-primary)]">
+        {onRowClick ? (
+          <button type="button" onClick={onRowClick} className="w-full text-left">
+            {row}
+          </button>
+        ) : (
+          row
+        )}
+        {showDivider ? (
+          <div className="relative h-px w-full shrink-0 bg-[var(--color-border-separator)]" aria-hidden />
+        ) : null}
+      </div>
+    )
+  }
+
+  if (variant === 'profileDetail') {
+    return (
+      <div className="font-sans flex w-full flex-col text-[var(--color-content-primary)]">
+        <div className="flex w-full items-center gap-3 pt-2.5 pb-[9px]">
+          {leadingVisual}
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-1">
+              <p className="bolt-font-body-m-regular whitespace-nowrap">{title}</p>
+              {showInfoIcon && infoIconSrc ? (
+                <span className="relative size-5 shrink-0" aria-hidden>
+                  <img alt="" src={infoIconSrc} className="pointer-events-none absolute inset-0 block size-full max-w-none" />
+                </span>
+              ) : null}
+            </div>
+            {subtitle ? (
+              <button
+                type="button"
+                onClick={onSubtitleClick}
+                className="bolt-font-body-s-regular text-left text-[#1d965c]"
+              >
+                {subtitle}
+              </button>
+            ) : null}
+          </div>
+          {trailingValue ? (
+            <p className="bolt-font-body-m-regular shrink-0 whitespace-nowrap text-right">{trailingValue}</p>
+          ) : null}
+        </div>
+        {showDivider ? (
+          <div className="relative h-px w-full shrink-0 bg-[var(--color-border-separator)]" aria-hidden />
+        ) : null}
+      </div>
+    )
+  }
+
+  if (variant === 'profileMenu') {
+    const row = (
+      <div className="flex w-full items-start gap-4 overflow-hidden pt-4 pb-[15px]">
+        {leadingVisual}
+        <p className="bolt-font-body-l-regular min-w-0 flex-1 break-words">{title}</p>
+      </div>
+    )
+    return (
+      <div className="font-sans flex w-full flex-col text-[var(--color-content-primary)]">
+        {onRowClick ? (
+          <button type="button" onClick={onRowClick} className="w-full text-left">
+            {row}
+          </button>
+        ) : (
+          row
+        )}
         {showDivider ? (
           <div className="relative h-px w-full shrink-0 bg-[var(--color-border-separator)]" aria-hidden />
         ) : null}

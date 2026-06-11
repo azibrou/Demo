@@ -1,3 +1,5 @@
+import { useLocation, useNavigate } from 'react-router-dom'
+import { openProfile } from '../../lib/profileNavigation'
 import { AccountButton } from '../../components/AccountButton'
 import { KalepIcon } from '../../components/KalepIcon'
 import { dineOutFilterChips } from '../../lib/dineOutFilterContent'
@@ -13,6 +15,9 @@ function FilterIcon({ name }: { name: KalepIconStem }) {
  * DineOut top navigation — Figma 77937:93121 (search + avatar + filter chips).
  */
 export function DineOutTopNavBlock() {
+  const navigate = useNavigate()
+  const location = useLocation()
+
   return (
     <header
       className="dine-out-top-nav pointer-events-auto flex w-full shrink-0 flex-col items-start bg-gradient-to-b from-[var(--color-layer-floor-0)] to-transparent"
@@ -26,7 +31,11 @@ export function DineOutTopNavBlock() {
         <div className="min-w-0 flex-1" data-node-id="77937:93123">
           <DineOutSearchField placeholder="Food, restaurants, stores..." />
         </div>
-        <AccountButton className="dine-out-account-button" data-node-id="77937:93129" />
+        <AccountButton
+          className="dine-out-account-button"
+          data-node-id="77937:93129"
+          onClick={() => openProfile(navigate, location.pathname)}
+        />
       </div>
 
       <HomeHorizontalScroll

@@ -1,5 +1,6 @@
 import { boltFoodAssets as a } from './boltFoodAssets'
 import { design } from './figmaDesignAssets'
+import { ilFornoCover } from './ilFornoMerchantContent'
 
 const shortcutIcons = design.shortcuts
 
@@ -259,6 +260,14 @@ export const retailTiles = {
 
 /** “Kõrgelt hinnatud” carousel on the same screen payload. */
 export const mostPopular = [
+  {
+    title: 'iL Forno Pärnu mnt',
+    imageSrc: ilFornoCover,
+    deliveryLabel: '1,90 €',
+    etaText: '20–25 min',
+    rating: '4.7',
+    reviews: '(500+)',
+  },
   {
     title: 'Pavlova Viru Keskus',
     imageSrc: a.pavlovaViruKeskus,

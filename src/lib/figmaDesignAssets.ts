@@ -370,6 +370,85 @@ export const design = {
    * Shopping list — nodes 70440:1499296 / 70440:1499475 / 70442 list rows / NavBar 70440:1499872–1499893.
    * Run `npm run figma:assets` with Figma open to pull binaries.
    */
+  /**
+   * Category screen grid — Figma 80613:192257. Refresh via `npm run figma:sync`.
+   */
+  categoryScreen: {
+    products: [
+      figma('69e96bf7a86145d4bc79b54ae99b9b17.png'),
+      figma('3a143931ad424b4c8f80826bad2a9d21.png'),
+      figma('ddce20d4b5774491b87c53b54f0ab9e4.png'),
+      figma('4d9497314ed149309c3d8c7568e3f587.png'),
+      figma('aeedcec1b25443fb92c6ffb8586d8d1.png'),
+      figma('846d300a1fca4ebfafbef6453f97bb68.png'),
+      figma('9d8371d8794443ed8cbdabcda702987de.png'),
+      figma('6ad07ec1ef6d476cbfe3a2efa1f1ec3.png'),
+      figma('74f932a829c1446488909260738d0bf3.png'),
+      figma('894c77ef538e47fdb6fce32b7e84df7a.png'),
+      figma('3164e1b052a8490ab7eae972582b9ec7.png'),
+    ],
+  },
+  /**
+   * Checkout — Figma 80613:175485. Refresh via `npm run figma:sync`.
+   */
+  checkout: {
+    orderItemPoke: figma('9fe68b9728594012b15fd549c7a3b1b1.png'),
+    orderItemPizza: figma('72db1c5abcdc4171beca5c1cbb383835.png'),
+    upsellSalmon: figma('ef02904a6330468bbde4034ae7c4cef6.png'),
+    upsellChicken: figma('f3b763128b3040fc8dcf7ece319a91e.png'),
+    upsellTofu: figma('421243ed00b94a438dfb8ca6417284e2.png'),
+    map: figma('d4abe66e7e7f495baba0299355e33637.png'),
+    courier: figma('12120db421d642888480c50e6e599f39.png'),
+    loyaltyLogo: figma('ef7d75d6659e48b5888a648cafc27fb7.svg'),
+    radioSelected: figma('751d46b336904256ad83036a101b8118.svg'),
+    radioDot: figma('0a6fb1979f6c4eb6b6494b5f17adac9f.svg'),
+    radioUnselected: figma('548236f9f351481b82e2d69e73e4cc23.svg'),
+    info: figma('79df07213f054b35a09b2056f55bd6c3.svg'),
+    pinShadow: figma('745aac376a5f487d9689914c0daffeea.svg'),
+    pinPile: figma('1cca070a61c446f38553aabd0cdadbd4.svg'),
+    pinMain: figma('47a8b5ab32634d2095291100a8a18a05.svg'),
+    pinInner: figma('99f670fc599245cd8aaa25c4542fa655.svg'),
+    inputFull: figma('4a0dc58cdfb24ab3a6545e278579c96e.svg'),
+    inputHalf: figma('5233cbdf7a824de991e005202c01e7c6.svg'),
+    arrowLeft: ki.arrowLeft,
+    bin: ki.bin,
+    plus: ki.plus,
+    minus: ki.minus,
+    plusCircle: ki.boltPlusOutline,
+    bikeDelivery: ki.bikeDeliveryOutline,
+    walk: ki.walk,
+    schedule: ki.calendarOutline,
+    robot: ki.userAltOutline,
+    offer: ki.offerOutline,
+    chevronRight: ki.chevronRight,
+    pin: ki.locationPin,
+    arrowRight: ki.joinArrow,
+    homeIndicator: figma('f32a6ab0be790c7e3a3e2581374d651130d2bced.svg'),
+  },
+  /**
+   * Category screen floating actions — Figma 80635:177849 / 80635:177850.
+   * `dashboard` is a hand-authored local glyph (no MCP asset for the grid icon).
+   */
+  categoryTabActions: {
+    dashboard: figma('dashboard-outline.svg'),
+    search: ki.search,
+    basket: ki.basket,
+  },
+  /**
+   * Profile — Figma 80613:193586. Refresh via `npm run figma:sync`.
+   */
+  profile: {
+    ordersIllustration: figma('740bc3df9a1249cf89e2d9dcc0cffb3d.png'),
+    favouritesIllustration: figma('def2801043bb4795b69bed5fc486ffec.png'),
+    courier: figma('5fd7a2daaf6a4a29b3241218f4b9e816.png'),
+    courierMask: figma('17363b2ffe684198bca962140bc47b1a.svg'),
+    info: figma('dbdcb59def6849d1bfe0a1f239537fa9.svg'),
+    themeSystem: figma('ef3f8e518dd1439f9ab64275ad900569.svg'),
+    themeLight: figma('c93aee97464041baa819db39ee44b7ca.svg'),
+    themeDark: figma('b89a7d4a9f7e42db8d0174c5cdad888e.svg'),
+    boltPlus: figma('df9e903fea6c4352b92bf07b408051cc.svg'),
+    chevronRight: ki.chevronRight,
+  },
   shoppingList: {
     navEditLarge: ki.navEdit,
     navEditSmall: ki.navEditSmall,

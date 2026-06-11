@@ -1,5 +1,5 @@
-import { useCallback, useRef, useState } from 'react'
-import { useBasketFabOptional } from '../context/BasketFabContext'
+import { useCallback, useState } from 'react'
+import { useMerchantOrderProvider, useOrderOptional } from '../context/OrderContext'
 import { design } from '../lib/figmaDesignAssets'
 import { QuickAddExpandPill } from './QuickAddExpandPill'
 
@@ -47,70 +47,52 @@ export function CarouselGridItem({
   priceWas = defaultCopy.priceWas,
   discountLabel = defaultCopy.discountLabel,
 }: CarouselGridItemProps) {
-  const basket = useBasketFabOptional()
-  const persisted = itemId != null && itemId !== '' && basket != null
-
-  const persistedQty = persisted ? basket.getCarouselItemQty(itemId) : 0
+  const order = useOrderOptional()
+  const merchantProvider = useMerchantOrderProvider()
+  /** Provider this tile attributes to — the surface's merchant, or the active order's (e.g. checkout upsell). */
+  const addProvider = merchantProvider ?? order?.provider ?? null
+  const persisted = itemId != null && itemId !== '' && order != null && addProvider != null
 
   const [localOpen, setLocalOpen] = useState(false)
   const [localQty, setLocalQty] = useState(1)
-  const contributedRef = useRef(0)
 
-  const quickOpen = persisted ? persistedQty > 0 : localOpen
-  const qty = persisted ? Math.max(1, persistedQty) : localQty
+  const orderQty = persisted ? order.getQtyFor(addProvider.id, itemId) : 0
+  const quickOpen = persisted ? orderQty > 0 : localOpen
+  const qty = persisted ? Math.max(1, orderQty) : localQty
 
-  const adjustCarouselRef = useRef(basket?.adjustCarouselBasketUnits)
-  adjustCarouselRef.current = basket?.adjustCarouselBasketUnits
-
-  const syncBasketUnits = useCallback((nextQty: number, open: boolean) => {
-    const units = open ? nextQty : 0
-    const delta = units - contributedRef.current
-    contributedRef.current = units
-    if (delta !== 0) adjustCarouselRef.current?.(delta)
-  }, [])
+  const lineTitle = title
+  const linePrice = variant === 'discount' ? priceNow : price
 
   const handleAdd = useCallback(() => {
     if (persisted) {
-      basket.setCarouselItemQty(itemId, 1)
+      order.addOne(addProvider, { id: itemId, title: lineTitle, price: linePrice, image: imageSrc })
       return
     }
     setLocalQty(1)
     setLocalOpen(true)
-    syncBasketUnits(1, true)
-  }, [basket, itemId, persisted, syncBasketUnits])
+  }, [order, addProvider, itemId, persisted, lineTitle, linePrice, imageSrc])
 
   const handleDecrement = useCallback(() => {
     if (persisted) {
-      if (persistedQty <= 1) {
-        basket.setCarouselItemQty(itemId, 0)
-        return
-      }
-      basket.setCarouselItemQty(itemId, persistedQty - 1)
+      order.decrement(itemId)
       return
     }
     setLocalQty((q) => {
       if (q <= 1) {
         setLocalOpen(false)
-        syncBasketUnits(1, false)
         return 1
       }
-      const next = q - 1
-      syncBasketUnits(next, true)
-      return next
+      return q - 1
     })
-  }, [basket, itemId, persisted, persistedQty, syncBasketUnits])
+  }, [order, itemId, persisted])
 
   const handleIncrement = useCallback(() => {
     if (persisted) {
-      basket.setCarouselItemQty(itemId, persistedQty + 1)
+      order.increment(itemId)
       return
     }
-    setLocalQty((q) => {
-      const next = q + 1
-      syncBasketUnits(next, true)
-      return next
-    })
-  }, [basket, itemId, persisted, persistedQty, syncBasketUnits])
+    setLocalQty((q) => q + 1)
+  }, [order, itemId, persisted])
 
   return (
     <article

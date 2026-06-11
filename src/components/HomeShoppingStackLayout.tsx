@@ -14,11 +14,17 @@ import { resolveFloatingTabBarModel } from '../config/floatingTabBarConfig'
 import { BasketFabProvider, useBasketFabOptional } from '../context/BasketFabContext'
 import { HomeSearchContext } from '../context/HomeSearchContext'
 import { HubScrollProvider, HubScrollRefContext } from '../context/HubScrollContext'
-import { HomeShoppingStackContext } from '../context/HomeShoppingStackContext'
+import {
+  HomeShoppingStackContext,
+  type HomeShoppingStackCloseTarget,
+} from '../context/HomeShoppingStackContext'
+import { OrderProvider } from '../context/OrderContext'
+import { OrderSwitchDialog } from './OrderSwitchDialog'
 import { design } from '../lib/figmaDesignAssets'
 import { DineOutScreen } from '../screens/DineOutScreen'
 import { HomeScreen } from '../screens/HomeScreen'
 import { HOME_FLOATING_TAB_BAR_ITEMS } from '../screens/homeFloatingTabBarItems'
+import { ProfileScreen } from '../screens/ProfileScreen'
 import { StoresScreen } from '../screens/StoresScreen'
 import { CrossFadeStack } from './CrossFadeStack'
 import { FloatingTabBar } from './FloatingTabBar'
@@ -30,7 +36,15 @@ const STACK_DURATION_MS = 350
 const STACK_EASE = 'cubic-bezier(0.32, 0.72, 0, 1)'
 const MOBILE_STACK_MQ = '(max-width: 640px)'
 
-const INNER_PATH_SEGMENTS = new Set(['shopping-list', 'store-merchant', 'restaurant'])
+const INNER_PATH_SEGMENTS = new Set([
+  'category',
+  'checkout',
+  'shopping-list',
+  'profile',
+  'edit-phone',
+  'store-merchant',
+  'restaurant',
+])
 
 const HUB_TAB_PATHS: Record<string, string | undefined> = {
   home: '/',
@@ -44,8 +58,18 @@ function isHubPath(pathname: string): boolean {
 }
 
 function isInnerPath(pathname: string): boolean {
-  const last = pathname.split('/').filter(Boolean).pop()
-  return last != null && INNER_PATH_SEGMENTS.has(last)
+  const segments = pathname.split('/').filter(Boolean)
+  const last = segments[segments.length - 1]
+  if (last == null) return false
+  if (INNER_PATH_SEGMENTS.has(last)) return true
+  return segments[0] === 'category' && segments.length >= 2
+}
+
+/** Nested inner routes show their parent inner screen under the iOS stack panel. */
+function stackUnderlayForPath(pathname: string, lastHubPath: string): string {
+  if (pathname === '/profile/edit-phone') return '/profile'
+  if (isInnerPath(pathname)) return lastHubPath
+  return lastHubPath
 }
 
 function hubTabIdFromPathname(pathname: string): string {
@@ -102,12 +126,21 @@ function HubStackUnderlay({ pathname }: { pathname: string }) {
   return <HomeScreen />
 }
 
+/** Hub or inner parent screen frozen under the stack panel. */
+function StackUnderlay({ pathname }: { pathname: string }) {
+  if (pathname === '/profile') return <ProfileScreen />
+  return <HubStackUnderlay pathname={pathname} />
+}
+
 /** Persists home tab bar across hub routes so enter animation runs only on layout mount. */
 function HubLayoutShell({ children }: { children: ReactNode }) {
   return (
-    <BasketFabProvider>
-      <HubLayoutShellInner>{children}</HubLayoutShellInner>
-    </BasketFabProvider>
+    <OrderProvider>
+      <BasketFabProvider>
+        <HubLayoutShellInner>{children}</HubLayoutShellInner>
+      </BasketFabProvider>
+      <OrderSwitchDialog />
+    </OrderProvider>
   )
 }
 
@@ -230,13 +263,26 @@ function StackSlideSurface({ children, navigate, slidePhase, onSlidePhaseChange 
     }
   }, [onSlidePhaseChange])
 
-  const requestSlideOutClose = useCallback(() => {
-    if (slideRef.current === 'open') {
-      onSlidePhaseChange('exiting')
-      return
-    }
-    navigate(-1)
-  }, [navigate, onSlidePhaseChange])
+  const pendingNavRef = useRef<HomeShoppingStackCloseTarget>(-1)
+
+  const runPendingNav = useCallback(() => {
+    const target = pendingNavRef.current
+    pendingNavRef.current = -1
+    if (typeof target === 'number') navigate(target)
+    else navigate(target)
+  }, [navigate])
+
+  const requestSlideOutClose = useCallback(
+    (to: HomeShoppingStackCloseTarget = -1) => {
+      pendingNavRef.current = to
+      if (slideRef.current === 'open') {
+        onSlidePhaseChange('exiting')
+        return
+      }
+      runPendingNav()
+    },
+    [onSlidePhaseChange, runPendingNav],
+  )
 
   const ctxValue = useMemo(() => ({ requestSlideOutClose }), [requestSlideOutClose])
 
@@ -245,9 +291,9 @@ function StackSlideSurface({ children, navigate, slidePhase, onSlidePhaseChange 
       if (e.propertyName !== 'transform') return
       if (e.target !== e.currentTarget) return
       if (slideRef.current !== 'exiting') return
-      navigate(-1)
+      runPendingNav()
     },
-    [navigate],
+    [runPendingNav],
   )
 
   const panelTransform = slidePhase === 'open' ? 'translateX(0)' : 'translateX(100%)'
@@ -280,7 +326,7 @@ function EaterIosStack({ underlayPath, navigate, children }: EaterIosStackProps)
   return (
     <div className="eater-ios-stack" data-slide={slidePhase}>
       <div className="eater-ios-stack__underlay motion-reduce:transition-none" aria-hidden>
-        <HubStackUnderlay pathname={underlayPath} />
+        <StackUnderlay pathname={underlayPath} />
       </div>
       <StackSlideSurface navigate={navigate} slidePhase={slidePhase} onSlidePhaseChange={setSlidePhase}>
         {children}
@@ -306,7 +352,7 @@ export function HomeShoppingStackLayout() {
       return
     }
     if (isInnerPath(location.pathname)) {
-      setStackUnderlayPath(lastHubPathRef.current)
+      setStackUnderlayPath(stackUnderlayForPath(location.pathname, lastHubPathRef.current))
     }
   }, [location.pathname])
 

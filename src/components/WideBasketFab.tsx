@@ -73,7 +73,7 @@ export function WideBasketFab({
         [WIDE_BASKET_FAB_EXPAND_DATA_ATTRS.direction]: WIDE_BASKET_FAB_EXPAND_DIRECTION,
         [WIDE_BASKET_FAB_EXPAND_DATA_ATTRS.anchor]: WIDE_BASKET_FAB_EXPAND_ANCHOR,
       }}
-      onClick={onClick ?? (() => navigate('/shopping-list'))}
+      onClick={onClick ?? (() => navigate('/checkout'))}
       className={[
         'wide-basket-fab',
         FLOATING_CHROME_SHADOW_CLASS,

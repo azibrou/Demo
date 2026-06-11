@@ -2,6 +2,7 @@ import type { CarouselGridItemProps } from '../components/CarouselGridItem'
 import type { SimpleItemProps } from '../components/SimpleItem'
 import { retailSnippetProducts } from './boltFoodTallinnHomeContent'
 import { design } from './figmaDesignAssets'
+import { IL_FORNO_NAME, ilFornoContent } from './ilFornoMerchantContent'
 
 const rm = design.restaurantMerchant
 const carouselProduct = design.carousel.product
@@ -126,3 +127,52 @@ export const restaurantMenuSections = [
   { id: 'salads', title: 'Salads', items: saladItems },
   { id: 'unavailable', title: 'Sides', items: unavailableItems },
 ] as const
+
+export type RestaurantMenuSection = {
+  id: string
+  title: string
+  items: readonly (SimpleItemProps & { id: string })[]
+}
+
+export type RestaurantContent = {
+  /** Carousel section title (e.g. provider name). */
+  carouselTitle: string
+  description: string
+  popular: readonly (CarouselGridItemProps & { id: string })[]
+  featured: SimpleItemProps & { id: string }
+  sections: readonly RestaurantMenuSection[]
+}
+
+const defaultRestaurantContent: RestaurantContent = {
+  carouselTitle: restaurantMerchantProvider.name,
+  description: restaurantMerchantDescription,
+  popular: restaurantPopularProducts,
+  featured: { id: 'featured-poke-chicken', ...restaurantFeaturedItem },
+  sections: restaurantMenuSections,
+}
+
+/** Flattened searchable item (search overlay). */
+export type RestaurantAssortmentItem = SimpleItemProps & { itemId: string }
+
+export function restaurantAssortment(content: RestaurantContent): RestaurantAssortmentItem[] {
+  return [
+    { ...content.featured, itemId: content.featured.id },
+    ...content.sections.flatMap((section) =>
+      section.items.map((item) => ({ ...item, itemId: item.id })),
+    ),
+  ]
+}
+
+/** Per-merchant assortment resolution by provider name. */
+export function resolveRestaurantContent(name: string): RestaurantContent {
+  if (name === IL_FORNO_NAME) {
+    return {
+      carouselTitle: IL_FORNO_NAME,
+      description: ilFornoContent.description,
+      popular: ilFornoContent.popular,
+      featured: ilFornoContent.featured,
+      sections: ilFornoContent.sections,
+    }
+  }
+  return defaultRestaurantContent
+}

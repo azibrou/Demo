@@ -7,8 +7,10 @@ import { CrossFadeStack } from '../components/CrossFadeStack'
 import { TopSectionStore } from '../components/TopSectionStore'
 import { storeMerchantBannerCarouselSlides } from '../lib/bannerCarouselContent'
 import { resolveStoreMerchantProvider } from '../lib/merchantNavigation'
+import { storeOrderProviderRef } from '../lib/orderProvider'
 import { storeMerchantCarousels } from '../lib/storeMerchantContent'
 import { MerchantScreenShell } from '../components/MerchantScreenShell'
+import { MerchantOrderProvider } from '../context/OrderContext'
 import { useMerchantTab } from '../context/MerchantTabContext'
 import { useStackBack } from '../hooks/useStackBack'
 import { MerchantAislesTab } from '../sections/merchant/MerchantAislesTab'
@@ -65,6 +67,7 @@ function StoreMerchantScreenBody({ onBack }: { onBack: () => void }) {
   const { activeTabId } = useMerchantTab()
   const location = useLocation()
   const provider = useMemo(() => resolveStoreMerchantProvider(location.state), [location.state])
+  const orderProvider = useMemo(() => storeOrderProviderRef(location.state), [location.state])
 
   const onTabSwitch = useCallback(() => {
     document.querySelector('.merchant-screen')?.scrollTo(0, 0)
@@ -72,7 +75,7 @@ function StoreMerchantScreenBody({ onBack }: { onBack: () => void }) {
 
   const tabContent =
     activeTabId === 'isles' ? (
-      <MerchantAislesTab />
+      <MerchantAislesTab navigationState={location.state} />
     ) : activeTabId === 'list' ? (
       <MerchantListTab />
     ) : (
@@ -80,10 +83,12 @@ function StoreMerchantScreenBody({ onBack }: { onBack: () => void }) {
     )
 
   return (
-    <div className="merchant-screen bolt-font-base relative min-h-svh w-full bg-[var(--color-layer-floor-0)] pb-[calc(env(safe-area-inset-bottom,0px)+96px)] text-[var(--color-content-primary)]">
-      <CrossFadeStack activeKey={activeTabId} onSwitch={onTabSwitch}>
-        {tabContent}
-      </CrossFadeStack>
-    </div>
+    <MerchantOrderProvider provider={orderProvider}>
+      <div className="merchant-screen bolt-font-base relative min-h-svh w-full bg-[var(--color-layer-floor-0)] pb-[calc(env(safe-area-inset-bottom,0px)+96px)] text-[var(--color-content-primary)]">
+        <CrossFadeStack activeKey={activeTabId} onSwitch={onTabSwitch}>
+          {tabContent}
+        </CrossFadeStack>
+      </div>
+    </MerchantOrderProvider>
   )
 }

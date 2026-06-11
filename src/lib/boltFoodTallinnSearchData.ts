@@ -1,5 +1,7 @@
 import searchData from './boltFoodTallinnSearchData.json'
 import type { HomeSearchTab } from './homeSearchContent'
+import { boltFoodAssets } from './boltFoodAssets'
+import { searchBoltMarket } from './boltMarketSearch'
 
 export type BoltSearchDish = {
   id: string
@@ -77,28 +79,55 @@ export function filterBoltSearchSnapshotByTab(
   }
 }
 
+/** Synthetic Bolt Market store result built from the local product catalog. */
+function boltMarketProductSnapshot(query: string): BoltSearchSnapshot | null {
+  const matches = searchBoltMarket(query)
+  if (matches.length === 0) return null
+  const provider: BoltSearchProvider = {
+    id: BOLT_MARKET_TOOMPUIESTEE_ID,
+    name: 'Bolt Market Toompuiestee',
+    imageSrc: boltFoodAssets.boltMarketToompuiestee,
+    deliveryFee: '1,90 €',
+    eta: '15 min',
+    rating: '4.9',
+    ratingCount: '500+',
+    scheduled: false,
+    kind: 'store',
+    items: matches.slice(0, 12).map((product) => ({
+      id: product.id,
+      name: product.title,
+      price: product.price,
+      imageSrc: product.imageSrc,
+    })),
+  }
+  return { query, categoryLabel: query, resultCount: 1, providers: [provider] }
+}
+
 /** Longest matching snapshot for the current query (progressive typing). */
 export function getBoltSearchSnapshot(query: string): BoltSearchSnapshot | null {
   const q = query.trim().toLowerCase()
   if (!q) return null
   const match = [...PREFIXES].reverse().find((prefix) => q === prefix || q.startsWith(prefix))
-  if (!match || !data[match]) return null
-  const snap = data[match]
-  return {
-    ...snap,
-    query: q,
-    categoryLabel: `🍌 ${q}`,
-    providers: prioritizeBoltMarketToompuiestee(
-      snap.providers.map((p) => ({
-        ...p,
-        imageSrc: p.imageSrc ? boltSearchPath(p.imageSrc) : undefined,
-        items: p.items.map((item) => ({
-          ...item,
-          imageSrc: item.imageSrc ? boltSearchPath(item.imageSrc) : undefined,
+  if (match && data[match]) {
+    const snap = data[match]
+    return {
+      ...snap,
+      query: q,
+      categoryLabel: `🍌 ${q}`,
+      providers: prioritizeBoltMarketToompuiestee(
+        snap.providers.map((p) => ({
+          ...p,
+          imageSrc: p.imageSrc ? boltSearchPath(p.imageSrc) : undefined,
+          items: p.items.map((item) => ({
+            ...item,
+            imageSrc: item.imageSrc ? boltSearchPath(item.imageSrc) : undefined,
+          })),
         })),
-      })),
-    ),
+      ),
+    }
   }
+  // Other queries — search the local Bolt Market product catalog.
+  return boltMarketProductSnapshot(q)
 }
 
 export function formatBoltSearchResultCount(count: number): string {

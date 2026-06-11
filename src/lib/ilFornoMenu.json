@@ -1,0 +1,464 @@
+{
+  "source": "https://food.bolt.eu/et-ee/1-tallinn/p/44766-il-forno-parnu-mnt/",
+  "provider": {
+    "name": "iL Forno Pärnu mnt",
+    "rating": "",
+    "ratingCount": "",
+    "deliveryFee": "",
+    "cover": "ilforno/ilforno-ead33059312a.jpeg"
+  },
+  "sections": [
+    {
+      "id": "pitsa",
+      "title": "PITSA",
+      "items": [
+        {
+          "id": "ilf-pitsa-0",
+          "title": "MARGHERITA",
+          "description": "Fior di latte juust, San marzano tomatikaste, basiilik",
+          "price": "13,90 €",
+          "imageSrc": "ilforno/ilforno-d95d06aa481d.jpeg"
+        },
+        {
+          "id": "ilf-pitsa-1",
+          "title": "MARINARA",
+          "description": "Tomatikaste, küüslauk, värske basiilik, Pune ja ekstra neitsioliiviõli",
+          "price": "13,90 €",
+          "imageSrc": "ilforno/ilforno-d48145bb58ea.jpeg"
+        },
+        {
+          "id": "ilf-pitsa-2",
+          "title": "BIANCA",
+          "description": "Fior di latte, kitsejuust, kalamata oliivid, rukola ja ekstra neitsioliiviõli",
+          "price": "14,50 €",
+          "imageSrc": "ilforno/ilforno-f3658afc9866.jpeg"
+        },
+        {
+          "id": "ilf-pitsa-3",
+          "title": "NAPOLETANA",
+          "description": "Fior di latte, San Marzano tomatid, anšoovised, kapparid ja ekstra neitsioliiviõli",
+          "price": "18,90 €",
+          "imageSrc": "ilforno/ilforno-09fb6de0ccdf.jpeg"
+        },
+        {
+          "id": "ilf-pitsa-4",
+          "title": "VALDOSTANA",
+          "description": "Fior di latte juust, san marzano tomatikaste,paprika ja kanafilee",
+          "price": "18,90 €",
+          "imageSrc": "ilforno/ilforno-3555a3c5c4ca.jpeg"
+        },
+        {
+          "id": "ilf-pitsa-5",
+          "title": "SPILINGA",
+          "description": "Fior di latte juust, san marzano tomatikaste, vürtsikas salaami",
+          "price": "19,90 €",
+          "imageSrc": "ilforno/ilforno-6a7fc8e4c454.jpeg"
+        },
+        {
+          "id": "ilf-pitsa-6",
+          "title": "NOSTRANO",
+          "description": "Fior di latte juust, san marzano tomatikaste, sink , seened",
+          "price": "19,90 €",
+          "imageSrc": "ilforno/ilforno-b73cf002d0cf.jpeg"
+        },
+        {
+          "id": "ilf-pitsa-7",
+          "title": "MARINAIO",
+          "description": "Fior di latte, San Marzano tomatid, tuunikala ja punane sibul",
+          "price": "19,90 €",
+          "imageSrc": "ilforno/ilforno-07b502fec7c6.jpeg"
+        },
+        {
+          "id": "ilf-pitsa-8",
+          "title": "iL FORNO",
+          "description": "Fior di latte , San marzano tomatid, Pancetta peekon Spianata piccante salaami",
+          "price": "20,00 €",
+          "imageSrc": "ilforno/ilforno-90537cfcc879.jpeg"
+        },
+        {
+          "id": "ilf-pitsa-9",
+          "title": "Q. FORMAGGI",
+          "description": "Fior di latte, San Marzano tomatid, gorgonzila, toorjuust ja parmesan",
+          "price": "21,00 €",
+          "imageSrc": "ilforno/ilforno-f8f5718a957d.jpeg"
+        },
+        {
+          "id": "ilf-pitsa-10",
+          "title": "SAPORITO",
+          "description": "Fior di latte juust, san marzano tomatikaste, prosciutto crudo sink, parmesani juust, rukola",
+          "price": "22,00 €",
+          "imageSrc": "ilforno/ilforno-2e3d46e53ea7.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "pasta-risotto",
+      "title": "PASTA & RISOTTO",
+      "items": [
+        {
+          "id": "ilf-pasta-risotto-0",
+          "title": "PENNE ALL' ARRABBIATA",
+          "description": "Penne küüslaugu, tšilli, oliiviõli ja parmesaniga tomatikastmes",
+          "price": "12,50 €",
+          "imageSrc": "ilforno/ilforno-0acf39ef7578.jpeg"
+        },
+        {
+          "id": "ilf-pasta-risotto-1",
+          "title": "PENNE CON POLLO E FUNGHI",
+          "description": "Penne kana ja seentega",
+          "price": "14,00 €",
+          "imageSrc": "ilforno/ilforno-a58a6a016176.jpeg"
+        },
+        {
+          "id": "ilf-pasta-risotto-2",
+          "title": "SPAGHETTI ALLA BOLOGNESE",
+          "description": "Spagetid bolognese kastmes",
+          "price": "14,00 €",
+          "imageSrc": "ilforno/ilforno-4b98641ec4bd.jpeg"
+        },
+        {
+          "id": "ilf-pasta-risotto-3",
+          "title": "SPAGHETTI ALLA CARBONARA",
+          "description": "Spagetid peekoni, munakollase ja parmesani juustuga",
+          "price": "16,00 €",
+          "imageSrc": "ilforno/ilforno-5f2728d68c32.jpeg"
+        },
+        {
+          "id": "ilf-pasta-risotto-4",
+          "title": "RISOTTO AL TARTUFO E POLLO",
+          "description": "Risotto kanaga trühvlikastmes",
+          "price": "16,00 €",
+          "imageSrc": "ilforno/ilforno-076573aea884.jpeg"
+        },
+        {
+          "id": "ilf-pasta-risotto-5",
+          "title": "SPAGHETTI ALLA DIAVOLA",
+          "description": "Spagetid tiigerkrevettide ja hernestega vürtsikas koorekastmes",
+          "price": "16,50 €",
+          "imageSrc": "ilforno/ilforno-35e8323f1988.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "k-sitsi-valmistatud-pasta",
+      "title": "KÄSITSI VALMISTATUD PASTA",
+      "items": [
+        {
+          "id": "ilf-k-sitsi-valmistatud-pasta-0",
+          "title": "TORTELLONI RICOTTA E SPINACI",
+          "description": "Ricotta ja spinatiga täidetud tortellonid võises parmesanikastmes",
+          "price": "16,00 €",
+          "imageSrc": "ilforno/ilforno-a127ec4e01d3.jpeg"
+        },
+        {
+          "id": "ilf-k-sitsi-valmistatud-pasta-1",
+          "title": "LASAGNE ( Bolognese )",
+          "description": "Bolognese kaste",
+          "price": "15,00 €",
+          "imageSrc": "ilforno/ilforno-072da4cf16ba.jpeg"
+        },
+        {
+          "id": "ilf-k-sitsi-valmistatud-pasta-2",
+          "title": "RAVIOLI AI PORCINI E TARTUFFO",
+          "description": "Värsked käsitsi valmistatud ravioli puravikega trühvlikastmes",
+          "price": "16,00 €",
+          "imageSrc": "ilforno/ilforno-197c81c46244.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "eelroad-salatid",
+      "title": "EELROAD / SALATID",
+      "items": [
+        {
+          "id": "ilf-eelroad-salatid-0",
+          "title": "INSALAT TONNO",
+          "description": "Jääsalat oliivide, punase sibula, muna ja tuunikalaga",
+          "price": "11,00 €",
+          "imageSrc": "ilforno/ilforno-868fb6645be5.png"
+        },
+        {
+          "id": "ilf-eelroad-salatid-1",
+          "title": "BURRATA CON POMODORINI",
+          "description": "Burrata kirsstomatite ja rukolaga",
+          "price": "12,00 €",
+          "imageSrc": "ilforno/ilforno-b841e3b0d4a9.png"
+        },
+        {
+          "id": "ilf-eelroad-salatid-2",
+          "title": "INSALATA CAESAR CON POLLO",
+          "description": "INSALATA CAESAR CON POLLO",
+          "price": "14,00 €",
+          "imageSrc": "ilforno/ilforno-09e150212fa2.png"
+        },
+        {
+          "id": "ilf-eelroad-salatid-3",
+          "title": "INSALATA CAESAR CON GAMBERI",
+          "description": "Caesari salat krevettidega",
+          "price": "15,00 €",
+          "imageSrc": "ilforno/ilforno-d7fec9614f3e.jpeg"
+        },
+        {
+          "id": "ilf-eelroad-salatid-4",
+          "title": "CARPACCIO AL PARMIGIANA",
+          "description": "Veiseliha carpaccio parmesani ja rukolaga",
+          "price": "15,00 €",
+          "imageSrc": "ilforno/ilforno-720b44bf33ff.png"
+        }
+      ]
+    },
+    {
+      "id": "magustoidud",
+      "title": "MAGUSTOIDUD",
+      "items": [
+        {
+          "id": "ilf-magustoidud-0",
+          "title": "Panna cotta",
+          "description": "",
+          "price": "6,90 €",
+          "imageSrc": "ilforno/ilforno-c822873faa1a.jpeg"
+        },
+        {
+          "id": "ilf-magustoidud-1",
+          "title": "TIRAMISU",
+          "description": "",
+          "price": "8,90 €",
+          "imageSrc": "ilforno/ilforno-382cc9ea77b6.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "lled",
+      "title": "ÕLLED",
+      "items": [
+        {
+          "id": "ilf-lled-0",
+          "title": "Peroni 0,33 l",
+          "description": "",
+          "price": "6,90 €",
+          "imageSrc": "ilforno/ilforno-91c845315625.jpeg"
+        },
+        {
+          "id": "ilf-lled-1",
+          "title": "Moretti 0,33 l",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "6,90 €",
+          "imageSrc": "ilforno/ilforno-fc6d3b500856.jpeg"
+        },
+        {
+          "id": "ilf-lled-2",
+          "title": "Corona Extra 4.5% 0,33 l",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "6,90 €",
+          "imageSrc": "ilforno/ilforno-b546c873c5c5.jpeg"
+        },
+        {
+          "id": "ilf-lled-3",
+          "title": "Tume Õlu Porter 0,5 l",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "6,50 €",
+          "imageSrc": "ilforno/ilforno-31b29125435c.jpeg"
+        },
+        {
+          "id": "ilf-lled-4",
+          "title": "A.le Coq Premium 4.7% 0,5 l",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "6,50 €",
+          "imageSrc": "ilforno/ilforno-a3cfe677755e.jpeg"
+        },
+        {
+          "id": "ilf-lled-5",
+          "title": "Alkoholivaba Õlu A.le Coq Premium 0,5 l",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "6,00 €",
+          "imageSrc": "ilforno/ilforno-e0e71a8d6e1b.jpeg"
+        },
+        {
+          "id": "ilf-lled-6",
+          "title": "Siider Hoggy´s Õun Või Pirn 0,33 l",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "5,00 €",
+          "imageSrc": "ilforno/ilforno-5cdb0159874a.jpeg"
+        },
+        {
+          "id": "ilf-lled-7",
+          "title": "A.le Coq Imperial Kvass Tume Kali 0,4 l",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "5,00 €",
+          "imageSrc": "ilforno/ilforno-3e360c4eed2e.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "valged-veinid",
+      "title": "VALGED VEINID",
+      "items": [
+        {
+          "id": "ilf-valged-veinid-0",
+          "title": "Pinot Grigio Organic, Sitsiilia 0,75 l",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "30,00 €",
+          "imageSrc": "ilforno/ilforno-49428b11c381.jpeg"
+        },
+        {
+          "id": "ilf-valged-veinid-1",
+          "title": "Orvieto Classico, Umbria 0,75 l",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "42,00 €",
+          "imageSrc": "ilforno/ilforno-c31904f0334b.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "karastujoogid",
+      "title": "KARASTUJOOGID",
+      "items": [
+        {
+          "id": "ilf-karastujoogid-0",
+          "title": "GALVANINO ARANCIATA ROSSA BIO 33cl",
+          "description": "Red Orange, Italian Organic Lemonade",
+          "price": "6,90 €",
+          "imageSrc": "ilforno/ilforno-b86c45ba52c9.jpeg"
+        },
+        {
+          "id": "ilf-karastujoogid-1",
+          "title": "GALVANINO MELAGRANA BIO 33cl",
+          "description": "Pomegranate , Italian Organic Lemonade",
+          "price": "6,90 €",
+          "imageSrc": "ilforno/ilforno-a3eeacd40731.jpeg"
+        },
+        {
+          "id": "ilf-karastujoogid-2",
+          "title": "GALVANINO LIMONATA BIO 33cl",
+          "description": "Lemon, Italian Organic Lemonade",
+          "price": "6,90 €",
+          "imageSrc": "ilforno/ilforno-d6be24627295.jpeg"
+        },
+        {
+          "id": "ilf-karastujoogid-3",
+          "title": "GALVANINO ARANCIATA BIO 33cl",
+          "description": "Orange, Italian Organic  Lemonade",
+          "price": "6,90 €",
+          "imageSrc": "ilforno/ilforno-8cedb1d35c44.jpeg"
+        },
+        {
+          "id": "ilf-karastujoogid-4",
+          "title": "Coca-Cola 0,25 l",
+          "description": "",
+          "price": "3,60 €",
+          "imageSrc": "ilforno/ilforno-455c21981a25.jpeg"
+        },
+        {
+          "id": "ilf-karastujoogid-5",
+          "title": "Coca-Cola Zero 0,25 l",
+          "description": "",
+          "price": "3,60 €",
+          "imageSrc": "ilforno/ilforno-696e741d888a.jpeg"
+        },
+        {
+          "id": "ilf-karastujoogid-6",
+          "title": "PURE Multimahla 330ml",
+          "description": "",
+          "price": "4,70 €",
+          "imageSrc": "ilforno/ilforno-b8dba5b6d46d.jpeg"
+        },
+        {
+          "id": "ilf-karastujoogid-7",
+          "title": "PURE Õunamahlast 330ml",
+          "description": "",
+          "price": "4,50 €",
+          "imageSrc": "ilforno/ilforno-f31b77366802.jpeg"
+        },
+        {
+          "id": "ilf-karastujoogid-8",
+          "title": "PURE Apelsinmahl 330ml",
+          "description": "",
+          "price": "4,50 €",
+          "imageSrc": "ilforno/ilforno-07848c4a6b31.jpeg"
+        },
+        {
+          "id": "ilf-karastujoogid-9",
+          "title": "PURE Tomatimahl 33cl",
+          "description": "100% Mahl",
+          "price": "4,50 €",
+          "imageSrc": "ilforno/ilforno-8db0de66523b.jpeg"
+        },
+        {
+          "id": "ilf-karastujoogid-10",
+          "title": "San Pellegrino 0,5 l",
+          "description": "Itaalia Mullivesi",
+          "price": "4,50 €",
+          "imageSrc": "ilforno/ilforno-beba77b116f1.jpeg"
+        },
+        {
+          "id": "ilf-karastujoogid-11",
+          "title": "Acqua Panna 0,75l",
+          "description": "Looduslik vesi, Itaalia",
+          "price": "4,50 €",
+          "imageSrc": "ilforno/ilforno-1738bda07906.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "vahuveinid",
+      "title": "VAHUVEINID",
+      "items": [
+        {
+          "id": "ilf-vahuveinid-0",
+          "title": "La Gioiosa Prosecco Treviso DOC Brut 0,2 l",
+          "description": "",
+          "price": "12,00 €",
+          "imageSrc": "ilforno/ilforno-f47c829de937.jpeg"
+        },
+        {
+          "id": "ilf-vahuveinid-1",
+          "title": "La Gioiosa Prosecco Treviso DOC Brut",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "37,00 €",
+          "imageSrc": "ilforno/ilforno-447cd74660d9.jpeg"
+        },
+        {
+          "id": "ilf-vahuveinid-2",
+          "title": "La Gioiosa Prosecco Rose Millesimato Brut 0,75 l",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "37,00 €",
+          "imageSrc": "ilforno/ilforno-5aa6f9667567.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "punased-veinid",
+      "title": "PUNASED VEINID",
+      "items": [
+        {
+          "id": "ilf-punased-veinid-0",
+          "title": "Organic Nero D'avola, Sitsiilia 0,75 l",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "32,00 €",
+          "imageSrc": "ilforno/ilforno-321692261107.jpeg"
+        },
+        {
+          "id": "ilf-punased-veinid-1",
+          "title": "Ricossa Barbera D'asti Docg Piemonte 0,75 l",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "40,00 €",
+          "imageSrc": "ilforno/ilforno-b5d3c580adb8.jpeg"
+        },
+        {
+          "id": "ilf-punased-veinid-2",
+          "title": "Castellani Chianti Riserva, Toscana 0,75 l",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "40,00 €",
+          "imageSrc": "ilforno/ilforno-0981fd697889.jpeg"
+        },
+        {
+          "id": "ilf-punased-veinid-3",
+          "title": "Tommasi Valpolicella, Veneto 0,75 l",
+          "description": "Tähelepanu! Tegemist on alkoholiga. Alkohol võib kahjustada teie tervist. Alla 18 aastastele keelatud",
+          "price": "51,00 €",
+          "imageSrc": "ilforno/ilforno-a576096f3021.jpeg"
+        }
+      ]
+    }
+  ]
+}

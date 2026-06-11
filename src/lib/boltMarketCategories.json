@@ -1,0 +1,3024 @@
+{
+  "dairy-and-eggs": {
+    "title": "Dairy & Eggs",
+    "items": [
+      {
+        "id": "bm-dairy-and-eggs-0",
+        "title": "Alma, Milk 2.5%, 1,5l",
+        "price": "1,99 €",
+        "imageSrc": "market/market-c151c3584b91.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-1",
+        "title": "Alma, Milk 2,5%, 1l",
+        "price": "0,99 €",
+        "imageSrc": "market/market-537d4b424ef0.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-2",
+        "title": "Alma, Milk 2.5%, 1l",
+        "price": "1,49 €",
+        "imageSrc": "market/market-3c8da69e98da.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-3",
+        "title": "Tere, Milk 1,8%, 1,5l",
+        "price": "2,05 €",
+        "imageSrc": "market/market-dc8d1064278c.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-4",
+        "title": "Alma, Milk 2.5%, 0,5l",
+        "price": "0,89 €",
+        "imageSrc": "market/market-2d52f1b32772.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-5",
+        "title": "Tere, Milk 2.5% Lactose Free, 1l",
+        "price": "1,79 €",
+        "imageSrc": "market/market-bf3138ec7c07.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-6",
+        "title": "Valio, Lactose Free Milk Drink Eila 1.5%, 1l",
+        "price": "2,75 €",
+        "imageSrc": "market/market-aae0cbd35ff6.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-7",
+        "title": "Alma, Whole Milk 3,8-4,2% 1,5l",
+        "price": "2,39 €",
+        "imageSrc": "market/market-f8962088aaf0.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-8",
+        "title": "Alma, Whole Milk 3.8-4.2%, 1l",
+        "price": "1,75 €",
+        "imageSrc": "market/market-a5a8f2c2324a.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-9",
+        "title": "Little Tom, Pasteurized Strawberry Milk, 0,2l",
+        "price": "0,89 €",
+        "imageSrc": "market/market-aa9c63478e1c.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-10",
+        "title": "Little Tom, Pasteurized Banana Milk, 0,2l",
+        "price": "0,89 €",
+        "imageSrc": "market/market-88ff94d8257a.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-11",
+        "title": "Müllermilch, Strawberry Milk Drink, 400g",
+        "price": "2,15 €",
+        "imageSrc": "market/market-f42daca9fadc.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-12",
+        "title": "Yook, Oat Drink Barista, 1l",
+        "price": "2,65 €",
+        "imageSrc": "market/market-a8b892c4dfe0.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-13",
+        "title": "Tere, Deary Oat Drink, 1l",
+        "price": "2,15 €",
+        "imageSrc": "market/market-cbf5669196d0.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-14",
+        "title": "Oatly, Oat Drink Barista Edition, 1l",
+        "price": "3,29 €",
+        "imageSrc": "market/market-874aa1750c5f.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-15",
+        "title": "Oatly, Barista Caramel-Flavored Oat Drink, 1l",
+        "price": "3,49 €",
+        "imageSrc": "market/market-f87939a38e96.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-16",
+        "title": "Yook, Oat Drink Vitamins & Calcium, 1l",
+        "price": "2,89 €",
+        "imageSrc": "market/market-178131e0e451.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-17",
+        "title": "Yook, Oat Drink Extra Creamy Barista, 1l",
+        "price": "2,85 €",
+        "imageSrc": "market/market-cdbd9791ea21.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-18",
+        "title": "Yook, Oat Drink Organic, 1l",
+        "price": "2,89 €",
+        "imageSrc": "market/market-5812d287e244.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-19",
+        "title": "Oatly, Matcha Oat Drink, 1l",
+        "price": "3,79 €",
+        "imageSrc": "market/market-050eca100734.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-20",
+        "title": "Oatly, Organic Oat Drink, 1l",
+        "price": "3,29 €",
+        "imageSrc": "market/market-337f2209eb62.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-21",
+        "title": "Oatly, Oat Drink Barista Edition, 0.5l",
+        "price": "2,39 €",
+        "imageSrc": "market/market-043deaed782e.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-22",
+        "title": "Yook, Orange And Cardamom Flavored Barista Oat Drink, 1l",
+        "price": "3,05 €",
+        "imageSrc": "market/market-c27c3d2f32e7.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-23",
+        "title": "Tere, Latte Milk 2.5%, 1l",
+        "price": "2,05 €",
+        "imageSrc": "market/market-1ffb839882e8.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-24",
+        "title": "Tere, Cappuccino Milk 3.2%, 1l",
+        "price": "2,35 €",
+        "imageSrc": "market/market-f702195a7796.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-25",
+        "title": "Alpro, Almond Drink Unsweetened, 1l",
+        "price": "3,39 €",
+        "imageSrc": "market/market-ca27ff53565e.webp"
+      },
+      {
+        "id": "bm-dairy-and-eggs-26",
+        "title": "Alpro, Almond Drink Barista, 1l",
+        "price": "3,75 €",
+        "imageSrc": "market/market-6c230ce71046.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-27",
+        "title": "Alpro, Almond Drink, 1l",
+        "price": "3,39 €",
+        "imageSrc": "market/market-956acb274c9b.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-28",
+        "title": "Airan, Sour Milk Drink 1%, 0,5l",
+        "price": "1,49 €",
+        "imageSrc": "market/market-0679675cbed4.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-29",
+        "title": "Müllermilch, Chocolate Milk Drink, 400g",
+        "price": "2,15 €",
+        "imageSrc": "market/market-aed90eb0be53.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-30",
+        "title": "Valio, Profeel Milk Protein Shake Strawberry Ice Cream Flavored, 250ml",
+        "price": "2,39 €",
+        "imageSrc": "market/market-bbf8f78f0654.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-31",
+        "title": "Valio, Profeel Milk Protein Shake Chocolate Flavored, 250ml",
+        "price": "2,39 €",
+        "imageSrc": "market/market-65ad0fd408da.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-32",
+        "title": "Alpro, Soya Drink with Calcium, 1l",
+        "price": "2,75 €",
+        "imageSrc": "market/market-6591b74cf6da.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-33",
+        "title": "Alpro, Coconut-Almond Drink with Calcium and Vitamins, 1l",
+        "price": "3,39 €",
+        "imageSrc": "market/market-77e033977893.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-34",
+        "title": "Alpro, Coconut Drink with Rice, Calcium, and Vitamins, 1l",
+        "price": "3,39 €",
+        "imageSrc": "market/market-77d240fef6cc.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-35",
+        "title": "Eggo, Eggs M, 10 pcs.",
+        "price": "2,69 €",
+        "imageSrc": "market/market-46be86991d84.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-36",
+        "title": "Linnu Talu, Free-Range Chicken Eggs M, 10pcs",
+        "price": "2,99 €",
+        "imageSrc": "market/market-cb56c7e95640.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-37",
+        "title": "Linnu Talu, Free-Range Chicken Eggs L, 10pcs",
+        "price": "3,89 €",
+        "imageSrc": "market/market-37b3c41cecb9.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-38",
+        "title": "Eggo, Eggs L, 10 pcs",
+        "price": "2,99 €",
+        "imageSrc": "market/market-b02a8bf60a10.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-39",
+        "title": "Linnu Talu, Barn-Laid Chicken Eggs M, 10pcs",
+        "price": "2,79 €",
+        "imageSrc": "market/market-aa76ea49c4e1.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-40",
+        "title": "Saaremaa, Organic Eggs in size M, 10tk",
+        "price": "4,99 €",
+        "imageSrc": "market/market-8eaea3cc8529.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-41",
+        "title": "Whitepro, Egg Whites from Free Range Chicken Eggs, 1kg",
+        "price": "9,65 €",
+        "imageSrc": "market/market-45993970b64c.webp"
+      },
+      {
+        "id": "bm-dairy-and-eggs-42",
+        "title": "Alma, Greek Yogurt Unflavored, 370g",
+        "price": "1,75 €",
+        "imageSrc": "market/market-d499efc79fab.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-43",
+        "title": "Farmi, Greek Yogurt, 370g",
+        "price": "1,95 €",
+        "imageSrc": "market/market-dc10420dae5e.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-44",
+        "title": "Tere, Unflavored Greek Yogurt, 350g",
+        "price": "1,79 €",
+        "imageSrc": "market/market-04f0b9b4a34d.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-45",
+        "title": "Granarolo, Delta Greek Yogurt 0% with Peach and Apricot Pieces, 150g",
+        "price": "1,59 €",
+        "imageSrc": "market/market-ecb22fddbd59.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-46",
+        "title": "Granarolo, Delta Greek Coffee-Flavoured Yogurt 0%, 150g",
+        "price": "1,59 €",
+        "imageSrc": "market/market-efc6752ce818.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-47",
+        "title": "Farmi, Cherry Skyr Yogurt, 150g",
+        "price": "1,39 €",
+        "imageSrc": "market/market-8415c0d55dbc.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-48",
+        "title": "Farmi, Peach Skyr Yogurt, 150g",
+        "price": "1,39 €",
+        "imageSrc": "market/market-15dc882b4225.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-49",
+        "title": "Farmi, Blueberry Skyr Yogurt, 150g",
+        "price": "1,39 €",
+        "imageSrc": "market/market-3befa2a962d0.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-50",
+        "title": "Valio, Profeel Protein Mousse Chocolate, 150g",
+        "price": "1,95 €",
+        "imageSrc": "market/market-4c034f00ccff.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-51",
+        "title": "Valio, Profeel Milk Chocolate Flavored Protein Pudding with Sweeteners, 150g",
+        "price": "1,35 €",
+        "imageSrc": "market/market-f4ef1c813950.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-52",
+        "title": "Valio, Profeel Protein Pudding with White Chocolate and Nuts, 150g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-6cd0932bd9f3.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-53",
+        "title": "Valio, Profeel Protein Curd Cream with Raspberry Sweeteners, 200g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-d0bc84b1be99.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-54",
+        "title": "Tere, Fit Protein Pudding with sweeteners Cocoa, 150g",
+        "price": "1,45 €",
+        "imageSrc": "market/market-c3fcd179d03e.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-55",
+        "title": "Tere, Fit Protein Pudding with sweeteners Vanilla, 150g",
+        "price": "1,45 €",
+        "imageSrc": "market/market-9a11f3239246.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-56",
+        "title": "Valio, Profeel Protein Mousse Raspberry, 150g",
+        "price": "1,95 €",
+        "imageSrc": "market/market-0f8237201e55.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-57",
+        "title": "Granarolo, Benessere High-Protein Vanilla Dessert, 200g",
+        "price": "2,55 €",
+        "imageSrc": "market/market-10f7db9a885d.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-58",
+        "title": "Tere, Fit Protein Pudding with sweeteners Salted Caramel, 150g",
+        "price": "1,45 €",
+        "imageSrc": "market/market-e4fa67350267.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-59",
+        "title": "Tere, FIT! Protein Yogurt Blueberry, 150g",
+        "price": "1,45 €",
+        "imageSrc": "market/market-05bd26ade530.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-60",
+        "title": "Granarolo, Benessere High-Protein Panna Cotta Dessert, 200g",
+        "price": "2,55 €",
+        "imageSrc": "market/market-200f3ba62d9d.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-61",
+        "title": "Alma, Yoghurt with Chocolate, 150g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-8d4871762a9f.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-62",
+        "title": "Fantasia, Creamy Yogurt M&M, 120g",
+        "price": "1,39 €",
+        "imageSrc": "market/market-f6f7527579d8.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-63",
+        "title": "Mesikäpp, Yogurt with Cocoa Cookie, 140g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-2a2ddf29d4bc.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-64",
+        "title": "Fantasia, Creamy Yogurt MARS, 104g",
+        "price": "1,39 €",
+        "imageSrc": "market/market-371d082e916b.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-65",
+        "title": "Tere, Emma ​​Yogurt with Rice Balls in Chocolate, 145g",
+        "price": "1,35 €",
+        "imageSrc": "market/market-f1ddf492ccb8.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-66",
+        "title": "Granarolo, Oh My Yomo Yogurt Cheesecake Flavor With Raspberry And Cookie Pieces, 140g",
+        "price": "1,65 €",
+        "imageSrc": "market/market-3e745996de7b.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-67",
+        "title": "Granarolo, Oh My Yomo Yogurt With Cookie Pieces Covered In Milk Chocolate, 140g",
+        "price": "1,65 €",
+        "imageSrc": "market/market-335e4793b980.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-68",
+        "title": "Alma, Muah Stracciatella Cream Yogurt, 380g",
+        "price": "1,75 €",
+        "imageSrc": "market/market-9045df354d0c.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-69",
+        "title": "Farmi, Skyr Peach, 300g",
+        "price": "2,15 €",
+        "imageSrc": "market/market-2db6b4c92197.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-70",
+        "title": "Farmi, Skyr Strawberry, 300g",
+        "price": "2,15 €",
+        "imageSrc": "market/market-d2cf67a7742c.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-71",
+        "title": "Farmi, Creamy Yogurt with Strawberry, 400g",
+        "price": "1,95 €",
+        "imageSrc": "market/market-4e76d9aa55db.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-72",
+        "title": "Farmi, Creamy Yogurt with Black Cherries, 400g",
+        "price": "1,89 €",
+        "imageSrc": "market/market-b2dd98fc4d0d.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-73",
+        "title": "Farmi, Creamy Yogurt with Peaches 4%, 400g",
+        "price": "1,89 €",
+        "imageSrc": "market/market-9287da129e94.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-74",
+        "title": "Activia, Strawberry, 4x120g",
+        "price": "2,99 €",
+        "imageSrc": "market/market-fc41bb72efc5.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-75",
+        "title": "Danonki, Strawberry Yogurt, 70g",
+        "price": "0,85 €",
+        "imageSrc": "market/market-93579e9ba676.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-76",
+        "title": "Farmi, Lactose Free Bread & Nuts Yogurt, 400g",
+        "price": "1,95 €",
+        "imageSrc": "market/market-0ed24cb44bce.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-77",
+        "title": "Farmi, Creamy Yogurt with Blueberries, 400g",
+        "price": "1,95 €",
+        "imageSrc": "market/market-0adcf65f395f.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-78",
+        "title": "Activia, Yogurt Cherry, 4x120g",
+        "price": "2,99 €",
+        "imageSrc": "market/market-5d58f2216066.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-79",
+        "title": "Alma, Yogurt Strawberry, 200g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-0957ea2ca0ce.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-80",
+        "title": "Alma, Muah Creamy Yogurt Berry-Plombir Flavor, 180g",
+        "price": "1,39 €",
+        "imageSrc": "market/market-4ddc96f4f2ee.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-81",
+        "title": "Alma, Yogurt Mango, 200g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-a4c3771302ba.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-82",
+        "title": "Alma, Drinking Yoghurt with Wild Berry Flavour, 900g",
+        "price": "1,89 €",
+        "imageSrc": "market/market-1c56c35b188f.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-83",
+        "title": "Actimel, Strawberry Yogurt Drink, 4x100g",
+        "price": "2,55 €",
+        "imageSrc": "market/market-68fff4d30e90.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-84",
+        "title": "Gefilus, Drinking Yogurt Raspberry-Passion Lactose Free, 1kg",
+        "price": "2,19 €",
+        "imageSrc": "market/market-0734fb708369.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-85",
+        "title": "Actimel, Drinking Yogurt Wildberry, 4x100g",
+        "price": "2,55 €",
+        "imageSrc": "market/market-064caaefd881.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-86",
+        "title": "Actimel, Fruit Yogurt Drink, 4x100g",
+        "price": "2,55 €",
+        "imageSrc": "market/market-fecf370f1244.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-87",
+        "title": "Alma, Banana-Strawberry Drinking Yoghurt 1kg",
+        "price": "1,59 €",
+        "imageSrc": "market/market-9532dfe0d832.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-88",
+        "title": "Alma, Mango Yoghurt, 900g",
+        "price": "1,89 €",
+        "imageSrc": "market/market-2f45a41e25f3.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-89",
+        "title": "Tere, Wild Strawberry Drinking Yoghurt, 0,9l",
+        "price": "2,15 €",
+        "imageSrc": "market/market-d5bb4b2fa498.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-90",
+        "title": "Alma, Yogurt Drink Apple-Ice Cream, 275g",
+        "price": "1,39 €",
+        "imageSrc": "market/market-6113b79ee813.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-91",
+        "title": "Activia, Drinking Yoghurt Strawberry-kiwi, 300g",
+        "price": "1,55 €",
+        "imageSrc": "market/market-8891c18ec669.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-92",
+        "title": "Activia, Drinking Yoghurt Raspberry-pomegranate, 300g",
+        "price": "1,55 €",
+        "imageSrc": "market/market-b4a1edb3779b.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-93",
+        "title": "Farmi, Jänks Raspberry Flavored Jelly, 150g",
+        "price": "0,65 €",
+        "imageSrc": "market/market-3155fce00a14.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-94",
+        "title": "Farmi, Jänks Cherry Flavored Jelly, 150g",
+        "price": "0,65 €",
+        "imageSrc": "market/market-ec64f5728298.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-95",
+        "title": "Farmi, Jänks Kiwi Flavored Jelly, 150g",
+        "price": "0,65 €",
+        "imageSrc": "market/market-5846477adf0f.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-96",
+        "title": "Farmi, Wild Strawberry Skyr Yogurt, 150g",
+        "price": "1,39 €",
+        "imageSrc": "market/market-c00bcf353701.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-97",
+        "title": "Farmi, Kitchen Skyr Unflavored, 400g",
+        "price": "2,55 €",
+        "imageSrc": "market/market-95a71f11012e.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-98",
+        "title": "Hellus, ME-3 Kefir Yogurt Strawberry-Blueberry, 380g",
+        "price": "1,79 €",
+        "imageSrc": "market/market-1a84e914ddb2.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-99",
+        "title": "Hellus, ME-3 Kefir Yogurt Mango-Orange, 380g",
+        "price": "1,79 €",
+        "imageSrc": "market/market-c1ff1a81b03f.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-100",
+        "title": "Hellus, ME-3 Kefir Yogurt Cherry-Plum, 380g",
+        "price": "1,79 €",
+        "imageSrc": "market/market-99288140c4b2.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-101",
+        "title": "Hellus, ME-3 Kefir Yogurt Lemon-Vanilla, 380g",
+        "price": "1,79 €",
+        "imageSrc": "market/market-e3edd2d72759.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-102",
+        "title": "Farmi, Creamy Plum-Marzipan Yogurt, 200g",
+        "price": "1,35 €",
+        "imageSrc": "market/market-9dc015d626b9.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-103",
+        "title": "Farmi, Creamy Blackcurrant Yogurt, 200g",
+        "price": "1,35 €",
+        "imageSrc": "market/market-03b1a6868873.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-104",
+        "title": "Zott, Liegois Chocolate, 175g",
+        "price": "0,95 €",
+        "imageSrc": "market/market-7f1ebb5ee052.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-105",
+        "title": "Alma, Pudding with Chocolate & Nuts, 230g",
+        "price": "1,35 €",
+        "imageSrc": "market/market-5491d603282d.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-106",
+        "title": "Alma, Pudding Caramel, 230g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-1faf570a452d.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-107",
+        "title": "Alma, Pudding with Vanilla Flavour, 230g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-c21ffea953d0.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-108",
+        "title": "Zott, Liegois Strawberry, 175g",
+        "price": "0,89 €",
+        "imageSrc": "market/market-a2108d7292dd.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-109",
+        "title": "Alma, Pudding Raspberry-Mascarpone Flavored, 230g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-a4a697c81347.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-110",
+        "title": "Karums, Cream with Caramel, 150g",
+        "price": "1,19 €",
+        "imageSrc": "market/market-3b17161f8d09.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-111",
+        "title": "Alma, Lemon Cheesecake Pudding, 230g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-1575a209eb5f.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-112",
+        "title": "Alma, Coconut Pudding, 230g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-99e85e6a31ed.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-113",
+        "title": "Zott, Zottis Chocolate Dessert, 115g",
+        "price": "0,49 €",
+        "imageSrc": "market/market-8538b2b9568b.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-114",
+        "title": "Zott, Liegois Vanilla, 175g",
+        "price": "0,89 €",
+        "imageSrc": "market/market-4ad008fb07e9.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-115",
+        "title": "Zott, Zottis Vanilla Dessert, 115g",
+        "price": "0,49 €",
+        "imageSrc": "market/market-bfd4a449b780.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-116",
+        "title": "Farmi, Lactose Free Mango Yogurt, 130g",
+        "price": "0,99 €",
+        "imageSrc": "market/market-5e24c87f1f68.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-117",
+        "title": "Farmi, Lactose Free Strawberry-Watermelon Yogurt, 130g",
+        "price": "0,99 €",
+        "imageSrc": "market/market-f63d82e37719.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-118",
+        "title": "Sipsiku, Ice Cream Flavoured AB-Yogurt with Chocolate Rice Balls, 165g",
+        "price": "1,49 €",
+        "imageSrc": "market/market-3d54d1986c0f.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-119",
+        "title": "Sipsiku, Ice Cream Flavoured AB-Yogurt with Chocolate Candies, 165g",
+        "price": "1,49 €",
+        "imageSrc": "market/market-071778c1634d.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-120",
+        "title": "Emma, Ice Cream-Flavored Yogurt With Candies, 145g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-5e4386bbac29.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-121",
+        "title": "Tere, Emma Lactose Free Strawberry Yogurt, 110g",
+        "price": "0,99 €",
+        "imageSrc": "market/market-e01025159ee3.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-122",
+        "title": "Tere, Emma Lactose Free Bluberry Yogurt, 110g",
+        "price": "0,99 €",
+        "imageSrc": "market/market-558357953763.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-123",
+        "title": "Gefilus, Drinking Yogurt Raspberry-Passion Lactose Free, 1kg",
+        "price": "2,19 €",
+        "imageSrc": "market/market-0734fb708369.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-124",
+        "title": "Gefilus, Unflavoured Yoghurt Lactose Free, 1kg",
+        "price": "2,05 €",
+        "imageSrc": "market/market-861f61979f49.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-125",
+        "title": "Gefilus, Peach-Papaya Lactose Free Yogurt, 380g",
+        "price": "1,65 €",
+        "imageSrc": "market/market-3de553cf05f0.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-126",
+        "title": "Gefilus, Yoghurt Drink Wild Berry Lactose Free, 4x100g",
+        "price": "2,09 €",
+        "imageSrc": "market/market-0756ab80bc6d.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-127",
+        "title": "Hellus, Lactose Free Kefir, 1kg",
+        "price": "2,25 €",
+        "imageSrc": "market/market-6aef95fd93dc.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-128",
+        "title": "Gefilus, Lactose-free Yoghurt Unflavoured, 380g",
+        "price": "1,65 €",
+        "imageSrc": "market/market-79c2df6a42c5.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-129",
+        "title": "Tere, laktoosivaba banaani AB-jogurt, 150g",
+        "price": "0,89 €",
+        "imageSrc": "market/market-e34c6d87ab28.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-130",
+        "title": "Gefilus, Mango-Banana-Chia Lactose Free Yogurt, 380g",
+        "price": "1,65 €",
+        "imageSrc": "market/market-740110901524.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-131",
+        "title": "Gefilus, Blueberry Lactose Free Yogurt, 380g",
+        "price": "1,65 €",
+        "imageSrc": "market/market-98a60f491da6.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-132",
+        "title": "Farmi, Lactose Free Mango Yogurt, 130g",
+        "price": "0,99 €",
+        "imageSrc": "market/market-5e24c87f1f68.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-133",
+        "title": "Farmi, Lactose Free Strawberry-Watermelon Yogurt, 130g",
+        "price": "0,99 €",
+        "imageSrc": "market/market-f63d82e37719.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-134",
+        "title": "Tere, Lactose Free Cocoa Pudding, 200g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-bc9ebc44ac62.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-135",
+        "title": "Tere, Lactose Free Vanilla Pudding, 200g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-80dc5de2a122.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-136",
+        "title": "Tere, Lactose Free Cream Caramel Pudding, 200g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-fa6919deb764.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-137",
+        "title": "Farmi, Lactose Free Bread & Nuts Yogurt, 400g",
+        "price": "1,95 €",
+        "imageSrc": "market/market-0ed24cb44bce.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-138",
+        "title": "Tere, Deary Chocolate Plant-based Pudding, 150g",
+        "price": "1,19 €",
+        "imageSrc": "market/market-415822ccca71.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-139",
+        "title": "Alpro, Soya Dessert with Vanilla Flavour, 125g",
+        "price": "1,09 €",
+        "imageSrc": "market/market-657322427f11.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-140",
+        "title": "Tere, Deary Mango Plant-based Pudding, 150g",
+        "price": "1,19 €",
+        "imageSrc": "market/market-40d5d32f8063.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-141",
+        "title": "Tere, Deary Blackcurrant Plant-based Pudding, 150g",
+        "price": "1,19 €",
+        "imageSrc": "market/market-88adbf16a09b.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-142",
+        "title": "Deary, High-Protein Plant-Based Dessert Banana, 150g",
+        "price": "1,35 €",
+        "imageSrc": "market/market-3eb03df15325.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-143",
+        "title": "Deary, High-Protein Plant-Based Dessert Forest Berry, 150g",
+        "price": "1,35 €",
+        "imageSrc": "market/market-a2248a0dd03d.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-144",
+        "title": "Tere, Emma Lactose Free Strawberry Yogurt, 110g",
+        "price": "0,99 €",
+        "imageSrc": "market/market-e01025159ee3.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-145",
+        "title": "Tere, Emma Lactose Free Bluberry Yogurt, 110g",
+        "price": "0,99 €",
+        "imageSrc": "market/market-558357953763.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-146",
+        "title": "Tere, FIT! Lactose-Free Plain Protein Curd Cream, 400g",
+        "price": "1,99 €",
+        "imageSrc": "market/market-6feb145c86ae.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-147",
+        "title": "Tere, Curd 5%, 200g",
+        "price": "1,25 €",
+        "imageSrc": "market/market-07056e8ff0c9.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-148",
+        "title": "Alma, Vanilla Curd, 200g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-f6c64a05b5d7.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-149",
+        "title": "Farmi, Light Curd with Vanillin, 200g",
+        "price": "1,19 €",
+        "imageSrc": "market/market-e93ad013ef07.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-150",
+        "title": "Tere, Curd Paste Vanilla 4%, 300g",
+        "price": "1,59 €",
+        "imageSrc": "market/market-f0415db828f8.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-151",
+        "title": "Tere, Emma Cocoa Curd Paste, 150g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-d5256060a2b1.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-152",
+        "title": "Farmi, Light Curd, 200g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-24a67d6d8d50.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-153",
+        "title": "Alma, Curd Cream Vanilla, 300g",
+        "price": "1,65 €",
+        "imageSrc": "market/market-65631b5086f3.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-154",
+        "title": "Farmi, Kakao Dessert with Chocolate Jeppi, 38g",
+        "price": "0,45 €",
+        "imageSrc": "market/market-a61f30589762.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-155",
+        "title": "Tere, Emma ​​Banana Curd Paste, 150g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-2f8de168958c.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-156",
+        "title": "Emma, Lactose-Free Curd Cream With Tropical Kissel, 150g",
+        "price": "1,09 €",
+        "imageSrc": "market/market-97084d152971.webp"
+      },
+      {
+        "id": "bm-dairy-and-eggs-157",
+        "title": "Tere, Curd Paste Strawberry Kissel, 150g",
+        "price": "1,09 €",
+        "imageSrc": "market/market-d529af7aa6f9.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-158",
+        "title": "Farmi, Vanilla Curd Dessert Jeppi, 38g",
+        "price": "0,45 €",
+        "imageSrc": "market/market-1faef868c908.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-159",
+        "title": "Tere, Curd Paste Raspberry Kissel, 150g",
+        "price": "1,05 €",
+        "imageSrc": "market/market-445b9d495281.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-160",
+        "title": "Alma, Curd Cream Wild Strawberry, 300g",
+        "price": "1,59 €",
+        "imageSrc": "market/market-b928293c0d4c.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-161",
+        "title": "Farmi, Curd Dessert Creme Brulee Jeppi, 38g",
+        "price": "0,49 €",
+        "imageSrc": "market/market-a017f6f64a71.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-162",
+        "title": "Tere, Curd Paste Blueberry Kissel, 150g",
+        "price": "1,05 €",
+        "imageSrc": "market/market-02289ab24c66.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-163",
+        "title": "Alma, Curd Cream Cocoa, 380g",
+        "price": "2,09 €",
+        "imageSrc": "market/market-983884385694.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-164",
+        "title": "Alma, Curd Dessert Strawberry-Blueberry, 150g",
+        "price": "1,19 €",
+        "imageSrc": "market/market-5b1c3595f95a.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-165",
+        "title": "Tere, Curd Snack Vanilla Multipack, 7x40g",
+        "price": "3,75 €",
+        "imageSrc": "market/market-ce23100e8e58.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-166",
+        "title": "Tere, Curd Snack Classic Blueberry, 43g",
+        "price": "0,69 €",
+        "imageSrc": "market/market-9ed04fe78733.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-167",
+        "title": "Alma, Raspberry Curd Snack, 40g",
+        "price": "0,49 €",
+        "imageSrc": "market/market-f9fd008cddcb.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-168",
+        "title": "Karums, Chocolate Curd Snack, 45g",
+        "price": "0,69 €",
+        "imageSrc": "market/market-812932f82d73.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-169",
+        "title": "Alma, Curd Snack in Cocoa Glaze with Wild Strawberry, 40g",
+        "price": "0,49 €",
+        "imageSrc": "market/market-f5c29f78d032.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-170",
+        "title": "Tere, Curd Snack with Cranberry Filling 17.7%, 43g",
+        "price": "0,69 €",
+        "imageSrc": "market/market-5ad64b5969c3.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-171",
+        "title": "Karums, Curd Snack with Coconut Flakes, 45g",
+        "price": "0,69 €",
+        "imageSrc": "market/market-9ea231e77355.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-172",
+        "title": "Alma, Cocoa Curd Snack, 40g",
+        "price": "0,49 €",
+        "imageSrc": "market/market-77ef453fce77.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-173",
+        "title": "Alma, Vanilla Curd Snack, 40g",
+        "price": "0,49 €",
+        "imageSrc": "market/market-616f3baf22b8.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-174",
+        "title": "Tere, Curd Snack Classic Cheesecake, 43g",
+        "price": "0,69 €",
+        "imageSrc": "market/market-a05ccd09473a.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-175",
+        "title": "Kinder, Pingui Cocoa, 30g",
+        "price": "0,99 €",
+        "imageSrc": "market/market-42db12058c8f.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-176",
+        "title": "Farmi, Skyr Blueberry Dessert In Chocolate Glaze, 40g",
+        "price": "0,69 €",
+        "imageSrc": "market/market-181aea61bb14.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-177",
+        "title": "Tere, Curd Snack with Condensed Milk and Caramel Glaze, 40g",
+        "price": "0,69 €",
+        "imageSrc": "market/market-e7b6e1706de0.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-178",
+        "title": "Tere, Curd Snack Vanilla 17.5%, 43g",
+        "price": "0,59 €",
+        "imageSrc": "market/market-f9e49ee934b7.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-179",
+        "title": "Farmi, Kakao Dessert with Chocolate Jeppi, 38g",
+        "price": "0,45 €",
+        "imageSrc": "market/market-a61f30589762.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-180",
+        "title": "Farmi, Skyr Vanilla Dessert In Chocolate Glaze, 40g",
+        "price": "0,69 €",
+        "imageSrc": "market/market-c408b6fea9fd.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-181",
+        "title": "Farmi, Vanilla Curd Dessert Jeppi, 38g",
+        "price": "0,45 €",
+        "imageSrc": "market/market-1faef868c908.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-182",
+        "title": "Alma, Mango Curd Snack, 40g",
+        "price": "0,49 €",
+        "imageSrc": "market/market-4b220b6c1117.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-183",
+        "title": "Karums, Mango Curd Snack, 45g",
+        "price": "0,69 €",
+        "imageSrc": "market/market-8319cf2f90f8.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-184",
+        "title": "Farmi, Curd Dessert Creme Brulee Jeppi, 38g",
+        "price": "0,49 €",
+        "imageSrc": "market/market-a017f6f64a71.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-185",
+        "title": "Alma, Cottage Cheese 5%, 380g",
+        "price": "2,35 €",
+        "imageSrc": "market/market-18a79e9c5d5d.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-186",
+        "title": "Alma, Cottage Cheese 5%, 200g",
+        "price": "1,39 €",
+        "imageSrc": "market/market-b9b491c110af.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-187",
+        "title": "Farmi, Low-fat Lactose Free Cottage Cheese 2%, 330g",
+        "price": "2,39 €",
+        "imageSrc": "market/market-184c51b1585d.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-188",
+        "title": "Alma, Cottage Cheese Cucumber-dill, 200g",
+        "price": "1,79 €",
+        "imageSrc": "market/market-4ef0a5bc6d5f.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-189",
+        "title": "Alma, Cottage Cheese 5%, 500g",
+        "price": "3,19 €",
+        "imageSrc": "market/market-6d4f8ec646c3.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-190",
+        "title": "Alma, Cottage Cheese Murakamoosiga 5%, 200g",
+        "price": "2,15 €",
+        "imageSrc": "market/market-a5e155418e5c.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-191",
+        "title": "Alma, Cottage Cheese Crème Brûlée, 200g",
+        "price": "1,75 €",
+        "imageSrc": "market/market-c9362cd30b02.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-192",
+        "title": "Tere, Cottage Cheese with Wild Garlic Pesto, 300g",
+        "price": "2,25 €",
+        "imageSrc": "market/market-8a6e4e86177f.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-193",
+        "title": "Piimameister Otto, Lactose-Free Cottage Cheese, 220g",
+        "price": "1,45 €",
+        "imageSrc": "market/market-7ca8bed1481f.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-194",
+        "title": "Alma, Sour Cream 20%, 500g",
+        "price": "2,35 €",
+        "imageSrc": "market/market-894284d67ba6.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-195",
+        "title": "Alma, Sour Cream 20%, 250g",
+        "price": "1,29 €",
+        "imageSrc": "market/market-616004309e62.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-196",
+        "title": "Tere, Sour Cream 20%, 250g",
+        "price": "1,79 €",
+        "imageSrc": "market/market-e91b98069e61.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-197",
+        "title": "Tere, Sour Cream Lactose Free 20%, 300g",
+        "price": "2,05 €",
+        "imageSrc": "market/market-040784305533.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-198",
+        "title": "Alma, Sour Cream 10%, 250g",
+        "price": "1,09 €",
+        "imageSrc": "market/market-46c10cd9798b.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-199",
+        "title": "Alma, Cooking Cream 20%, 0,4l",
+        "price": "2,35 €",
+        "imageSrc": "market/market-603253161844.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-200",
+        "title": "Alma, Coffee Cream 10%, 0,38l",
+        "price": "1,29 €",
+        "imageSrc": "market/market-9ba10744d89e.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-201",
+        "title": "Tere, Coffee Creams 10%, 0,2l",
+        "price": "0,79 €",
+        "imageSrc": "market/market-d77b155f11e8.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-202",
+        "title": "Tere, Coffee Creams 10%, 0,38l",
+        "price": "1,65 €",
+        "imageSrc": "market/market-ce35c7343052.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-203",
+        "title": "Tere, Whipping Cream 35%, 0,2l",
+        "price": "1,85 €",
+        "imageSrc": "market/market-4eb65a61ffe7.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-204",
+        "title": "Alma, Whipping Cream 35%, 0,4l",
+        "price": "2,99 €",
+        "imageSrc": "market/market-7c6ae2c3ef7a.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-205",
+        "title": "President, Whipped Cream, 250g",
+        "price": "4,05 €",
+        "imageSrc": "market/market-89acdde80809.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-206",
+        "title": "Tere, Deary Oat Double Cream 15%, 250ml",
+        "price": "1,39 €",
+        "imageSrc": "market/market-42953f6d15ef.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-207",
+        "title": "Tere, Butter 82%, 200g",
+        "price": "3,19 €",
+        "imageSrc": "market/market-d031206031f4.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-208",
+        "title": "Estover, Estonian Farm Butter 82%, 150g",
+        "price": "2,49 €",
+        "imageSrc": "market/market-e84a3940bd74.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-209",
+        "title": "Alma, Butter, 200g",
+        "price": "3,09 €",
+        "imageSrc": "market/market-8fe8dc8f4b06.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-210",
+        "title": "Mo Saaremaa, Butter with Salt Crystals, 200g",
+        "price": "2,59 €",
+        "imageSrc": "market/market-b21b3a40b8d9.webp"
+      },
+      {
+        "id": "bm-dairy-and-eggs-211",
+        "title": "Mo Saaremaa, Butter with Home Garden Herbs, 200g",
+        "price": "2,39 €",
+        "imageSrc": "market/market-49835f64ecd8.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-212",
+        "title": "Fairy, Margarine Blue Light 50%, 400g",
+        "price": "2,65 €",
+        "imageSrc": "market/market-0b1c373491e4.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-213",
+        "title": "Delma, Margarine Extra 39%, 450g",
+        "price": "2,15 €",
+        "imageSrc": "market/market-3333358ec40b.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-214",
+        "title": "Voimix, Margarine with Reduced Fat Content 60%, 400g",
+        "price": "2,25 €",
+        "imageSrc": "market/market-8efd39272f01.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-215",
+        "title": "Tere, Lactose Free Butter 82%, 200g",
+        "price": "3,49 €",
+        "imageSrc": "market/market-c2357016eee3.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-216",
+        "title": "Fairy, Margarine Blue Light 50%, 400g",
+        "price": "2,65 €",
+        "imageSrc": "market/market-0b1c373491e4.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-217",
+        "title": "Creme Bonjour, Lactose Free Spread with Chives, 200g",
+        "price": "3,49 €",
+        "imageSrc": "market/market-6ec8b91307c1.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-218",
+        "title": "Gefilus, Kefir 2.5%, 1l",
+        "price": "1,65 €",
+        "imageSrc": "market/market-2092eed858ee.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-219",
+        "title": "Tere, Kefir Hellus 2.5%, 1l",
+        "price": "1,85 €",
+        "imageSrc": "market/market-58fe99c757c2.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-220",
+        "title": "Gefilus, Raspberry-Blueberry Kefir, 1kg",
+        "price": "2,05 €",
+        "imageSrc": "market/market-12282f2af8d8.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-221",
+        "title": "Tere, Kefir, 1kg",
+        "price": "1,29 €",
+        "imageSrc": "market/market-0c652a4723ba.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-222",
+        "title": "Granarolo, Yomo Lactose-Free Natural Kefir, 480g",
+        "price": "2,45 €",
+        "imageSrc": "market/market-ae535078c984.png"
+      },
+      {
+        "id": "bm-dairy-and-eggs-223",
+        "title": "Kinder, Pingui Cocoa, 30g",
+        "price": "0,99 €",
+        "imageSrc": "market/market-42db12058c8f.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-224",
+        "title": "Mo Saaremaa, Cranberry Kissel, 750g",
+        "price": "2,39 €",
+        "imageSrc": "market/market-e55536618cc4.jpeg"
+      },
+      {
+        "id": "bm-dairy-and-eggs-225",
+        "title": "Mo Saaremaa, Black Currant Kissel, 750g",
+        "price": "2,39 €",
+        "imageSrc": "market/market-0a609e04d6e5.jpeg"
+      }
+    ]
+  },
+  "meat-and-fish": {
+    "title": "Meat & Fish",
+    "items": [
+      {
+        "id": "bm-meat-and-fish-0",
+        "title": "Nõo, Pork Tenderloin, ~500g",
+        "price": "7,15 €",
+        "imageSrc": "market/market-b36e823836e2.png"
+      },
+      {
+        "id": "bm-meat-and-fish-1",
+        "title": "Rakvere, Home-made Minced Meat, 400g",
+        "price": "3,99 €",
+        "imageSrc": "market/market-ebdb6a9b7bc1.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-2",
+        "title": "Maks & Moorits, Delicacy Minced Meat, 300g",
+        "price": "4,19 €",
+        "imageSrc": "market/market-d3ca153079e5.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-3",
+        "title": "Rakvere, Minced Pork, 300g",
+        "price": "2,85 €",
+        "imageSrc": "market/market-47ca3d2a072d.png"
+      },
+      {
+        "id": "bm-meat-and-fish-4",
+        "title": "Maks & Moorits, Homemade Minced Meat, 500g",
+        "price": "5,09 €",
+        "imageSrc": "market/market-fc60f4ccdd53.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-5",
+        "title": "Maks & Moorits, Chicken Meat Jelly, 300g",
+        "price": "3,05 €",
+        "imageSrc": "market/market-5bd825f23717.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-6",
+        "title": "Nõo, Fitlap Chicken Jelly, 300g",
+        "price": "3,29 €",
+        "imageSrc": "market/market-cfae24450598.png"
+      },
+      {
+        "id": "bm-meat-and-fish-7",
+        "title": "Liivimaa Lihaveis, Organic Grass-Fed Beef Minced Meat, 300g",
+        "price": "5,79 €",
+        "imageSrc": "market/market-bacda6771528.png"
+      },
+      {
+        "id": "bm-meat-and-fish-8",
+        "title": "Rakvere, Minute steak (pork loin), 380g",
+        "price": "4,15 €",
+        "imageSrc": "market/market-44343b82fed8.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-9",
+        "title": "Rakvere, Minced Beef, 300g",
+        "price": "6,75 €",
+        "imageSrc": "market/market-97f5bf28456a.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-10",
+        "title": "Rakvere, Pork collar sliced, 380g",
+        "price": "4,45 €",
+        "imageSrc": "market/market-9df318fae06e.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-11",
+        "title": "Liivimaa Lihaveis, Aged Organic Grass-Fed Beef Rump Steak, 240g",
+        "price": "9,99 €",
+        "imageSrc": "market/market-93d3f9d4d5c7.png"
+      },
+      {
+        "id": "bm-meat-and-fish-12",
+        "title": "Rakvere, Beef Tenderized Slices, 400g",
+        "price": "12,55 €",
+        "imageSrc": "market/market-baa20c5d4bdd.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-13",
+        "title": "Nõo, Grandma's Large Meat Jelly, 500g",
+        "price": "4,79 €",
+        "imageSrc": "market/market-8f7a00f0a155.png"
+      },
+      {
+        "id": "bm-meat-and-fish-14",
+        "title": "Rakvere, Classic Beef Burger, 220g",
+        "price": "4,89 €",
+        "imageSrc": "market/market-a9d63c68a62f.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-15",
+        "title": "Maks & Moorits, Pork Jelly, 300g",
+        "price": "2,39 €",
+        "imageSrc": "market/market-470640f981d4.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-16",
+        "title": "Rakvere, Beef Stroganoff, 380g",
+        "price": "8,49 €",
+        "imageSrc": "market/market-a4ceadf5399b.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-17",
+        "title": "Tallegg, Chicken Fillet Nuggets, 300g",
+        "price": "2,89 €",
+        "imageSrc": "market/market-21ba0649d3b2.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-18",
+        "title": "Tallegg, FIT! Chicken Breast Fillet Shashlik in Yogurt Marinade, 800g",
+        "price": "8,69 €",
+        "imageSrc": "market/market-fa41babd4429.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-19",
+        "title": "Tallegg, Chicken Cigar, 200g",
+        "price": "3,99 €",
+        "imageSrc": "market/market-400c36631046.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-20",
+        "title": "Tallegg, Chicken Fillet Breaded with Corn Flakes, 280g",
+        "price": "4,89 €",
+        "imageSrc": "market/market-ec671ee7d898.png"
+      },
+      {
+        "id": "bm-meat-and-fish-21",
+        "title": "Rakvere, Homemade Cutlets, 400g",
+        "price": "3,19 €",
+        "imageSrc": "market/market-7585100c3227.png"
+      },
+      {
+        "id": "bm-meat-and-fish-22",
+        "title": "Maks & Moorits, Chicken Fillet Nuggets, 230g",
+        "price": "2,25 €",
+        "imageSrc": "market/market-b3f204a8fa40.png"
+      },
+      {
+        "id": "bm-meat-and-fish-23",
+        "title": "Maks & Moorits, Chicken Fillet in Yogurt-garlic Marinade, 500g",
+        "price": "6,49 €",
+        "imageSrc": "market/market-fb23cb207e39.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-24",
+        "title": "Rakvere, Meatballs with Cream Cheese , 300g",
+        "price": "4,19 €",
+        "imageSrc": "market/market-4e4ee8bcbd11.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-25",
+        "title": "Maks & Moorits, Homemade Patties, 400g",
+        "price": "2,15 €",
+        "imageSrc": "market/market-a491e6ffd78e.png"
+      },
+      {
+        "id": "bm-meat-and-fish-26",
+        "title": "Rakvere, Grill Meat in Blueberry Marinade, 500g",
+        "price": "6,89 €",
+        "imageSrc": "market/market-5b1b6159797d.png"
+      },
+      {
+        "id": "bm-meat-and-fish-27",
+        "title": "Nõo, Fitlap Grill Steak With Smoky Cherry, 460g",
+        "price": "6,39 €",
+        "imageSrc": "market/market-e21313fd1fe8.png"
+      },
+      {
+        "id": "bm-meat-and-fish-28",
+        "title": "Tallegg, Honey-Chilli Minute Steaks, 350g",
+        "price": "6,25 €",
+        "imageSrc": "market/market-b11086fe0cf3.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-29",
+        "title": "Tallegg, Fit Minute Steak in Caesar marinade from Chicken Breast Fillet, 350g",
+        "price": "5,89 €",
+        "imageSrc": "market/market-d09a60ca6d35.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-30",
+        "title": "Tallegg, Fitness Chicken Breast Caesar-Style Marinade, 500g",
+        "price": "6,49 €",
+        "imageSrc": "market/market-19c780672cad.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-31",
+        "title": "Vastse-Kuuste, Raw Grill Sausages In Lamb Casing, 400g",
+        "price": "4,49 €",
+        "imageSrc": "market/market-f127416a0a3b.png"
+      },
+      {
+        "id": "bm-meat-and-fish-32",
+        "title": "Rakvere, Cutlets, 400g",
+        "price": "4,39 €",
+        "imageSrc": "market/market-1827ec184558.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-33",
+        "title": "Tallegg, Half-Wings in Classic Marinade, 800g",
+        "price": "5,19 €",
+        "imageSrc": "market/market-086d77fe53b7.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-34",
+        "title": "Nõo, Fitlap Chicken Fillet Shashlik, 450g",
+        "price": "6,39 €",
+        "imageSrc": "market/market-17d10ca2064d.png"
+      },
+      {
+        "id": "bm-meat-and-fish-35",
+        "title": "Tallegg, Chicken Halfwings in BBQ-Bog Berry Marinade, 800g",
+        "price": "5,09 €",
+        "imageSrc": "market/market-881e23d531dd.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-36",
+        "title": "Tallegg, Kiev Cutlet, 300g",
+        "price": "5,29 €",
+        "imageSrc": "market/market-aa27bd2cf57c.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-37",
+        "title": "Rakvere, Sausage Snacks with Cheese, 300g",
+        "price": "3,49 €",
+        "imageSrc": "market/market-a83d787746be.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-38",
+        "title": "Maks & Moorits, Raw Grill Sausages, 400g",
+        "price": "4,09 €",
+        "imageSrc": "market/market-deb95eecbf2e.png"
+      },
+      {
+        "id": "bm-meat-and-fish-39",
+        "title": "Tallegg, Half Legs in Classic Marinade, 800g",
+        "price": "4,89 €",
+        "imageSrc": "market/market-aefdb16dd7e5.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-40",
+        "title": "Maks & Moorits, Breaded Schnitzel, 400g",
+        "price": "3,05 €",
+        "imageSrc": "market/market-37a7dfdb4449.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-41",
+        "title": "Maks & Moorits, Homemade Patties With Creamy Cheese Filling, 400g",
+        "price": "2,35 €",
+        "imageSrc": "market/market-6a89b64edfd6.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-42",
+        "title": "Tallegg, Corn Covered Chicken Fillet Fries with Cheese, 300g",
+        "price": "3,89 €",
+        "imageSrc": "market/market-8fce7436bdef.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-43",
+        "title": "Corte Buona, Coppa di Parma, 80g",
+        "price": "3,89 €",
+        "imageSrc": "market/market-f4263f5ac6c7.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-44",
+        "title": "Nõo, Chicken Thigh In Onion And Sour Cream Marinade, 500g",
+        "price": "5,69 €",
+        "imageSrc": "market/market-2299efba1058.png"
+      },
+      {
+        "id": "bm-meat-and-fish-45",
+        "title": "Tallegg, Chicken Cutlets, 320g",
+        "price": "1,65 €",
+        "imageSrc": "market/market-f5a0fa49e35b.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-46",
+        "title": "Maks & Moorits, Fillet Pocket with Cheese and Ham Filling, 260g",
+        "price": "2,75 €",
+        "imageSrc": "market/market-6e3a4cc5d89a.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-47",
+        "title": "Linnamäe Lihatööstus, Pork Fresh Sausages With Fried Onion, 400g",
+        "price": "4,69 €",
+        "imageSrc": "market/market-19a95354fa1c.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-48",
+        "title": "Rakvere, Family Meatballs, 400g",
+        "price": "2,79 €",
+        "imageSrc": "market/market-add176709340.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-49",
+        "title": "Tallegg, Smoked Chicken Leg, 600g",
+        "price": "5,09 €",
+        "imageSrc": "market/market-8f82f682bc7e.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-50",
+        "title": "Linnamäe Lihatööstus, Tomato Chicken Thigh Shashlik, 500g",
+        "price": "7,89 €",
+        "imageSrc": "market/market-506f871fa06f.png"
+      },
+      {
+        "id": "bm-meat-and-fish-51",
+        "title": "Rakvere, Red Wine Marinated Grill Meat from Pork Tenderloin, 500g",
+        "price": "5,99 €",
+        "imageSrc": "market/market-088859393cd7.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-52",
+        "title": "Maks & Moorits, Pork Loin Grill Meat In Three Pepper Marinade, 500g",
+        "price": "6,29 €",
+        "imageSrc": "market/market-f4b155ae9204.png"
+      },
+      {
+        "id": "bm-meat-and-fish-53",
+        "title": "Rakvere, Shashlik in Blueberry Marinade, 800g",
+        "price": "9,89 €",
+        "imageSrc": "market/market-17bfdf3a120c.png"
+      },
+      {
+        "id": "bm-meat-and-fish-54",
+        "title": "Linnamäe Lihatööstus, Magic Roast chicken thighs, 500g",
+        "price": "6,99 €",
+        "imageSrc": "market/market-554f5843a072.png"
+      },
+      {
+        "id": "bm-meat-and-fish-55",
+        "title": "Rakvere, Family Cutlets, 400g",
+        "price": "2,65 €",
+        "imageSrc": "market/market-c34b57a4019f.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-56",
+        "title": "Maks & Moorits, Kimchi Shashlik, 600g",
+        "price": "5,99 €",
+        "imageSrc": "market/market-fdaa57ec8be6.png"
+      },
+      {
+        "id": "bm-meat-and-fish-57",
+        "title": "Tallegg, FIT! Chicken Breast Fillet Shashlik with Grapefruit and Mineral Water, 800g",
+        "price": "8,69 €",
+        "imageSrc": "market/market-f0995d066221.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-58",
+        "title": "Wõro, Peipsi Grill Sausage With Smoked Cheese, 600g",
+        "price": "3,99 €",
+        "imageSrc": "market/market-42ae79829daf.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-59",
+        "title": "Maks & Moorits, Armenian Grill Meat, 500g",
+        "price": "5,89 €",
+        "imageSrc": "market/market-6343b7714fde.png"
+      },
+      {
+        "id": "bm-meat-and-fish-60",
+        "title": "Nõo, Cheesy Grill Patties, 240g",
+        "price": "3,99 €",
+        "imageSrc": "market/market-7483718ebad8.png"
+      },
+      {
+        "id": "bm-meat-and-fish-61",
+        "title": "Rakvere, Beer Cigar with Three Cheeses 120g",
+        "price": "2,69 €",
+        "imageSrc": "market/market-82684af96930.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-62",
+        "title": "Tallegg, Chicken Burger Cutlets, 660g",
+        "price": "3,79 €",
+        "imageSrc": "market/market-1096423b78c0.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-63",
+        "title": "Rakvere, Cherry-Rum Shashlik, 800g",
+        "price": "8,69 €",
+        "imageSrc": "market/market-9c8fb9173064.png"
+      },
+      {
+        "id": "bm-meat-and-fish-64",
+        "title": "Maks & Moorits, Grill Sausage With Melted Cheese, 600g",
+        "price": "5,79 €",
+        "imageSrc": "market/market-bf12ddea0b64.png"
+      },
+      {
+        "id": "bm-meat-and-fish-65",
+        "title": "Maks & Moorits, Georgian Shashlik, 600g",
+        "price": "6,09 €",
+        "imageSrc": "market/market-90fd184a9e31.png"
+      },
+      {
+        "id": "bm-meat-and-fish-66",
+        "title": "Maks & Moorits, Kentucky Grill Meat, 500g",
+        "price": "6,49 €",
+        "imageSrc": "market/market-ec7635e41d18.png"
+      },
+      {
+        "id": "bm-meat-and-fish-67",
+        "title": "Nõo, Jaani Shashlik, 800g",
+        "price": "7,49 €",
+        "imageSrc": "market/market-3149834dd4e0.png"
+      },
+      {
+        "id": "bm-meat-and-fish-68",
+        "title": "Nõo, Masters' Grill Meat, 450g",
+        "price": "5,49 €",
+        "imageSrc": "market/market-958ec8c7b50e.png"
+      },
+      {
+        "id": "bm-meat-and-fish-69",
+        "title": "Linnamäe Lihatööstus, Venison Burger With Hard Cheese And Herbs, 170g",
+        "price": "4,49 €",
+        "imageSrc": "market/market-052c3e639a89.png"
+      },
+      {
+        "id": "bm-meat-and-fish-70",
+        "title": "Tallegg, Sweet-Sour Chicken Breast Strips, 500g",
+        "price": "5,99 €",
+        "imageSrc": "market/market-9658b51af912.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-71",
+        "title": "Tallegg, Fit! Chicken Breast In Blueberry Marinade, 500g",
+        "price": "6,29 €",
+        "imageSrc": "market/market-41ef21af2f0a.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-72",
+        "title": "Maks & Moorits, Chicken Thigh Shashlik In Maple Syrup Marinade, 800g",
+        "price": "8,99 €",
+        "imageSrc": "market/market-f3f806071f91.png"
+      },
+      {
+        "id": "bm-meat-and-fish-73",
+        "title": "Maks & Moorits, Pulled Chicken in Red Sauce, 200g",
+        "price": "2,45 €",
+        "imageSrc": "market/market-0b4c82aea2d6.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-74",
+        "title": "Tallegg, Three Cheeses Broiler Thigh Shashlik, 800g",
+        "price": "8,99 €",
+        "imageSrc": "market/market-a675e961024b.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-75",
+        "title": "Vici, Fish Fillet In Crispy Coating, 400g",
+        "price": "5,49 €",
+        "imageSrc": "market/market-2373b0a68eaa.png"
+      },
+      {
+        "id": "bm-meat-and-fish-76",
+        "title": "Rakvere, Homemade Meatloaf, 500g",
+        "price": "4,39 €",
+        "imageSrc": "market/market-16015bfe0b5e.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-77",
+        "title": "Nõo, Chicken Shashlik In Basil-Tomato Marinade, 600g",
+        "price": "6,95 €",
+        "imageSrc": "market/market-b13a3588ef29.png"
+      },
+      {
+        "id": "bm-meat-and-fish-78",
+        "title": "Tallegg, Breaded Chicken Fillet Burger, 340g",
+        "price": "3,39 €",
+        "imageSrc": "market/market-9537a0edd464.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-79",
+        "title": "Tallegg, Chicken Fillet Schnitzel, 340g",
+        "price": "3,85 €",
+        "imageSrc": "market/market-ff65d7624008.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-80",
+        "title": "Maks & Moorits, Smokey BBQ Shashlik, 600g",
+        "price": "6,99 €",
+        "imageSrc": "market/market-fd0badfa34ea.png"
+      },
+      {
+        "id": "bm-meat-and-fish-81",
+        "title": "Nõo, Nomps Meatballs, 260g",
+        "price": "3,09 €",
+        "imageSrc": "market/market-8bad760046c3.png"
+      },
+      {
+        "id": "bm-meat-and-fish-82",
+        "title": "Linnamäe Lihatööstus, Pork Schnitzel, 350g",
+        "price": "5,79 €",
+        "imageSrc": "market/market-4afb69700716.png"
+      },
+      {
+        "id": "bm-meat-and-fish-83",
+        "title": "Maks & Moorits, Meat Patties with Cheese, 400g",
+        "price": "3,65 €",
+        "imageSrc": "market/market-6e5ee12867a2.png"
+      },
+      {
+        "id": "bm-meat-and-fish-84",
+        "title": "Rakvere, Ribs in Blueberry Marinade, 900g",
+        "price": "11,69 €",
+        "imageSrc": "market/market-547950d10c30.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-85",
+        "title": "Nõo, Kiev Meatballs with Butter, 300g",
+        "price": "4,59 €",
+        "imageSrc": "market/market-ac3f30539e7b.png"
+      },
+      {
+        "id": "bm-meat-and-fish-86",
+        "title": "Nõo, Spicy Cheesy Grill Patty, 240g",
+        "price": "3,99 €",
+        "imageSrc": "market/market-ed10d8dd9cf3.png"
+      },
+      {
+        "id": "bm-meat-and-fish-87",
+        "title": "Nõo, Crispy Chicken Schnitzel With Cheese, 440g",
+        "price": "6,99 €",
+        "imageSrc": "market/market-dc2bc2f1becc.png"
+      },
+      {
+        "id": "bm-meat-and-fish-88",
+        "title": "Tallegg, Broiler Breast Inner Fillet, 400g",
+        "price": "5,39 €",
+        "imageSrc": "market/market-9e54216af797.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-89",
+        "title": "Tallegg, Pieces of Chicken Fillet, 400g",
+        "price": "5,15 €",
+        "imageSrc": "market/market-41458b4e6075.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-90",
+        "title": "Tallegg, Delicacy Chicken Minced Meat Mix, 300g",
+        "price": "3,65 €",
+        "imageSrc": "market/market-8ffc159eac59.png"
+      },
+      {
+        "id": "bm-meat-and-fish-91",
+        "title": "Tallegg, Estonian Chicken Breast Fillet Steaks, 400g",
+        "price": "6,09 €",
+        "imageSrc": "market/market-7e0387272e6f.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-92",
+        "title": "Rannamõisa, Broiler Bone-In Thigh Without Backbone 500 g",
+        "price": "4,19 €",
+        "imageSrc": "market/market-a9207c05f015.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-93",
+        "title": "Tallegg, Estonian Chicken Half Wing, 400g",
+        "price": "3,29 €",
+        "imageSrc": "market/market-1b29663b309e.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-94",
+        "title": "Tallegg, Fitness! Ground Chicken Breast Meat, 300g",
+        "price": "4,05 €",
+        "imageSrc": "market/market-4f6c43ff58a1.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-95",
+        "title": "Rannamõisa, Broiler Thigh Meat, 500g",
+        "price": "5,99 €",
+        "imageSrc": "market/market-26c1434265d5.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-96",
+        "title": "Rannamõisa, Broiler Drumsticks, 500g",
+        "price": "3,29 €",
+        "imageSrc": "market/market-2ad0f4d4e2ea.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-97",
+        "title": "Rannamõisa, Broiler Breast Fillet, 500g",
+        "price": "6,29 €",
+        "imageSrc": "market/market-3777d84926ab.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-98",
+        "title": "Tallegg, Estonian Broiler Breast Fillet, 2×200g",
+        "price": "5,59 €",
+        "imageSrc": "market/market-462c26e25db3.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-99",
+        "title": "Tallegg, Chilled Chicken Liver, 500g",
+        "price": "2,39 €",
+        "imageSrc": "market/market-9a683a3ddda0.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-100",
+        "title": "Rannamõisa, Broiler Wingettes 500g",
+        "price": "3,99 €",
+        "imageSrc": "market/market-2b96f93e85ba.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-101",
+        "title": "Maks & Moorits, Chicken Ham, 150g",
+        "price": "1,75 €",
+        "imageSrc": "market/market-7dbd9e7df79f.png"
+      },
+      {
+        "id": "bm-meat-and-fish-102",
+        "title": "Maks & Moorits, Ham, 150g",
+        "price": "2,49 €",
+        "imageSrc": "market/market-b483ff1138fb.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-103",
+        "title": "Tamula, Sliced Smoked Sausage, 150g",
+        "price": "1,45 €",
+        "imageSrc": "market/market-837acd3a0ba5.png"
+      },
+      {
+        "id": "bm-meat-and-fish-104",
+        "title": "Nõo, Countryman Smoked Ham, 105g",
+        "price": "2,85 €",
+        "imageSrc": "market/market-db828d4585ed.png"
+      },
+      {
+        "id": "bm-meat-and-fish-105",
+        "title": "Nõo, Morning Bacon, 135g",
+        "price": "2,75 €",
+        "imageSrc": "market/market-c20d6ad4078d.png"
+      },
+      {
+        "id": "bm-meat-and-fish-106",
+        "title": "Nõo, Fitlap Chicken Ham, 105g",
+        "price": "2,45 €",
+        "imageSrc": "market/market-06b7b32483f6.png"
+      },
+      {
+        "id": "bm-meat-and-fish-107",
+        "title": "Nõo, Pork Neck Smoked Ham, 135g",
+        "price": "2,89 €",
+        "imageSrc": "market/market-56a302cc498f.png"
+      },
+      {
+        "id": "bm-meat-and-fish-108",
+        "title": "Rakvere, Sliced Prosciutto Bacon, 140g",
+        "price": "2,55 €",
+        "imageSrc": "market/market-c563a33e2e5d.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-109",
+        "title": "Maks & Moorits, Turkey Fillet Ham, 170g",
+        "price": "2,75 €",
+        "imageSrc": "market/market-11ae680bd76c.png"
+      },
+      {
+        "id": "bm-meat-and-fish-110",
+        "title": "Nõo, Boiled Salami “Vasalli”, 105g",
+        "price": "3,15 €",
+        "imageSrc": "market/market-1c1018683422.png"
+      },
+      {
+        "id": "bm-meat-and-fish-111",
+        "title": "Corte Buona, Salame Milano, 80g",
+        "price": "2,89 €",
+        "imageSrc": "market/market-952148a3c5f1.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-112",
+        "title": "Maks & Moorits, Thinly Sliced Smoked Ham, 170g",
+        "price": "2,75 €",
+        "imageSrc": "market/market-1ff0e980444e.png"
+      },
+      {
+        "id": "bm-meat-and-fish-113",
+        "title": "Elpozo, Sliced Serrano Ham, 80g",
+        "price": "4,09 €",
+        "imageSrc": "market/market-9ed58eacbe20.png"
+      },
+      {
+        "id": "bm-meat-and-fish-114",
+        "title": "Rakvere, American Raw Smoked Bacon, 150g",
+        "price": "2,95 €",
+        "imageSrc": "market/market-24a23217cff0.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-115",
+        "title": "Maks & Moorits, Ham Sausage XL, 300g",
+        "price": "2,89 €",
+        "imageSrc": "market/market-a030deca2240.png"
+      },
+      {
+        "id": "bm-meat-and-fish-116",
+        "title": "Elpozo, Fuetec Iberico Raw Salami 150g",
+        "price": "5,29 €",
+        "imageSrc": "market/market-169151d39eb4.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-117",
+        "title": "Noel, Fuet Extra Salami, 170g",
+        "price": "4,29 €",
+        "imageSrc": "market/market-9365bce7e292.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-118",
+        "title": "Maks & Moorits, Pühajärve Ham, 300g",
+        "price": "3,29 €",
+        "imageSrc": "market/market-beb296cb052c.png"
+      },
+      {
+        "id": "bm-meat-and-fish-119",
+        "title": "Elpozo, Chorizo ​​Pepper Salami Sliced, 80g",
+        "price": "2,59 €",
+        "imageSrc": "market/market-6041d6751912.png"
+      },
+      {
+        "id": "bm-meat-and-fish-120",
+        "title": "Rakvere, English Raw Smoked Bacon, 150g",
+        "price": "2,95 €",
+        "imageSrc": "market/market-0f694221face.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-121",
+        "title": "Rakvere, Cubes of Raw Smoked Bacon, 140g",
+        "price": "2,05 €",
+        "imageSrc": "market/market-f6d66fa677f6.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-122",
+        "title": "Maks & Moorits, Delicacy Ham from Lean Meat, 170g",
+        "price": "2,69 €",
+        "imageSrc": "market/market-7bdf34266d22.png"
+      },
+      {
+        "id": "bm-meat-and-fish-123",
+        "title": "Nõo, Fitlap Turkey Ham, 105g",
+        "price": "2,49 €",
+        "imageSrc": "market/market-ff6dbd9fd59f.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-124",
+        "title": "Maks & Moorits, Chicken Fillet Cubes, 250g",
+        "price": "2,35 €",
+        "imageSrc": "market/market-a87442b2d5c2.png"
+      },
+      {
+        "id": "bm-meat-and-fish-125",
+        "title": "Elpozo, Truffle Fuetec Salami, 150g",
+        "price": "5,09 €",
+        "imageSrc": "market/market-1df3dfe376f8.png"
+      },
+      {
+        "id": "bm-meat-and-fish-126",
+        "title": "Maks & Moorits, Bacon, 150g",
+        "price": "2,29 €",
+        "imageSrc": "market/market-c6977ecc1647.png"
+      },
+      {
+        "id": "bm-meat-and-fish-127",
+        "title": "Corte Buona, Coppa di Parma, 80g",
+        "price": "3,89 €",
+        "imageSrc": "market/market-f4263f5ac6c7.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-128",
+        "title": "Rakvere, ham \"Viru\", 300g",
+        "price": "3,29 €",
+        "imageSrc": "market/market-0b9d41383579.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-129",
+        "title": "Rakvere, Sliced Smoked Bacon, 130g",
+        "price": "3,15 €",
+        "imageSrc": "market/market-45afd7935728.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-130",
+        "title": "Rakvere, Smoked Pork Tenderloin, 130g",
+        "price": "2,65 €",
+        "imageSrc": "market/market-a2a8a9a1905a.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-131",
+        "title": "Rakvere, Raw Smoked Sausage with Seeds, 110g",
+        "price": "2,65 €",
+        "imageSrc": "market/market-b47cc26b8a00.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-132",
+        "title": "Rakvere, Italian-Style Salami, 130g",
+        "price": "3,39 €",
+        "imageSrc": "market/market-c25ff01998f8.png"
+      },
+      {
+        "id": "bm-meat-and-fish-133",
+        "title": "Rakvere, Sandwitch Bacon, 130g",
+        "price": "2,65 €",
+        "imageSrc": "market/market-3432e1884a9b.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-134",
+        "title": "Linnamäe Lihatööstus, Beef Ham With Peppercorn Coating Sliced, 100g",
+        "price": "4,99 €",
+        "imageSrc": "market/market-3ffb62e74562.png"
+      },
+      {
+        "id": "bm-meat-and-fish-135",
+        "title": "Maks & Moorits, Pepperoni Super Snack, 85g",
+        "price": "2,09 €",
+        "imageSrc": "market/market-8e9dd3df7d00.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-136",
+        "title": "Maks & Moorits, Gourmet Chicken Fillet Slices, 200g",
+        "price": "3,39 €",
+        "imageSrc": "market/market-1e4f4f423eab.png"
+      },
+      {
+        "id": "bm-meat-and-fish-137",
+        "title": "Nõo, Turkey Fillet Ham, 105g",
+        "price": "2,75 €",
+        "imageSrc": "market/market-7d102f4ad331.png"
+      },
+      {
+        "id": "bm-meat-and-fish-138",
+        "title": "Rakvere, Palermo Salami, 110g",
+        "price": "2,75 €",
+        "imageSrc": "market/market-677ceedac113.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-139",
+        "title": "Valla, Sliced ​​Smoked Sausages, 240g",
+        "price": "1,35 €",
+        "imageSrc": "market/market-192c7a6dbea2.png"
+      },
+      {
+        "id": "bm-meat-and-fish-140",
+        "title": "Nõo, Roulade, 135g",
+        "price": "2,55 €",
+        "imageSrc": "market/market-b3cded87bdac.png"
+      },
+      {
+        "id": "bm-meat-and-fish-141",
+        "title": "Viru, Sliced Smoked Sausage, 300g",
+        "price": "3,05 €",
+        "imageSrc": "market/market-13b19e7601db.png"
+      },
+      {
+        "id": "bm-meat-and-fish-142",
+        "title": "Rakvere, Pizza Ham Cubes, 250g",
+        "price": "2,39 €",
+        "imageSrc": "market/market-8ce9bd9f9d40.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-143",
+        "title": "Rakvere, Pepperoni Salami, 200g",
+        "price": "4,35 €",
+        "imageSrc": "market/market-b9b9e18b183b.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-144",
+        "title": "Linnamäe Lihatööstus, Elk Meat Tartar, 110g",
+        "price": "6,39 €",
+        "imageSrc": "market/market-38c3e3edcdd6.png"
+      },
+      {
+        "id": "bm-meat-and-fish-145",
+        "title": "Rakvere, Sausage “Lastevorst”, 200g",
+        "price": "1,85 €",
+        "imageSrc": "market/market-d027a7bc460a.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-146",
+        "title": "Rakvere, Sliced Sausage “Lastevorst”, 190g",
+        "price": "1,69 €",
+        "imageSrc": "market/market-c1b4ce9c84a1.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-147",
+        "title": "Rakvere, Sausages, 500g",
+        "price": "3,69 €",
+        "imageSrc": "market/market-58ea8f74ea90.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-148",
+        "title": "Nõo, Snack with Parmigiano Reggiano, 85g",
+        "price": "2,29 €",
+        "imageSrc": "market/market-58936e5b5dcf.png"
+      },
+      {
+        "id": "bm-meat-and-fish-149",
+        "title": "Rakvere, Sausages “Pere”, 500g",
+        "price": "2,45 €",
+        "imageSrc": "market/market-bd2a19ba1557.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-150",
+        "title": "Nõo, Moscow Full-Smoked Sausage, 250g",
+        "price": "4,39 €",
+        "imageSrc": "market/market-6ee5dfe79813.png"
+      },
+      {
+        "id": "bm-meat-and-fish-151",
+        "title": "Rakvere, Sausage “Lastevorst”, 600g",
+        "price": "3,85 €",
+        "imageSrc": "market/market-cde618684a4b.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-152",
+        "title": "Rakvere, Boiled Sausage \"Laste\", 300g",
+        "price": "1,99 €",
+        "imageSrc": "market/market-8bf224a4af7e.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-153",
+        "title": "Rakvere, Doctoral Sausage, 600g",
+        "price": "4,19 €",
+        "imageSrc": "market/market-651f428b45b0.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-154",
+        "title": "Maks & Moorits, Pizza Ham, 250g",
+        "price": "2,25 €",
+        "imageSrc": "market/market-75be848fc161.png"
+      },
+      {
+        "id": "bm-meat-and-fish-155",
+        "title": "Rakvere, Sausage with Cheese Filling, 300g",
+        "price": "2,55 €",
+        "imageSrc": "market/market-bb9244cf0165.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-156",
+        "title": "Rakvere, Cheese Sausage, 600g",
+        "price": "4,59 €",
+        "imageSrc": "market/market-481412fd5a74.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-157",
+        "title": "Wõro, Beer Snack with Cheese, 500g",
+        "price": "3,19 €",
+        "imageSrc": "market/market-c2a8bb5522ab.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-158",
+        "title": "Tallegg, Chick Snack Truffle Cigar, 80g",
+        "price": "3,39 €",
+        "imageSrc": "market/market-f9a5f4ff482e.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-159",
+        "title": "Maks & Moorits, Fresh Sausages With Sun-Dried Tomato And Cheese, 400g",
+        "price": "4,49 €",
+        "imageSrc": "market/market-8b7105c39ef8.png"
+      },
+      {
+        "id": "bm-meat-and-fish-160",
+        "title": "Tallegg, Chick Snack Parmigiano Reggiano Cigar, 80g",
+        "price": "3,19 €",
+        "imageSrc": "market/market-4d1ea796141a.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-161",
+        "title": "Tõmmu, Smoked Sausage with Cheese, 350g",
+        "price": "2,49 €",
+        "imageSrc": "market/market-f59ae1debb35.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-162",
+        "title": "Rakvere, Meaty Sausage \"Lastevorst\", 170g",
+        "price": "2,05 €",
+        "imageSrc": "market/market-c06a4afa4e89.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-163",
+        "title": "Nõo, Campfire Grill Sausages, 360g",
+        "price": "3,49 €",
+        "imageSrc": "market/market-c4bd20e65785.png"
+      },
+      {
+        "id": "bm-meat-and-fish-164",
+        "title": "Nõo, Fitlap Fresh Sausages With Chicken, 400g",
+        "price": "5,59 €",
+        "imageSrc": "market/market-e6627ee8d9f2.png"
+      },
+      {
+        "id": "bm-meat-and-fish-165",
+        "title": "Nõo, Fitlap Chicken Sausages, 200g",
+        "price": "3,59 €",
+        "imageSrc": "market/market-5cb4987c0608.png"
+      },
+      {
+        "id": "bm-meat-and-fish-166",
+        "title": "Maks & Moorits, Classic Super Snack, 85g",
+        "price": "1,99 €",
+        "imageSrc": "market/market-539046103aeb.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-167",
+        "title": "Maks & Moorits, Smoked Cheese Sausage, 500g",
+        "price": "3,75 €",
+        "imageSrc": "market/market-e449e3fe662c.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-168",
+        "title": "Maks & Moorits, Sausages with Cheese, 300g",
+        "price": "2,35 €",
+        "imageSrc": "market/market-d305030cb142.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-169",
+        "title": "Nõo, Fitlap Chicken Half-Smoked Sausage, 105g",
+        "price": "2,25 €",
+        "imageSrc": "market/market-472d5a685d29.png"
+      },
+      {
+        "id": "bm-meat-and-fish-170",
+        "title": "Maks & Moorits, Homemade Sausage, 500g",
+        "price": "2,25 €",
+        "imageSrc": "market/market-fc0f2dc99a58.png"
+      },
+      {
+        "id": "bm-meat-and-fish-171",
+        "title": "Rakvere, Kids' Fresh Sausages With Plums, 400g",
+        "price": "4,79 €",
+        "imageSrc": "market/market-3675d057ca36.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-172",
+        "title": "Tallegg, Merevaik Chicken Grill Sausages, 400g",
+        "price": "4,89 €",
+        "imageSrc": "market/market-7d786c922643.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-173",
+        "title": "Tallegg, Chicken Sausage, 400g",
+        "price": "2,05 €",
+        "imageSrc": "market/market-ddc926e8221a.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-174",
+        "title": "Valla, Boiled Sausage with Cheese, 600g",
+        "price": "2,35 €",
+        "imageSrc": "market/market-606d5ca8ce5e.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-175",
+        "title": "Linnamäe Lihatööstus, Grill Sausages With Cheddar Cheese, 380g",
+        "price": "5,49 €",
+        "imageSrc": "market/market-676c1e200740.png"
+      },
+      {
+        "id": "bm-meat-and-fish-176",
+        "title": "Nõo, Treski Väkkev Sausage, 400g",
+        "price": "5,79 €",
+        "imageSrc": "market/market-fd294e9a6e8d.png"
+      },
+      {
+        "id": "bm-meat-and-fish-177",
+        "title": "Nõo, Treski Kimmäs Grilling Sausages, 365g",
+        "price": "5,59 €",
+        "imageSrc": "market/market-0e58471ff86a.png"
+      },
+      {
+        "id": "bm-meat-and-fish-178",
+        "title": "Rakvere, Lihakas Shashlik Sausages, 400g",
+        "price": "4,29 €",
+        "imageSrc": "market/market-08e1a3a03e5c.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-179",
+        "title": "Nõo, Nomps Sausages, 250g",
+        "price": "3,09 €",
+        "imageSrc": "market/market-a941a6808858.png"
+      },
+      {
+        "id": "bm-meat-and-fish-180",
+        "title": "Valla, Krakow Sausage, 450g",
+        "price": "3,65 €",
+        "imageSrc": "market/market-212845736a5b.png"
+      },
+      {
+        "id": "bm-meat-and-fish-181",
+        "title": "Nõo, Cheddar-Jalapeno Grill Sausages, 360g",
+        "price": "3,99 €",
+        "imageSrc": "market/market-59e6b223deeb.png"
+      },
+      {
+        "id": "bm-meat-and-fish-182",
+        "title": "Maks & Moorits, Sausage 77,7%, 375g",
+        "price": "2,49 €",
+        "imageSrc": "market/market-8b9a067434bb.png"
+      },
+      {
+        "id": "bm-meat-and-fish-183",
+        "title": "Maks & Moorits, Chicken Sausage, 500g",
+        "price": "2,35 €",
+        "imageSrc": "market/market-5cdedd36039f.png"
+      },
+      {
+        "id": "bm-meat-and-fish-184",
+        "title": "Maks & Moorits, Forte Cheese Fresh Sausages, 400g",
+        "price": "4,29 €",
+        "imageSrc": "market/market-258a6ae9ae72.png"
+      },
+      {
+        "id": "bm-meat-and-fish-185",
+        "title": "Tõmmu, Semi-smoked Sausage, 350g",
+        "price": "2,15 €",
+        "imageSrc": "market/market-929fb842ab73.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-186",
+        "title": "Nõo, Nomps Boiled Sausage, 350g",
+        "price": "4,69 €",
+        "imageSrc": "market/market-41b464400dba.png"
+      },
+      {
+        "id": "bm-meat-and-fish-187",
+        "title": "Maks & Moorits, Parmigiano Reggiano Cheese Super Snack, 85g",
+        "price": "2,05 €",
+        "imageSrc": "market/market-95a93ace04c6.png"
+      },
+      {
+        "id": "bm-meat-and-fish-188",
+        "title": "Nõo, Full-Meat Sausage Smoked, 310g",
+        "price": "4,29 €",
+        "imageSrc": "market/market-2d3d440e78d6.png"
+      },
+      {
+        "id": "bm-meat-and-fish-189",
+        "title": "Maks & Moorits, Sausage \"Lastevorst\", 300g",
+        "price": "1,65 €",
+        "imageSrc": "market/market-c695cfa54368.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-190",
+        "title": "Rakvere, Beer Cigar, 120g",
+        "price": "2,89 €",
+        "imageSrc": "market/market-f7fd49f6fa24.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-191",
+        "title": "Nõo, Nomps Sausages, 400g",
+        "price": "4,89 €",
+        "imageSrc": "market/market-71eac0bf31dc.png"
+      },
+      {
+        "id": "bm-meat-and-fish-192",
+        "title": "Rakvere, Cheese-Rich Grill Sausages, 400g",
+        "price": "4,39 €",
+        "imageSrc": "market/market-9faa1b6c9af0.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-193",
+        "title": "Nõo, Nomps Chicken Frankfurters, 250g",
+        "price": "3,19 €",
+        "imageSrc": "market/market-682778ac1b57.png"
+      },
+      {
+        "id": "bm-meat-and-fish-194",
+        "title": "Rakvere, SNÄKK pro Kabanos snack with Parmigiano Reggiano cheese, 80g",
+        "price": "3,19 €",
+        "imageSrc": "market/market-9f93c0e523dc.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-195",
+        "title": "Nõo, Hot Smoked Susage With Estonian Cheese, 250g",
+        "price": "4,59 €",
+        "imageSrc": "market/market-ceed03c86341.png"
+      },
+      {
+        "id": "bm-meat-and-fish-196",
+        "title": "Nõo, Treski Terräv Smoked Sausage, 240g",
+        "price": "4,89 €",
+        "imageSrc": "market/market-47a5f680d482.png"
+      },
+      {
+        "id": "bm-meat-and-fish-197",
+        "title": "Nõo, Nomps Boiled Sausage With Pork, 100g",
+        "price": "1,69 €",
+        "imageSrc": "market/market-275099510280.png"
+      },
+      {
+        "id": "bm-meat-and-fish-198",
+        "title": "Rannamõisa, Chicken Hot Dogs, 500g",
+        "price": "2,99 €",
+        "imageSrc": "market/market-37a68e3e939d.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-199",
+        "title": "Maks & Moorits, Mild Grill Sausage, 900g",
+        "price": "7,35 €",
+        "imageSrc": "market/market-de1d075b3717.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-200",
+        "title": "Linnamäe Lihatööstus, Fully Smoked Elk Sausage, 230g",
+        "price": "5,79 €",
+        "imageSrc": "market/market-3114a3c14ca4.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-201",
+        "title": "Nõo, Nomps Boiled Sausage With Chicken, 100g",
+        "price": "1,69 €",
+        "imageSrc": "market/market-056a1f3ea359.png"
+      },
+      {
+        "id": "bm-meat-and-fish-202",
+        "title": "M.V.Wool, Salted Salmon Sliced, 100g",
+        "price": "4,49 €",
+        "imageSrc": "market/market-1af481c4ad5b.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-203",
+        "title": "Rannaküla, Sprats in Oil, 100g",
+        "price": "2,25 €",
+        "imageSrc": "market/market-88918a03adbe.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-204",
+        "title": "Vici, Salted Salmon Filler Piece, 160g",
+        "price": "5,99 €",
+        "imageSrc": "market/market-25c900010012.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-205",
+        "title": "Vici, Crab Sticks, 300g",
+        "price": "4,49 €",
+        "imageSrc": "market/market-1596834a1af2.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-206",
+        "title": "Calvo, Tuna Steak in Water, 160g",
+        "price": "3,39 €",
+        "imageSrc": "market/market-672dbb7da04e.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-207",
+        "title": "Vici, Herring Fillet Traditional, 240g",
+        "price": "3,89 €",
+        "imageSrc": "market/market-1c1aecfd1b5d.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-208",
+        "title": "Saare Kala, Sliced Gently Salted Rainbow Trout Fillet with Dill, 90g",
+        "price": "5,09 €",
+        "imageSrc": "market/market-68688e06bf47.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-209",
+        "title": "Canned Tuna in Brine, 185g",
+        "price": "2,49 €",
+        "imageSrc": "market/market-6e652f148853.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-210",
+        "title": "Rannaküla, Salmon in Teriyaki Sauce, 120g",
+        "price": "3,19 €",
+        "imageSrc": "market/market-ced57f12dbe9.webp"
+      },
+      {
+        "id": "bm-meat-and-fish-211",
+        "title": "Saare Kala, Hot Smoked Rainbow Trout Fillet with Pepper, 120g",
+        "price": "5,69 €",
+        "imageSrc": "market/market-74c12391e6bf.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-212",
+        "title": "Saare Kala, Sliced Cold-Smoked Rainbow Trout Fillet, 90g",
+        "price": "5,09 €",
+        "imageSrc": "market/market-7aa093852796.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-213",
+        "title": "Vici, Herring Fillet without Oil, 190g",
+        "price": "3,29 €",
+        "imageSrc": "market/market-059291ff0f17.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-214",
+        "title": "Calvo, Tuna Steak in Sunflower Oil, 160g",
+        "price": "3,95 €",
+        "imageSrc": "market/market-a0bcbc4503e2.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-215",
+        "title": "Vici, Surimi Crab Taste Sticks, 150g",
+        "price": "2,29 €",
+        "imageSrc": "market/market-4e08cd1f692a.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-216",
+        "title": "Saare Kala, Grilled Salmon Fillet Portion, 120g",
+        "price": "5,29 €",
+        "imageSrc": "market/market-3236e509721d.png"
+      },
+      {
+        "id": "bm-meat-and-fish-217",
+        "title": "Vici, Fatty Herring Fillet, 240g",
+        "price": "3,89 €",
+        "imageSrc": "market/market-f0a89c26a79f.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-218",
+        "title": "Calvo, Tuna Steak in Tomato Sauce, 160g",
+        "price": "3,59 €",
+        "imageSrc": "market/market-abffd07d21bf.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-219",
+        "title": "Kapten Grant, Herring Fillet Roll with Cucumber, 250g",
+        "price": "5,59 €",
+        "imageSrc": "market/market-7772cf3dc719.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-220",
+        "title": "Eldorado, Shredded Tuna in Tomato, 185g",
+        "price": "3,89 €",
+        "imageSrc": "market/market-ad3407846832.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-221",
+        "title": "Eldorado, Tuna Pieces in Water, 185g",
+        "price": "3,89 €",
+        "imageSrc": "market/market-c8312f3b141d.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-222",
+        "title": "Eldorado, Tuna in Chilli Sauce, 185g",
+        "price": "3,89 €",
+        "imageSrc": "market/market-bc6ee447182f.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-223",
+        "title": "Maks & Moorits, Beef Liver Pate, 210g",
+        "price": "1,75 €",
+        "imageSrc": "market/market-352121bb9833.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-224",
+        "title": "Rakvere, Baked Liver Pate with Cream, 200g",
+        "price": "2,35 €",
+        "imageSrc": "market/market-2a90020c0128.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-225",
+        "title": "Maks & Moorits, Creamy Paté, 210g",
+        "price": "1,65 €",
+        "imageSrc": "market/market-11053af90460.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-226",
+        "title": "Chef Lunden, Beef Liver Patě, 200g",
+        "price": "2,99 €",
+        "imageSrc": "market/market-b96a5dca1546.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-227",
+        "title": "Liivimaa Lihaveis, Truffle Beef Liver Pâté, 200g",
+        "price": "2,65 €",
+        "imageSrc": "market/market-b6c4530e9dd9.png"
+      },
+      {
+        "id": "bm-meat-and-fish-228",
+        "title": "Maks & Moorits, Paté with Chives, 210g",
+        "price": "1,65 €",
+        "imageSrc": "market/market-bde2b3e4fc47.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-229",
+        "title": "Veganic, Plant-Based English Roastbeef Slices, 80g",
+        "price": "2,15 €",
+        "imageSrc": "market/market-d3666acfadc1.png"
+      },
+      {
+        "id": "bm-meat-and-fish-230",
+        "title": "Bon Vegan, Soya Grill Cutlet, 250g",
+        "price": "2,59 €",
+        "imageSrc": "market/market-54c03777ef84.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-231",
+        "title": "Mati Kanaloog, Chickenless Fillets 180g",
+        "price": "5,99 €",
+        "imageSrc": "market/market-1e489779179e.png"
+      },
+      {
+        "id": "bm-meat-and-fish-232",
+        "title": "Mati Kanaloog, Herb & Garlic Chickenless Fillets, 185g",
+        "price": "5,99 €",
+        "imageSrc": "market/market-1a0e6848be65.png"
+      },
+      {
+        "id": "bm-meat-and-fish-233",
+        "title": "Bon Vegan, Tofu with Dill, 250g",
+        "price": "2,79 €",
+        "imageSrc": "market/market-c1bbea6a446c.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-234",
+        "title": "Bon Vegan, Croquet Herbs, 200g",
+        "price": "2,69 €",
+        "imageSrc": "market/market-a6cff6918ee6.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-235",
+        "title": "Bon Vegan, Tofu Unflavored, 250g",
+        "price": "2,69 €",
+        "imageSrc": "market/market-94e47298e710.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-236",
+        "title": "Veganic, Plant-Based American Pepperoni, 80g",
+        "price": "2,05 €",
+        "imageSrc": "market/market-1f8edf80eab8.png"
+      },
+      {
+        "id": "bm-meat-and-fish-237",
+        "title": "Bon Vegan, Soft Tofu, 300g",
+        "price": "2,29 €",
+        "imageSrc": "market/market-ef275f984271.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-238",
+        "title": "Mati Kanaloog, Crispy Chickenless Fillets, 170g",
+        "price": "5,99 €",
+        "imageSrc": "market/market-8146456386ff.png"
+      },
+      {
+        "id": "bm-meat-and-fish-239",
+        "title": "Veganic, Plant-Based Salame Milano, 80g",
+        "price": "2,05 €",
+        "imageSrc": "market/market-384fab05d56d.png"
+      },
+      {
+        "id": "bm-meat-and-fish-240",
+        "title": "Bon Vegan, Smoked Tofu, 220g",
+        "price": "2,99 €",
+        "imageSrc": "market/market-135e29cca90a.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-241",
+        "title": "Bon Vegan, Lightly Smoked Tofu Sausages, 220g",
+        "price": "2,99 €",
+        "imageSrc": "market/market-b8d74b2a33da.png"
+      },
+      {
+        "id": "bm-meat-and-fish-242",
+        "title": "Bon Vegan, Tofu with Garlic, 250g",
+        "price": "2,79 €",
+        "imageSrc": "market/market-d566c074f0fb.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-243",
+        "title": "Bon Vegan, Vegetable Sausage, 250g",
+        "price": "3,09 €",
+        "imageSrc": "market/market-f4020b9519ad.webp"
+      },
+      {
+        "id": "bm-meat-and-fish-244",
+        "title": "Tallegg, Chicken Fillet Nuggets, 300g",
+        "price": "2,89 €",
+        "imageSrc": "market/market-21ba0649d3b2.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-245",
+        "title": "Tallegg, Chicken Cigar, 200g",
+        "price": "3,99 €",
+        "imageSrc": "market/market-400c36631046.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-246",
+        "title": "Corte Buona, Salame Milano, 80g",
+        "price": "2,89 €",
+        "imageSrc": "market/market-952148a3c5f1.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-247",
+        "title": "Maks & Moorits, Chicken Fillet Nuggets, 230g",
+        "price": "2,25 €",
+        "imageSrc": "market/market-b3f204a8fa40.png"
+      },
+      {
+        "id": "bm-meat-and-fish-248",
+        "title": "Elpozo, Fuetec Iberico Raw Salami 150g",
+        "price": "5,29 €",
+        "imageSrc": "market/market-169151d39eb4.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-249",
+        "title": "Noel, Fuet Extra Salami, 170g",
+        "price": "4,29 €",
+        "imageSrc": "market/market-9365bce7e292.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-250",
+        "title": "Elpozo, Chorizo ​​Pepper Salami Sliced, 80g",
+        "price": "2,59 €",
+        "imageSrc": "market/market-6041d6751912.png"
+      },
+      {
+        "id": "bm-meat-and-fish-251",
+        "title": "Nõo, Snack 'n Go With Chorizo, 70g",
+        "price": "2,49 €",
+        "imageSrc": "market/market-a0d8d0cd2bb6.png"
+      },
+      {
+        "id": "bm-meat-and-fish-252",
+        "title": "Elpozo, Truffle Fuetec Salami, 150g",
+        "price": "5,09 €",
+        "imageSrc": "market/market-1df3dfe376f8.png"
+      },
+      {
+        "id": "bm-meat-and-fish-253",
+        "title": "Nõo, Snack 'n Go With Chicken, 70g",
+        "price": "2,49 €",
+        "imageSrc": "market/market-91ea60ca9527.png"
+      },
+      {
+        "id": "bm-meat-and-fish-254",
+        "title": "Rakvere, Beer Cigar with Three Cheeses 120g",
+        "price": "2,69 €",
+        "imageSrc": "market/market-82684af96930.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-255",
+        "title": "Nõo, Snack 'n Go With Turkey, 70g",
+        "price": "2,79 €",
+        "imageSrc": "market/market-fe405610dc10.png"
+      },
+      {
+        "id": "bm-meat-and-fish-256",
+        "title": "Chick Snack, Smoky Jerky Bar, 30g",
+        "price": "1,59 €",
+        "imageSrc": "market/market-889e62ff6fdb.png"
+      },
+      {
+        "id": "bm-meat-and-fish-257",
+        "title": "Rakvere, Snäkk Pro Teriyaki-Blueberry Jerky Bar, 30g",
+        "price": "1,59 €",
+        "imageSrc": "market/market-bbec85384f52.png"
+      },
+      {
+        "id": "bm-meat-and-fish-258",
+        "title": "Nõo, Snack 'n Go With Pork, 70g",
+        "price": "2,49 €",
+        "imageSrc": "market/market-675c26232519.png"
+      },
+      {
+        "id": "bm-meat-and-fish-259",
+        "title": "Liivimaa Lihaveis, Dried Wild Boar Meat, 40g",
+        "price": "4,39 €",
+        "imageSrc": "market/market-0e1c1f4c2efb.png"
+      },
+      {
+        "id": "bm-meat-and-fish-260",
+        "title": "Rakvere, Snäkk Pro Classic Jerky Bar, 30g",
+        "price": "1,59 €",
+        "imageSrc": "market/market-50648601a8b3.png"
+      },
+      {
+        "id": "bm-meat-and-fish-261",
+        "title": "Rakvere, Snäkk Pro Chilli Jerky Bar, 30g",
+        "price": "1,59 €",
+        "imageSrc": "market/market-e0f69980b6b5.png"
+      },
+      {
+        "id": "bm-meat-and-fish-262",
+        "title": "Chick Snack, Original Jerky Bar, 30g",
+        "price": "1,59 €",
+        "imageSrc": "market/market-bdc73c2243f9.png"
+      },
+      {
+        "id": "bm-meat-and-fish-263",
+        "title": "Tallegg, Chick Snack Traditional, 80g",
+        "price": "3,99 €",
+        "imageSrc": "market/market-43281df8c8b7.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-264",
+        "title": "Tallegg, Chick Snack Smoky, 80g",
+        "price": "3,49 €",
+        "imageSrc": "market/market-49242a37e3bb.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-265",
+        "title": "Jack Link's, Canned Beef Jerky Original, 25g",
+        "price": "3,19 €",
+        "imageSrc": "market/market-980999fd92de.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-266",
+        "title": "Beef Jerky, Original Dried Beef, 50g",
+        "price": "5,39 €",
+        "imageSrc": "market/market-a143cfa4d652.png"
+      },
+      {
+        "id": "bm-meat-and-fish-267",
+        "title": "Rakvere, Chili Pork Jerky, 50g",
+        "price": "2,69 €",
+        "imageSrc": "market/market-793d84a8dfec.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-268",
+        "title": "Jack Link's, Canned Beef Jerky Teriyaki, 25g",
+        "price": "3,19 €",
+        "imageSrc": "market/market-8419af7d5623.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-269",
+        "title": "Beef Jerky, Classic Dried Beef, 50g",
+        "price": "5,39 €",
+        "imageSrc": "market/market-54f7ec0f9bac.png"
+      },
+      {
+        "id": "bm-meat-and-fish-270",
+        "title": "Jack Link's, Sweet & Hot Beef Jerky, 25g",
+        "price": "3,19 €",
+        "imageSrc": "market/market-3f0603e5f8ae.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-271",
+        "title": "Linnamäe Lihatööstus, Beef Snack, 85g",
+        "price": "2,55 €",
+        "imageSrc": "market/market-61b2626b7359.png"
+      },
+      {
+        "id": "bm-meat-and-fish-272",
+        "title": "Maks & Moorits, Chicken Super Snack, 85g",
+        "price": "1,99 €",
+        "imageSrc": "market/market-f4cb6c5ac91f.jpeg"
+      },
+      {
+        "id": "bm-meat-and-fish-273",
+        "title": "Beef Jerky, Teriyaki Dried Beef, 50g",
+        "price": "5,39 €",
+        "imageSrc": "market/market-fc136d2b6aae.png"
+      },
+      {
+        "id": "bm-meat-and-fish-274",
+        "title": "Beef Jerky, Cajun-Hot Dried Beef, 50g",
+        "price": "5,09 €",
+        "imageSrc": "market/market-2672f36bcb7e.png"
+      },
+      {
+        "id": "bm-meat-and-fish-275",
+        "title": "Nõo, Snack Sausage Snack'n'Drive, 85g",
+        "price": "2,45 €",
+        "imageSrc": "market/market-ea08ad7c1e06.png"
+      }
+    ]
+  }
+}

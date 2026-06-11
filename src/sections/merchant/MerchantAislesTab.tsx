@@ -1,42 +1,22 @@
+import { useNavigate } from 'react-router-dom'
 import { design } from '../../lib/figmaDesignAssets'
+import {
+  MERCHANT_AISLES_CATEGORIES,
+  merchantAislesSubcategories,
+} from '../../lib/merchantAislesCategories'
+
+function subcategoryKey(label: string): string {
+  return label
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+}
 
 const MORE_TO_EXPLORE = [
   { id: 'new', label: 'New', image: design.aisles.moreToExplore[0] },
   { id: 'freshly-baked', label: 'Freshly baked', image: design.aisles.moreToExplore[1] },
   { id: 'bolt-favourites', label: 'Bolt favourites', image: design.aisles.moreToExplore[2] },
-] as const
-
-const CATEGORY_LABELS = [
-  'Breakfast',
-  'Fresh & ready',
-  'Bakery',
-  'Fruits & vegetables',
-  'Dairy & eggs',
-  'Cheese',
-  'Meat & fish',
-  'Vegan',
-  'Beverages',
-  'Energy drinks',
-  'Water & flavoured water',
-  'Coffee, tea & cocoa',
-  'Salty snacks',
-  'Sweet snacks',
-  'Ice cream',
-  'Frozen products',
-  'Bio & special nutrition',
-  'Instant meals',
-  'Sports nutrition',
-  'Pantry',
-  'Canned goods & preserves',
-  'Health & wellbeing',
-  'International cuisine',
-  'Home care',
-  'Home accessories',
-  'Personal care',
-  'Baby care',
-  'Pet care',
-  'Beer and cider',
-  'Wine',
 ] as const
 
 function ExploreTile({ label, imageSrc }: { label: string; imageSrc: string }) {
@@ -65,10 +45,20 @@ function ExploreTile({ label, imageSrc }: { label: string; imageSrc: string }) {
   )
 }
 
-function CategoryTile({ label, imageSrc }: { label: string; imageSrc: string }) {
+function CategoryTile({
+  label,
+  imageSrc,
+  onClick,
+}: {
+  label: string
+  imageSrc: string
+  onClick: () => void
+}) {
   return (
-    <article
-      className="relative isolate flex w-full min-w-0 flex-col overflow-hidden rounded-lg bg-[var(--color-layer-floor-2)]"
+    <button
+      type="button"
+      onClick={onClick}
+      className="relative isolate flex w-full min-w-0 flex-col overflow-hidden rounded-lg bg-[var(--color-layer-floor-2)] text-left"
       data-name="[Eater] category-tile"
     >
       <div className="absolute inset-0 z-[3] bg-[rgba(0,45,30,0.06)]" aria-hidden />
@@ -86,14 +76,21 @@ function CategoryTile({ label, imageSrc }: { label: string; imageSrc: string }) 
           className="pointer-events-none absolute inset-0 size-full object-cover"
         />
       </div>
-    </article>
+    </button>
   )
+}
+
+export type MerchantAislesTabProps = {
+  /** Passed through to `/category/:id` for NavBar title context. */
+  navigationState?: unknown
 }
 
 /**
  * Merchant Aisles tab — Figma [77940:95171](https://www.figma.com/design/hTmBFTYdlynOcGtxFnHIbM/Consumer---in-progress?node-id=77940-95171).
  */
-export function MerchantAislesTab() {
+export function MerchantAislesTab({ navigationState }: MerchantAislesTabProps) {
+  const navigate = useNavigate()
+
   return (
     <div className="flex flex-col bg-[var(--color-layer-floor-1)]" data-node-id="77940:95171">
       <header
@@ -134,8 +131,18 @@ export function MerchantAislesTab() {
           Categories
         </h2>
         <div className="grid w-full grid-cols-3 gap-3">
-          {CATEGORY_LABELS.map((label, i) => (
-            <CategoryTile key={label} label={label} imageSrc={design.aisles.categoryTiles[i]!} />
+          {MERCHANT_AISLES_CATEGORIES.map((category) => (
+            <CategoryTile
+              key={category.id}
+              label={category.label}
+              imageSrc={category.imageSrc}
+              onClick={() => {
+                const firstSub = subcategoryKey(merchantAislesSubcategories(category.id)[0] ?? 'All')
+                navigate(`/category/${category.id}?sub=${firstSub}`, {
+                  state: navigationState,
+                })
+              }}
+            />
           ))}
         </div>
       </section>

@@ -308,6 +308,219 @@ html.eater-hub-active #root {
   }
 
   /**
+   * Restaurant menu search overlay — slides down from the top (150ms ease-out),
+   * covering the merchant screen. Figma 80638:179495.
+   */
+  .restaurant-search-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    height: 100svh;
+    height: 100dvh;
+    background: var(--color-layer-floor-1, #fff);
+    will-change: transform;
+  }
+
+  .restaurant-search-overlay__panel {
+    background: var(--color-layer-floor-2);
+  }
+
+  .restaurant-search-overlay__results {
+    background: var(--color-layer-floor-1);
+  }
+
+  /**
+   * Category full-screen product search — Figma 80678:185740 / 184283 / 181960.
+   * Slides up from the bottom (150ms ease-out), covering the category screen.
+   */
+  .category-search-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    height: 100svh;
+    height: 100dvh;
+    background: var(--color-layer-floor-1, #fff);
+    will-change: transform;
+  }
+
+  .category-search-screen__body {
+    background: var(--color-layer-floor-1);
+  }
+
+  /**
+   * Dish bottom sheet — Figma 80656:180636 (content) + 80656:180785 (sticky CTA).
+   */
+  .product-sheet__scroll {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .product-sheet__media {
+    position: relative;
+    height: 328px;
+    width: 100%;
+    background: var(--color-layer-floor-1, #fff);
+  }
+
+  .product-sheet__media-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+  }
+
+  .product-sheet__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    height: 32px;
+    width: 32px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+    outline: none;
+  }
+
+  .product-sheet__close:focus-visible {
+    outline: 2px solid var(--color-border-action-primary, #2b8659);
+    outline-offset: 2px;
+  }
+
+  .product-sheet-add {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    flex-shrink: 0;
+    width: 100%;
+    background: var(--color-layer-floor-2, #fff);
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .product-sheet-add__divider {
+    height: 1px;
+    width: 100%;
+    background: var(--color-border-separator, rgba(0, 45, 30, 0.07));
+  }
+
+  .product-sheet-add__content {
+    display: flex;
+    gap: 12px;
+    padding-inline: 24px;
+    box-sizing: border-box;
+  }
+
+  .product-sheet-add__counter {
+    display: flex;
+    height: 56px;
+    width: 124px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 100px;
+    border: 1px solid var(--color-border-separator, rgba(0, 45, 30, 0.07));
+    padding-inline: 8px;
+    box-sizing: border-box;
+  }
+
+  .product-sheet-add__step,
+  .product-sheet-add__delete {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    outline: none;
+  }
+
+  .product-sheet-add__step:disabled {
+    opacity: 0.3;
+  }
+
+  .product-sheet-add__step-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+
+  .product-sheet-add__delete {
+    background: var(--color-bg-danger-primary, #de1929);
+  }
+
+  /* Tint the dark bin glyph white on the red delete button. */
+  .product-sheet-add__delete-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+  }
+
+  .product-sheet-add__count {
+    min-width: 24px;
+    text-align: center;
+    color: var(--color-content-primary);
+  }
+
+  .product-sheet-add__cta {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    background: var(--color-bg-action-primary, #2b8659);
+    color: var(--color-static-content-key-light, #fff);
+    outline: none;
+  }
+
+  .product-sheet-add__cta:focus-visible,
+  .product-sheet-add__delete:focus-visible,
+  .product-sheet-add__step:focus-visible {
+    outline: 2px solid var(--color-special-brand-alt, #0c2c1c);
+    outline-offset: 2px;
+  }
+
+  /**
+   * Category screen floating actions — basket button pop-in (150ms ease-out),
+   * matching the app's basket FAB motion. Figma 80635:177850.
+   */
+  .category-tab-actions__basket {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+    transform-origin: center;
+    transition:
+      opacity 150ms ease-out,
+      transform 150ms ease-out;
+  }
+
+  .category-tab-actions__basket--shown {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /**
    * Home search overlay — slide up from bottom (78810:114696).
    * Transform / transition are driven inline (enter, cancel, drag dismiss).
    */
@@ -656,6 +869,45 @@ html.eater-hub-active #root {
    * Filled unfocused: 79413:251200 — neutral secondary fill, clear visible, no focus ring.
    * State transitions: 100ms ease-out.
    */
+  /**
+   * Figma 80618:194575–194596 — TextInput (default / focused / filled / error).
+   */
+  .bolt-text-input {
+    --bolt-text-input-transition: 100ms ease-out;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background-color: var(--color-layer-floor-1, #fff);
+    transition:
+      border-color var(--bolt-text-input-transition),
+      background-color var(--bolt-text-input-transition);
+  }
+
+  .bolt-text-input--default {
+    background-color: var(--color-bg-neutral-secondary);
+  }
+
+  .bolt-text-input--default-focused,
+  .bolt-text-input--filled-focused {
+    border-color: var(--color-border-action-primary, #2b8659);
+    background-color: var(--color-layer-floor-1, #fff);
+  }
+
+  .bolt-text-input--filled {
+    border-color: transparent;
+    background-color: var(--color-bg-neutral-secondary);
+  }
+
+  .bolt-text-input--error-empty,
+  .bolt-text-input--error-filled {
+    border-color: var(--color-content-danger-primary, rgba(173, 0, 14, 0.94));
+    background-color: var(--color-bg-neutral-secondary);
+  }
+
+  .bolt-text-input__control {
+    caret-color: var(--color-border-action-primary, #2b8659);
+  }
+
   .eater-search-input {
     --eater-search-input-transition: 100ms ease-out;
     box-sizing: border-box;
@@ -1475,6 +1727,16 @@ html.eater-hub-active #root {
     cursor: pointer;
     outline: none;
     box-sizing: border-box;
+    transition:
+      width 150ms ease-out,
+      padding 150ms ease-out;
+  }
+
+  /* With basket — collapse to a 56px round icon FAB. */
+  .restaurant-merchant-search--compact {
+    width: 56px;
+    padding: 4px;
+    gap: 0;
   }
 
   .restaurant-merchant-search:focus-visible {
@@ -1488,6 +1750,50 @@ html.eater-hub-active #root {
     overflow-wrap: anywhere;
     text-align: left;
     color: var(--color-content-secondary);
+    transition:
+      width 150ms ease-out,
+      opacity 150ms ease-out;
+  }
+
+  .restaurant-merchant-search--compact .restaurant-merchant-search__label {
+    width: 0;
+    opacity: 0;
+  }
+
+  /* With basket — green active basket button (Figma 80638:179453). */
+  .restaurant-merchant-basket {
+    display: flex;
+    height: 56px;
+    width: 191px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    border: none;
+    border-radius: 99px;
+    padding: 12px 16px 12px 18px;
+    background-color: var(--color-bg-action-primary, #2b8659);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box;
+    transform-origin: center;
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+    transition:
+      opacity 150ms ease-out,
+      transform 150ms ease-out;
+  }
+
+  .restaurant-merchant-basket--shown {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .restaurant-merchant-basket:focus-visible {
+    outline: 2px solid var(--color-special-brand-alt, #0c2c1c);
+    outline-offset: 2px;
   }
 
   /**
@@ -2510,6 +2816,36 @@ html.eater-hub-active #root {
   .simple-item__body {
     min-width: 0;
     flex: 1 1 0%;
+  }
+
+  /* Tappable row body — reset button chrome, keep block layout + left alignment. */
+  .simple-item__body--tappable {
+    display: block;
+    width: 100%;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .simple-item__body--tappable:focus-visible {
+    outline: 2px solid var(--color-border-action-primary, #2b8659);
+    outline-offset: 2px;
+    border-radius: var(--corner-radius-s);
+  }
+
+  .simple-item__image-button {
+    display: block;
+    height: 100%;
+    width: 100%;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
   }
 
   .simple-item__status {

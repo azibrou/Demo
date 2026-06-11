@@ -12,13 +12,19 @@ type MerchantScreenShellProps = {
   children: ReactNode
   /** Pavlova Viru Keskus — Figma 79562:242428 centered search instead of {@link MerchantFTabBar}. */
   bottomChrome?: MerchantScreenBottomChrome
+  /** Pressing the restaurant search chrome (only with `bottomChrome='restaurant-search'`). */
+  onRestaurantSearch?: () => void
 }
 
 /**
  * Merchant page wrapper — {@link MerchantFTabBar} portaled to `document.body` so it stays
  * viewport-fixed on iOS stack inner routes (transform on the slide panel breaks `position: fixed`).
  */
-function MerchantScreenShellInner({ children, bottomChrome = 'tab-bar' }: MerchantScreenShellProps) {
+function MerchantScreenShellInner({
+  children,
+  bottomChrome = 'tab-bar',
+  onRestaurantSearch,
+}: MerchantScreenShellProps) {
   const { barItems } = useMemo(
     () => resolveMerchantFloatingTabBarModel(MERCHANT_FLOATING_TAB_BAR_ITEMS),
     [],
@@ -56,7 +62,7 @@ function MerchantScreenShellInner({ children, bottomChrome = 'tab-bar' }: Mercha
   const bottomChromeNode = useRestaurantSearch ? (
     <div className="restaurant-merchant-search-chrome-portal pointer-events-none fixed inset-x-0 bottom-0 z-50 w-full max-w-full overflow-visible">
       <div className="pointer-events-auto">
-        <RestaurantMerchantSearch />
+        <RestaurantMerchantSearch onSearchClick={onRestaurantSearch} />
       </div>
     </div>
   ) : (
@@ -80,7 +86,11 @@ function MerchantScreenShellInner({ children, bottomChrome = 'tab-bar' }: Mercha
   )
 }
 
-export function MerchantScreenShell({ children, bottomChrome = 'tab-bar' }: MerchantScreenShellProps) {
+export function MerchantScreenShell({
+  children,
+  bottomChrome = 'tab-bar',
+  onRestaurantSearch,
+}: MerchantScreenShellProps) {
   const { barItems } = useMemo(
     () => resolveMerchantFloatingTabBarModel(MERCHANT_FLOATING_TAB_BAR_ITEMS),
     [],
@@ -89,7 +99,9 @@ export function MerchantScreenShell({ children, bottomChrome = 'tab-bar' }: Merc
 
   return (
     <MerchantTabProvider initialTabId={initialTabId}>
-      <MerchantScreenShellInner bottomChrome={bottomChrome}>{children}</MerchantScreenShellInner>
+      <MerchantScreenShellInner bottomChrome={bottomChrome} onRestaurantSearch={onRestaurantSearch}>
+        {children}
+      </MerchantScreenShellInner>
     </MerchantTabProvider>
   )
 }

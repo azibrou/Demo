@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { BASKET_FAB_BUTTON_POP_MS, BASKET_FAB_LOADER_FADE_MS } from '../context/BasketFabContext'
+import { useOrderOptional } from '../context/OrderContext'
 import { design } from '../lib/figmaDesignAssets'
 import { FLOATING_CHROME_SHADOW_CLASS } from '../lib/floatingChromeShadow'
 
@@ -49,10 +50,21 @@ export function BasketFabHome({
   size = 'home',
 }: BasketFabHomeProps) {
   const navigate = useNavigate()
+  const order = useOrderOptional()
   const showLoader = fabLoading || loaderExiting
   const showIcon = fabReveal && !showLoader
   const label = basketFabAriaLabel(count)
   const sizeClass = size === 'merchant' ? 'basket-fab--merchant-slot' : 'basket-fab--home'
+
+  /** Home hub FAB opens the merchant the active order belongs to. */
+  const handleClick = () => {
+    const provider = order?.provider
+    if (provider) {
+      navigate(provider.path, { state: provider.navState })
+      return
+    }
+    navigate('/checkout')
+  }
 
   return (
     <div
@@ -73,7 +85,7 @@ export function BasketFabHome({
         type="button"
         aria-label={label}
         disabled={count <= 0 || exiting || fabLoading}
-        onClick={() => navigate('/shopping-list')}
+        onClick={handleClick}
         className={[
           'basket-fab__button relative flex shrink-0 items-center justify-center',
           'bg-[var(--color-bg-action-primary,#2b8659)] outline-none',

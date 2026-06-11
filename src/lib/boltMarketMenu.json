@@ -1,0 +1,503 @@
+{
+  "source": "https://food.bolt.eu/en/1-tallinn/p/28032-bolt-market-toompuiestee/?shouldRefreshMenu=false",
+  "provider": {
+    "name": "Bolt Market Toompuiestee"
+  },
+  "sections": [
+    {
+      "id": "ice-cream",
+      "title": "🍦 Ice Cream",
+      "items": [
+        {
+          "id": "bm-ice-cream-0",
+          "title": "Magnum, La Pistache Ice Cream Bar, 90ml",
+          "description": "",
+          "price": "1,85 €",
+          "imageSrc": "market/market-dff4aca9ba52.png"
+        }
+      ]
+    },
+    {
+      "id": "fresh-ready",
+      "title": "🥪 Fresh & Ready",
+      "items": [
+        {
+          "id": "bm-fresh-ready-0",
+          "title": "Farmi, Vanilla Flavored Curd Casserole, 250g",
+          "description": "",
+          "price": "2,65 €",
+          "imageSrc": "market/market-dd6ab8bd1ae4.png"
+        }
+      ]
+    },
+    {
+      "id": "fruits-vegetables",
+      "title": "🥕 Fruits & Vegetables",
+      "items": [
+        {
+          "id": "bm-fruits-vegetables-0",
+          "title": "Saaremaa sour cabbage with carrot, 900g",
+          "description": "",
+          "price": "2,69 €",
+          "imageSrc": "market/market-fabd1b9a0f54.png"
+        }
+      ]
+    },
+    {
+      "id": "bakery",
+      "title": "🍞 Bakery",
+      "items": [
+        {
+          "id": "bm-bakery-0",
+          "title": "Fazer, Sourdough Fine Rye Bread, 500g",
+          "description": "",
+          "price": "1,85 €",
+          "imageSrc": "market/market-ecd201a53d0d.png"
+        }
+      ]
+    },
+    {
+      "id": "save-me",
+      "title": "♻️ Save me!",
+      "items": [
+        {
+          "id": "bm-save-me-0",
+          "title": "Garlic, 100g (expires soon)",
+          "description": "",
+          "price": "1,59 €",
+          "imageSrc": "market/market-f7bd50e2d56e.jpeg"
+        },
+        {
+          "id": "bm-save-me-1",
+          "title": "Mesclum, Salad Mix, 100g (expires soon)",
+          "description": "",
+          "price": "1,75 €",
+          "imageSrc": "market/market-d1b4377bdd20.jpeg"
+        },
+        {
+          "id": "bm-save-me-2",
+          "title": "Avocado \"Hass\" in a Net, 700g (expires soon)",
+          "description": "",
+          "price": "2,99 €",
+          "imageSrc": "market/market-5146eaca246d.png"
+        },
+        {
+          "id": "bm-save-me-3",
+          "title": "Rannamõisa, Broiler Bone-In Thigh Without Backbone 500 g (expires soon)",
+          "description": "",
+          "price": "4,19 €",
+          "imageSrc": "market/market-a9207c05f015.jpeg"
+        },
+        {
+          "id": "bm-save-me-4",
+          "title": "Tallegg, Estonian Broiler Breast Fillet, 2×200g (expires soon)",
+          "description": "",
+          "price": "5,59 €",
+          "imageSrc": "market/market-462c26e25db3.jpeg"
+        },
+        {
+          "id": "bm-save-me-5",
+          "title": "Kadarbiku, Sauerkraut in Package, 500g (expires soon)",
+          "description": "",
+          "price": "2,09 €",
+          "imageSrc": "market/market-38e8158ab771.jpeg"
+        },
+        {
+          "id": "bm-save-me-6",
+          "title": "Maks & Moorits, Chicken Fillet Cubes, 250g (expires soon)",
+          "description": "",
+          "price": "2,35 €",
+          "imageSrc": "market/market-a87442b2d5c2.png"
+        },
+        {
+          "id": "bm-save-me-7",
+          "title": "Sugar Peas, 150g (expires soon)",
+          "description": "",
+          "price": "3,75 €",
+          "imageSrc": "market/market-f4be204072f5.png"
+        },
+        {
+          "id": "bm-save-me-8",
+          "title": "Mantinga, Dark Seed Bread Triangle Sandwitch with Sweet Chilli Chicken, Roasted Bell pepper and Spinach, 170g (expires soon)",
+          "description": "",
+          "price": "3,49 €",
+          "imageSrc": "market/market-c4ea9109d805.png"
+        },
+        {
+          "id": "bm-save-me-9",
+          "title": "Nõo, Nomps Boiled Sausage, 350g (expires soon)",
+          "description": "",
+          "price": "4,69 €",
+          "imageSrc": "market/market-41b464400dba.png"
+        },
+        {
+          "id": "bm-save-me-10",
+          "title": "Alma, Curd Dessert Strawberry-Blueberry, 150g (expires soon)",
+          "description": "",
+          "price": "1,19 €",
+          "imageSrc": "market/market-5b1c3595f95a.png"
+        },
+        {
+          "id": "bm-save-me-11",
+          "title": "Dark Grapes, 500g (expires soon)",
+          "description": "",
+          "price": "5,39 €",
+          "imageSrc": "market/market-0a93561fe108.png"
+        },
+        {
+          "id": "bm-save-me-12",
+          "title": "Nõo, Grandma's Large Meat Jelly, 500g (expires soon)",
+          "description": "",
+          "price": "4,79 €",
+          "imageSrc": "market/market-8f7a00f0a155.png"
+        },
+        {
+          "id": "bm-save-me-13",
+          "title": "Mantinga, Sandwich With Cherry Tomatoes And BBQ Sauce, 235g (expires soon)",
+          "description": "",
+          "price": "4,29 €",
+          "imageSrc": "market/market-77e007fe4caf.png"
+        },
+        {
+          "id": "bm-save-me-14",
+          "title": "Rakvere, Beef Stroganoff, 380g (expires soon)",
+          "description": "",
+          "price": "8,49 €",
+          "imageSrc": "market/market-a4ceadf5399b.jpeg"
+        },
+        {
+          "id": "bm-save-me-15",
+          "title": "Tanel Mayonnaise From Saaremaa, Classic, 250g (expires soon)",
+          "description": "",
+          "price": "3,99 €",
+          "imageSrc": "market/market-792cbeea70fe.png"
+        }
+      ]
+    },
+    {
+      "id": "dairy-eggs",
+      "title": "🥛 Dairy & Eggs",
+      "items": [
+        {
+          "id": "bm-dairy-eggs-0",
+          "title": "Alma, Milk 2.5%, 1,5l",
+          "description": "",
+          "price": "1,99 €",
+          "imageSrc": "market/market-c151c3584b91.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "cheese",
+      "title": "🧀 Cheese",
+      "items": [
+        {
+          "id": "bm-cheese-0",
+          "title": "Valio, Cheese Athlete Original Sliced, 150g",
+          "description": "",
+          "price": "1,79 €",
+          "imageSrc": "market/market-c70cd98a8da8.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "meat-fish",
+      "title": "🍗 Meat & Fish",
+      "items": [
+        {
+          "id": "bm-meat-fish-0",
+          "title": "Nõo, Pork Tenderloin, ~500g",
+          "description": "",
+          "price": "7,15 €",
+          "imageSrc": "market/market-b36e823836e2.png"
+        }
+      ]
+    },
+    {
+      "id": "canned-goods-preserves",
+      "title": "🥫 Canned Goods & Preserves",
+      "items": [
+        {
+          "id": "bm-canned-goods-preserves-0",
+          "title": "Bonduelle, Sweet Corn, 170g",
+          "description": "",
+          "price": "1,69 €",
+          "imageSrc": "market/market-de14e8b0aacb.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "vegan",
+      "title": "🥗 Vegan",
+      "items": [
+        {
+          "id": "bm-vegan-0",
+          "title": "Veganic, Plant-Based English Roastbeef Slices, 80g",
+          "description": "",
+          "price": "2,15 €",
+          "imageSrc": "market/market-d3666acfadc1.png"
+        }
+      ]
+    },
+    {
+      "id": "beverages",
+      "title": "🥤 Beverages",
+      "items": [
+        {
+          "id": "bm-beverages-0",
+          "title": "Coca-Cola, Zero Sugar and Coffeine Free, 0,33l",
+          "description": "",
+          "price": "1,19 €",
+          "imageSrc": "market/market-cce8ba5a6e7e.png"
+        }
+      ]
+    },
+    {
+      "id": "energy-drinks",
+      "title": "⚡ Energy Drinks",
+      "items": [
+        {
+          "id": "bm-energy-drinks-0",
+          "title": "Red Bull, Energy Drink, 0,25l",
+          "description": "",
+          "price": "1,75 €",
+          "imageSrc": "market/market-6236193081df.png"
+        }
+      ]
+    },
+    {
+      "id": "water-flavoured-water",
+      "title": "💧 Water & Flavoured Water",
+      "items": [
+        {
+          "id": "bm-water-flavoured-water-0",
+          "title": "Spläsh, Non-carbonated Mineral Water Sport 0,765l",
+          "description": "",
+          "price": "1,65 €",
+          "imageSrc": "market/market-785fe1881212.png"
+        }
+      ]
+    },
+    {
+      "id": "coffee-tea-cocoa",
+      "title": "☕️ Coffee, Tea & Cocoa",
+      "items": [
+        {
+          "id": "bm-coffee-tea-cocoa-0",
+          "title": "Oa, No 2, Coffee Beans, 1kg",
+          "description": "",
+          "price": "23,99 €",
+          "imageSrc": "market/market-3b8c44d2c719.png"
+        }
+      ]
+    },
+    {
+      "id": "salty-snacks",
+      "title": "🍿 Salty Snacks",
+      "items": [
+        {
+          "id": "bm-salty-snacks-0",
+          "title": "Tyrrell's, Truffel and Sea Salt Chips, 135g",
+          "description": "",
+          "price": "4,85 €",
+          "imageSrc": "market/market-5d25571a446b.png"
+        }
+      ]
+    },
+    {
+      "id": "sweet-snacks",
+      "title": "🍬 Sweet Snacks",
+      "items": [
+        {
+          "id": "bm-sweet-snacks-0",
+          "title": "Karl Fazer, Chocolate with Whole Nuts, 200g",
+          "description": "",
+          "price": "5,79 €",
+          "imageSrc": "market/market-a6aa4e2d52f5.png"
+        }
+      ]
+    },
+    {
+      "id": "flowers",
+      "title": "💐 Flowers",
+      "items": [
+        {
+          "id": "bm-flowers-0",
+          "title": "Stabilized Rose Short, White, 1pc",
+          "description": "",
+          "price": "12,15 €",
+          "imageSrc": "market/market-7b10ac0ff757.png"
+        }
+      ]
+    },
+    {
+      "id": "frozen-products",
+      "title": "❄️ Frozen Products",
+      "items": [
+        {
+          "id": "bm-frozen-products-0",
+          "title": "Premia, Mini Dumplings “Pealinna”, 350g",
+          "description": "",
+          "price": "2,29 €",
+          "imageSrc": "market/market-4ae5b661b090.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "instant-meals",
+      "title": "🥘 Instant Meals",
+      "items": [
+        {
+          "id": "bm-instant-meals-0",
+          "title": "Thai Choice, Instant Chicken Noodles, 85g",
+          "description": "",
+          "price": "1,29 €",
+          "imageSrc": "market/market-786494c52620.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "pantry",
+      "title": "🧑‍🍳 Pantry",
+      "items": [
+        {
+          "id": "bm-pantry-0",
+          "title": "Foodstudio, Chicken Broth, 0,35l",
+          "description": "",
+          "price": "3,55 €",
+          "imageSrc": "market/market-601762c62580.webp"
+        }
+      ]
+    },
+    {
+      "id": "health-wellbeing",
+      "title": "🩹 Health & Wellbeing",
+      "items": [
+        {
+          "id": "bm-health-wellbeing-0",
+          "title": "JusCheck, SARS-CoV-2 and Influenza A+B Antigen Combo Rapid Test, 1pc",
+          "description": "",
+          "price": "4,89 €",
+          "imageSrc": "market/market-6fe082664a80.png"
+        }
+      ]
+    },
+    {
+      "id": "international-cuisine",
+      "title": "🌍 International Cuisine",
+      "items": [
+        {
+          "id": "bm-international-cuisine-0",
+          "title": "Santa Maria, Tortilla Chips with Cheese, 185g",
+          "description": "",
+          "price": "2,59 €",
+          "imageSrc": "market/market-a93bb5055e8c.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "home-care",
+      "title": "🧽 Home Care",
+      "items": [
+        {
+          "id": "bm-home-care-0",
+          "title": "Fairy, Dishwasher Tablets Original, 71pcs",
+          "description": "",
+          "price": "34,99 €",
+          "imageSrc": "market/market-57763574b970.png"
+        }
+      ]
+    },
+    {
+      "id": "home-accessories",
+      "title": "🏡 Home Accessories",
+      "items": [
+        {
+          "id": "bm-home-accessories-0",
+          "title": "Cricket, Simplicity Lighter, 1pc",
+          "description": "",
+          "price": "0,79 €",
+          "imageSrc": "market/market-feeab4836767.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "personal-care",
+      "title": "🧴 Personal Care",
+      "items": [
+        {
+          "id": "bm-personal-care-0",
+          "title": "Oral-B, Mouthwash, Pro-Expert Rinse Professional Protection, 500ml",
+          "description": "",
+          "price": "6,09 €",
+          "imageSrc": "market/market-42336885773a.png"
+        }
+      ]
+    },
+    {
+      "id": "baby-care",
+      "title": "👶 Baby Care",
+      "items": [
+        {
+          "id": "bm-baby-care-0",
+          "title": "HiPP, 1 Organic Combiotic Infant Formula From Birth, 800g",
+          "description": "",
+          "price": "24,45 €",
+          "imageSrc": "market/market-66688407a540.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "pet-care",
+      "title": "🐶 Pet Care",
+      "items": [
+        {
+          "id": "bm-pet-care-0",
+          "title": "Gourmet Gold, Chicken Pate for Cats, 85g",
+          "description": "",
+          "price": "0,89 €",
+          "imageSrc": "market/market-63e6f86e06b6.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "beer-cider",
+      "title": "🍺 Beer & Cider",
+      "items": [
+        {
+          "id": "bm-beer-cider-0",
+          "title": "A. Le Coq, Alexander Beer 5.2%, 0,568l",
+          "description": "",
+          "price": "2,29 €",
+          "imageSrc": "market/market-2f8121cffbe8.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "wine",
+      "title": "🍷 Wine",
+      "items": [
+        {
+          "id": "bm-wine-0",
+          "title": "Nerone, Negroamaro Primitivo 13.5%, 0.75l",
+          "description": "",
+          "price": "9,99 €",
+          "imageSrc": "market/market-76ec24648419.png"
+        }
+      ]
+    },
+    {
+      "id": "spirits",
+      "title": "🥃 Spirits",
+      "items": [
+        {
+          "id": "bm-spirits-0",
+          "title": "Tanqueray London Dry 43.1%, 0,7l",
+          "description": "",
+          "price": "33,49 €",
+          "imageSrc": "market/market-fb5491ffe137.webp"
+        }
+      ]
+    }
+  ]
+}
