@@ -14,7 +14,7 @@ export function StoresAllStoresBlock() {
       <ThumbnailLListBlock
         title="All stores"
         items={storesAllStoresList}
-        isItemClickable={isBoltMarketToompuiesteeTitle}
+        isItemClickable={(item) => isBoltMarketToompuiesteeTitle(item.title)}
         onItemClick={() =>
           navigate('/store-merchant', { state: boltMarketToompuiesteeStoreNavState() })
         }

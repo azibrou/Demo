@@ -53,15 +53,13 @@ function menuToContent(menu: ScrapedMenu, name: string, description: string): Re
   const sections: RestaurantMenuSection[] = menu.sections.map((section) => ({
     id: section.id,
     title: toTitle(section.title),
-    items: section.items.map(
-      (item): SimpleItemProps & { id: string } => ({
-        id: item.id,
-        title: item.title,
-        description: item.description,
-        price: item.price,
-        imageSrc: boltImage(item.imageSrc),
-      }),
-    ),
+    items: section.items.map((item): SimpleItemProps & { id: string } => ({
+      id: item.id,
+      title: item.title,
+      description: item.description,
+      price: item.price,
+      ...(item.imageSrc ? { imageSrc: boltImage(item.imageSrc) } : {}),
+    })),
   }))
 
   const firstSection = sections[0]

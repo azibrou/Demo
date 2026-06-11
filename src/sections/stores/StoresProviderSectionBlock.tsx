@@ -22,7 +22,7 @@ export function StoresProviderSectionBlock({ title, ariaLabel, items, nodeId }: 
         title={title}
         ariaLabel={ariaLabel}
         items={items}
-        isItemClickable={isBoltMarketToompuiesteeTitle}
+        isItemClickable={(item) => isBoltMarketToompuiesteeTitle(item.title)}
         onItemClick={() =>
           navigate('/store-merchant', { state: boltMarketToompuiesteeStoreNavState() })
         }
