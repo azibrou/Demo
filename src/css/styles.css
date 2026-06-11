@@ -245,7 +245,12 @@ html.eater-hub-active #root {
     overflow-y: auto;
     overscroll-behavior: none;
     -webkit-overflow-scrolling: touch;
-    scrollbar-gutter: stable;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .eater-hub-scroll::-webkit-scrollbar {
+    display: none;
   }
 
   /**
@@ -322,12 +327,20 @@ html.eater-hub-active #root {
     max-width: 100%;
     height: 100svh;
     height: 100dvh;
-    background: var(--color-layer-floor-1, #fff);
-    will-change: transform;
+    background: transparent;
+    will-change: opacity;
   }
 
   .restaurant-search-overlay__panel {
     background: var(--color-layer-floor-2);
+  }
+
+  /* No query yet — only the panel shows; the rest dims the merchant behind. */
+  .restaurant-search-overlay__scrim {
+    width: 100%;
+    border: none;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.4);
   }
 
   .restaurant-search-overlay__results {
@@ -619,6 +632,11 @@ html.eater-hub-active #root {
   }
 
   .home-search-overlay:has(.home-search-basket-fab--shown) .home-search-screen__providers {
+    padding-bottom: calc(24px + 56px + 12px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .category-search-screen:has(.home-search-basket-fab--shown) .category-search-screen__body,
+  .restaurant-search-overlay:has(.home-search-basket-fab--shown) .restaurant-search-overlay__results {
     padding-bottom: calc(24px + 56px + 12px + env(safe-area-inset-bottom, 0px));
   }
 
@@ -1704,7 +1722,10 @@ html.eater-hub-active #root {
     width: 100%;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    /* No gap — the 12px between search and basket lives in the basket slot's
+       leading padding so it can grow/shrink with the slot width and keep the
+       group centered (search + basket total width is constant when expanded). */
+    gap: 0;
     padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
     box-sizing: border-box;
   }
@@ -1760,40 +1781,36 @@ html.eater-hub-active #root {
     opacity: 0;
   }
 
-  /* With basket — green active basket button (Figma 80638:179453). */
-  .restaurant-merchant-basket {
-    display: flex;
+  /**
+   * With basket — wide basket FAB (loading → expand). The slot width drives the
+   * reveal + RTL expand (150ms ease-out). The 12px leading padding is the gap to
+   * the search; `box-sizing: border-box` collapses it to 0 while the slot is hidden.
+   *   hidden:  width 0
+   *   loading: width 68px  (12 gap + 56 round FAB)
+   *   default: width 203px (12 gap + 191 wide FAB)
+   */
+  .restaurant-merchant-search__basket-slot {
+    width: 0;
     height: 56px;
-    width: 191px;
     flex-shrink: 0;
-    align-items: center;
-    justify-content: space-between;
-    gap: 4px;
-    border: none;
-    border-radius: 99px;
-    padding: 12px 16px 12px 18px;
-    background-color: var(--color-bg-action-primary, #2b8659);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    color: #fff;
-    cursor: pointer;
-    outline: none;
     box-sizing: border-box;
-    transform-origin: center;
-    opacity: 0;
-    transform: translateY(8px) scale(0.96);
-    transition:
-      opacity 150ms ease-out,
-      transform 150ms ease-out;
+    padding-inline-start: 12px;
+    overflow: hidden;
+    transition: width 150ms ease-out;
   }
 
-  .restaurant-merchant-basket--shown {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+  .restaurant-merchant-search__basket-slot[data-shown='true'] {
+    width: 68px;
   }
 
-  .restaurant-merchant-basket:focus-visible {
-    outline: 2px solid var(--color-special-brand-alt, #0c2c1c);
-    outline-offset: 2px;
+  .restaurant-merchant-search__basket-slot[data-shown='true'][data-state='default'] {
+    width: 203px;
+  }
+
+  .restaurant-merchant-search__basket-slot .wide-basket-fab-anchor {
+    flex: none;
+    width: 100%;
+    min-width: 56px;
   }
 
   /**

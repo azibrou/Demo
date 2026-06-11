@@ -9,20 +9,36 @@ import {
   type TransitionEvent,
 } from 'react'
 import { createPortal } from 'react-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { CarouselGridItem } from './CarouselGridItem'
 import { EaterSearchInput } from './EaterSearchInput'
+import { HomeSearchBasketFab } from './HomeSearchBasketFab'
 import { KalepIcon } from './KalepIcon'
 import { MerchantOrderProvider } from '../context/OrderContext'
 import type { OrderProviderRef } from '../lib/orderProvider'
 import {
+  MERCHANT_AISLES_CATEGORIES,
+  merchantAislesSubcategories,
+} from '../lib/merchantAislesCategories'
+import {
   boltMarketQuerySuggestions,
-  boltMarketSuggestions,
   searchBoltMarket,
 } from '../lib/boltMarketSearch'
 
 const SLIDE_MS = 150
 const SLIDE_EASE = 'ease-out'
 const OFFSCREEN_Y = '100dvh' as const
+
+/** Top quick rows above the store's aisle categories. */
+const TOP_SUGGESTIONS = ['Order again', 'Most popular'] as const
+
+function subcategoryKey(label: string): string {
+  return label
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+}
 
 export type CategorySearchScreenProps = {
   /** Store this search belongs to — added items attribute to it. */
@@ -53,6 +69,8 @@ function SuggestionRow({ label, onClick, divider }: { label: string; onClick: ()
  * 80678:184283 (typing) / 80678:181960 (results). Slides up; closes on Cancel.
  */
 export function CategorySearchScreen({ orderProvider, onClose }: CategorySearchScreenProps) {
+  const navigate = useNavigate()
+  const location = useLocation()
   const inputRef = useRef<HTMLInputElement>(null)
   const mountedRef = useRef(true)
   const closingRef = useRef(false)
@@ -115,6 +133,16 @@ export function CategorySearchScreen({ orderProvider, onClose }: CategorySearchS
     if (!closingRef.current) return
     onCloseRef.current()
   }, [])
+
+  // Tapping a category closes the search and opens that category screen.
+  const openCategory = useCallback(
+    (categoryId: string) => {
+      const firstSub = subcategoryKey(merchantAislesSubcategories(categoryId)[0] ?? 'All')
+      navigate(`/category/${categoryId}?sub=${firstSub}`, { state: location.state })
+      onCloseRef.current()
+    },
+    [navigate, location.state],
+  )
 
   const overlayStyle = {
     transform: offscreen ? `translateY(${OFFSCREEN_Y})` : 'translateY(0)',
@@ -180,17 +208,22 @@ export function CategorySearchScreen({ orderProvider, onClose }: CategorySearchS
           </>
         ) : (
           <div className="home-gutter-inline flex w-full flex-col">
-            {boltMarketSuggestions.map((label, index) => (
+            {TOP_SUGGESTIONS.map((label) => (
+              <SuggestionRow key={label} label={label} onClick={() => setQuery(label)} divider />
+            ))}
+            {MERCHANT_AISLES_CATEGORIES.map((category, index) => (
               <SuggestionRow
-                key={label}
-                label={label}
-                onClick={() => setQuery(label.replace(/^[^\p{L}]+/u, '').trim())}
-                divider={index < boltMarketSuggestions.length - 1}
+                key={category.id}
+                label={`${category.emoji} ${category.label}`}
+                onClick={() => openCategory(category.id)}
+                divider={index < MERCHANT_AISLES_CATEGORIES.length - 1}
               />
             ))}
           </div>
         )}
       </div>
+
+      <HomeSearchBasketFab />
     </div>
   )
 

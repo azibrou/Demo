@@ -14,6 +14,8 @@ export type WideBasketFabState = 'loading' | 'default' | 'collapsed'
 export type WideBasketFabProps = {
   state: WideBasketFabState
   count?: number
+  /** Formatted basket subtotal (e.g. `9,00 €`) shown beside the label when expanded. */
+  totalLabel?: string
   popIn?: boolean
   /** Scale-out after collapse (merchant basket empty). */
   popOut?: boolean
@@ -29,9 +31,10 @@ function formatCount(count: number) {
   return count > 99 ? '99+' : String(count)
 }
 
-function wideBasketFabAriaLabel(state: WideBasketFabState, count: number) {
+function wideBasketFabAriaLabel(state: WideBasketFabState, count: number, totalLabel: string) {
   if (state === 'loading') return 'Loading basket'
-  return count > 0 ? `Basket, ${count} items` : 'Basket'
+  if (count <= 0) return 'Basket'
+  return totalLabel ? `Basket, ${count} items, ${totalLabel}` : `Basket, ${count} items`
 }
 
 /**
@@ -51,6 +54,7 @@ function wideBasketFabMotionClass(popIn: boolean, popOut: boolean, revealed: boo
 export function WideBasketFab({
   state,
   count = 0,
+  totalLabel = '',
   popIn = false,
   popOut = false,
   revealed = false,
@@ -60,7 +64,8 @@ export function WideBasketFab({
 }: WideBasketFabProps) {
   const navigate = useNavigate()
   const showCounter = count > 0 && state !== 'loading'
-  const label = wideBasketFabAriaLabel(state, count)
+  const showTotal = totalLabel !== '' && count > 0
+  const label = wideBasketFabAriaLabel(state, count, totalLabel)
   const inTabBar = className.includes(WIDE_BASKET_FAB_IN_TAB_BAR_CLASS)
 
   const button = (
@@ -99,8 +104,11 @@ export function WideBasketFab({
         <img alt="" src={design.wideBasketFab.basket} className="wide-basket-fab__icon-img" />
       </span>
 
-      <span className="wide-basket-fab__label bolt-font-body-m-accent" aria-hidden={state !== 'default'}>
-        Basket
+      <span
+        className="wide-basket-fab__label bolt-font-body-m-accent [font-feature-settings:'cv03'_1,'cv04'_1,'lnum'_1,'pnum'_1]"
+        aria-hidden={state !== 'default'}
+      >
+        {showTotal ? totalLabel : 'Basket'}
       </span>
 
       {showCounter ? (

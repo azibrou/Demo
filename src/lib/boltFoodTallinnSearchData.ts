@@ -2,6 +2,16 @@ import searchData from './boltFoodTallinnSearchData.json'
 import type { HomeSearchTab } from './homeSearchContent'
 import { boltFoodAssets } from './boltFoodAssets'
 import { searchBoltMarket } from './boltMarketSearch'
+import {
+  parseEtaText,
+  type RestaurantMerchantNavState,
+  type StoreMerchantNavState,
+} from './merchantNavigation'
+import {
+  restaurantOrderProviderRef,
+  storeOrderProviderRef,
+  type OrderProviderRef,
+} from './orderProvider'
 
 export type BoltSearchDish = {
   id: string
@@ -132,4 +142,47 @@ export function getBoltSearchSnapshot(query: string): BoltSearchSnapshot | null 
 
 export function formatBoltSearchResultCount(count: number): string {
   return count === 1 ? '1 result' : `${count} results`
+}
+
+/** Nav state that re-opens the merchant behind a search result (matches store/restaurant nav shapes). */
+export function boltSearchProviderNavState(
+  provider: BoltSearchProvider,
+): StoreMerchantNavState | RestaurantMerchantNavState {
+  const { eta, etaLabel } = parseEtaText(provider.eta)
+  if (inferBoltSearchProviderKind(provider) === 'store') {
+    return {
+      kind: 'store',
+      name: provider.name,
+      heroImageSrc: provider.imageSrc ?? '',
+      logoImageSrc: provider.imageSrc ?? '',
+      rating: provider.rating,
+      reviews: provider.ratingCount,
+      deliveryPrice: provider.deliveryFee,
+      deliveryLabel: 'delivery',
+      eta,
+      etaLabel,
+    }
+  }
+  return {
+    kind: 'restaurant',
+    name: provider.name,
+    heroImageSrc: provider.imageSrc ?? '',
+    rating: provider.rating,
+    reviews: provider.ratingCount,
+    deliveryPrice: provider.deliveryFee,
+    deliveryLabel: 'delivery',
+    eta,
+    etaLabel,
+  }
+}
+
+/**
+ * Order-provider ref for a search result so quick-adds attribute to the result's own merchant.
+ * This lets the cross-merchant "Start a new order?" flow fire when adding across providers.
+ */
+export function boltSearchOrderProviderRef(provider: BoltSearchProvider): OrderProviderRef {
+  const navState = boltSearchProviderNavState(provider)
+  return navState.kind === 'store'
+    ? storeOrderProviderRef(navState)
+    : restaurantOrderProviderRef(navState)
 }

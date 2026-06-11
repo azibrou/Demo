@@ -1,11 +1,13 @@
 import { useBasketFabOptional } from '../context/BasketFabContext'
 import { useHomeSearchWideBasketFab } from '../hooks/useHomeSearchWideBasketFab'
+import { formatEuro } from '../lib/price'
 import { WideBasketFab } from './WideBasketFab'
 
 /** Centered wide basket FAB on the home search overlay — Figma search quick-add flow. */
 export function HomeSearchBasketFab() {
   const basket = useBasketFabOptional()
   const count = basket?.basketDisplayCount ?? 0
+  const amount = basket?.basketDisplayAmount ?? 0
   const { visible, slideIn, state, popIn } = useHomeSearchWideBasketFab(count)
 
   if (!visible) return null
@@ -20,7 +22,13 @@ export function HomeSearchBasketFab() {
       aria-live="polite"
     >
       <div className="home-search-basket-fab__slot" data-state={state}>
-        <WideBasketFab state={state} count={count} popIn={popIn} revealed={slideIn} />
+        <WideBasketFab
+          state={state}
+          count={count}
+          totalLabel={amount > 0 ? formatEuro(amount) : ''}
+          popIn={popIn}
+          revealed={slideIn}
+        />
       </div>
     </div>
   )

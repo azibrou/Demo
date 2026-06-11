@@ -1,7 +1,11 @@
 import { CarouselGridItem } from './CarouselGridItem'
 import { CarouselItem } from './CarouselItem'
 import { KalepIcon } from './KalepIcon'
-import type { BoltSearchProvider } from '../lib/boltFoodTallinnSearchData'
+import { MerchantOrderProvider } from '../context/OrderContext'
+import {
+  boltSearchOrderProviderRef,
+  type BoltSearchProvider,
+} from '../lib/boltFoodTallinnSearchData'
 
 export type HomeSearchProviderResultProps = {
   provider: BoltSearchProvider
@@ -76,6 +80,7 @@ function HomeSearchProviderHeader({ provider }: { provider: BoltSearchProvider }
  */
 export function HomeSearchProviderResult({ provider }: HomeSearchProviderResultProps) {
   const header = <HomeSearchProviderHeader provider={provider} />
+  const orderProvider = boltSearchOrderProviderRef(provider)
 
   if (provider.items.length === 0) {
     return (
@@ -96,15 +101,17 @@ export function HomeSearchProviderResult({ provider }: HomeSearchProviderResultP
       className="home-search-provider bolt-font-base flex w-full min-w-0 max-w-full flex-col items-stretch gap-3 text-[var(--color-content-primary)]"
       data-name="[Eater] SearchItem"
     >
-      {provider.items.map((item) => (
-        <CarouselGridItem
-          key={item.id}
-          itemId={item.id}
-          imageSrc={item.imageSrc}
-          title={item.name}
-          price={item.price}
-        />
-      ))}
+      <MerchantOrderProvider provider={orderProvider}>
+        {provider.items.map((item) => (
+          <CarouselGridItem
+            key={item.id}
+            itemId={item.id}
+            imageSrc={item.imageSrc}
+            title={item.name}
+            price={item.price}
+          />
+        ))}
+      </MerchantOrderProvider>
     </CarouselItem>
   )
 }

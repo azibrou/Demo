@@ -1,5 +1,5 @@
 import { useCallback, useLayoutEffect, useMemo, useState } from 'react'
-import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { CarouselGridItem } from '../components/CarouselGridItem'
 import { CategoryBottomSheet } from '../components/CategoryBottomSheet'
 import { CategorySearchScreen } from '../components/CategorySearchScreen'
@@ -8,7 +8,6 @@ import { CategoryTab } from '../components/CategoryTab'
 import { CategoryTabActions } from '../components/CategoryTabActions'
 import { KalepIcon } from '../components/KalepIcon'
 import { NavBar } from '../components/NavBar'
-import { SubcategoryTab } from '../components/SubcategoryTab'
 import { useStackBack } from '../hooks/useStackBack'
 import { resolveBoltMarketCategoryProducts } from '../lib/boltMarketCategoryContent'
 import { categoryScreenProducts } from '../lib/categoryScreenContent'
@@ -35,10 +34,9 @@ function subcategoryKey(label: string): string {
  */
 export function CategoryScreen() {
   const onBack = useStackBack()
-  const navigate = useNavigate()
   const location = useLocation()
   const { categoryId: categoryIdParam } = useParams<{ categoryId: string }>()
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
 
   const merchantName = useMemo(() => {
     const provider = resolveStoreMerchantProvider(location.state)
@@ -67,6 +65,11 @@ export function CategoryScreen() {
     return subcategories.find((s) => subcategoryKey(s) === subcategoryId) ?? subcategories[0] ?? 'All'
   }, [subcategories, subcategoryId])
 
+  const activeCategoryLabel = useMemo(
+    () => findMerchantAislesCategory(categoryId)?.label ?? activeSubcategoryLabel,
+    [categoryId, activeSubcategoryLabel],
+  )
+
   const products = useMemo(
     () =>
       resolveBoltMarketCategoryProducts(categoryId, activeSubcategoryLabel) ??
@@ -78,27 +81,12 @@ export function CategoryScreen() {
     window.scrollTo(0, 0)
   }, [])
 
-  const onCategoryChange = useCallback(
-    (id: string) => {
-      setCategoryId(id)
-      const nextSubs = merchantAislesSubcategories(id)
-      const firstSub = subcategoryKey(nextSubs[0] ?? 'All')
-      setSubcategoryId(firstSub)
-      navigate(`/category/${id}?sub=${firstSub}`, {
-        replace: true,
-        state: location.state,
-      })
-    },
-    [location.state, navigate],
-  )
-
-  const onSubcategoryChange = useCallback(
-    (id: string) => {
-      setSubcategoryId(id)
-      setSearchParams({ sub: id }, { replace: true })
-    },
-    [setSearchParams],
-  )
+  // Switch categories in place like a tab — no route change, just swap content.
+  const onCategoryChange = useCallback((id: string) => {
+    setCategoryId(id)
+    const nextSubs = merchantAislesSubcategories(id)
+    setSubcategoryId(subcategoryKey(nextSubs[0] ?? 'All'))
+  }, [])
 
   return (
     <div className="category-screen bolt-font-base min-h-svh w-full bg-[var(--color-layer-floor-1)] text-[var(--color-content-primary)]">
@@ -110,17 +98,12 @@ export function CategoryScreen() {
             activeId={categoryId}
             onChange={onCategoryChange}
           />
-          <SubcategoryTab
-            subcategories={subcategories}
-            activeId={subcategoryId}
-            onChange={onSubcategoryChange}
-          />
         </div>
 
         <main className="flex flex-1 flex-col gap-4 py-3 pb-[calc(env(safe-area-inset-bottom,0px)+96px)]">
           <header className="flex items-start gap-3 px-6 pb-1">
             <h1 className="bolt-font-heading-xs-accent min-w-0 flex-1 text-[var(--color-content-primary)]">
-              {activeSubcategoryLabel}
+              {activeCategoryLabel}
             </h1>
             <button
               type="button"

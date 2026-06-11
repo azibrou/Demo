@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import { useMerchantOrderProvider, useOrderOptional } from '../context/OrderContext'
 import { design } from '../lib/figmaDesignAssets'
+import { ProductSheet } from './ProductSheet'
 import { QuickAddExpandPill } from './QuickAddExpandPill'
 
 const c = design.carousel
@@ -29,6 +30,12 @@ export type CarouselGridItemProps = {
   priceNow?: string
   priceWas?: string
   discountLabel?: string
+  description?: string
+  /**
+   * Override the tap-to-open behavior. When omitted, tapping the tile opens a
+   * built-in product detail sheet (as long as an order provider is in context).
+   */
+  onOpenDetails?: () => void
 }
 
 /**
@@ -46,6 +53,8 @@ export function CarouselGridItem({
   priceNow = defaultCopy.priceNow,
   priceWas = defaultCopy.priceWas,
   discountLabel = defaultCopy.discountLabel,
+  description,
+  onOpenDetails,
 }: CarouselGridItemProps) {
   const order = useOrderOptional()
   const merchantProvider = useMerchantOrderProvider()
@@ -55,6 +64,7 @@ export function CarouselGridItem({
 
   const [localOpen, setLocalOpen] = useState(false)
   const [localQty, setLocalQty] = useState(1)
+  const [detailsOpen, setDetailsOpen] = useState(false)
 
   const orderQty = persisted ? order.getQtyFor(addProvider.id, itemId) : 0
   const quickOpen = persisted ? orderQty > 0 : localOpen
@@ -62,6 +72,54 @@ export function CarouselGridItem({
 
   const lineTitle = title
   const linePrice = variant === 'discount' ? priceNow : price
+
+  // Tap the tile to open product details. Falls back to a built-in sheet when no
+  // explicit handler is given, provided there's an order provider to attribute adds to.
+  const canOpenDetails = onOpenDetails != null || (order != null && addProvider != null)
+  const handleOpenDetails = useCallback(() => {
+    if (onOpenDetails) {
+      onOpenDetails()
+      return
+    }
+    setDetailsOpen(true)
+  }, [onOpenDetails])
+
+  const textContent = (
+    <>
+      {variant === 'default' && (
+        <div className="relative flex w-full min-w-0 shrink-0 items-center justify-start">
+          <p className="bolt-font-body-s-accent min-w-0 shrink-0 whitespace-nowrap text-left text-[var(--color-content-primary)]">
+            {price}
+          </p>
+        </div>
+      )}
+      {variant === 'discount' && (
+        <div className="relative flex w-full min-w-0 shrink-0 flex-col items-start justify-center gap-0 whitespace-nowrap pb-0.5 text-left">
+          <p className="bolt-font-body-s-accent w-full min-w-0 shrink-0 text-left text-[var(--color-content-danger-primary)]">
+            {priceNow}
+          </p>
+          <p className="bolt-font-body-xs-regular w-full min-w-0 shrink-0 text-left text-[var(--color-content-secondary)] [text-decoration-skip-ink:none] line-through decoration-solid">
+            {priceWas}
+          </p>
+        </div>
+      )}
+      <div className="flex w-full min-w-0 shrink-0 flex-col items-start text-left">
+        <p
+          className={[
+            'bolt-font-body-xs-regular w-full min-w-0 text-left text-[var(--color-content-primary)]',
+            variant === 'default' ? 'line-clamp-2 overflow-hidden' : 'truncate',
+          ].join(' ')}
+        >
+          {title}
+        </p>
+        <div className="flex w-full min-w-0 flex-wrap items-start justify-start gap-x-1 gap-y-0">
+          <p className="bolt-font-body-xs-regular min-w-0 shrink-0 whitespace-nowrap text-left text-[10px] leading-[14px] text-[var(--color-content-secondary)]">
+            {unitLabel}
+          </p>
+        </div>
+      </div>
+    </>
+  )
 
   const handleAdd = useCallback(() => {
     if (persisted) {
@@ -113,9 +171,20 @@ export function CarouselGridItem({
           className="pointer-events-none absolute inset-0 z-[2] bg-[rgba(0,45,30,0.06)] text-[var(--color-content-primary)]"
           aria-hidden
         />
-        <div className="relative z-[1] aspect-square w-full shrink-0 overflow-hidden">
-          <img alt="" src={imageSrc ?? c.product} className="thumbnail-fill-img" />
-        </div>
+        {canOpenDetails ? (
+          <button
+            type="button"
+            aria-label={`Open ${title}`}
+            onClick={handleOpenDetails}
+            className="relative z-[1] block aspect-square w-full shrink-0 overflow-hidden outline-none"
+          >
+            <img alt="" src={imageSrc ?? c.product} className="thumbnail-fill-img" />
+          </button>
+        ) : (
+          <div className="relative z-[1] aspect-square w-full shrink-0 overflow-hidden">
+            <img alt="" src={imageSrc ?? c.product} className="thumbnail-fill-img" />
+          </div>
+        )}
         <div className="absolute bottom-1 left-1 right-1 z-[4] flex min-w-0 justify-end">
           <QuickAddExpandPill
             open={quickOpen}
@@ -129,40 +198,33 @@ export function CarouselGridItem({
         </div>
       </div>
 
-      <div className="mt-1 flex w-full min-w-0 shrink-0 flex-col items-start gap-0.5">
-        {variant === 'default' && (
-          <div className="relative flex w-full min-w-0 shrink-0 items-center justify-start">
-            <p className="bolt-font-body-s-accent min-w-0 shrink-0 whitespace-nowrap text-left text-[var(--color-content-primary)]">
-              {price}
-            </p>
-          </div>
-        )}
-        {variant === 'discount' && (
-          <div className="relative flex w-full min-w-0 shrink-0 flex-col items-start justify-center gap-0 whitespace-nowrap pb-0.5 text-left">
-            <p className="bolt-font-body-s-accent w-full min-w-0 shrink-0 text-left text-[var(--color-content-danger-primary)]">
-              {priceNow}
-            </p>
-            <p className="bolt-font-body-xs-regular w-full min-w-0 shrink-0 text-left text-[var(--color-content-secondary)] [text-decoration-skip-ink:none] line-through decoration-solid">
-              {priceWas}
-            </p>
-          </div>
-        )}
-        <div className="flex w-full min-w-0 shrink-0 flex-col items-start text-left">
-          <p
-            className={[
-              'bolt-font-body-xs-regular w-full min-w-0 text-left text-[var(--color-content-primary)]',
-              variant === 'default' ? 'line-clamp-2 overflow-hidden' : 'truncate',
-            ].join(' ')}
-          >
-            {title}
-          </p>
-          <div className="flex w-full min-w-0 flex-wrap items-start justify-start gap-x-1 gap-y-0">
-            <p className="bolt-font-body-xs-regular min-w-0 shrink-0 whitespace-nowrap text-left text-[10px] leading-[14px] text-[var(--color-content-secondary)]">
-              {unitLabel}
-            </p>
-          </div>
+      {canOpenDetails ? (
+        <button
+          type="button"
+          onClick={handleOpenDetails}
+          className="mt-1 flex w-full min-w-0 shrink-0 flex-col items-start gap-0.5 text-left outline-none"
+        >
+          {textContent}
+        </button>
+      ) : (
+        <div className="mt-1 flex w-full min-w-0 shrink-0 flex-col items-start gap-0.5">
+          {textContent}
         </div>
-      </div>
+      )}
+
+      {detailsOpen && addProvider ? (
+        <ProductSheet
+          product={{
+            id: itemId ?? lineTitle,
+            title: lineTitle,
+            price: linePrice ?? price,
+            image: imageSrc,
+            description,
+          }}
+          provider={addProvider}
+          onClose={() => setDetailsOpen(false)}
+        />
+      ) : null}
     </article>
   )
 }

@@ -10,12 +10,12 @@ import {
 } from 'react'
 import { createPortal } from 'react-dom'
 import { EaterSearchInput } from './EaterSearchInput'
+import { HomeSearchBasketFab } from './HomeSearchBasketFab'
 import { SimpleItem } from './SimpleItem'
 import type { RestaurantAssortmentItem } from '../lib/restaurantMerchantContent'
 
-const SLIDE_MS = 150
-const SLIDE_EASE = 'ease-out'
-const OFFSCREEN_Y = '-100dvh' as const
+const FADE_MS = 150
+const FADE_EASE = 'ease-out'
 
 export type RestaurantSearchOverlayProps = {
   /** Searchable items for the current restaurant. */
@@ -25,8 +25,8 @@ export type RestaurantSearchOverlayProps = {
 
 /**
  * Restaurant menu search — Figma 80638:179495.
- * Slides down from the top covering the screen (150ms ease-out); results are the
- * restaurant's own assortment ({@link SimpleItem} rows with quick-add).
+ * Dissolves in/out (150ms opacity fade); results are the restaurant's own
+ * assortment ({@link SimpleItem} rows with quick-add).
  */
 export function RestaurantSearchOverlay({ assortment, onClose }: RestaurantSearchOverlayProps) {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -85,7 +85,7 @@ export function RestaurantSearchOverlay({ assortment, onClose }: RestaurantSearc
   }, [])
 
   const onOverlayTransitionEnd = useCallback((e: TransitionEvent<HTMLDivElement>) => {
-    if (e.propertyName !== 'transform') return
+    if (e.propertyName !== 'opacity') return
     if (e.target !== e.currentTarget) return
     if (!closingRef.current) return
     onCloseRef.current()
@@ -102,8 +102,8 @@ export function RestaurantSearchOverlay({ assortment, onClose }: RestaurantSearc
   }, [query, assortment])
 
   const overlayStyle = {
-    transform: offscreen ? `translateY(${OFFSCREEN_Y})` : 'translateY(0)',
-    transition: transitionOn ? `transform ${SLIDE_MS}ms ${SLIDE_EASE}` : 'none',
+    opacity: offscreen ? 0 : 1,
+    transition: transitionOn ? `opacity ${FADE_MS}ms ${FADE_EASE}` : 'none',
   } as CSSProperties
 
   const overlay = (
@@ -126,11 +126,22 @@ export function RestaurantSearchOverlay({ assortment, onClose }: RestaurantSearc
         />
       </div>
 
-      <div className="restaurant-search-overlay__results flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain pb-[calc(24px+env(safe-area-inset-bottom,0px))]">
-        {results.map((item) => (
-          <SimpleItem key={item.itemId} showDivider {...item} />
-        ))}
-      </div>
+      {query.trim().length > 0 ? (
+        <div className="restaurant-search-overlay__results flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain pb-[calc(24px+env(safe-area-inset-bottom,0px))]">
+          {results.map((item) => (
+            <SimpleItem key={item.itemId} showDivider {...item} />
+          ))}
+        </div>
+      ) : (
+        <button
+          type="button"
+          aria-label="Close search"
+          onClick={requestClose}
+          className="restaurant-search-overlay__scrim flex-1"
+        />
+      )}
+
+      <HomeSearchBasketFab />
     </div>
   )
 

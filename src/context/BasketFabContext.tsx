@@ -14,6 +14,7 @@ import type { WideBasketFabState } from '../components/WideBasketFab'
 import { triggerHaptic } from '../lib/haptic'
 import { isMerchantHubPath } from '../lib/merchantHubPath'
 import { resolveScreenProviderId } from '../lib/orderProvider'
+import { parsePrice } from '../lib/price'
 import { useOrder } from './OrderContext'
 import {
   getMerchantScrollEl,
@@ -76,6 +77,8 @@ export type MerchantWideFabPhase = WideBasketFabState | 'hidden'
 export type BasketFabContextValue = {
   basketUnitTotal: number
   basketDisplayCount: number
+  /** Order subtotal (sum of line price × qty) for the FAB's screen; 0 when the FAB shows no count. */
+  basketDisplayAmount: number
   compactTabs: boolean
   fabReserveWidthPx: number
   fabReveal: boolean
@@ -139,6 +142,13 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
    * - other merchant: 0 (no FAB until a new order starts here).
    */
   const total = merchantMode ? (matchesOrderProvider ? order.unitCount : 0) : order.unitCount
+
+  /** Order subtotal shown next to the count in the expanded FAB — gated like `total`. */
+  const orderAmount = useMemo(
+    () => order.items.reduce((sum, item) => sum + parsePrice(item.price) * item.qty, 0),
+    [order.items],
+  )
+  const amountTotal = merchantMode ? (matchesOrderProvider ? orderAmount : 0) : orderAmount
 
   /** Screen identity — order-independent; changes drive an immediate chrome snap. */
   const screenKey = `${pathname}|${currentScreenProviderId ?? ''}`
@@ -611,10 +621,18 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
 
   const basketDisplayCount = basketFabExiting ? exitDisplayCount : total
 
+  /** Hold the last non-zero subtotal so the price stays put during the exit animation. */
+  const lastPositiveAmountRef = useRef(0)
+  useEffect(() => {
+    if (amountTotal > 0) lastPositiveAmountRef.current = amountTotal
+  }, [amountTotal])
+  const basketDisplayAmount = basketFabExiting ? lastPositiveAmountRef.current : amountTotal
+
   const value = useMemo(
     (): BasketFabContextValue => ({
       basketUnitTotal: total,
       basketDisplayCount,
+      basketDisplayAmount,
       compactTabs,
       fabReserveWidthPx: fabReservePx,
       fabReveal,
@@ -639,6 +657,7 @@ export function BasketFabProvider({ children }: { children: ReactNode }) {
     [
       total,
       basketDisplayCount,
+      basketDisplayAmount,
       compactTabs,
       fabReservePx,
       fabReveal,

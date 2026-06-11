@@ -20,6 +20,7 @@ import {
 } from '../lib/floatingTabBarLayout'
 import { WIDE_BASKET_FAB_IN_TAB_BAR_CLASS } from '../lib/wideBasketFabExpand'
 import { design } from '../lib/figmaDesignAssets'
+import { formatEuro } from '../lib/price'
 import { WideBasketFab, type WideBasketFabState } from './WideBasketFab'
 import { TabAction } from './TabAction'
 import { FloatingTabBarPill } from './FloatingTabBarPill'
@@ -269,6 +270,9 @@ function MerchantFTabBarInner({
               <WideBasketFab
                 state={wideFabState}
                 count={basket.basketDisplayCount}
+                totalLabel={
+                  basket.basketDisplayAmount > 0 ? formatEuro(basket.basketDisplayAmount) : ''
+                }
                 counterPopNonce={basket.badgePopNonce}
                 popIn={wideFabPopIn}
                 popOut={wideFabPopOut}

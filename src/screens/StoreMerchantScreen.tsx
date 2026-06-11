@@ -1,8 +1,9 @@
-import { useCallback, useMemo } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { BannerCarousel } from '../components/BannerCarousel'
 import { CarouselGridItem } from '../components/CarouselGridItem'
 import { CarouselItem } from '../components/CarouselItem'
+import { CategorySearchScreen } from '../components/CategorySearchScreen'
 import { CrossFadeStack } from '../components/CrossFadeStack'
 import { TopSectionStore } from '../components/TopSectionStore'
 import { storeMerchantBannerCarouselSlides } from '../lib/bannerCarouselContent'
@@ -55,10 +56,16 @@ function StoreMerchantVenueTab({
 
 export function StoreMerchantScreen() {
   const onBack = useStackBack()
+  const location = useLocation()
+  const orderProvider = useMemo(() => storeOrderProviderRef(location.state), [location.state])
+  const [searchOpen, setSearchOpen] = useState(false)
 
   return (
-    <MerchantScreenShell>
+    <MerchantScreenShell onSearchClick={() => setSearchOpen(true)}>
       <StoreMerchantScreenBody onBack={onBack} />
+      {searchOpen ? (
+        <CategorySearchScreen orderProvider={orderProvider} onClose={() => setSearchOpen(false)} />
+      ) : null}
     </MerchantScreenShell>
   )
 }

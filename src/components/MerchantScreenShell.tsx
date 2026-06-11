@@ -14,6 +14,8 @@ type MerchantScreenShellProps = {
   bottomChrome?: MerchantScreenBottomChrome
   /** Pressing the restaurant search chrome (only with `bottomChrome='restaurant-search'`). */
   onRestaurantSearch?: () => void
+  /** Pressing the {@link MerchantFTabBar} search action (only with `bottomChrome='tab-bar'`). */
+  onSearchClick?: () => void
 }
 
 /**
@@ -24,6 +26,7 @@ function MerchantScreenShellInner({
   children,
   bottomChrome = 'tab-bar',
   onRestaurantSearch,
+  onSearchClick,
 }: MerchantScreenShellProps) {
   const { barItems } = useMemo(
     () => resolveMerchantFloatingTabBarModel(MERCHANT_FLOATING_TAB_BAR_ITEMS),
@@ -73,6 +76,7 @@ function MerchantScreenShellInner({
           activeId={activeTabId}
           onTabChange={setActiveTabId}
           ariaLabel="Merchant navigation"
+          onSearchClick={onSearchClick}
         />
       </div>
     </div>
@@ -90,6 +94,7 @@ export function MerchantScreenShell({
   children,
   bottomChrome = 'tab-bar',
   onRestaurantSearch,
+  onSearchClick,
 }: MerchantScreenShellProps) {
   const { barItems } = useMemo(
     () => resolveMerchantFloatingTabBarModel(MERCHANT_FLOATING_TAB_BAR_ITEMS),
@@ -99,7 +104,11 @@ export function MerchantScreenShell({
 
   return (
     <MerchantTabProvider initialTabId={initialTabId}>
-      <MerchantScreenShellInner bottomChrome={bottomChrome} onRestaurantSearch={onRestaurantSearch}>
+      <MerchantScreenShellInner
+        bottomChrome={bottomChrome}
+        onRestaurantSearch={onRestaurantSearch}
+        onSearchClick={onSearchClick}
+      >
         {children}
       </MerchantScreenShellInner>
     </MerchantTabProvider>

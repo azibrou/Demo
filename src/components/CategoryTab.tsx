@@ -50,10 +50,10 @@ export function CategoryTab({
             aria-selected={selected}
             onClick={() => onChange(category.id)}
             className={[
-              'shrink-0 px-3 text-left',
+              'shrink-0 px-3 py-2 text-left',
               selected
-                ? 'bolt-font-body-m-accent pt-1 pb-3 text-[var(--color-content-primary,#191f1c)]'
-                : 'bolt-font-body-m-regular pb-4 text-[var(--color-content-secondary)]',
+                ? 'bolt-font-body-m-accent text-[var(--color-content-primary,#191f1c)]'
+                : 'bolt-font-body-m-regular text-[var(--color-content-secondary)]',
             ].join(' ')}
           >
             {category.emoji} {category.label}
