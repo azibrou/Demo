@@ -44,8 +44,8 @@ jobs:
         env:
           SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
         run: |
-          npx staticrypt dist/index.html --password "$SITE_PASSWORD" --output dist/index.html --short
-          npx staticrypt dist/404.html  --password "$SITE_PASSWORD" --output dist/404.html  --short
+          npx staticrypt dist/index.html --password "$SITE_PASSWORD" -d dist/ --short
+          npx staticrypt dist/404.html   --password "$SITE_PASSWORD" -d dist/ --short
 
       # Matches upload-pages-artifact output (artifact name: github-pages) without that composite action.
       - name: Package Pages artifact
