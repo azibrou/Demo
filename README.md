@@ -16,7 +16,7 @@ npm run dev
 
 Open the URL shown in the terminal (usually `http://localhost:5173/`). During dev, Vite uses `base: '/'` so routing matches the dev server.
 
-The **DineOut** tab shows a generic [Google Maps](https://www.google.com/maps) embed. The map centers on your device location when permitted, otherwise Tallinn (demo default). Optionally set `VITE_GOOGLE_MAPS_API_KEY` in `.env` for the [Maps Embed API](https://developers.google.com/maps/documentation/embed/get-started) (enable **Maps Embed API** in Cloud Console).
+The **DineOut** tab  shows a generic [Google Maps](https://www.google.com/maps) embed. The map centers on your device location when permitted, otherwise Tallinn (demo default). Optionally set `VITE_GOOGLE_MAPS_API_KEY` in `.env` for the [Maps Embed API](https://developers.google.com/maps/documentation/embed/get-started) (enable **Maps Embed API** in Cloud Console).
 
 ## Production build and preview
 
