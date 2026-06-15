@@ -42,10 +42,26 @@ jobs:
 
       - name: Password-protect HTML
         env:
-          SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
+          STATICRYPT_PASSWORD: ${{ secrets.SITE_PASSWORD }}
         run: |
-          npx staticrypt dist/index.html --password "$SITE_PASSWORD" -d dist/ --short
-          npx staticrypt dist/404.html   --password "$SITE_PASSWORD" -d dist/ --short
+          # Use a fixed salt so every build produces the same hash — prevents
+          # an old empty-password session from unlocking a new build.
+          SALT="a90894c8f2a30af9e7ebd8a60e7bfcd4"
+
+          # Encrypt index.html in-place: write to a temp dir, then overwrite.
+          npx staticrypt dist/index.html \
+            -d /tmp/staticrypt-out/ \
+            -s "$SALT" \
+            --remember false \
+            --short
+          mv /tmp/staticrypt-out/index.html dist/index.html
+
+          npx staticrypt dist/404.html \
+            -d /tmp/staticrypt-out/ \
+            -s "$SALT" \
+            --remember false \
+            --short
+          mv /tmp/staticrypt-out/404.html dist/404.html
 
       # Matches upload-pages-artifact output (artifact name: github-pages) without that composite action.
       - name: Package Pages artifact
