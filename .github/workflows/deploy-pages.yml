@@ -59,14 +59,27 @@ jobs:
           # Pass the password explicitly (env-var auto-pickup prompts in CI) and read stdin
           # from /dev/null so staticrypt can never block on an interactive prompt.
           # staticrypt flattens output to <basename> inside the -d dir; move back over the originals.
-          npx staticrypt dist/index.html --password "$STATICRYPT_PASSWORD" -d /tmp/staticrypt-out/ -s "$SALT" --remember false --short < /dev/null
-          npx staticrypt dist/404.html   --password "$STATICRYPT_PASSWORD" -d /tmp/staticrypt-out/ -s "$SALT" --remember false --short < /dev/null
+          # --remember shows a "Remember password" checkbox that saves the salted+hashed password
+          # in localStorage so a refresh doesn't re-prompt. The CLI parseInt's --remember to whole
+          # days, so we pass 1 here and rewrite the baked expiry to 2 hours below.
+          npx staticrypt dist/index.html --password "$STATICRYPT_PASSWORD" -d /tmp/staticrypt-out/ -s "$SALT" --remember 1 --template-remember "Remember password" --short < /dev/null
+          npx staticrypt dist/404.html   --password "$STATICRYPT_PASSWORD" -d /tmp/staticrypt-out/ -s "$SALT" --remember 1 --template-remember "Remember password" --short < /dev/null
           mv /tmp/staticrypt-out/index.html dist/index.html
           mv /tmp/staticrypt-out/404.html   dist/404.html
 
-          # Verify the encryption actually applied (staticrypt marks the html element).
+          # Rewrite the remember expiry to 2 hours (2/24 of a day). The runtime computes the
+          # expiration as rememberDurationInDays * 24*60*60*1000 with no rounding, so a fractional
+          # value works even though the CLI flag itself only accepts whole days.
+          TWO_HOURS_IN_DAYS="0.08333333333333333"
+          for f in dist/index.html dist/404.html; do
+            sed -i "s/\"rememberDurationInDays\":[0-9][0-9]*/\"rememberDurationInDays\":${TWO_HOURS_IN_DAYS}/g" "$f"
+          done
+
+          # Verify the encryption applied and the 2-hour expiry was patched in.
           grep -q 'staticrypt' dist/index.html
           grep -q 'staticrypt' dist/404.html
+          grep -q "\"rememberDurationInDays\":${TWO_HOURS_IN_DAYS}" dist/index.html
+          grep -q "\"rememberDurationInDays\":${TWO_HOURS_IN_DAYS}" dist/404.html
 
       # Matches upload-pages-artifact output (artifact name: github-pages) without that composite action.
       - name: Package Pages artifact

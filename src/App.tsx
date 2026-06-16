@@ -12,7 +12,6 @@ import { DineOutScreen } from './screens/DineOutScreen'
 import { ProfilePhoneEditScreen } from './screens/ProfilePhoneEditScreen'
 import { ProfileScreen } from './screens/ProfileScreen'
 import { StoresScreen } from './screens/StoresScreen'
-import { LoginScreen } from './screens/LoginScreen'
 
 export default function App() {
   return (
@@ -32,7 +31,6 @@ export default function App() {
         </Route>
         <Route element={<Layout />}>
           <Route path="about" element={<AboutScreen />} />
-          <Route path="login" element={<LoginScreen />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

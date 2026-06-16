@@ -5,7 +5,6 @@ import {
   bakerySweets,
   boltPlusDiscounts,
 } from '../lib/boltFoodTallinnStoresContent'
-import { HomeHeroBlock } from '../sections/home/HomeHeroBlock'
 import { HomeShortcutsBlock } from '../sections/home'
 import {
   StoresAllStoresBlock,
@@ -29,7 +28,6 @@ export function StoresScreen() {
       <HubTopBar>
         <AddressSelector withGutter={false} />
       </HubTopBar>
-      <HomeHeroBlock />
       <StoresTopBlock />
       <HomeShortcutsBlock />
       <StoresOrderAgainBlock />
