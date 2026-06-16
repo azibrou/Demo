@@ -110,6 +110,13 @@ export function isPavlovaViruKeskusRestaurant(name: string): boolean {
   return name === PAVLOVA_VIRU_KESKUS_NAME
 }
 
+/** McDonald's Viru — uses the restaurant search chrome instead of the tab bar. */
+export const MCDONALDS_VIRU_NAME = "McDonald's® Viru" as const
+
+export function isMcDonaldsViruRestaurant(name: string): boolean {
+  return name === MCDONALDS_VIRU_NAME
+}
+
 /** Shared fields for M/L thumbnail → restaurant merchant navigation. */
 export type ThumbnailRestaurantNavInput = {
   title: string

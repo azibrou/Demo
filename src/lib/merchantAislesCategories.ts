@@ -8,7 +8,6 @@ export type MerchantAislesCategory = {
 }
 
 const CATEGORY_META: { label: string; emoji: string }[] = [
-  { label: 'Breakfast', emoji: '🥐' },
   { label: 'Fresh & ready', emoji: '🥗' },
   { label: 'Bakery', emoji: '🍞' },
   { label: 'Fruits & vegetables', emoji: '🥕' },
@@ -59,7 +58,6 @@ export const MERCHANT_AISLES_CATEGORIES: readonly MerchantAislesCategory[] = CAT
 )
 
 const SUBCATEGORIES: Record<string, readonly string[]> = {
-  breakfast: ['Cereals', 'Spreads', 'Yogurt', 'Eggs', 'Pastries'],
   'fresh-and-ready': ['Salads', 'Sandwiches', 'Ready meals', 'Sushi'],
   bakery: ['Bread', 'Pastries', 'Cakes', 'Crispbread'],
   'fruits-and-vegetables': ['Fruit', 'Vegetables', 'Berries', 'Herbs'],

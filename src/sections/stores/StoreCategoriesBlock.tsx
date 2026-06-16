@@ -1,7 +1,6 @@
 import { design } from '../../lib/figmaDesignAssets'
 
 const CATEGORY_LABELS = [
-  'Breakfast',
   'Fresh & ready',
   'Bakery',
   'Fruits & vegetables',

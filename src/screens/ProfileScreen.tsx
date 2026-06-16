@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { hasSavedPassword } from '../lib/passwordStore'
 import { KalepIcon } from '../components/KalepIcon'
 import { ListItem } from '../components/ListItem'
 import { NavBar } from '../components/NavBar'
@@ -80,12 +81,14 @@ export function ProfileScreen() {
   const location = useLocation()
   const [phone, setPhone] = useState<ProfilePhone>(getProfilePhone)
   const [theme, setTheme] = useState<ThemeId>('system')
+  const [passwordSaved, setPasswordSaved] = useState(hasSavedPassword)
 
   useEffect(() => subscribeProfilePhone(() => setPhone(getProfilePhone())), [])
 
   useLayoutEffect(() => {
     if (location.pathname === '/profile') {
       setPhone(getProfilePhone())
+      setPasswordSaved(hasSavedPassword())
     }
   }, [location.pathname, location.key])
 
@@ -192,7 +195,13 @@ export function ProfileScreen() {
             variant="profileMenu"
             title="Support"
             leadingSlot={<KalepLeading name="offer-outline" />}
+          />
+          <ListItem
+            variant="profileMenu"
+            title={passwordSaved ? 'Sign in (password saved)' : 'Sign in'}
+            leadingSlot={<KalepLeading name="user-alt-outline" />}
             showDivider={false}
+            onRowClick={() => navigate('/login')}
           />
         </section>
 

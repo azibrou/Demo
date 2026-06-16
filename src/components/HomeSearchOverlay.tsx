@@ -11,6 +11,7 @@ import {
 import { createPortal } from 'react-dom'
 import { HomeSearchScreen } from '../screens/HomeSearchScreen'
 import { HomeSearchBasketFab } from './HomeSearchBasketFab'
+import { useVisualViewportInset } from '../hooks/useVisualViewportInset'
 
 const HOME_SEARCH_SLIDE_MS = 150
 const HOME_SEARCH_SLIDE_EASE = 'ease-out'
@@ -108,6 +109,8 @@ export function HomeSearchOverlay({ onClosed }: HomeSearchOverlayProps) {
 
   const onClosedRef = useRef(onClosed)
   onClosedRef.current = onClosed
+
+  useVisualViewportInset()
 
   useEffect(() => {
     mountedRef.current = true

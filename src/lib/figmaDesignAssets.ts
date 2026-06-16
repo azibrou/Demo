@@ -295,7 +295,6 @@ export const design = {
       figma('6f758b4bb18d84efe1c972e0a9a67f4b748c7c73.png'),
     ],
     categoryTiles: [
-      figma('bf4d0c25ba9147efb15fa337c12fce40.png'),
       figma('19307420930947689ffa58b8e8a30c02.png'),
       figma('dfd7405853664fdd818eb7ea36872571.png'),
       figma('6bc75f3e4b1744548d22ac25e5ac9458.png'),
@@ -335,7 +334,6 @@ export const design = {
   ],
   /** Category grid tile images, same order as Figma node 70394:111492 */
   categoryTiles: [
-    figma('c1b68a06e457ad3e67479ea48e8a2980cebc8ecd.png'),
     figma('df6d1a4d02cb7499d497b8d1ca07676ba24a68ad.png'),
     figma('47cf0825bb06af3d00b07c0862defb6129da6565.png'),
     figma('cc7d3eb73569a1770f90258e697053a1b2eca35e.png'),

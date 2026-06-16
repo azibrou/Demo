@@ -12,6 +12,7 @@ import {
 } from '../lib/restaurantMerchantContent'
 import {
   isPavlovaViruKeskusRestaurant,
+  isMcDonaldsViruRestaurant,
   resolveRestaurantMerchantProvider,
 } from '../lib/merchantNavigation'
 import { MerchantScreenShell } from '../components/MerchantScreenShell'
@@ -37,6 +38,7 @@ export function RestaurantMerchantScreen() {
   /** Restaurants that use the centered search chrome + search overlay instead of the tab bar. */
   const searchChrome =
     isPavlovaViruKeskusRestaurant(provider.name) ||
+    isMcDonaldsViruRestaurant(provider.name) ||
     provider.name === IL_FORNO_NAME ||
     (MULTI_RESTAURANT_NAMES as readonly string[]).includes(provider.name)
   const [searchOpen, setSearchOpen] = useState(false)

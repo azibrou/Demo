@@ -12,6 +12,7 @@ import { createPortal } from 'react-dom'
 import { EaterSearchInput } from './EaterSearchInput'
 import { HomeSearchBasketFab } from './HomeSearchBasketFab'
 import { SimpleItem } from './SimpleItem'
+import { useVisualViewportInset } from '../hooks/useVisualViewportInset'
 import type { RestaurantAssortmentItem } from '../lib/restaurantMerchantContent'
 
 const FADE_MS = 150
@@ -40,6 +41,8 @@ export function RestaurantSearchOverlay({ assortment, onClose }: RestaurantSearc
   const [query, setQuery] = useState('')
   const [offscreen, setOffscreen] = useState(true)
   const [transitionOn, setTransitionOn] = useState(false)
+
+  useVisualViewportInset()
 
   useEffect(() => {
     mountedRef.current = true

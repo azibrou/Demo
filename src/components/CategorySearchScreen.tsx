@@ -14,6 +14,7 @@ import { CarouselGridItem } from './CarouselGridItem'
 import { EaterSearchInput } from './EaterSearchInput'
 import { HomeSearchBasketFab } from './HomeSearchBasketFab'
 import { KalepIcon } from './KalepIcon'
+import { useVisualViewportInset } from '../hooks/useVisualViewportInset'
 import { MerchantOrderProvider } from '../context/OrderContext'
 import type { OrderProviderRef } from '../lib/orderProvider'
 import {
@@ -85,6 +86,8 @@ export function CategorySearchScreen({ orderProvider, onClose }: CategorySearchS
   const hasQuery = query.trim().length > 0
   const results = useMemo(() => searchBoltMarket(query), [query])
   const querySuggestions = useMemo(() => boltMarketQuerySuggestions(query), [query])
+
+  useVisualViewportInset()
 
   useEffect(() => {
     mountedRef.current = true

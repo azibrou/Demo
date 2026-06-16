@@ -1,8 +1,10 @@
-import { useEffect, useLayoutEffect, useMemo, type ReactNode } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
+import { useLocation } from 'react-router-dom'
 import { resolveMerchantFloatingTabBarModel } from '../config/merchantFloatingTabBarConfig'
 import { useHomeShoppingStack } from '../context/HomeShoppingStackContext'
 import { MerchantTabProvider, useMerchantTab } from '../context/MerchantTabContext'
+import { getMerchantTab, setMerchantTab } from '../lib/merchantTabMemory'
 import { MERCHANT_FLOATING_TAB_BAR_ITEMS } from '../screens/merchantFloatingTabBarItems'
 import { BottomChromeSlide } from './BottomChromeSlide'
 import { MerchantFTabBar } from './MerchantFTabBar'
@@ -35,6 +37,16 @@ function MerchantScreenShellInner({
     [],
   )
   const { activeTabId, setActiveTabId } = useMerchantTab()
+  const locationKey = useLocation().key
+  // Persist tab changes against this history entry so returning from a pushed screen
+  // (e.g. a category) restores the tab the user was on.
+  const onTabChange = useCallback(
+    (id: string) => {
+      setActiveTabId(id)
+      setMerchantTab(locationKey, id)
+    },
+    [setActiveTabId, locationKey],
+  )
   // Mount the portal synchronously (client-only SPA) so the bar slides in on the
   // same commit the screen navigates — deferring it makes the slide start late.
   const portalReady = typeof document !== 'undefined'
@@ -79,7 +91,7 @@ function MerchantScreenShellInner({
         <MerchantFTabBar
           items={barItems}
           activeId={activeTabId}
-          onTabChange={setActiveTabId}
+          onTabChange={onTabChange}
           ariaLabel="Merchant navigation"
           onSearchClick={onSearchClick}
         />
@@ -105,7 +117,10 @@ export function MerchantScreenShell({
     () => resolveMerchantFloatingTabBarModel(MERCHANT_FLOATING_TAB_BAR_ITEMS),
     [],
   )
-  const initialTabId = barItems[0]?.id ?? 'venue'
+  const locationKey = useLocation().key
+  // Restore the tab remembered for this history entry (set when navigating away), else
+  // default to the first tab — so back-navigation preserves Aisles but fresh entries don't.
+  const initialTabId = getMerchantTab(locationKey) ?? barItems[0]?.id ?? 'venue'
 
   return (
     <MerchantTabProvider initialTabId={initialTabId}>
