@@ -2,6 +2,7 @@ import searchData from './boltFoodTallinnSearchData.json'
 import type { HomeSearchTab } from './homeSearchContent'
 import { boltFoodAssets } from './boltFoodAssets'
 import { searchBoltMarket } from './boltMarketSearch'
+import { searchRestaurantMerchants } from './homeSearchMerchants'
 import {
   parseEtaText,
   type RestaurantMerchantNavState,
@@ -90,10 +91,10 @@ export function filterBoltSearchSnapshotByTab(
 }
 
 /** Synthetic Bolt Market store result built from the local product catalog. */
-function boltMarketProductSnapshot(query: string): BoltSearchSnapshot | null {
+function boltMarketStoreProvider(query: string): BoltSearchProvider | null {
   const matches = searchBoltMarket(query)
   if (matches.length === 0) return null
-  const provider: BoltSearchProvider = {
+  return {
     id: BOLT_MARKET_TOOMPUIESTEE_ID,
     name: 'Bolt Market Toompuiestee',
     imageSrc: boltFoodAssets.boltMarketToompuiestee,
@@ -110,7 +111,24 @@ function boltMarketProductSnapshot(query: string): BoltSearchSnapshot | null {
       imageSrc: product.imageSrc,
     })),
   }
-  return { query, categoryLabel: query, resultCount: 1, providers: [provider] }
+}
+
+/**
+ * Local result set for free-text queries: the featured Bolt Market store plus
+ * matching assortment from every restaurant merchant (mirrors live Bolt Food,
+ * where one query spans many providers).
+ */
+function localMerchantSnapshot(query: string): BoltSearchSnapshot | null {
+  const storeProvider = boltMarketStoreProvider(query)
+  const restaurantProviders = searchRestaurantMerchants(query)
+  const providers = [...(storeProvider ? [storeProvider] : []), ...restaurantProviders]
+  if (providers.length === 0) return null
+  return {
+    query,
+    categoryLabel: query,
+    resultCount: providers.length,
+    providers: prioritizeBoltMarketToompuiestee(providers),
+  }
 }
 
 /** Longest matching snapshot for the current query (progressive typing). */
@@ -136,8 +154,8 @@ export function getBoltSearchSnapshot(query: string): BoltSearchSnapshot | null 
       ),
     }
   }
-  // Other queries — search the local Bolt Market product catalog.
-  return boltMarketProductSnapshot(q)
+  // Other queries — search the local Bolt Market catalog + restaurant assortments.
+  return localMerchantSnapshot(q)
 }
 
 export function formatBoltSearchResultCount(count: number): string {
